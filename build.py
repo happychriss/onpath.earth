@@ -28,7 +28,7 @@ def write(path,title,desc,body,lang='en',original=None):
     en=MAP[path] if lang=='de' else path
     depath=path if lang=='de' else REVERSE[path]
     local='/de'+path if lang=='de' else path
-    head=f'<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} | OnPath</title><meta name="description" content="{html.escape(desc,quote=True)}"><meta name="theme-color" content="#1F6E43"><link rel="icon" href="/assets/brand.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script src="/assets/app.js" defer></script>'
+    head=f'<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} | OnPath</title><meta name="description" content="{html.escape(desc,quote=True)}"><meta name="theme-color" content="#245f46"><link rel="icon" href="/assets/brand.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script src="/assets/app.js" defer></script>'
     for code,p in [('en',en),('de','/de'+depath),('x-default',en)]:
         head+=f'<link rel="alternate" hreflang="{code}" href="{CFG["origin"]}{p}">'
     if not release:head+='<meta name="robots" content="noindex,nofollow">'

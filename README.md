@@ -45,4 +45,6 @@ No Cloudflare project, domain, DNS record or WordPress content is modified by th
 
 See [the five-point agent brief](docs/AGENT-BRIEF.md) and [release checklist](docs/RELEASE.md). The 44-2.de drafts remain unpublished references; the new site becomes canonical only when the owner approves launch. Private marketing research, tentative numerical prices, tester lists, credentials and private Drive content must stay outside this public repository.
 
+See [the original website colour palette](docs/COLORS.md) for the exact HEX codes and their uses.
+
 See [asset notices](ASSET-NOTICES.md) for the photograph, font and logo sources. The original app artwork is used rather than a new logo interpretation.
