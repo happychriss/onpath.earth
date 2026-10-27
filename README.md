@@ -1,1 +1,48 @@
 # onpath.earth
+
+Static English and German website for OnPath: **Your route. Simply planned. / Deine Tour. Einfach geplant.**
+
+This repository is independent of the Android app at `happychriss/OnPath`.
+
+## Build and preview
+
+Python 3.10+ and Node.js (only for the JavaScript syntax check) are enough. There are no package dependencies.
+
+```sh
+python3 build.py
+python3 scripts/check_site.py
+node --check assets/app.js
+python3 -m http.server 8000 --directory dist
+```
+
+English is at `/`, German at `/de/`. Every page has a corresponding language-switch destination and `hreflang` links. Font, photograph and scripts are served locally. No analytics or third-party embeds are included.
+
+## Review and public launch
+
+The default build is a **review build**: `noindex`, robots disallow crawling, legal notices labelled as drafts. This does not make a deployment private: configure preview access separately in the hosting dashboard if needed.
+
+The owner must complete and verify the legal notice and privacy notice for the actual public service, including operator contact details, hosting and retention. Update `site-config.json` and the legal copy in both languages before using:
+
+```sh
+python3 build.py --release
+```
+
+The release command refuses incomplete operator settings and unresolved legal draft markers. A completed form is not a substitute for reviewing the actual pages and data flows.
+
+## Cloudflare Pages
+
+The owner connects **this repository only** through the Cloudflare dashboard. No API token or account credentials belong here.
+
+- Production branch: `main` (owner merges PRs).
+- Build command during review: `python3 build.py`.
+- Output directory: `dist`.
+- After legal completion and launch approval: `python3 build.py --release`.
+- The app repo, its builds and its releases are not involved.
+
+No Cloudflare project, domain, DNS record or WordPress content is modified by this source change. Automatic deployment begins only after the owner connects the repository.
+
+## Content and ownership
+
+See [the five-point agent brief](docs/AGENT-BRIEF.md) and [release checklist](docs/RELEASE.md). The 44-2.de drafts remain unpublished references; the new site becomes canonical only when the owner approves launch. Private marketing research, tentative numerical prices, tester lists, credentials and private Drive content must stay outside this public repository.
+
+See [asset notices](ASSET-NOTICES.md) for the photograph, font and logo sources. The original app artwork is used rather than a new logo interpretation.
