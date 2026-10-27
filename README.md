@@ -19,9 +19,9 @@ English is at `/`, German at `/de/`. Every page has a corresponding language-swi
 
 ## Review and public launch
 
-The default build is a **review build**: `noindex`, robots disallow crawling, legal notices labelled as drafts. This does not make a deployment private: configure preview access separately in the hosting dashboard if needed.
+The default build is a **review build**: `noindex`, robots disallow crawling, notices describing the intended hosting configuration. This does not make a deployment private: configure preview access separately in the hosting dashboard if needed.
 
-The owner must complete and verify the legal notice and privacy notice for the actual public service, including operator contact details, hosting and retention. Update `site-config.json` and the legal copy in both languages before using:
+Provider contact details and bilingual legal/privacy notices are included. See [legal sources and remaining hosting verification](docs/LEGAL-SOURCES.md). Before public launch, verify the actual hosting setup, processing and retention, update the notices as needed, then mark the review complete in `site-config.json` before using:
 
 ```sh
 python3 build.py --release

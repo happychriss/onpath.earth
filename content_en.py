@@ -27,19 +27,12 @@ ARTICLES = {
  ('A Google Play test is being prepared', 'The planned group test will use an invitation through Google Play. The group and invitation links are not ready yet. No payment is planned for that test.'),
  ('Useful feedback does not need technical knowledge', 'Tell the developer what you were trying to do, what happened and what you expected. Your phone model and app version help. An unclear instruction is useful feedback too.'),
  ('For technically experienced users', 'Early APK releases and discussions are available in the app’s GitHub repository. The GitHub and future Play builds may use different signatures: back up your tours before changing between them. OnPath itself does not need an account.')]),
- '/privacy/': ('Your tours stay in your hands.', 'No OnPath account, advertising or app usage analytics. Some features still need a connection.', [
- ('On your device', 'Plans, recorded tours and downloaded maps are stored on your phone. Route calculation runs there too. You can save GPX copies in a folder of your choice and use them in other apps.'),
- ('Connections used by the app', 'Map downloads request the required area. Optional online place search uses Photon and sends the search text and an approximate location. Google Maps and GitHub have their own privacy policies. A diagnostic file is only shared when you choose to send it.'),
- ('This website', 'Fonts, images, styles and scripts are served locally. Help search runs in the browser. No analytics, advertising scripts, embedded maps or payment forms are included. The hosting provider still processes technical connection data.'),
- ('Draft for the intended public service', 'Before public launch, complete and verify the controller’s postal and email contact, actual hosting provider and processing details, retention, legal bases and rights/contact information. This explanatory draft is not a completed legal privacy notice.')]),
  '/project/': ('Open code. Clear information.', 'OnPath is an independent project by Christian Neuhaus.', [
  ('Current status', 'Product copy checked against the app README and release v0.11.5 on 27 October 2026. Future features are labelled as planned. Real app screenshots and Google Play invitations still need to be added.'),
  ('Image credits', 'Forest photograph: Daniel Seßler / Unsplash, Ramsau bei Berchtesgaden. Used under the Unsplash License. The route illustration is explanatory artwork, not an app screenshot. The logo follows the original app artwork.'),
  ('Code and maps', 'App source: happychriss/OnPath, Apache 2.0. Map data © OpenStreetMap contributors. Routing uses BRouter. Manrope font © The Manrope Project Authors, SIL Open Font License 1.1.'),
  ('Independent', 'OnPath is not affiliated with Komoot, Google or the ADFC. No endorsement or partnership is claimed.')]),
- '/legal/': ('Legal notice', 'Draft provider information for the intended public website.', [
- ('Responsible provider', 'Christian Neuhaus. A verified service address and contact email must be added before public release. Further required provider details must be reviewed for the actual operator.'),
- ('Not ready for public launch', 'This page is an incomplete draft. Do not treat it as a completed legal notice or invent missing personal, tax or registration details.')]),
+
 }
 HELP_EN = [
  ('getting-started','Your first outing','Install, prepare an area and plan a short route.', 'start install location android', [
@@ -80,3 +73,7 @@ HELP_EN = [
  ('Before a long day','Charge your phone and consider a power bank. Battery use has not been measured across many devices. Screen use and reception affect runtime.'),
  ('A second copy','Copy important GPX files to another device. A copy on the same phone does not protect against losing it. Deleted tours stay in the recycle bin for 30 days. A backup folder can be used after reinstalling if you grant access again.')]),
 ]
+
+from legal_content import EN_LEGAL, EN_PRIVACY
+ARTICLES['/legal/']=('Legal notice','Provider and contact for OnPath.',EN_LEGAL)
+ARTICLES['/privacy/']=('Privacy notice','Website and Android app processing, explained separately.',EN_PRIVACY)
