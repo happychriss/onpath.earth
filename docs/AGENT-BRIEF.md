@@ -1,5 +1,7 @@
 # External website agent: five rules
 
+**Languages (owner 2026-10-29):** German is the lead language. The owner reviews **German only**; every change is made in German first and the English page is kept in step by the contributor (same structure, same facts), without a separate owner review.
+
 **44-2.de decision:** retain the existing OnPath WordPress drafts unpublished as reference. Do not delete or publish them and do not keep two public sites in sync. At the owner-approved launch, `onpath.earth` becomes the canonical site; redirects from any existing public paths are a separate owner action. This PR does not modify WordPress.
 
 1. **Where code goes.** Only `happychriss/onpath.earth`. Work on a feature branch, open a PR and leave merging to the owner. Never write website code to `happychriss/OnPath`. Plain HTML/CSS/JS and the small Python static builder are sufficient. English lives at `/`, German at `/de/`, with corresponding language switches. The owner connects Cloudflare Pages to this repo; merging can deploy automatically after that connection exists.
