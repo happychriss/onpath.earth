@@ -9,13 +9,13 @@ DE_LEGAL=[
  ('Anbieter',f'<p>Angaben nach § 5 Digitale-Dienste-Gesetz (DDG)</p><p>{contact}</p>'),
  ('Kontakt','<p>Für Fragen zur Website, zur App oder zum Datenschutz schreibe bitte an die oben genannte E-Mail-Adresse.</p>'),
  ('Inhalte und Nutzungsrechte','<p>Der Quellcode der Website steht unter der im Repository enthaltenen Apache-2.0-Lizenz. Für verwendete Bilder und Schriften gelten eigene Lizenzen; die Nachweise stehen auf der <a href="/projekt/">Projektseite</a>. Markenrechte bleiben unberührt.</p>'),
- ('Unabhängiges Projekt','<p>OnPath ist ein unabhängiges Projekt. Eine Verbindung mit oder Empfehlung durch Komoot, Google oder den ADFC wird nicht behauptet. Auf dieser Website werden derzeit keine Käufe abgeschlossen.</p>'),
+ ('Unabhängiges Projekt','<p>OnPath ist ein unabhängiges Projekt. Eine Verbindung mit oder Empfehlung durch Komoot oder Google wird nicht behauptet. Auf dieser Website werden derzeit keine Käufe abgeschlossen.</p>'),
  ('Stand','<p>27. Oktober 2026</p>')]
 EN_LEGAL=[
  ('Provider',f'Information under section 5 of the German Digital Services Act (DDG).<br><br>{contact}'),
  ('Contact','For questions about the website, the app or privacy, use the email address above.'),
  ('Content and licences','Website code is distributed under the Apache 2.0 licence in the repository. Images and fonts have separate licences; see <a href="/project/">project credits</a>. Trademark rights are unaffected.'),
- ('Independent project','OnPath is independent. No affiliation with or endorsement by Komoot, Google or the ADFC is claimed. No purchases are concluded on this website.'),
+ ('Independent project','OnPath is independent. No affiliation with or endorsement by Komoot or Google is claimed. No purchases are concluded on this website.'),
  ('Last updated','27 October 2026')]
 DE_PRIVACY=[
  ('Verantwortlicher',f'<p>Für die Verarbeitung personenbezogener Daten im Zusammenhang mit dieser Website ist verantwortlich:</p><p>{contact}</p>'),

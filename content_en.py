@@ -7,7 +7,7 @@ ARTICLES = {
  ('An arrival time that adapts', 'After about 15 minutes and one kilometre, the estimate starts using your pace on this outing, separately for uphill, level and downhill sections. It remains an estimate.')]),
  '/cycling/': ('A ride that suits you.', 'A short evening ride, a day out or a route from your local cycling group.', [
  ('Choose your bike', 'Select Bike, Gravelbike, E-bike, MTB or E-MTB. The activity influences the route. Check surfaces, climbing and any notices about steps, steep sections, pushing or ferries before setting off.'),
- ('For ADFC members and ride leaders', 'If your local group provides a GPX file, open it in OnPath and follow the route. A GPX file contains the course of a tour. You do not need an OnPath account. OnPath is independent and is not an official ADFC service.'),
+ ('Routes from your club or a tour portal', 'If your cycling club or a tour portal provides a GPX file, open it in OnPath and follow the route. A GPX file contains the course of a tour. You do not need an OnPath account.'),
  ('Make room for a stop', 'Add a café or change the way home in a plan made in OnPath. Stop safely before using your phone. Your recording continues while you edit.'),
  ('Use an existing route', 'Imported GPX tracks can be followed but cannot yet be turned into freely editable OnPath plans. Download the maps before your ride.')]),
  '/about/': ('Why I am building OnPath.', 'I am Christian Neuhaus. I enjoy walking and cycling, and want an app that makes planning and changing a route straightforward.', [
@@ -22,7 +22,7 @@ ARTICLES = {
  ('Planned: link browser and phone', 'The intention is to pair the devices once and exchange plans in both directions, without an additional OnPath account. Saving plans in the browser is also being considered. These features are not available yet.'),
  ('The core stays free', 'Planning, navigation and offline route changes with downloaded maps remain free. Your tours can be kept as normal files and used in other apps.'),
  ('Costs, development and a donation', 'Future paid extras should help cover operating costs, compensate some development work and contribute a share to a charitable organisation. A transparent breakdown of income, costs, the developer’s share and donations is planned. Prices, amounts, the organisation and payment method are undecided. There is nothing to buy on this site.')]),
- '/try/': ('Try OnPath on familiar paths.', 'Walkers, leisure cyclists and ADFC members can help make OnPath more useful in everyday use.', [
+ '/try/': ('Try OnPath on familiar paths.', 'Walkers and leisure cyclists can help make OnPath more useful in everyday use.', [
  ('An early version', 'You need Android 8 or newer. OnPath has mainly been used by its developer so far. There is no iPhone version, spoken navigation or released browser planner yet. Begin with a short route you know.'),
  ('A Google Play test is being prepared', 'The planned group test will use an invitation through Google Play. The group and invitation links are not ready yet. No payment is planned for that test.'),
  ('Useful feedback does not need technical knowledge', 'Tell the developer what you were trying to do, what happened and what you expected. Your phone model and app version help. An unclear instruction is useful feedback too.'),
@@ -31,7 +31,7 @@ ARTICLES = {
  ('Current status', 'Product copy checked against the app README and release v0.11.5 on 27 October 2026. Future features are labelled as planned. Real app screenshots and Google Play invitations still need to be added.'),
  ('Image credits', 'Forest photograph: Daniel Seßler / Unsplash, Ramsau bei Berchtesgaden. Used under the Unsplash License. The route illustration is explanatory artwork, not an app screenshot. The logo follows the original app artwork.'),
  ('Code and maps', 'App source: happychriss/OnPath, Apache 2.0. Map data © OpenStreetMap contributors. Routing uses BRouter. Manrope font © The Manrope Project Authors, SIL Open Font License 1.1.'),
- ('Independent', 'OnPath is not affiliated with Komoot, Google or the ADFC. No endorsement or partnership is claimed.')]),
+ ('Independent', 'OnPath is not affiliated with Komoot or Google. No endorsement or partnership is claimed.')]),
 
 }
 HELP_EN = [
