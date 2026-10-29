@@ -14,3 +14,5 @@ nav{gap:20px}
 .legal-note{margin:20px 0}
 @media(max-width:1050px){nav{gap:13px;font-size:14px}.button.small{padding:10px 12px;font-size:13px}}
 @media(max-width:740px){.brand img{width:38px;height:38px}.language-switch{align-self:flex-start;min-width:70px}nav .language-switch{margin-top:8px}}
+.points{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:6px}.points p{font-size:16px}.points b{display:block;font-size:20px;margin-bottom:10px;color:#243c31}.cta-links{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+@media(max-width:740px){.points{grid-template-columns:1fr;gap:22px}.cta-links{flex-direction:column;align-items:center;gap:4px}}
