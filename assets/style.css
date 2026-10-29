@@ -22,3 +22,5 @@ nav{gap:20px}
 .hero-photo .hero-phone{position:absolute;z-index:2;right:22px;bottom:22px;width:31%;height:auto;object-fit:contain;filter:none;border:5px solid #1b2a22;border-radius:20px;box-shadow:0 14px 34px #0b1a1366}.hero-photo figcaption{right:40%}
 .shots-phone{display:flex;justify-content:center;background:#e8eddd;border-radius:10px;padding:22px 0;margin-top:16px}.shots-phone img{width:250px;max-width:70%;height:auto;border:6px solid #1b2a22;border-radius:24px;box-shadow:0 10px 26px #243c3133}
 @media(max-width:740px){.hero-photo .hero-phone{width:30%;right:14px;bottom:14px;border-width:4px;border-radius:14px}.shots-phone img{width:210px}}
+.groups{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin:30px 0 10px}.group-label{font-size:13px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:#526d57;border-bottom:1px solid #cfd8c4;padding-bottom:10px;margin-bottom:18px}.mini-points.one{grid-template-columns:1fr;margin:0;gap:18px}
+@media(max-width:740px){.groups{grid-template-columns:1fr;gap:24px}}
