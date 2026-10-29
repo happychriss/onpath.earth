@@ -29,7 +29,7 @@ ARTICLES = {
  ('For technically experienced users', 'Early APK releases and discussions are available in the app’s GitHub repository. The GitHub and future Play builds may use different signatures: back up your tours before changing between them. OnPath itself does not need an account.')]),
  '/project/': ('Open code. Clear information.', 'OnPath is an independent project by Christian Neuhaus.', [
  ('Current status', 'Product copy checked against the app README and release v0.11.5 on 27 October 2026. Future features are labelled as planned. Real app screenshots and Google Play invitations still need to be added.'),
- ('Image credits', 'Forest photograph: Daniel Seßler / Unsplash, Ramsau bei Berchtesgaden. Used under the Unsplash License. The route illustration is explanatory artwork, not an app screenshot. The logo follows the original app artwork.'),
+ ('Image credits', 'Home page photograph: Christian Neuhaus, Ultental (South Tyrol). The route illustration is explanatory artwork, not an app screenshot. The logo follows the original app artwork.'),
  ('Code and maps', 'App source: happychriss/OnPath, Apache 2.0. Map data © OpenStreetMap contributors. Routing uses BRouter. Manrope font © The Manrope Project Authors, SIL Open Font License 1.1.'),
  ('Independent', 'OnPath is not affiliated with Komoot or Google. No endorsement or partnership is claimed.')]),
 
