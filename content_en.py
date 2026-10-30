@@ -65,7 +65,7 @@ HELP_EN = [
  ('Your position is missing','Check Android’s location setting and the app’s permission. Wait outdoors for a usable position; dense trees, buildings and valleys can reduce accuracy.'),
  ('Report a problem','Note your phone model, app version, what you tried and what happened. You can create a diagnostic export in settings. Nothing is sent automatically. Check it for private tour information before sharing.')]),
  ('navigation','Follow the way','Junctions, arrival time and ending your outing.', 'left right vibration recording time lock screen', [
- ('Before a turn','OnPath shows the next junction and vibrates twice for left and three times for right. Try the signals on a familiar route; their visibility depends on your phone and where you carry it. There are no spoken directions yet.'),
+ ('Before a turn','OnPath shows the next junction and vibrates once for left and twice for right. Try the signals on a familiar route; their visibility depends on your phone and where you carry it. There are no spoken directions yet.'),
  ('Lock screen and time','The notification shows the next junction and estimated arrival. After about 15 minutes and one kilometre, the estimate starts adapting to your actual pace.'),
  ('Finish deliberately','End and save the outing in the app. Locking the phone does not finish it. Recorded points are saved continuously.')]),
  ('battery-backup','Battery and backup','Keep recording and keep a second copy of your tours.', 'battery backup zip recycle bin android background', [
