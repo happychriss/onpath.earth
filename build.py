@@ -55,7 +55,9 @@ def article(path,title,desc,sections,help_page=False):
     write(path,title,desc,intro(title,desc,'Help &amp; first steps' if help_page else 'OnPath')+f'<section class="section"><div class="wrap article-layout"><aside class="side-nav">{side}</aside><article class="prose">{contents}<div class="article-end"><a href="/help/">All help topics →</a><a href="/try/">Try OnPath →</a></div></article></div></section>')
 
 for path,(title,desc,body,active) in de['PAGES'].items():write(path,title,desc,body,'de',active)
-for path,(title,desc,sections) in ARTICLES.items():article(path,title,desc,sections)
+for path,(title,desc,sections) in ARTICLES.items():
+    if path!='/try/':article(path,title,desc,sections)
+write('/try/','How to become a tester','Four steps, about five minutes: through the tester group to OnPath on Google Play.',de['tester_page']('en'))
 for slug,title,desc,keys,sections in HELP_EN:article('/help/'+slug+'/',title,desc,sections,True)
 cards=''.join(f'<a class="help-card" data-keywords="{keys}" href="/help/{slug}/"><h2>{title}</h2><p>{desc}</p><span aria-hidden="true">→</span></a>' for slug,title,desc,keys,_ in HELP_EN)
 write('/help/','Help for your next outing','Short, practical guides for planning, navigating and keeping your tours.',intro('How can we help?','Start with your first route or find an answer for a question along the way.','OnPath help')+f'<section class="section"><div class="wrap"><div class="help-search"><label for="help-search">Find a help topic</label><div>{icon("search")}<input type="search" id="help-search" placeholder="For example: maps, Google or battery"></div></div><p class="fine" id="search-count" role="status">9 help topics</p><div class="help-grid">{cards}</div><p id="no-results" hidden>No topic found. Try a shorter word.</p></div></section>')
