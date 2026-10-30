@@ -23,20 +23,20 @@ ARTICLES = {
  ('The core stays free', 'Planning, navigation and offline route changes with downloaded maps remain free. Your tours can be kept as normal files and used in other apps.'),
  ('Costs, development and a donation', 'Future paid extras should help cover operating costs, compensate some development work and contribute a share to a charitable organisation. A transparent breakdown of income, costs, the developer’s share and donations is planned. Prices, amounts, the organisation and payment method are undecided. There is nothing to buy on this site.')]),
  '/try/': ('Try OnPath on familiar paths.', 'Walkers and leisure cyclists can help make OnPath more useful in everyday use.', [
- ('An early version', 'You need Android 8 or newer. OnPath has mainly been used by its developer so far. There is no iPhone version or spoken navigation yet. Begin with a short route you know.'),
+ ('An early version', 'You need Android 8 or newer. OnPath has mainly been used by its developer so far. There is no iPhone version yet; spoken directions are not planned. Begin with a short route you know.'),
  ('A Google Play test is being prepared', 'The planned group test will use an invitation through Google Play. The group and invitation links are not ready yet. No payment is planned for that test.'),
  ('Useful feedback does not need technical knowledge', 'Tell the developer what you were trying to do, what happened and what you expected. Your phone model and app version help. An unclear instruction is useful feedback too.'),
  ('For technically experienced users', 'Early APK releases and discussions are available in the app’s GitHub repository. The GitHub and future Play builds may use different signatures: back up your tours before changing between them. OnPath itself does not need an account.')]),
  '/project/': ('Open code. Clear information.', 'OnPath is an independent project by Christian Neuhaus.', [
- ('Current status', 'Product copy checked against the app README and release v0.11.5 on 27 October 2026. Future features are labelled as planned. Real app screenshots and Google Play invitations still need to be added.'),
- ('Image credits', 'Home page photograph: Christian Neuhaus, near Vellau (South Tyrol). Portrait: Christian Neuhaus, private. The route illustration is explanatory artwork, not an app screenshot. The logo follows the original app artwork.'),
+ ('Current status', 'As of 30 October 2026, checked against app version 0.13.1 and the planner at plan.onpath.earth. The website is still a test version and hidden from search engines; the legal notice and privacy notes are reviewed before the public launch. The Google Play test starts soon; you can already ask to join on the Try page.'),
+ ('Image credits', 'Home page photograph: Christian Neuhaus, near Vellau (South Tyrol). Portrait: Christian Neuhaus, private. The screen images are real captures of the app (with a simulated ride) and of the planner. The logo follows the original app artwork.'),
  ('Code and maps', 'App source: happychriss/OnPath, Apache 2.0. Map data © OpenStreetMap contributors. Routing uses BRouter. Manrope font © The Manrope Project Authors, SIL Open Font License 1.1.'),
  ('Independent', 'OnPath is not affiliated with Komoot or Google. No endorsement or partnership is claimed.')]),
 
 }
 HELP_EN = [
  ('getting-started','Your first outing','Install, prepare an area and plan a short route.', 'start install location android', [
- ('Prepare at home','OnPath needs Android 8 or newer. The Google Play group test is being prepared; its invitation is not available yet. Allow the location access needed for navigation and recording. Prepare your area while connected, preferably on Wi-Fi.'),
+ ('Prepare at home','OnPath needs Android 8 or newer. The Google Play test starts soon; you can already ask to join on the Try page. Allow the location access needed for navigation and recording. Prepare your area while connected, preferably on Wi-Fi.'),
  ('Plan a familiar route','Choose your activity. Hold a finger on the map to set points. Add your start, destination and any stops. Check distance, climbing, time and route notices. Wait until the required maps are downloaded.'),
  ('Start navigation','Start on a short, familiar route. The route is protected against accidental map taps during navigation. Switch deliberately to editing when you want to change it.')]),
  ('offline','Without a connection','Download your maps before you head out.', 'map internet download wifi offline', [
@@ -65,7 +65,7 @@ HELP_EN = [
  ('Your position is missing','Check Android’s location setting and the app’s permission. Wait outdoors for a usable position; dense trees, buildings and valleys can reduce accuracy.'),
  ('Report a problem','Note your phone model, app version, what you tried and what happened. You can create a diagnostic export in settings. Nothing is sent automatically. Check it for private tour information before sharing.')]),
  ('navigation','Follow the way','Junctions, arrival time and ending your outing.', 'left right vibration recording time lock screen', [
- ('Before a turn','OnPath shows the next junction and vibrates once for left and twice for right. Try the signals on a familiar route; their visibility depends on your phone and where you carry it. There are no spoken directions yet.'),
+ ('Before a turn','OnPath shows the next junction and, where you could take the wrong way, vibrates once for left and twice for right. Try the signals on a familiar route; their visibility depends on your phone and where you carry it. Spoken directions are not planned – OnPath guides you by map and vibration.'),
  ('Lock screen and time','The notification shows the next junction and estimated arrival. After about 15 minutes and one kilometre, the estimate starts adapting to your actual pace.'),
  ('Finish deliberately','End and save the outing in the app. Locking the phone does not finish it. Recorded points are saved continuously.')]),
  ('battery-backup','Battery and backup','Keep recording and keep a second copy of your tours.', 'battery backup zip recycle bin android background', [
