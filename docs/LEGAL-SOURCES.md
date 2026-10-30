@@ -8,7 +8,7 @@ Confirmed against the operator's existing public privacy notice at https://44-2.
 
 - Christian Neuhaus
 - Fabriciusstr. 11–12, 40721 Hilden, Germany
-- info@44-2.de
+- info@44-2.de (until 30 October 2026; since then info@onpath.earth – Cloudflare Email Routing to the operator's inbox, owner decision)
 
 The existing imprint has ambiguous formatting and a malformed email. The privacy notice supplies the complete address and correctly formed email. No tax ID, register entry, professional status or charity status has been invented.
 
