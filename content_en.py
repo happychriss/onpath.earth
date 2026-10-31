@@ -49,9 +49,9 @@ HELP_EN = [
  ('Set and change points','Hold on the map to add a point. Hold an existing point to see its actions. To move a point on the map, delete and add it again. The expanded list lets you reorder or remove stops. Changes can be undone.'),
  ('Check the route','Inspect the elevation profile, surfaces and notices. A dashed gap to an unreachable destination is not a confirmed usable path. Signs, closures and conditions on the ground take priority.')]),
  ('change-route','Change the route along the way','Add a stop and keep your recording.', 'edit change detour route navigation', [
- ('Switch to editing','Use the deliberate edit control to change the remaining plan. Your current recording keeps running.'),
+ ('Switch to editing','Slide the “Tour menu” at the bottom of the screen aside. There you can change the route, pause or end the tour. While you change the route, your recording keeps running.'),
  ('Adjust the next part','Remove a stop or add a new destination and check the new route. Recalculation works offline when all the required areas are ready.'),
- ('Continue from here','Return to navigation. Points already visited are skipped. If you leave the route, OnPath asks before calculating a new one; the original stays visible in grey. Imported GPX tracks are not yet freely editable plans.')]),
+ ('Continue from here','Tap “Continue” to return to navigation. Points already visited are skipped. If you leave the route, OnPath asks before calculating a new one; the original stays visible in grey. Imported GPX tracks are not yet freely editable plans.')]),
  ('places','Places and Google Maps','Find a café, check details and plan the way there.', 'google maps search photon address hut cafe', [
  ('Find a place','Search a name or address in OnPath. Downloaded maps include streets, villages, huts, peaks and stations. With internet, additional online results are added.'),
  ('Check details in Google Maps','Open the place details in OnPath and use the Google Maps action to check opening hours, photos or reviews. Return to OnPath and add the place as a stop or destination. OnPath calculates the route for your activity.'),
@@ -64,7 +64,7 @@ HELP_EN = [
  ('troubleshooting','If something goes wrong','Missing maps, location problems and feedback.', 'problem error gps battery map diagnostics', [
  ('Maps are missing','Check your connection and download status. A first request for a new area may take longer. Missing maps cannot be fetched without internet.'),
  ('Your position is missing','Check Android’s location setting and the app’s permission. Wait outdoors for a usable position; dense trees, buildings and valleys can reduce accuracy.'),
- ('Report a problem','Note your phone model, app version, what you tried and what happened. You can create a diagnostic export in settings. Nothing is sent automatically. Check it for private tour information before sharing.')]),
+ ('Report a problem','Note your phone model, app version, what you tried and what happened. You can create a file with more details in Settings → Diagnostics → “Send problem report”. Nothing is sent automatically. Check it for private tour information before sharing.')]),
  ('navigation','Follow the way','Junctions, arrival time and ending your outing.', 'left right vibration recording time lock screen', [
  ('Before a turn','OnPath shows the next junction and, where you could take the wrong way, vibrates once for left and twice for right. Try the signals on a familiar route; their visibility depends on your phone and where you carry it. Spoken directions are in preparation. For now, OnPath guides you by map and vibration.'),
  ('Lock screen and time','The notification shows the next junction and estimated arrival. After about 15 minutes and one kilometre, the estimate starts adapting to your actual pace.'),
