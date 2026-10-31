@@ -50,7 +50,7 @@ def write(path,title,desc,body,lang='en',original=None):
         h=h.replace('</nav>',languages(lang,path)+'</nav>')
         f=de['footer']().replace('<a href="/datenschutz/">Datenschutz</a>','<a href="/datenschutz/">Deine Daten</a><a href="/impressum/">Impressum</a>')
         f=re.sub(r'href="(/[^\"]*)"',lambda m:'href="/de'+m[1]+'"',f)
-        body=re.sub(r'href="(/[^\"]*)"',lambda m:'href="/de'+m[1]+'"',body)
+        body=re.sub(r'href="(/(?!assets/)[^\"]*)"',lambda m:'href="/de'+m[1]+'"',body)
     else:
         h=f'<a class="skip" href="#inhalt">Skip to content</a><header><div class="wrap header-row">{brand(lang)}<button class="menu" aria-expanded="false" aria-controls="navigation">Menu ☰</button><nav id="navigation" aria-label="Main navigation"><a href="/#discover">The app</a><a href="/about/">The idea</a><a href="/whats-next/">What’s next</a><a href="/help/">Help</a><a class="button small" href="/try/">Try OnPath {icon("arrow")}</a>{languages(lang,path)}</nav></div></header>'
         f=footer_en()
@@ -63,7 +63,7 @@ def article(path,title,desc,sections,help_page=False):
         side='<b>Help &amp; first steps</b>'+''.join(f'<a href="/help/{slug}/">{t}</a>' for slug,t,*_ in HELP_EN)
     else:
         side='<b>On this page</b>'+''.join(f'<a href="#section-{i}">{t}</a>' for i,(t,_) in enumerate(sections))
-    contents=''.join(f'<section id="section-{i}"><h2>{t}</h2><p>{text}</p></section>' for i,(t,text) in enumerate(sections))
+    contents=''.join(f'<section id="section-{i}"><h2>{t}</h2><p>{text}</p>'+ (de['help_images'](path.strip('/').split('/')[-1],i,'en') if help_page else '')+'</section>' for i,(t,text) in enumerate(sections))
     write(path,title,desc,intro(title,desc,'Help &amp; first steps' if help_page else 'OnPath')+f'<section class="section"><div class="wrap article-layout"><aside class="side-nav">{side}</aside><article class="prose">{contents}<div class="article-end"><a href="/help/">All help topics →</a><a href="/try/">Try OnPath →</a></div></article></div></section>')
 
 for path,(title,desc,body,active) in de['PAGES'].items():write(path,title,desc,body,'de',active)
