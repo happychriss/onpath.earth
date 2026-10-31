@@ -36,3 +36,26 @@ nav{gap:20px}
 .me{float:right;margin:4px 0 16px 24px;width:170px}.me img{display:block;width:100%;height:auto;border-radius:50%}.me-link{font-size:15px;color:#526057}.story-author{display:flex;align-items:center;gap:14px;margin:18px 0 20px}.story-author img{width:56px;height:56px;border-radius:50%;object-fit:cover}.story-author span{font-size:14px;line-height:1.4}.story-author b{display:block;font-size:16px}@media(max-width:600px){.me{float:none;margin:0 0 16px;width:140px}}
 .me{display:block;float:right;margin:4px 0 16px 24px;width:170px;height:auto;border-radius:50%}@media(max-width:600px){.me{float:none;margin:0 0 16px;width:140px}}
 .story-author{margin:-4px 0 22px}
+
+/* Keep the home page scannable while preserving its smaller usability details. */
+.hero-value{font-size:16px;font-weight:700;line-height:1.5;color:#245f46;margin-bottom:8px}
+.hero-value+.hero-note{margin-top:0}
+.detail-highlights{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px;max-width:1000px}
+.detail-highlights article{border-top:1px solid #bac9b4;padding-top:22px}
+.detail-highlights .icon{color:#577651;margin-bottom:14px}
+.detail-highlights h3{font-size:23px;margin-bottom:12px}
+.detail-highlights p{font-size:17px;max-width:48ch}
+.detail-more{border-top:1px solid #bac9b4;margin-top:32px;padding-top:12px}
+.detail-more summary{cursor:pointer;font-size:18px;font-weight:700;color:#245f46;padding:10px 0;min-height:44px}
+.detail-more[open] summary{margin-bottom:22px}
+@media(max-width:740px){.detail-highlights{grid-template-columns:1fr;gap:26px}.hero-value{font-size:15px}}
+
+/* Each home section answers a different visitor question. */
+.trust-points b{color:#fcfcf2}
+.founder-note{display:grid;grid-template-columns:280px minmax(0,1fr);gap:32px;border-top:1px solid #ffffff35;padding-top:28px;margin-top:32px;align-items:start}
+.founder-note .story-author{margin:0}
+.founder-note p{font-size:17px;max-width:65ch}
+.trust-links{display:flex;flex-wrap:wrap;gap:12px 30px}
+.cta>.text-link{display:block;width:fit-content;margin:20px auto 0}
+.detail-more .small-cols li{font-size:16px;line-height:1.6}
+@media(max-width:740px){.founder-note{grid-template-columns:1fr;gap:20px}}
