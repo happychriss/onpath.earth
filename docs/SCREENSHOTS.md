@@ -21,15 +21,13 @@ Screenshots use simulated locations and are illustrative, not field-test evidenc
 | tour-beenden-de.webp | 10a-tour-beenden.png |
 
 The versioned directory prevents stale image caches when the captures change.
-The English home page retains its previous images except for the arrival screen,
-which is now a real English capture from 0.13.3.
-English help uses current German screenshots with translated captions and an
-explicit language label. Replace these with real English captures when supplied.
+All six English showcase screens now use current English captures, including
+the arrival screen from the first supplement. English help uses English captures
+where supplied; remaining German steps are individually labelled.
 
 The supplied recording-summary images with a 19-minute mountain outing are not
-used. Images for recovery after restart and sharing from Google Maps into OnPath
-are still outstanding. The existing Google Maps image shows the opposite action:
-opening Google Maps from OnPath.
+used. Both directions of Google Maps interaction have separate captures:
+opening Google Maps from OnPath and sharing a place into OnPath.
 
 ## Supplement: 0.13.3 and the current browser planner
 
@@ -58,8 +56,40 @@ example now shows the full destination name. Search examples were added to the
 places help. The computer-planning section includes an expandable QR example
 with the current “Teilen” dialog. Its QR code is for a public example route.
 
-The supplement does not contain restart recovery or inbound Google Maps-sharing
-captures. Five English showcase counterparts are still pending: hiking plan,
-E-bike plan, place menu, rest view and ride recognition. Supplied videos remain
-source material for the separate film task and are not embedded by this refresh.
+Supplied videos remain source material for the separate film task and are not
+embedded by this refresh.
+
+## Second supplement: restart recovery, incoming places and English screens
+
+The second supplement contains all 22 requested source PNGs. The website uses
+15 of these in `assets/app/v0.13.3-nachtrag2/`; each WebP has the same stem as
+its source PNG. All are resized from 1080 × 2400 to 720 × 1600, with no UI edits.
+The source is a debug capture build from app commit `b1b9b35` (0.13.3 plus
+A-020), not the 0.13.4 release APK. The folder identifies the capture batch.
+
+| Asset stem | Language | Use |
+|---|---|---|
+| plan-wandern | en | Hero, showcase, computer/phone example and first-steps help |
+| plan-ebike | en | Showcase |
+| ort-google-maps | en | Showcase and route-change help |
+| ruheanzeige | en | Showcase |
+| fahrt | en | Showcase |
+| neustart | de, en | Home detail card and interruption help |
+| neustart-fortgesetzt | de, en | Interruption help after resuming |
+| google-ziel-teilen | de, en | Places help: select OnPath in Google Maps sharing |
+| google-ziel-uebernommen | de, en | Home detail card and places help: check the place |
+| google-ziel-route | de, en | Places help: check the calculated route |
+
+The two home details now have authentic screen examples and links to their
+walkthroughs. Recovery help explicitly says that recording resumes only after
+opening OnPath and choosing Continue; the interval before that is a recording
+gap. A track is not visible behind the recovery dialog, but appears after
+resuming. Both states are preserved as supplied.
+
+Incoming-place help reflects the observed Google Maps sharing sheet, not an
+invented Android chooser. If sharing only shows a marked ring, users hold that
+ring to open the place menu. Captures use simulated locations, including the
+recognised lift ride, and do not establish field reliability or partnership.
+The remaining seven source images are alternative/diagnostic views, retained
+outside the public website rather than adding duplicate screenshots.
 
