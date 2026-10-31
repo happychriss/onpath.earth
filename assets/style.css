@@ -51,7 +51,7 @@ nav{gap:20px}
 @media(max-width:740px){.detail-highlights{grid-template-columns:1fr;gap:26px}.hero-value{font-size:15px}}
 
 /* Each home section answers a different visitor question. */
-.trust-points b{color:#fcfcf2}
+.story-section .trust-points b{color:#fcfcf2}
 .founder-note{display:grid;grid-template-columns:280px minmax(0,1fr);gap:32px;border-top:1px solid #ffffff35;padding-top:28px;margin-top:32px;align-items:start}
 .founder-note .story-author{margin:0}
 .founder-note p{font-size:17px;max-width:65ch}

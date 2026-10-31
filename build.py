@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Dependency-free static build. Default: review version; --release enforces legal completion."""
 from pathlib import Path
-import html, json, re, runpy, shutil, sys
+import hashlib, html, json, re, runpy, shutil, sys
 from content_en import ARTICLES, HELP_EN
 
 ROOT=Path(__file__).parent
@@ -12,6 +12,18 @@ if release and not (CFG['legal_review_complete'] and CFG['operator_address'] and
     raise SystemExit('Release blocked: complete verified operator details and legal review in site-config.json.')
 OUT.mkdir(exist_ok=True)
 shutil.copytree(ROOT/'assets',OUT/'assets',dirs_exist_ok=True)
+
+def versioned_asset(filename):
+    """Give changed CSS/JS a new URL so cached assets cannot outlive their HTML."""
+    source=ROOT/'assets'/filename
+    content=source.read_bytes()
+    digest=hashlib.sha256(content).hexdigest()[:12]
+    versioned=f'{source.stem}.{digest}{source.suffix}'
+    (OUT/'assets'/versioned).write_bytes(content)
+    return '/assets/'+versioned
+
+STYLESHEET_URL=versioned_asset('style.css')
+SCRIPT_URL=versioned_asset('app.js')
 de=runpy.run_path(str(ROOT/'content_de.py'))
 icon=de['icon']
 MAP={'/':'/','/wandern/':'/hiking/','/radfahren/':'/cycling/','/idee/':'/about/','/ausblick/':'/whats-next/','/ausprobieren/':'/try/','/datenschutz/':'/privacy/','/projekt/':'/project/','/hilfe/':'/help/','/impressum/':'/legal/','/404/':'/404/'}
@@ -28,7 +40,7 @@ def write(path,title,desc,body,lang='en',original=None):
     en=MAP[path] if lang=='de' else path
     depath=path if lang=='de' else REVERSE[path]
     local='/de'+path if lang=='de' else path
-    head=f'<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} | OnPath</title><meta name="description" content="{html.escape(desc,quote=True)}"><meta name="theme-color" content="#245f46"><link rel="icon" href="/assets/brand.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script src="/assets/app.js" defer></script>'
+    head=f'<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} | OnPath</title><meta name="description" content="{html.escape(desc,quote=True)}"><meta name="theme-color" content="#245f46"><link rel="icon" href="/assets/brand.svg" type="image/svg+xml"><link rel="stylesheet" href="{STYLESHEET_URL}"><script src="{SCRIPT_URL}" defer></script>'
     for code,p in [('en',en),('de','/de'+depath),('x-default',en)]:
         head+=f'<link rel="alternate" hreflang="{code}" href="{CFG["origin"]}{p}">'
     if not release:head+='<meta name="robots" content="noindex,nofollow">'
