@@ -37,7 +37,7 @@ ARTICLES = {
 HELP_EN = [
  ('getting-started','Your first outing','Install, prepare an area and plan a short route.', 'start install location android', [
  ('Prepare at home','OnPath needs Android 8 or newer. The Google Play group test is being prepared; its invitation is not available yet. Allow the location access needed for navigation and recording. Prepare your area while connected, preferably on Wi-Fi.'),
- ('Plan a familiar route','Choose your activity. Hold a finger on the map to set points. Add your start, destination and any stops. Check distance, climbing, time and route notices. Wait until the required maps are downloaded.'),
+ ('Plan a familiar route','Choose your activity. Press and briefly hold a spot on the map to add a point. A quick tap does not add a point, so you can pan and zoom without accidentally changing your route. Add your start, destination and any stops. Check distance, climbing, time and route notices. Wait until the required maps are downloaded.'),
  ('Start navigation','Start on a short, familiar route. The route is protected against accidental map taps during navigation. Switch deliberately to editing when you want to change it.')]),
  ('offline','Without a connection','Download your maps before you head out.', 'map internet download wifi offline', [
  ('What works offline','With the required maps and route data downloaded, you can search local places, plan, navigate and recalculate routes on your phone.'),
@@ -45,7 +45,7 @@ HELP_EN = [
  ('What still needs internet','New areas, additional online search and Google Maps information need a connection. Preparing a new area can take a few minutes. Missing data cannot be downloaded in a dead zone.')]),
  ('planning','Plan your own route','Set points and check the way ahead.', 'plan points difficulty climbing surface', [
  ('Choose an activity','Bike, Gravelbike, E-bike, MTB, E-MTB and Hike are available. For hiking choose a difficulty from T1 to T5. The choice relies on recorded map information; check conditions and your own experience too.'),
- ('Set and change points','Hold on the map to add a point. Hold an existing point to see its actions. To move a point on the map, delete and add it again. The expanded list lets you reorder or remove stops. Changes can be undone.'),
+ ('Set and change points','Press and briefly hold an empty spot on the map to add a point. A quick tap does not add a point, so you can pan and zoom without accidentally changing your route. Hold an existing point to see its actions. To move a point on the map, delete and add it again. The expanded list lets you reorder or remove stops. Changes can be undone.'),
  ('Check the route','Inspect the elevation profile, surfaces and notices. A dashed gap to an unreachable destination is not a confirmed usable path. Signs, closures and conditions on the ground take priority.')]),
  ('change-route','Change the route along the way','Add a stop and keep your recording.', 'edit change detour route navigation', [
  ('Switch to editing','Use the deliberate edit control to change the remaining plan. Your current recording keeps running.'),
