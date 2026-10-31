@@ -72,3 +72,5 @@ nav{gap:20px}
 .help-visual figcaption{font-size:16px;line-height:1.6;color:#243c31}
 .prose .help-visual>.fine{font-size:14px;line-height:1.6}
 @media(max-width:480px){.help-visual{padding:0 14px}.help-visual-grid{grid-template-columns:1fr}}
+.ways-visual{min-width:0}
+.transfer-preview figure{max-width:none;padding:12px 0 20px}
