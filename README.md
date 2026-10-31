@@ -33,7 +33,7 @@ The release command refuses incomplete operator settings and unresolved legal dr
 
 The owner connects **this repository only** through the Cloudflare dashboard. No API token or account credentials belong here.
 
-- Production branch: `main` (owner merges PRs).
+- Production branch: `main` (sessions push straight to it; pull requests only for workflows / deploy config, secrets and the legal pages – see `AGENTS.md`).
 - Build command during review: `python3 build.py`.
 - Output directory: `dist`.
 - After legal completion and launch approval: `python3 build.py --release`.
