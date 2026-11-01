@@ -426,7 +426,7 @@ def more_section(lang='de'):
     heading='Was OnPath besonders macht.' if de else 'What makes OnPath special.'
     hint='Alle Vorteile im Überblick. Tippe auf einen Vorteil, um den passenden App-Bildschirm zu sehen.' if de else 'All the benefits at a glance. Tap a benefit to see its app screen.'
     links=''.join('<a class="text-link" href="'+u+'">'+label+' →</a>' for u,label in MORE[lang]['links'])
-    return '<section class="section soft benefits-section" id="'+('so-gehts' if de else 'how')+'"><div class="wrap"><div class="section-heading"><div><h2>'+heading+'</h2><p class="benefits-hint">'+hint+'</p></div></div><div class="benefit-groups">'+''.join(sections)+'</div><div class="more-links">'+links+'</div></div></section>'
+    return '<section class="benefits-section" id="'+('so-gehts' if de else 'how')+'" aria-labelledby="benefits-heading"><div class="benefits-intro"><div class="wrap"><h2 id="benefits-heading">'+heading+'</h2></div></div><div class="benefits-body soft"><div class="wrap"><p class="benefits-hint">'+hint+'</p><div class="benefit-groups">'+''.join(sections)+'</div><div class="more-links">'+links+'</div></div></div></section>'
 
 def home_hero(lang='de'):
     if lang == 'de':
