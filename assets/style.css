@@ -33,7 +33,7 @@ header{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1p
 .step-number{display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;border-radius:50%;background:var(--green);color:white;font-size:var(--title);font-weight:700;line-height:1}
 .step-preview{display:block;position:relative;width:144px;padding:0;margin:20px 0 8px;border:0;background:none;cursor:zoom-in}
 .step-preview .step-thumb{width:144px;height:144px;object-fit:cover;border:1px solid var(--line);border-radius:8px}
-.step-preview-halten .step-thumb{object-position:50% 56%}.step-preview-plan .step-thumb{object-position:bottom}.step-preview-navi .step-thumb{object-position:top}
+.step-preview-halten .step-thumb{object-position:50% 12%}.step-preview-plan .step-thumb{object-position:bottom}.step-preview-navi .step-thumb{object-position:top}
 .zoom-mark{position:absolute;right:8px;bottom:8px;display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--line);border-radius:50%;color:var(--green);background:var(--paper);box-shadow:0 2px 8px #243c3115}
 .zoom-mark .icon{width:18px;height:18px}
 .step-preview:hover .zoom-mark{background:var(--green);color:white}

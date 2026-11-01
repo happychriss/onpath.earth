@@ -46,7 +46,7 @@ HELP_EN = [('getting-started',
     'Wait for the download to finish and check Settings → Offline maps. A new area can take a few minutes. <a '
     'href="/help/offline/#prepare">Offline preparation in detail →</a>'),
    ('Plan a familiar route',
-    'Choose your activity. Press a little longer on your destination and choose “Go here” to plan from your location. '
+    'Choose your activity. Press a little longer on your destination and choose “Go here from my location” to plan from your location. '
     'A short tap does not set a new destination, preventing accidental changes. To start elsewhere, hold the start '
     'point and choose “Start here”, then add your destination and stops. Check distance, climbing, time and route '
     'hints. Wait for the required maps to finish downloading and begin with a short, familiar route.'),
@@ -79,7 +79,7 @@ HELP_EN = [('getting-started',
     'surfaces and busy roads for cycling. A touring bike is planned differently from a gravel bike or MTB. Hiking also '
     'has a difficulty setting using the SAC hiking scale. <a href="#difficulty">Difficulty levels explained →</a>'),
    ('Set and change points',
-    'Press a little longer on the map and choose an action, such as “Go here” to plan from your location. A short tap '
+    'Press a little longer on the map and choose an action, such as “Go here from my location” to plan from your location. A short tap '
     'does not set a new destination. Hold an existing point to open its actions. To move it on the map, delete and add '
     'it again. In the expanded point list, drag stops into order or remove them. Undo changes, reverse the route or '
     'make it a round trip.'),

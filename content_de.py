@@ -269,7 +269,7 @@ FIRST_STEPS={'de': {'eye': 'So einfach geht’s',
                    'Your route in a few simple steps.',
                    'Press a little longer on your destination to avoid selecting it by accident. OnPath plans the way '
                    'from your location, suited to hiking or cycling.',
-                   'OnPath when it opens: the map, a point held down (German screen)'),
+                   'OnPath when it opens: the map, a point held down'),
                   ('plan',
                    'Know whether the route suits you before you start.',
                    'See how long you will be out and how much climbing to expect. Route hints point out features such '
@@ -278,7 +278,7 @@ FIRST_STEPS={'de': {'eye': 'So einfach geht’s',
                   ('navi',
                    'Stay spontaneous – even without reception.',
                    'Change your route. OnPath downloads maps automatically while you plan and calculates the new way on your phone.',
-                   'Navigation with the “Stop” slider at the bottom (German screen)')],
+                   'Navigation with the “Stop” slider at the bottom')],
         'prep': '',
         'help': ('/help/offline/', 'Prepare your maps'),
         'more': ('/help/getting-started/', 'Step by step in the help')}}
@@ -447,7 +447,7 @@ HELP = [('erste-schritte',
     'Einstellungen → Offline-Karten, ob die Gebiete bereit sind.</li></ol><p>Beim ersten Laden kann ein neues Gebiet '
     'einige Minuten brauchen. <a href="/hilfe/offline/#vorbereiten">Die Offline-Vorbereitung im Detail →</a></p>'),
    ('Die erste Runde planen',
-    '<p>Wähle deine Aktivität. Drücke etwas länger auf dein Ziel auf der Karte und wähle „Hierhin“. OnPath plant von '
+    '<p>Wähle deine Aktivität. Drücke etwas länger auf dein Ziel auf der Karte und wähle „Von meinem Standort hierhin“. OnPath plant von '
     'deinem Standort aus. Das längere Drücken verhindert versehentliche Änderungen durch kurzes '
     'Antippen.</p><p>Möchtest du woanders starten, halte zuerst den Startpunkt gedrückt und wähle „Hier starten“. '
     'Ergänze dann Ziel und Zwischenstopps. Prüfe Länge, Höhenmeter und Streckenhinweise; beginne mit einer kurzen, '
@@ -489,7 +489,7 @@ HELP = [('erste-schritte',
     'geplant als ein Gravelbike oder MTB.</p><p>Für Wanderungen wählst du außerdem die Schwierigkeit nach der '
     'SAC-Wanderskala. <a href="#schwierigkeit">Die Stufen erklärt →</a></p>'),
    ('Punkte setzen und ändern',
-    '<p>Drücke etwas länger auf eine freie Stelle der Karte und wähle die gewünschte Aktion, zum Beispiel „Hierhin“ '
+    '<p>Drücke etwas länger auf eine freie Stelle der Karte und wähle die gewünschte Aktion, zum Beispiel „Von meinem Standort hierhin“ '
     'für eine Route von deinem Standort. Ein kurzer Tipp setzt kein neues Ziel – so ändert sich der Plan nicht '
     'versehentlich.</p><p>Halte einen bestehenden Punkt gedrückt, um seine Möglichkeiten zu öffnen. Zum Versetzen auf '
     'der Karte löschst du ihn und setzt ihn neu. In der aufgeklappten Punkteliste kannst du Stopps am Griff '
