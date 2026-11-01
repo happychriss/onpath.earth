@@ -781,7 +781,14 @@ def tester_page(lang='de'):
     T=TESTER[lang]
     def act(key,label):
         if not key:return ''
-        return '<a class="button" href="mailto:info@onpath.earth">'+label+icon('arrow')+'</a>'
+        from urllib.parse import quote
+        de=lang=='de'
+        subject='OnPath testen' if de else 'Testing OnPath'
+        body=('Hallo Christian,\n\nich möchte OnPath testen.\nUnterwegs bin ich: zu Fuß / mit dem Rad\nMein Handy: \n' if de
+              else 'Hi Christian,\n\nI would like to test OnPath.\nI go out: on foot / by bike\nMy phone: \n')
+        href='mailto:info@onpath.earth?subject='+quote(subject)+'&body='+quote(body)
+        alt=('Oder schreib direkt an' if de else 'Or write directly to')+' <a href="mailto:info@onpath.earth">info@onpath.earth</a>'
+        return '<div class="invite-mail"><a class="button" href="'+href+'">'+label+icon('arrow')+'</a><p class="invite-alt">'+alt+'</p></div>'
     phase_cards=''.join('<article class="feature"'+(' aria-current="step"' if i==0 else '')+'><div class="feature-top"><span>0'+str(i+1)+'</span><span class="tag">'+status+'</span></div><h3>'+title+'</h3><p>'+description+'</p></article>' for i,(title,status,description) in enumerate(T['phases']))
     phases='<section class="section soft"><div class="wrap"><div class="section-heading"><h2>'+T['phases_h']+'</h2></div><div class="feature-grid">'+phase_cards+'</div></div></section>'
     before='<div class="tester-before"><h2>'+T['before_h']+'</h2><ul>'+''.join('<li>'+icon('check')+'<span>'+x+'</span></li>' for x in T['before'])+'</ul><p class="tester-check">'+T['check']+'</p></div>'
