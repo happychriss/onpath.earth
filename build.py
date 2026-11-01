@@ -79,7 +79,7 @@ for slug,title,desc,keys,sections in HELP_EN:article('/help/'+slug+'/',title,des
 cards=''.join(f'<a class="help-card" data-keywords="{keys}" href="/help/{slug}/"><h2>{title}</h2><p>{desc}</p><span aria-hidden="true">→</span></a>' for slug,title,desc,keys,_ in HELP_EN)
 write('/help/','Help for your next outing','Short, practical guides for planning, navigating and keeping your tours.',intro('How can we help?','Start with your first route or find an answer for a question along the way.','OnPath help')+f'<section class="section"><div class="wrap"><div class="help-search"><label for="help-search">Find a help topic</label><div>{icon("search")}<input type="search" id="help-search" placeholder="For example: maps, Google or battery"></div></div><p class="fine" id="search-count" role="status">9 help topics</p><div class="help-grid">{cards}</div><p id="no-results" hidden>No topic found. Try a shorter word.</p></div></section>')
 home=de['home_hero']('en')
-home+=de['first_steps']('en')+de['more_section']('en')+de['ways_section']('en')+de['open_section']('en')+de['home_cta']('en')
+home+=de['first_steps']('en')+de['more_section']('en')+de['open_section']('en')+de['home_cta']('en')
 write('/','Your route. Simply on your way.','Plan and follow cycling and hiking routes, change the plan and keep your own files.',home)
 write('/404/','Page not found','Find your way back to OnPath.',intro('This path ends here.','Use the home page or help to find your way back.')+'<section class="section"><div class="wrap actions"><a class="button" href="/">Home</a><a class="text-link" href="/help/">Help →</a></div></section>')
 (OUT/'404.html').write_text((OUT/'404/index.html').read_text())

@@ -1,6 +1,6 @@
 import sys as _sys, os as _os
 _sys.path.insert(0,_os.path.dirname(_os.path.abspath(__file__)))
-from help_shots import shots_html, files as shot_files
+from help_shots import shots_html, files as shot_files, IMAGES as HELP_IMAGES
 from help_topics import help_anchor
 from pathlib import Path
 import html, json
@@ -98,7 +98,7 @@ MORE={'de': {'eye': 'Auf dem Rad und zu Fuß',
                    'Cable car or bus? Your tour still adds up.',
                    'Rides are recognised and can simply be left out at the end.')],
         'links': [('/cycling/', 'More about cycling'), ('/hiking/', 'More about hiking')]}}
-SHOTS={'de':dict(top='So sieht OnPath aus',tag='App-Bildschirme',ctl='Bildschirm wählen',items=[('plan-wandern','Wandern','Planung einer Wanderung von Vellau zur Leiteralm mit Karte, Zeit und Höhenprofil','Wanderung T2 von Vellau zur Leiteralm: Zeit, Höhenmeter und ein Hinweis auf zwei steile Abschnitte – bevor du losgehst.'),('plan-ebike','E-Bike','Dieselbe Strecke mit dem E-Bike geplant, mit Hinweis auf Schiebestrecke','Dieselbe Strecke mit dem E-Bike: Du siehst vorher, wo es unbefestigt ist und wo du 120 m schieben musst.'),('ort-google-maps','Ort finden','Menü zum Gasthof Hochmuth mit „Als neues Ziel anhängen“ und „In Google Maps öffnen“','Gasthof Hochmuth gefunden: als Ziel oder Stopp übernehmen oder bei Google Maps nach den Öffnungszeiten schauen.')]),'en':dict(top='What OnPath looks like',tag='App screens',ctl='Choose a screen',items=[('plan-wandern','Hiking','A hike planned from Vellau to the Leiteralm with map, time and elevation profile','A T2 hike from Vellau to the Leiteralm: time, climbing and a note about two steep sections – before you set off.'),('plan-ebike','E-bike','The same route planned by e-bike, with a note about pushing','The same route by e-bike: you see in advance where it is unpaved and where you push for 120 m.'),('ort-google-maps','Find a place','Menu for the Gasthof Hochmuth with “Add as new destination” and “Open in Google Maps”','Found the Gasthof Hochmuth: add it as a destination or stop, or check the opening hours in Google Maps.')])}
+SHOTS={'de':dict(top='So sieht OnPath aus',tag='App-Bildschirme',ctl='Bildschirm wählen',items=[('plan-wandern','Wandern','Planung einer Wanderung von Vellau zur Leiteralm mit Karte, Zeit und Höhenprofil','Wandern T2: Zeit, Höhenprofil und steile Abschnitte.'),('plan-ebike','E-Bike','Dieselbe Strecke mit dem E-Bike geplant, mit Hinweis auf Schiebestrecke','E-Bike: Untergrund und Schiebestrecken vor dem Start erkennen.'),('ort-google-maps','Ort finden','Menü zum Gasthof Hochmuth mit „Als neues Ziel anhängen“ und „In Google Maps öffnen“','Gasthof Hochmuth gefunden: als Ziel oder Stopp übernehmen oder bei Google Maps nach den Öffnungszeiten schauen.')]),'en':dict(top='What OnPath looks like',tag='App screens',ctl='Choose a screen',items=[('plan-wandern','Hiking','A hike planned from Vellau to the Leiteralm with map, time and elevation profile','Hike T2: time, elevation profile and steep sections.'),('plan-ebike','E-bike','The same route planned by e-bike, with a note about pushing','E-bike: check surfaces and pushing sections before setting off.'),('ort-google-maps','Find a place','Menu for the Gasthof Hochmuth with “Add as new destination” and “Open in Google Maps”','Found the Gasthof Hochmuth: add it as a destination or stop, or check the opening hours in Google Maps.')])}
 def app_shots(lang='de'):
     S=SHOTS[lang]; first=S['items'][0]
     src=lambda k:'/assets/app/'+k+'-'+lang+'.webp'
@@ -106,26 +106,21 @@ def app_shots(lang='de'):
     return '<div class="demo shots"><div class="demo-top"><span>'+S['top']+'</span><span class="tag">'+S['tag']+'</span></div><div class="shots-phone"><img id="shot-img" src="'+src(first[0])+'" alt="'+first[2]+'" width="600" height="1333" loading="lazy"></div><div class="demo-controls" aria-label="'+S['ctl']+'">'+buttons+'</div><p id="shot-text" aria-live="polite">'+first[3]+'</p></div>'
 FEATURES={'de': {'rows': [('route',
                   'Schöne Wege, passend zu deiner Tour.',
-                  'Wir haben die Routenplanung sorgfältig abgestimmt: OnPath bevorzugt ausgewiesene Rad- und '
-                  'Wanderwege, meidet beim Radfahren stark befahrene Straßen und berücksichtigt beim Wandern deine '
-                  'gewählte Schwierigkeit.',
+                  'Sorgfältig abgestimmt: OnPath bevorzugt ausgewiesene Rad- und Wanderwege, meidet stark befahrene Straßen beim Radfahren und berücksichtigt deine gewählte Schwierigkeit beim Wandern.',
                   'plan-ebike'),
                  ('pin',
                   'Eine Einkehr, auf die du dich freust.',
-                  'Schau dir Fotos, Bewertungen und Öffnungszeiten in Google Maps an – direkt aus OnPath heraus. '
-                  'Gefällt dir die Hütte oder Gaststätte? Dann plane sie als Zwischenstopp ein.',
+                  'Fotos, Bewertungen und Öffnungszeiten in Google Maps ansehen – direkt aus OnPath. Gefällt dir die Einkehr? Plane sie als Stopp ein.',
                   'ort-google-maps')],
         'also': '<b>Außerdem:</b> Vibration an entscheidenden Abzweigungen · Ankunftszeit, die dein Tempo lernt · '
                 'Seilbahn und Bus werden erkannt.'},
  'en': {'rows': [('route',
                   'Beautiful paths for your outing.',
-                  'We have carefully tuned route planning: OnPath favours designated cycling and hiking routes, avoids '
-                  'busy roads when cycling and takes your chosen hiking difficulty into account.',
+                  'Carefully tuned: OnPath favours cycling and hiking paths, avoids busy roads when cycling and takes your hiking difficulty into account.',
                   'plan-ebike'),
                  ('pin',
                   'A stop to look forward to.',
-                  'See photos, reviews and opening hours in Google Maps – directly from OnPath. Like the hut or inn? '
-                  'Add it as a stop on your route.',
+                  'See photos, reviews and opening hours in Google Maps – straight from OnPath. Like the place? Add it as a stop.',
                   'ort-google-maps')],
         'also': '<b>Also:</b> a vibration at decision points · an arrival time that learns your pace · cable cars and '
                 'buses recognised.'}}
@@ -153,113 +148,88 @@ WAYS={'de': {'eye': 'Am Computer vorbereiten',
                     'Or pair browser and phone (in testing) to sync saved plans.'])],
         'note': 'No account or installation needed.',
         'open': 'Plan in your browser'}}
-WEBSHOT={'de':dict(tabs=[('web-wandern','Planen','Der Planer im Browser: eine Wanderung von Vellau zur Leiteralm mit Zeit, Höhenprofil und Hinweisen','Große Karte, Höhenprofil und Hinweise wie „2 steile Abschnitte“ – wie in der App.'),('web-qr','Teilen','Der Dialog „Teilen“ mit QR-Code','Mit der OnPath-App den Code scannen – schon ist die Tour auf dem Handy.')],ctl='Planer-Bildschirm wählen'),
-'en':dict(tabs=[('web-wandern','Plan','The browser planner: a hike from Vellau to the Leiteralm with time, elevation profile and notes','A big map, elevation profile and notes like “2 steep sections” – as in the app.'),('web-qr','Share','The “Share” dialog with a QR code','Scan the code with the OnPath app – the tour is on your phone.')],ctl='Choose a planner screen')}
+WEBSHOT={'de':dict(tabs=[('web-wandern','Planen','Der Planer im Browser: eine Wanderung von Vellau zur Leiteralm mit Zeit, Höhenprofil und Hinweisen','Große Karte, Höhenprofil und Hinweise wie „2 steile Abschnitte“ – wie in der App.'),('web-qr','Teilen','Der Dialog „Teilen“ mit QR-Code','QR-Code scannen und die Tour aufs Handy übernehmen.')],ctl='Planer-Bildschirm wählen'),
+'en':dict(tabs=[('web-wandern','Plan','The browser planner: a hike from Vellau to the Leiteralm with time, elevation profile and notes','A big map, elevation profile and notes like “2 steep sections” – as in the app.'),('web-qr','Share','The “Share” dialog with a QR code','Scan the QR code and take your route along.')],ctl='Choose a planner screen')}
 def web_shot(lang='de'):
     W=WEBSHOT[lang]; t0=W['tabs'][0]; src=lambda k:'/assets/app/'+k+'-de.webp'
     btns=''.join('<button data-web="'+src(k)+'" data-alt="'+alt+'" data-text="'+txt+'" aria-pressed="'+('true' if i==0 else 'false')+'">'+lab+'</button>' for i,(k,lab,alt,txt) in enumerate(W['tabs']))
     return '<figure class="web-shot"><div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>plan.onpath.earth</span></div><img id="web-img" src="'+src(t0[0])+'" alt="'+t0[2]+'" width="1440" height="900" loading="lazy"><figcaption><div class="web-tabs" role="group" aria-label="'+W['ctl']+'">'+btns+'</div><span id="web-text" aria-live="polite">'+t0[3]+'</span></figcaption></figure>'
 def ways_section(lang='de'):
-    W=WAYS[lang]; T=WEBSHOT[lang]['tabs']
-    ways=''.join('<div class="way-lite">'+icon(ic)+'<div><h3>'+t+'</h3><ul>'+''.join('<li>'+x+'</li>' for x in li)+'</ul></div></div>' for ic,t,li in W['cards'])
-    phone_alt='OnPath auf dem Handy: dieselbe Wanderung, bereit zum Losgehen' if lang=='de' else 'OnPath on the phone: the same hike, ready to go'
-    duo='<figure class="duo"><div class="duo-browser"><div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>plan.onpath.earth</span></div><img src="/assets/app/web-wandern-de.webp" alt="'+T[0][2]+'" width="1440" height="900" loading="lazy"></div><img class="duo-phone" src="/assets/app/plan-wandern-'+lang+'.webp" alt="'+phone_alt+'" width="600" height="1333" loading="lazy"></figure>'
-    return '<section class="section" id="'+('planen' if lang=='de' else 'plan')+'"><div class="wrap split ways-split"><div><p class="eyebrow">'+W['eye']+'</p><h2>'+W['h']+'</h2><p class="ways-lead">'+W['lead']+'</p>'+ways+'<div class="ways-cta"><a class="button" href="https://plan.onpath.earth/">'+W['open']+icon('arrow')+'</a><span class="ways-note">'+W['note']+'</span></div>'+home_help(lang, 'browser', 0)+'</div>'+duo+'</div></section>'
+    de=lang=='de'; W=WAYS[lang]; screens=WEBSHOT[lang]['tabs']
+    title='Bequem am großen Bildschirm planen.' if de else 'Plan comfortably on a big screen.'
+    items=[('Deine Tour vorbereiten.','Setze und verschiebe Punkte mit der Maus oder öffne eine vorhandene GPX-Tour.'),('Auf dem Handy weiter.','Scanne den QR-Code mit deiner Handykamera. Oder kopple Browser und Handy: Der Abgleich gespeicherter Pläne ist noch im Test.')] if de else [('Prepare your route.','Set and move points with the mouse or open an existing GPX route.'),('Continue on your phone.','Scan the QR code with your phone camera. Or pair browser and phone: syncing saved plans is still in testing.')]
+    rows=[]
+    for i,((heading,text),(key,_,alt,caption)) in enumerate(zip(items,screens)):
+        src='/assets/app/'+key+'-de.webp'
+        image=screenshot_button(src,alt,lang,'inline-preview')
+        rows.append('<article class="feature-entry'+(' feature-primary' if i==0 else '')+'"><button class="feature-row" data-shot="'+src+'" data-alt="'+html.escape(alt,quote=True)+'" data-text="'+html.escape(caption,quote=True)+'" aria-pressed="'+('true' if i==0 else 'false')+'"><span><b>'+heading+'</b>'+text+'</span></button><figure class="inline-shot planner-inline">'+image+'</figure></article>')
+    visual='<figure class="group-preview planner-preview">'+screenshot_button('/assets/app/'+screens[0][0]+'-de.webp',screens[0][2],lang,'preview-enlarge',True)+'<figcaption data-preview-text aria-live="polite">'+('Punkte setzen und die Strecke prüfen.' if de else 'Set points and review your route.')+'</figcaption></figure>'
+    actions='<div class="ways-cta">'+button('https://plan.onpath.earth/',W['open'])+'<span class="ways-note">'+W['note']+'</span>'+home_help(lang,'browser',0)+'</div>'
+    return '<section class="benefit-band" id="'+('planen' if de else 'plan')+'"><div class="wrap benefit-group benefit-browser" aria-labelledby="browser-heading"><h2 id="browser-heading">'+title+'</h2>'+visual+'<div class="feature-rows">'+''.join(rows)+actions+'</div></div></section>'
 EXTRA={'de': [('clock',
          'Wissen, wann du ankommst.',
-         'Ob noch Zeit für eine Pause ist? OnPath schätzt deine Ankunftszeit und passt sie unterwegs deinem Tempo an – '
-         'bergauf, auf ebener Strecke und bergab.'),
+         'OnPath passt deine Ankunftszeit an dein Tempo an – bergauf, eben und bergab. So kannst du deine nächste Pause besser einschätzen.'),
         ('vibrate',
          'Das Handy bleibt öfter in der Tasche.',
-         'OnPath sagt dir die Richtung und beschreibt den nächsten Weg. Mit Sprache, Vibrationen oder beidem – auch '
-         'offline.'),
+         'OnPath sagt dir die Richtung und beschreibt den nächsten Weg. Sprache und Vibrationen wählst du selbst – auch offline.'),
         ('cable',
          'Deine Leistung zählt.',
-         'Ein Stück mit der Seilbahn oder dem Bus gefahren? OnPath erkennt solche Abschnitte. Du entscheidest, ob sie '
-         'in Strecke und Zeit mitzählen.')],
+         'OnPath erkennt Abschnitte mit Seilbahn oder Bus. Du entscheidest, ob Strecke und Zeit mitzählen.')],
  'en': [('clock',
          'Know when you will arrive.',
-         'Time for another break? OnPath estimates your arrival time and adapts it to your pace as you go – uphill, on '
-         'level ground and downhill.'),
+         'OnPath adjusts your arrival time to your pace – uphill, on the flat and downhill. That makes it easier to plan your next break.'),
         ('vibrate',
          'Keep your phone in your pocket more often.',
-         'OnPath tells you the direction and describes the next path. Use speech, vibrations or both – even offline.'),
+         'Get directions and details of the next path through speech, vibrations or both – your choice, even offline.'),
         ('cable',
          'Your own effort counts.',
-         'Taken a cable car or bus for part of the way? OnPath recognises these sections. You decide whether they '
-         'count towards distance and time.')]}
+         'OnPath recognises cable car and bus sections. You decide whether their distance and time count.')]}
 SMALL={'de': {'eye': 'Im Alltag durchdacht',
         'h': 'Damit du deine Tour entspannt genießen kannst.',
         'cols': [('Unterwegs',
                   [('Tour beenden. Speichern. Fertig.',
-                    'Keine Nachfragen zu Fotos, Teilen oder Bewertungen. Speichere deine Tour und steck das Handy weg. '
-                    '<a href="/hilfe/navigation/#tour-beenden">Tour beenden und speichern →</a>')]),
+                    'Speichern und das Handy wegstecken. Ohne weitere Nachfragen zu Fotos, Teilen oder Bewertungen. <a href="/hilfe/navigation/#tour-beenden">Tour speichern →</a>')]),
                  ('Beim Planen',
                   [('Wanderwege, die zu dir passen.',
-                    'Wähle deine Schwierigkeit nach der SAC-Wanderskala des Schweizer Alpen-Clubs. OnPath '
-                    'berücksichtigt sie bei der Planung und zeigt anspruchsvollere Abschnitte an. <a '
-                    'href="/hilfe/route-planen/#schwierigkeit">Die Schwierigkeitsstufen →</a>'),
+                    'Wähle deine Schwierigkeit nach der SAC-Wanderskala des Schweizer Alpen-Clubs. OnPath berücksichtigt sie und zeigt anspruchsvollere Abschnitte an. <a href="/hilfe/route-planen/#schwierigkeit">SAC-Stufen erklärt →</a>'),
                    ('Schneller eine schöne Tour planen.',
-                    'Eine kleine Runde in der Umgebung oder ein Stück auf einem Fernweg? OnPath hebt ausgeschilderte '
-                    'Rad- und Wanderrouten hervor und zeigt, welche Wege zu deiner Aktivität passen. So findest du '
-                    'leichter einen passenden Verlauf für deine Tour. <a href="/hilfe/route-planen/#kartenfarben">Wege '
-                    'und Routen auf der Karte →</a>'),
+                    'Kleine Runde oder Fernweg? Hervorgehobene Rad- und Wanderrouten und erkennbare Wegarten helfen dir, eine passende Tour zu finden. <a href="/hilfe/route-planen/#kartenfarben">Kartenfarben und Routen →</a>'),
                    ('Dein Ziel finden – auch ohne Netz.',
-                    'Kein Empfang und Google Maps nicht erreichbar? OnPath findet Adressen, Hütten und Gipfel in '
-                    'seiner eigenen Datenbank. Die lädt es automatisch mit den Karten herunter – und du kannst sie '
-                    'offline durchsuchen. <a href="/hilfe/orte/#offline-suche">So funktioniert die Suche →</a>')])],
-        'link': ('/hilfe/', 'Alles Schritt für Schritt in der Hilfe')},
+                    'Kein Netz, kein Zugriff auf Google Maps? Adressen, Hütten und Gipfel findest du in der eigenen Datenbank, die OnPath automatisch mit den Karten herunterlädt. <a href="/hilfe/orte/#offline-suche">Offline suchen →</a>')])],
+        'link': ('/hilfe/', 'Alles Deine erste Tour: die Anleitung')},
  'en': {'eye': 'Thoughtful in everyday use',
         'h': 'Enjoy your outing with peace of mind.',
         'cols': [('On the way',
                   [('End your outing. Save. Done.',
-                    'No questions about photos, sharing or ratings. Save your outing and put your phone away. <a '
-                    'href="/help/navigation/#finish">End and save an outing →</a>')]),
+                    'Save and put your phone away. No extra questions about photos, sharing or ratings. <a href="/help/navigation/#finish">Save your outing →</a>')]),
                  ('When planning',
                   [('Hiking paths that suit you.',
-                    'Choose your difficulty using the Swiss Alpine Club’s SAC hiking scale. OnPath takes it into '
-                    'account when planning and points out more demanding sections. <a '
-                    'href="/help/planning/#difficulty">The difficulty levels →</a>'),
+                    'Choose your difficulty using the Swiss Alpine Club’s SAC hiking scale. OnPath takes it into account and highlights more demanding sections. <a href="/help/planning/#difficulty">SAC levels explained →</a>'),
                    ('Plan a beautiful outing more quickly.',
-                    'A small local loop or a stretch of a long-distance trail? OnPath highlights signed cycling and '
-                    'hiking routes and shows which paths suit your activity. That makes it easier to find a course for '
-                    'your outing. <a href="/help/planning/#map-colours">Paths and routes on the map →</a>'),
+                    'Local loop or long-distance trail? Highlighted cycling and hiking routes and clear path types help you find a suitable outing. <a href="/help/planning/#map-colours">Map colours and routes →</a>'),
                    ('Find your destination – even without reception.',
-                    'No signal and no access to Google Maps? OnPath finds addresses, huts and peaks in its own '
-                    'database. It downloads this automatically with the maps, ready to search offline. <a '
-                    'href="/help/places/#offline-search">How search works →</a>')])],
+                    'No signal, no access to Google Maps? Find addresses, huts and peaks in OnPath’s own database, downloaded automatically with your maps. <a href="/help/places/#offline-search">Offline search →</a>')])],
         'link': ('/help/', 'Everything step by step in the help')}}
 OPEN={'de': {'eye': 'Unabhängig und offen',
         'h': 'Deine Touren gehören dir.',
         'pts': [('',
-                 'OnPath sichert deine Touren zusätzlich als frei zugängliche GPX-Dateien. Du kannst sie weitergeben, '
-                 'in anderen Apps bearbeiten und unabhängig von OnPath nutzen. Alle abgeschlossenen Touren lassen sich '
-                 'auch zusammen als ZIP-Datei exportieren. <a href="/hilfe/gpx/#eigene-dateien">Tourdateien sichern '
-                 'und exportieren →</a>'),
+                 'Deine Touren bleiben auf deinem Handy und zusätzlich als frei zugängliche GPX-Dateien erhalten. Gib sie weiter, nutze sie in anderen Apps oder exportiere alle abgeschlossenen Touren als ZIP. <a href="/hilfe/gpx/#eigene-dateien">Tourdateien sichern und exportieren →</a>'),
                 ('Offen für die Zukunft.',
-                 'Mit OnPath bleibst du unabhängig: Der Quellcode ist öffentlich, deine Touren bleiben in deiner Hand. '
-                 'Beiträge unterstützen Betrieb, Weiterentwicklung und gemeinnützige Zwecke. Planen, navigieren und '
-                 'aufzeichnen bleiben kostenlos.')],
-        'founder': 'Ich bin selbst gern zu Fuß und mit dem Rad unterwegs. Mit OnPath entwickle ich die App, die ich '
-                   'dabei haben möchte: einfach, verlässlich und offen – mit Unterstützung von KI.',
+                 'Der Quellcode ist öffentlich. Planen, navigieren und aufzeichnen bleiben kostenlos. Beiträge unterstützen Betrieb, Weiterentwicklung und gemeinnützige Zwecke.')],
+        'founder': 'Ich wandere und fahre selbst gern Rad. Deshalb entwickle ich OnPath: einfach, verlässlich und offen – mit Unterstützung von KI.',
         'role': 'Wanderer, Radfahrer und Entwickler',
-        'idea': ('/idee/', 'Die Geschichte hinter OnPath'),
+        'idea': ('/idee/', 'Über OnPath'),
         'funding': ('/ausblick/#abschnitt-5', 'Mehr zur Finanzierung'),
         'founder_title': 'Aus Freude am Draußensein entwickelt.'},
  'en': {'eye': 'Independent and open',
         'h': 'Your tours belong to you.',
         'pts': [('',
-                 'OnPath also backs up your tours as accessible GPX files. Share them, edit them in other apps and use '
-                 'them independently of OnPath. Export all completed outings together as a ZIP file. <a '
-                 'href="/help/gpx/#your-files">Back up and export tour files →</a>'),
+                 'Your tours stay on your phone and are also kept as accessible GPX files. Share them, use them in other apps or export all completed outings as a ZIP file. <a href="/help/gpx/#your-files">Back up and export tour files →</a>'),
                 ('Open for the future.',
-                 'Stay independent with OnPath: the source code is public and your tours remain in your hands. '
-                 'Contributions support running costs, development and charitable causes. Planning, navigation and '
-                 'recording stay free.')],
-        'founder': 'I love being out on foot and by bike. With OnPath I am building the app I want to take along: '
-                   'simple, reliable and open – with the help of AI.',
+                 'The source code is public. Planning, navigation and recording stay free. Contributions support running costs, development and charitable causes.')],
+        'founder': 'I love hiking and cycling. That’s why I’m building OnPath: simple, reliable and open – with the help of AI.',
         'role': 'Hiker, cyclist and developer',
-        'idea': ('/about/', 'The story behind OnPath'),
+        'idea': ('/about/', 'About OnPath'),
         'funding': ('/whats-next/#section-5', 'More on funding'),
         'founder_title': 'Built from a love of the outdoors.'}}
 def open_section(lang='de'):
@@ -285,12 +255,11 @@ FIRST_STEPS={'de': {'eye': 'So einfach geht’s',
                    'Die geplante Route mit Zeit, Höhenprofil und „Navigation starten“'),
                   ('navi',
                    'Bleib spontan – auch ohne Empfang.',
-                   'OnPath lädt die nötigen Karten beim Planen automatisch herunter. Unterwegs kannst du deine Route '
-                   'einfach ändern und direkt weiterziehen – dein Handy berechnet den neuen Weg selbst.',
+                   'Ändere deine Route und zieh direkt weiter. OnPath lädt die Karten beim Planen automatisch herunter und berechnet den neuen Weg auf deinem Handy.',
                    'Navigation mit dem Schieber „Stopp“ unten')],
         'prep': '',
         'help': ('/hilfe/offline/', 'Karten vorbereiten'),
-        'more': ('/hilfe/erste-schritte/', 'Schritt für Schritt in der Hilfe')},
+        'more': ('/hilfe/erste-schritte/', 'Deine erste Tour: die Anleitung')},
  'en': {'eye': 'It’s that simple',
         'h': 'Quick to plan. Free to explore.',
         'lead': 'This is how your first outing with OnPath begins.',
@@ -306,24 +275,23 @@ FIRST_STEPS={'de': {'eye': 'So einfach geht’s',
                    'The planned route with time, elevation profile and “Start navigation”'),
                   ('navi',
                    'Stay spontaneous – even without reception.',
-                   'OnPath automatically downloads the maps you need while you plan. Change your route along the way '
-                   'and carry on – your phone calculates the new way itself.',
+                   'Change your route. OnPath downloads maps automatically while you plan and calculates the new way on your phone.',
                    'Navigation with the “Stop” slider at the bottom (German screen)')],
         'prep': '',
         'help': ('/help/offline/', 'Prepare your maps'),
         'more': ('/help/getting-started/', 'Step by step in the help')}}
 HOME_HELP = {
  'de': {
-  'steps': [('/hilfe/route-planen/#punkte', 'Ziel und Zwischenstopps setzen'), ('/hilfe/route-planen/#streckenhinweise', 'Die Streckenhinweise erklärt'), ('/hilfe/unterwegs-aendern/#aendern', 'Unterwegs ändern und weitergehen')],
-  'features': [('/hilfe/route-planen/#aktivitaet', 'Die passende Aktivität wählen'), ('/hilfe/orte/#einkehr', 'Einen Ort ansehen und einplanen')],
-  'extras': [('/hilfe/navigation/#ankunft', 'So entsteht die Ankunftszeit'), ('/hilfe/navigation/#abbiegen', 'Sprache und Vibration einstellen'), ('/hilfe/navigation/#fahrten', 'Erkannte Fahrten prüfen')],
-  'browser': [('/hilfe/route-planen/#browser', 'Tour vom Computer aufs Handy übertragen')]
+  'steps': [('/hilfe/route-planen/#punkte', 'Punkte setzen'), ('/hilfe/route-planen/#streckenhinweise', 'Streckenhinweise'), ('/hilfe/unterwegs-aendern/#aendern', 'Unterwegs umplanen')],
+  'features': [('/hilfe/route-planen/#aktivitaet', 'Aktivität wählen'), ('/hilfe/orte/#einkehr', 'Einkehr einplanen')],
+  'extras': [('/hilfe/navigation/#ankunft', 'Ankunftszeit'), ('/hilfe/navigation/#abbiegen', 'Sprache und Vibration'), ('/hilfe/navigation/#fahrten', 'Fahrten prüfen')],
+  'browser': [('/hilfe/route-planen/#browser', 'Tour aufs Handy übertragen')]
  },
  'en': {
-  'steps': [('/help/planning/#points', 'Set a destination and stops'), ('/help/planning/#route-hints', 'Route hints explained'), ('/help/change-route/#edit', 'Change your route and carry on')],
-  'features': [('/help/planning/#activity', 'Choose your activity'), ('/help/places/#stop', 'Check a place and add a stop')],
-  'extras': [('/help/navigation/#arrival', 'How arrival time is estimated'), ('/help/navigation/#turns', 'Set up speech and vibration'), ('/help/navigation/#rides', 'Review recognised rides')],
-  'browser': [('/help/planning/#browser', 'Transfer a route to your phone')]
+  'steps': [('/help/planning/#points', 'Set points'), ('/help/planning/#route-hints', 'Route hints'), ('/help/change-route/#edit', 'Change your route')],
+  'features': [('/help/planning/#activity', 'Choose an activity'), ('/help/places/#stop', 'Plan a stop')],
+  'extras': [('/help/navigation/#arrival', 'Arrival time'), ('/help/navigation/#turns', 'Speech and vibration'), ('/help/navigation/#rides', 'Review rides')],
+  'browser': [('/help/planning/#browser', 'Transfer to your phone')]
  }
 }
 def home_help(lang, group, index):
@@ -340,46 +308,41 @@ def first_steps(lang='de'):
     for i,(key,title,text,alt) in enumerate(F['items']):
         src='/assets/help/'+shot_files(key)[0 if lang=='de' else 1]
         label=('Screenshot zu Schritt '+str(i+1)+' vergrößern') if lang=='de' else ('Enlarge screenshot for step '+str(i+1))
-        preview='<button type="button" class="step-preview" data-lightbox aria-haspopup="dialog" aria-label="'+label+'"><img class="step-thumb" src="'+src+'" alt="'+html.escape(alt,quote=True)+'" width="540" height="1200" loading="lazy"><span class="zoom-mark" aria-hidden="true">'+icon('search')+'</span></button>'
+        preview='<button type="button" class="step-preview step-preview-'+key+'" data-lightbox aria-haspopup="dialog" aria-label="'+label+'"><img class="step-thumb" src="'+src+'" alt="'+html.escape(alt,quote=True)+'" width="540" height="1200" loading="lazy"><span class="zoom-mark" aria-hidden="true">'+icon('search')+'</span></button>'
         cards.append('<article class="feature know"><div class="step-heading"><span class="step-number" aria-label="'+('Schritt ' if lang=='de' else 'Step ')+str(i+1)+'">'+str(i+1)+'</span><h3>'+title+'</h3></div><p>'+text+'</p>'+preview+home_help(lang,'steps',i)+'</article>')
     cards=''.join(cards)
-    return '<section class="section steps-section" id="'+anchor+'"><div class="wrap"><div class="section-heading"><p class="eyebrow">'+F['eye']+'</p><h2>'+F['h']+'</h2><p>'+F['lead']+'</p></div><div class="feature-grid">'+cards+'</div><a class="text-link steps-help" href="'+F['more'][0]+'">'+F['more'][1]+' →</a></div></section>'
+    return '<section class="section steps-section" id="'+anchor+'"><div class="wrap"><div class="section-heading"><p class="eyebrow">'+F['eye']+'</p><h2>'+F['h']+'</h2></div><div class="feature-grid">'+cards+'</div><a class="text-link steps-help" href="'+F['more'][0]+'">'+F['more'][1]+' →</a></div></section>'
 def home_cta(lang='de'):
     if lang=='de':
-        eye='Gemeinsam besser machen';title='Mach OnPath mit deiner Erfahrung besser.'
-        text='Teste die Android-App auf einer kleinen Wanderung oder Radtour und erzähl mir, was gut klappt und was noch fehlt.'
+        eye='OnPath ausprobieren';title='Bereit für deine nächste Tour?'
+        text='Plane eine kleine Wanderung oder Radtour und lerne OnPath unterwegs kennen. Deine Rückmeldung hilft mir, die App weiterzuentwickeln.'
         action=('/ausprobieren/','Einladung zum Test anfragen');help=('/hilfe/','Hilfe für die erste Tour')
-        fine='Frühe Testversion · Android ab Version 8'
+        fine='Frühe Testversion · Android ab Version 8 · Persönliche Einladung'
     else:
-        eye='Help make it useful';title='Make OnPath better with your experience.'
-        text='Test the Android app on a short walk or ride and tell me what works well and what is still missing.'
+        eye='Try OnPath';title='Ready for your next outing?'
+        text='Plan a short walk or ride and get to know OnPath along the way. Your feedback helps me improve the app.'
         action=('/try/','Ask for a test invitation');help=('/help/','Help for your first outing')
-        fine='Early test version · Android 8 or newer'
+        fine='Early test version · Android 8 or newer · Personal invitation'
     return '<section class="section soft"><div class="wrap cta"><p class="eyebrow">'+eye+'</p><h2>'+title+'</h2><p>'+text+'</p><div class="actions">'+button(action[0],action[1])+'</div><span class="fine">'+fine+'</span><a class="text-link" href="'+help[0]+'">'+help[1]+' →</a></div></section>'
 DETAIL_HIGHLIGHTS={'de': {'summary': 'Mehr durchdachte Details',
         'items': [('file',
                    'Deine Tour bleibt erhalten.',
-                   'OnPath sichert deine Aufzeichnung automatisch. Wird die App unterbrochen oder geht dein Handy aus, '
-                   'kannst du deine Tour danach einfach fortsetzen. <a href="/hilfe/probleme/#tour-fortsetzen">Eine '
-                   'unterbrochene Tour fortsetzen →</a>'),
+                   'Automatisch gesichert: Auch nach einer Unterbrechung oder leerem Akku kannst du deine Tour fortsetzen. <a href="/hilfe/probleme/#tour-fortsetzen">Tour fortsetzen →</a>'),
                   ('pin',
-                   'Dein Ziel gefunden? OnPath bringt dich hin.',
-                   'Ein Ort aus Google Maps oder ein Treffpunkt, den dir Freunde schicken: Teile ihn mit OnPath und '
-                   'lass dich auf passenden Wegen dorthin führen. <a href="/hilfe/orte/#geteilte-treffpunkte">Einen '
-                   'geteilten Ort übernehmen →</a>')]},
+                   'Zum Treffpunkt auf passenden Wegen.',
+                   'Teile einen Ort aus Google Maps oder den Standort von Freunden mit OnPath. Die App führt dich hin. <a href="/hilfe/orte/#geteilte-treffpunkte">Geteilte Orte →</a>')]},
  'en': {'summary': 'More thoughtful details',
         'items': [('file',
                    'Your outing is kept.',
-                   'OnPath saves your recording automatically. If the app is interrupted or your phone turns off, you '
-                   'can simply continue your outing afterwards. <a href="/help/troubleshooting/#resume">Continue an '
-                   'interrupted outing →</a>'),
+                   'Saved automatically: continue your outing even after an interruption or an empty battery. <a href="/help/troubleshooting/#resume">Resume your outing →</a>'),
                   ('pin',
-                   'Found your destination? OnPath takes you there.',
-                   'A place from Google Maps or a meeting point sent by friends: share it with OnPath and follow '
-                   'suitable paths to get there. <a href="/help/places/#shared-meeting-points">Use a shared place '
-                   '→</a>')]}}
-EXTRA_SHOT={'de':{'ankunft':('Navigation beim Wandern: 110 m Links, 1:40 h und 3,2 km bis zur Leiteralm, Ankunft 13:55','Unterwegs immer im Blick: wie weit, wie lange und wann du ankommst.'),'ruheanzeige':('Ruheanzeige am Rad: schwarzer Bildschirm mit Pfeil, 2,3 km Links, 25 min und Ankunft 12:55','Am Lenker nur Pfeil, Entfernung und Ankunft. Die Karte kommt kurz vor der Abzweigung.'),'fahrt':('Tour beenden: OnPath hat eine Liftfahrt erkannt und fragt, was zählen soll','Mit dem Sessellift nach Vellau: OnPath erkennt die Fahrt und fragt, was zählen soll.')},
-'en':{'ankunft':('Navigating on a hike: 60 m sharp right, 1:35 h and 3.1 km to the Leiteralm, arrival 13:50','Always in view on the way: how far, how long and when you arrive.'),'ruheanzeige':('Rest view on the bike: black screen with arrow, 600 m slight right, 35 min and arrival 11:05','On the handlebar only arrow, distance and arrival. The map returns shortly before the turn.'),'fahrt':('Ending a tour: OnPath recognised a chairlift ride and asks what should count','By chairlift to Vellau: OnPath recognises the ride and asks what should count.')}}
+                   'Reach your meeting point on suitable paths.',
+                   'Share a place from Google Maps or a friend’s location with OnPath. The app guides you there. <a href="/help/places/#shared-meeting-points">Shared places →</a>')]}}
+EXTRA_SHOT={'de':{'ankunft':('Navigation beim Wandern: 110 m Links, 1:40 h und 3,2 km bis zur Leiteralm, Ankunft 13:55','Abzweigung und Ankunft auf einen Blick.'),'ruheanzeige':('Ruheanzeige am Rad: schwarzer Bildschirm mit Pfeil, 2,3 km Links, 25 min und Ankunft 12:55','Am Lenker nur Pfeil, Entfernung und Ankunft. Die Karte kommt kurz vor der Abzweigung.'),'fahrt':('Tour beenden: OnPath hat eine Liftfahrt erkannt und fragt, was zählen soll','Mit dem Sessellift nach Vellau: OnPath erkennt die Fahrt und fragt, was zählen soll.')},
+'en':{'ankunft':('Navigating on a hike: 60 m sharp right, 1:35 h and 3.1 km to the Leiteralm, arrival 13:50','Your next turn and arrival at a glance.'),'ruheanzeige':('Rest view on the bike: black screen with arrow, 600 m slight right, 35 min and arrival 11:05','On the handlebar only arrow, distance and arrival. The map returns shortly before the turn.'),'fahrt':('Ending a tour: OnPath recognised a chairlift ride and asks what should count','By chairlift to Vellau: OnPath recognises the ride and asks what should count.')}}
+def screenshot_button(src,alt,lang,css='preview-enlarge',dynamic=False):
+    label='Screenshot vergrößern' if lang=='de' else 'Enlarge screenshot'
+    return '<button type="button" class="'+css+'" data-lightbox aria-haspopup="dialog" aria-label="'+label+'"><img '+('data-preview-img ' if dynamic else '')+'src="'+src+'" alt="'+html.escape(alt,quote=True)+'" loading="lazy"><span class="zoom-mark" aria-hidden="true">'+icon('search')+'</span></button>'
 def more_section(lang='de'):
     de=lang=='de'
     screens={k:(alt,txt) for k,_,alt,txt in SHOTS[lang]['items']}
@@ -388,7 +351,8 @@ def more_section(lang='de'):
         return (ic,title,text,'/assets/app/'+key+'-'+lang+'.webp',alt,caption,help_link)
     def help_item(item,key):
         ic,title,text=item
-        return (ic,title,text,'/assets/help/'+shot_files(key)[0 if de else 1],title,title,'')
+        caption=HELP_IMAGES[key][2 if de else 3]
+        return (ic,title,text,'/assets/help/'+shot_files(key)[0 if de else 1],caption,caption,'')
     routes=FEATURES[lang]['rows'][0]
     inn=FEATURES[lang]['rows'][1]
     sac,colours,offline=SMALL[lang]['cols'][1][1]
@@ -415,24 +379,23 @@ def more_section(lang='de'):
     for gi,(title,entries) in enumerate(groups):
         preview_index=1 if gi==1 else 0
         first=entries[preview_index]
-        visual='<figure class="group-preview"><div class="shots-phone"><img data-preview-img src="'+first[3]+'" alt="'+html.escape(first[4],quote=True)+'" width="600" height="1333" loading="lazy"></div><figcaption data-preview-text aria-live="polite">'+first[5]+'</figcaption></figure>'
+        visual='<figure class="group-preview">'+screenshot_button(first[3],first[4],lang,dynamic=True)+'<figcaption data-preview-text aria-live="polite">'+first[5]+'</figcaption></figure>'
         rows=[]
         for i,(ic,t,text,src,alt,caption,help_link) in enumerate(entries):
             text,sep,embedded=text.partition(' <a ')
             if sep: help_link='<a class="context-help" '+embedded
             selected='true' if i==preview_index else 'false'
-            rows.append('<article class="feature-entry"><button class="feature-row" data-shot="'+src+'" data-alt="'+html.escape(alt,quote=True)+'" data-text="'+html.escape(caption,quote=True)+'" aria-pressed="'+selected+'">'+icon(ic)+'<span><b>'+t+'</b>'+text+'</span></button><figure class="inline-shot"><img src="'+src+'" alt="'+html.escape(alt,quote=True)+'" width="600" height="1333" loading="lazy"><figcaption>'+caption+' <span class="photo-location">Vellau '+('bei Algund, Südtirol' if lang=='de' else 'near Algund, South Tyrol')+'</span></figcaption></figure>'+help_link+'</article>')
-        sections.append('<section class="benefit-group" aria-labelledby="benefit-group-'+str(gi)+'"><h3 id="benefit-group-'+str(gi)+'">'+title+'</h3>'+visual+'<div class="feature-rows">'+''.join(rows)+'</div></section>')
-    heading='Was OnPath besonders macht.' if de else 'What makes OnPath special.'
-    hint='Alle Vorteile im Überblick. Tippe auf einen Vorteil, um den passenden App-Bildschirm zu sehen.' if de else 'All the benefits at a glance. Tap a benefit to see its app screen.'
-    links=''.join('<a class="text-link" href="'+u+'">'+label+' →</a>' for u,label in MORE[lang]['links'])
-    return '<section class="benefits-section" id="'+('so-gehts' if de else 'how')+'" aria-labelledby="benefits-heading"><div class="benefits-intro"><div class="wrap"><h2 id="benefits-heading">'+heading+'</h2></div></div><div class="benefits-body soft"><div class="wrap"><p class="benefits-hint">'+hint+'</p><div class="benefit-groups">'+''.join(sections)+'</div><div class="more-links">'+links+'</div></div></div></section>'
+            rows.append('<article class="feature-entry'+(' feature-primary' if i==0 else '')+'"><button class="feature-row" data-shot="'+src+'" data-alt="'+html.escape(alt,quote=True)+'" data-text="'+html.escape(caption,quote=True)+'" aria-pressed="'+selected+'">'+icon(ic)+'<span><b>'+t+'</b>'+text+'</span></button><figure class="inline-shot">'+screenshot_button(src,alt,lang,'inline-preview')+'</figure>'+help_link+'</article>')
+        hint='<p class="benefits-hint">'+('Wähle einen Vorteil, um das passende Bild zu sehen.' if de else 'Choose a benefit to see its screen.')+'</p>' if gi==0 else ''
+        links=''.join('<a class="text-link" href="'+u+'">'+label+' →</a>' for u,label in MORE[lang]['links']) if gi==0 else ''
+        sections.append('<section class="benefit-band'+(' soft' if gi%2==0 else '')+'"><div class="wrap benefit-group" aria-labelledby="benefit-group-'+str(gi)+'"><h2 id="benefit-group-'+str(gi)+'">'+title+'</h2>'+visual+'<div class="feature-rows">'+''.join(rows)+'</div>'+('<div class="benefit-footer">'+hint+links+'</div>' if hint or links else '')+'</div></section>')
+    return '<div class="benefits-section" id="'+('so-gehts' if de else 'how')+'">'+''.join(sections)+ways_section(lang)+'</div>'
 
 def home_hero(lang='de'):
     if lang == 'de':
         eye='Für Wandern und Radfahren'; title='Deine Tour.<br><span>Einfach unterwegs.</span>'
         lead='Plane schnell deinen Weg, lass dich führen und bleib unterwegs spontan – auch ohne Empfang.'
-        together='Am Computer bequem planen. Mit der Android-App unterwegs sein.'
+        together='Am Computer planen. Mit dem Handy losziehen.'
         app=('/ausprobieren/','Android-App testen'); browser='Im Browser planen'
         value='Planen, navigieren und aufzeichnen bleiben kostenlos.'
         note='Ohne Konto · Ohne Werbung<br>Android · Frühe Testversion mit persönlicher Einladung'
@@ -441,16 +404,16 @@ def home_hero(lang='de'):
     else:
         eye='For hiking and cycling'; title='Your route.<br><span>Simply on your way.</span>'
         lead='Plan your way quickly, follow directions and stay spontaneous along the way – even without reception.'
-        together='Plan comfortably on your computer. Head out with the Android app.'
+        together='Plan on your computer. Head out with your phone.'
         app=('/try/','Test the Android app'); browser='Plan in your browser'
         value='Planning, navigation and recording stay free.'
         note='No account · No ads<br>Android · Early test version by personal invitation'
         photo='A path under yellow autumn leaves near Vellau'; web='OnPath in the browser: a hike from Vellau to the Leiteralm (German screen)'
         phone='The same hike in the Android app'; caption='Plan on your computer. Take it along on your phone.'
-    visual='<figure class="hero-product with-landscape"><img class="product-landscape" src="/assets/vellau-path.webp" alt="'+photo+'" width="1400" height="1054" fetchpriority="high"><img class="product-phone" src="/assets/app/plan-wandern-'+lang+'.webp" alt="'+phone+'" width="600" height="1333" fetchpriority="high"><figcaption>'+caption+' <span class="photo-location">Vellau '+('bei Algund, Südtirol' if lang=='de' else 'near Algund, South Tyrol')+'</span></figcaption></figure>'
+    visual='<figure class="hero-product with-landscape"><img class="product-landscape" src="/assets/vellau-path.webp" alt="'+photo+'" width="1400" height="1054" fetchpriority="high"><img class="product-phone" src="/assets/app/plan-wandern-'+lang+'.webp" alt="'+phone+'" width="600" height="1333" fetchpriority="high"><figcaption>Vellau '+('bei Algund, Südtirol' if lang=='de' else 'near Algund, South Tyrol')+'</figcaption></figure>'
     return '<section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><p class="eyebrow">'+eye+'</p><h1>'+title+'</h1><p class="lead">'+lead+'</p><p class="hero-together">'+together+'</p><div class="actions">'+button(*app)+button('https://plan.onpath.earth/',browser,True)+'</div><p class="hero-value">'+value+'</p><p class="hero-note">'+note+'</p></div>'+visual+'</div></section>'
 
-body=home_hero('de')+first_steps('de')+more_section('de')+ways_section('de')+open_section('de')+home_cta('de')
+body=home_hero('de')+first_steps('de')+more_section('de')+open_section('de')+home_cta('de')
 page('/','Deine Tour. Einfach unterwegs.','OnPath für Android: Wander- und Radtouren planen, unterwegs ändern und offline navigieren. Ohne Konto und Werbung.',body)
 
 HELP = [('erste-schritte',
