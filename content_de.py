@@ -1,3 +1,6 @@
+import sys as _sys, os as _os
+_sys.path.insert(0,_os.path.dirname(_os.path.abspath(__file__)))
+from help_shots import shots_html
 from pathlib import Path
 import html, json
 ROOT=Path(__file__).parent; D=ROOT/'dist'; A=D/'assets'; A.mkdir(parents=True,exist_ok=True)
@@ -192,7 +195,8 @@ def article(path,eye,title,desc,sections,help_page=False):
  if help_page:side+=''.join('<a '+('aria-current="page" ' if path=='/hilfe/'+s+'/' else '')+'href="/hilfe/'+s+'/">'+t+'</a>' for s,t,_,_,_ in HELP)
  else:side+=''.join('<a href="#abschnitt-'+str(i)+'">'+t+'</a>' for i,(t,_) in enumerate(sections))
  side+='</aside>'
- prose=''.join('<section id="abschnitt-'+str(i)+'"><h2>'+t+'</h2>'+v+'</section>' for i,(t,v) in enumerate(sections))
+ slug=path.strip('/').split('/')[-1] if help_page else None
+ prose=''.join('<section id="abschnitt-'+str(i)+'"><h2>'+t+'</h2>'+v+(shots_html('de',slug,i) if help_page else '')+'</section>' for i,(t,v) in enumerate(sections))
  content=ph(eye,title,desc,('<a href="/hilfe/">Hilfe</a> <span>/</span> ' if help_page else '')+title)+'<section class="section"><div class="wrap article-layout">'+side+'<article class="prose">'+prose+'<div class="article-end"><a href="/hilfe/">← Alle Hilfethemen</a><a href="/ausprobieren/">OnPath ausprobieren →</a></div></article></div></section>'
  page(path,title,desc,content,'/hilfe/' if help_page else path)
 for slug,title,desc,keys,sections in HELP:article('/hilfe/'+slug+'/','Hilfe & erste Schritte',title,desc,sections,True)

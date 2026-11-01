@@ -17,6 +17,12 @@ python3 -m http.server 8000 --directory dist
 
 English is at `/`, German at `/de/`. Every page has a corresponding language-switch destination and `hreflang` links. Font, photograph and scripts are served locally. No analytics or third-party embeds are included.
 
+## Help pictures
+
+App screens on the help pages: `help_shots.py` says which picture goes under which help section (DE and EN) with its
+caption. Swap or add pictures: put the PNGs (phone screenshots, 1080 × 2400) in a folder, run
+`python3 scripts/help_shots.py <folder>` (writes `assets/help/*.webp`), then `python3 build.py`.
+
 ## Review and public launch
 
 The default build is a **review build**: `noindex`, robots disallow crawling, notices describing the intended hosting configuration. This does not make a deployment private: configure preview access separately in the hosting dashboard if needed.

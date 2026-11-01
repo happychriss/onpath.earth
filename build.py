@@ -3,6 +3,7 @@
 from pathlib import Path
 import hashlib, html, json, re, runpy, shutil, sys
 from content_en import ARTICLES, HELP_EN
+from help_shots import shots_html
 
 ROOT=Path(__file__).parent
 OUT=ROOT/'dist'
@@ -63,7 +64,8 @@ def article(path,title,desc,sections,help_page=False):
         side='<b>Help &amp; first steps</b>'+''.join(f'<a href="/help/{slug}/">{t}</a>' for slug,t,*_ in HELP_EN)
     else:
         side='<b>On this page</b>'+''.join(f'<a href="#section-{i}">{t}</a>' for i,(t,_) in enumerate(sections))
-    contents=''.join(f'<section id="section-{i}"><h2>{t}</h2><p>{text}</p></section>' for i,(t,text) in enumerate(sections))
+    slug=path.strip('/').split('/')[-1] if help_page else None
+    contents=''.join(f'<section id="section-{i}"><h2>{t}</h2><p>{text}</p>'+(shots_html('en',slug,i) if help_page else '')+'</section>' for i,(t,text) in enumerate(sections))
     write(path,title,desc,intro(title,desc,'Help &amp; first steps' if help_page else 'OnPath')+f'<section class="section"><div class="wrap article-layout"><aside class="side-nav">{side}</aside><article class="prose">{contents}<div class="article-end"><a href="/help/">All help topics →</a><a href="/try/">Try OnPath →</a></div></article></div></section>')
 
 for path,(title,desc,body,active) in de['PAGES'].items():write(path,title,desc,body,'de',active)
