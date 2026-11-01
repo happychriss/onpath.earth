@@ -82,3 +82,8 @@ nav{gap:20px}
 .prose h2[id]{scroll-margin-top:115px}
 .prose h2:target{outline:2px solid #245f46;outline-offset:8px;border-radius:2px}
 @media(max-width:740px){.hero-together{font-size:15px}.hero .actions .button{justify-content:center}.hero-devices .hero-browser{top:17%;width:83%}.hero-devices .hero-phone{bottom:16%;width:27%}.hero-devices figcaption{font-size:13px}.story-section .trust-points,.small-cols{grid-template-columns:1fr}.feature-entry>.context-help{margin-left:18px}.help-contents{padding:18px}.prose h2[id]{scroll-margin-top:95px}}
+
+/* Give both hero actions equal visual weight through matching dimensions. */
+.hero .actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;max-width:540px}
+.hero .actions .button{width:100%;min-height:54px;justify-content:center;text-align:center;padding:14px 18px}
+@media(max-width:500px){.hero .actions{grid-template-columns:1fr}}
