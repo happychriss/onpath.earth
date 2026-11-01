@@ -236,9 +236,11 @@ def open_section(lang='de'):
     O=OPEN[lang]
     points=''.join('<p>'+('<b>'+title+'</b>' if title else '')+text+'</p>' for title,text in O['pts'])
     author='<div class="story-author"><img src="/assets/christian.webp" alt="" width="400" height="400"><span><b>Christian Neuhaus</b>'+O['role']+'</span></div>'
-    links=''.join('<a class="text-link" href="'+url+'">'+label+' →</a>' for url,label in [O['idea'],O['funding']])
-    landscape='<figure class="story-landscape"><img src="/assets/vellau-path.webp" alt="'+('Herbstlicher Weg bei Vellau in Südtirol' if lang=='de' else 'Autumn path near Vellau in South Tyrol')+'" width="1400" height="1054" loading="lazy"><figcaption>Vellau '+('bei Algund, Südtirol' if lang=='de' else 'near Algund, South Tyrol')+'</figcaption></figure>'
-    return '<section class="story-section"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+O['eye']+'</p><h2>'+O['h']+'</h2></div></div><div class="points trust-points">'+points+'</div><div class="story-personal">'+'<div class="founder-note">'+author+'<div><h3>'+O['founder_title']+'</h3><p>'+O['founder']+'</p></div></div></div><div class="trust-links">'+links+'</div></div></section>'
+    funding='<a class="text-link" href="'+O['funding'][0]+'">'+O['funding'][1]+' →</a>'
+    idea='<a class="text-link" href="'+O['idea'][0]+'">'+O['idea'][1]+' →</a>'
+    ownership='<section class="section soft ownership-section"><div class="wrap"><div class="section-heading"><p class="eyebrow">'+O['eye']+'</p><h2>'+O['h']+'</h2></div><div class="points trust-points">'+points+'</div>'+funding+'</div></section>'
+    founder='<section class="section founder-section"><div class="wrap"><div class="founder-note"><h2>'+O['founder_title']+'</h2>'+author+'<p>'+O['founder']+'</p>'+idea+'</div></div></section>'
+    return ownership+founder
 FIRST_STEPS={'de': {'eye': 'So einfach geht’s',
         'h': 'Schnell geplant. Draußen flexibel.',
         'lead': 'So beginnt deine erste Tour mit OnPath.',
@@ -421,7 +423,7 @@ def home_hero(lang='de'):
         photo='A path under yellow autumn leaves near Vellau'; web='OnPath in the browser: a hike from Vellau to the Leiteralm (German screen)'
         phone='The same hike in the Android app'; caption='Plan on your computer. Take it along on your phone.'
     visual='<figure class="hero-product with-landscape"><img class="product-landscape" src="/assets/vellau-path.webp" alt="'+photo+'" width="1400" height="1054" fetchpriority="high"><img class="product-phone" src="/assets/app/plan-wandern-'+lang+'.webp" alt="'+phone+'" width="600" height="1333" fetchpriority="high"><figcaption>Vellau '+('bei Algund, Südtirol' if lang=='de' else 'near Algund, South Tyrol')+'</figcaption></figure>'
-    return '<section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><p class="eyebrow">'+eye+'</p><h1>'+title+'</h1><p class="lead">'+lead+'</p><p class="hero-together">'+together+'</p><div class="actions">'+button(*app)+button('https://plan.onpath.earth/',browser,True)+'</div><p class="hero-value">'+value+'</p><p class="hero-note">'+note+'</p></div>'+visual+'</div></section>'
+    return '<section class="hero soft"><div class="wrap hero-grid"><div class="hero-copy"><p class="eyebrow">'+eye+'</p><h1>'+title+'</h1><p class="lead">'+lead+'</p><p class="hero-together">'+together+'</p><div class="actions">'+button(*app)+button('https://plan.onpath.earth/',browser,True)+'</div><p class="hero-value">'+value+'</p><p class="hero-note">'+note+'</p></div>'+visual+'</div></section>'
 
 body=home_hero('de')+first_steps('de')+more_section('de')+open_section('de')+home_cta('de')
 page('/','Deine Tour. Einfach unterwegs.','OnPath für Android: Wander- und Radtouren planen, unterwegs ändern und offline navigieren. Ohne Konto und Werbung.',body)
