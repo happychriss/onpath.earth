@@ -339,9 +339,8 @@ def first_steps(lang='de'):
     cards=[]
     for i,(key,title,text,alt) in enumerate(F['items']):
         src='/assets/help/'+shot_files(key)[0 if lang=='de' else 1]
-        expand='Ansicht vergrößern' if lang=='de' else 'Enlarge screen'
-        close='Ansicht verkleinern' if lang=='de' else 'Reduce screen'
-        preview='<details class="step-preview"><summary><img class="step-thumb" src="'+src+'" alt="'+html.escape(alt,quote=True)+'" width="540" height="1200" loading="lazy"><span class="step-expand">'+expand+'</span><span class="step-collapse">'+close+'</span></summary><figure><img src="'+src+'" alt="'+html.escape(alt,quote=True)+'" width="540" height="1200" loading="lazy"></figure></details>'
+        label=('Screenshot zu Schritt '+str(i+1)+' vergrößern') if lang=='de' else ('Enlarge screenshot for step '+str(i+1))
+        preview='<button type="button" class="step-preview" data-lightbox aria-haspopup="dialog" aria-label="'+label+'"><img class="step-thumb" src="'+src+'" alt="'+html.escape(alt,quote=True)+'" width="540" height="1200" loading="lazy"><span class="zoom-mark" aria-hidden="true">'+icon('search')+'</span></button>'
         cards.append('<article class="feature know"><div class="step-heading"><span class="step-number" aria-label="'+('Schritt ' if lang=='de' else 'Step ')+str(i+1)+'">'+str(i+1)+'</span><h3>'+title+'</h3></div><p>'+text+'</p>'+preview+home_help(lang,'steps',i)+'</article>')
     cards=''.join(cards)
     return '<section class="section steps-section" id="'+anchor+'"><div class="wrap"><div class="section-heading"><p class="eyebrow">'+F['eye']+'</p><h2>'+F['h']+'</h2><p>'+F['lead']+'</p></div><div class="feature-grid">'+cards+'</div><a class="text-link steps-help" href="'+F['more'][0]+'">'+F['more'][1]+' →</a></div></section>'

@@ -13,3 +13,28 @@ document.querySelectorAll('[data-shot]').forEach(b=>b.addEventListener('click',(
 }));
 
 document.querySelectorAll('[data-web]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-web]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));const i=document.querySelector('#web-img');i.src=b.dataset.web;i.alt=b.dataset.alt;document.querySelector('#web-text').textContent=b.dataset.text}))
+
+
+// A native modal keeps keyboard focus inside the enlarged screenshot.
+const screenshotTriggers=document.querySelectorAll('[data-lightbox]');
+if(screenshotTriggers.length){
+  const viewer=document.createElement('dialog');
+  viewer.className='screenshot-viewer';
+  viewer.setAttribute('aria-label',english?'Enlarged screenshot':'Vergrößerter Screenshot');
+  const close=document.createElement('button');
+  close.type='button';close.className='screenshot-close';close.textContent='×';
+  close.setAttribute('aria-label',english?'Close screenshot':'Screenshot schließen');
+  const full=document.createElement('button');
+  full.type='button';full.className='screenshot-full';
+  full.setAttribute('aria-label',english?'Close screenshot':'Screenshot schließen');
+  const img=document.createElement('img');full.append(img);viewer.append(close,full);document.body.append(viewer);
+  let trigger=null;
+  const dismiss=()=>viewer.close();
+  close.addEventListener('click',dismiss);full.addEventListener('click',dismiss);
+  viewer.addEventListener('click',e=>{if(e.target===viewer)dismiss()});
+  viewer.addEventListener('close',()=>trigger?.focus({preventScroll:true}));
+  screenshotTriggers.forEach(button=>button.addEventListener('click',()=>{
+    trigger=button;const source=button.querySelector('img');
+    img.src=source.src;img.alt=source.alt;viewer.showModal();close.focus();
+  }));
+}
