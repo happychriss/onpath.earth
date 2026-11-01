@@ -133,7 +133,7 @@ WAYS={'de': {'eye': 'Am Computer vorbereiten',
                   ('phone',
                    'Auf dem Handy weiter',
                    ['Den QR-Code mit der Handykamera scannen.',
-                    'Oder Browser und Handy koppeln (im Test): Gespeicherte Pläne werden abgeglichen.'])],
+                    'Oder Browser und Handy einmal koppeln: Gespeicherte Routen sind dann auf beiden Geräten.'])],
         'note': 'Ohne Konto und Installation.',
         'open': 'Im Browser planen'},
  'en': {'eye': 'Prepare on your computer',
@@ -145,7 +145,7 @@ WAYS={'de': {'eye': 'Am Computer vorbereiten',
                   ('phone',
                    'Continue on your phone',
                    ['Scan the QR code with your phone camera.',
-                    'Or pair browser and phone (in testing) to sync saved plans.'])],
+                    'Or pair browser and phone once: your saved routes are then on both.'])],
         'note': 'No account or installation needed.',
         'open': 'Plan in your browser'}}
 WEBSHOT={'de':dict(tabs=[('web-wandern','Planen','Der Planer im Browser: eine Wanderung von Vellau zur Leiteralm mit Zeit, Höhenprofil und Hinweisen','Große Karte, Höhenprofil und Hinweise wie „2 steile Abschnitte“ – wie in der App.'),('web-qr','Teilen','Der Dialog „Teilen“ mit QR-Code','QR-Code scannen und die Tour aufs Handy übernehmen.')],ctl='Planer-Bildschirm wählen'),
@@ -157,7 +157,7 @@ def web_shot(lang='de'):
 def ways_section(lang='de'):
     de=lang=='de'; W=WAYS[lang]; screens=WEBSHOT[lang]['tabs']
     title='Bequem am großen Bildschirm planen.' if de else 'Plan comfortably on a big screen.'
-    items=[('Deine Tour vorbereiten.','Setze und verschiebe Punkte mit der Maus oder öffne eine vorhandene GPX-Tour.'),('Auf dem Handy weiter.','Scanne den QR-Code mit deiner Handykamera. Oder kopple Browser und Handy: Der Abgleich gespeicherter Pläne ist noch im Test.')] if de else [('Prepare your route.','Set and move points with the mouse or open an existing GPX route.'),('Continue on your phone.','Scan the QR code with your phone camera. Or pair browser and phone: syncing saved plans is still in testing.')]
+    items=[('Deine Tour vorbereiten.','Setze und verschiebe Punkte mit der Maus oder öffne eine vorhandene GPX-Tour.'),('Auf dem Handy weiter.','Scanne den QR-Code mit deiner Handykamera. Oder kopple Browser und Handy einmal – dann sind deine gespeicherten Routen auf beiden Geräten.')] if de else [('Prepare your route.','Set and move points with the mouse or open an existing GPX route.'),('Continue on your phone.','Scan the QR code with your phone camera. Or pair browser and phone once – your saved routes are then on both.')]
     rows=[]
     for i,((heading,text),(key,_,alt,caption)) in enumerate(zip(items,screens)):
         src='/assets/app/'+key+'-de.webp'
@@ -727,7 +727,7 @@ article('/ausblick/','Heute & als Nächstes','OnPath wächst mit deinen Touren.'
 ('Heute: die Android-App','<p><span class="tag">Als Testversion verfügbar</span></p><p>Eigene Wege planen, sich führen lassen, unterwegs umplanen und Touren speichern. Geladene Gebiete funktionieren auch ohne Netz. Orte aus Google Maps und vorhandene Tourdateien lassen sich übernehmen. Die Oberfläche ist Deutsch oder Englisch.</p><p>Die Testversion ist kostenlos. Aktuell läuft Phase 1 mit persönlichen Einladungen und Freischaltung durch Christian. Danach folgen die geschlossene Testgruppe und der öffentliche Start. <a href="/ausprobieren/">Die drei Phasen und dein Zugang →</a></p>'),
 ('Neu: am Computer planen','<p><span class="tag">Im Browser verfügbar</span></p><p>Auf <a href="https://plan.onpath.earth/">plan.onpath.earth</a> planst du deine Tour auf einer großen Karte – kostenlos, ohne Konto und ohne Installation. Die Routen sind dieselben wie in der App. Danach hältst du die Handykamera auf den QR-Code, und der Plan ist auf dem Handy.</p>'),
 ('Neu: Sprachansagen','<p><span class="tag">In der App</span></p><p>Abbiegehinweise hören, ohne aufs Display zu schauen: OnPath sagt kurz und rechtzeitig an, wo es langgeht – nur dort, wo du dich vertun könntest. Die Stimme kommt vom Handy selbst und braucht kein Netz.</p>'),
-('Im Test: Browser und Handy verbinden','<p><span class="tag">Im Test</span></p><p>Einmal mit der Handykamera den Code auf dem Computerbildschirm erfassen: Danach kommen gespeicherte Pläne von selbst auf beide Geräte – verschlüsselt und ohne OnPath-Konto. Die Verbindung lässt sich jederzeit wieder trennen.</p>'),
+('Neu: Browser und Handy koppeln','<p><span class="tag">Verfügbar</span></p><p>Einmal mit der OnPath-App den Code auf dem Computerbildschirm scannen: Danach sind deine gespeicherten Routen auf beiden Geräten – verschlüsselt und ohne OnPath-Konto. Die Verbindung lässt sich jederzeit wieder trennen. <a href="/hilfe/route-planen/#koppeln">So koppelst du →</a></p>'),
 ('Der Kern bleibt frei','<p>Die wichtigsten Funktionen bleiben kostenlos nutzbar: Routen auf dem Handy planen, navigieren und mit geladenen Karten offline umplanen. OnPath ist Open Source. Der App-Code ist öffentlich, und deine Touren kannst du als Dateien sichern und in anderen Apps nutzen.</p>'),
 ('Spätere Beiträge: Kosten, Arbeit und Spende','<p>Karten bereitzustellen und die App weiterzuentwickeln kostet Geld und Zeit. Spätere kostenpflichtige Zusatzangebote sollen das Projekt tragen, etwa rund um das Speichern und Abgleichen von Plänen im Browser.</p><ul><li>Ein Teil soll die laufenden Kosten decken, zum Beispiel für Kartenbereitstellung und Betrieb.</li><li>Ein Teil soll meine Entwicklungsarbeit vergüten.</li><li>Ein Teil soll an eine Hilfsorganisation gespendet werden.</li></ul><p>OnPath ist nicht als gewinnorientiertes Geschäftsmodell gedacht. Es soll sich fair tragen und zugleich etwas weitergeben.</p>'),
 ('Die Aufteilung soll nachvollziehbar sein','<p>Vorgesehen ist eine offene Übersicht: Einnahmen, Gebühren, Betriebskosten, mein Anteil und die tatsächlich geleisteten Spenden. So soll sichtbar werden, wohin das Geld geht.</p><p>Preise, Anteile, Hilfsorganisation, genauer Leistungsumfang und Zahlungsweg stehen noch nicht fest. Es gibt hier noch kein bestellbares Bezahlangebot.</p>')])
