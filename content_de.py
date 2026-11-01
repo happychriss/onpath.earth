@@ -1,6 +1,7 @@
 import sys as _sys, os as _os
 _sys.path.insert(0,_os.path.dirname(_os.path.abspath(__file__)))
 from help_shots import shots_html
+from help_topics import help_anchor
 from pathlib import Path
 import html, json
 ROOT=Path(__file__).parent; D=ROOT/'dist'; A=D/'assets'; A.mkdir(parents=True,exist_ok=True)
@@ -39,17 +40,119 @@ def route_demo(lang='de'):
     D=DEMO[lang]
     buttons=''.join('<button data-demo="'+str(i)+'" data-text="'+D['t'][i]+'" aria-pressed="'+('true' if i==0 else 'false')+'">'+D['b'][i]+'</button>' for i in range(3))
     return '<div class="demo"><div class="demo-top"><span>'+D['top']+'</span><span class="tag">'+D['tag']+'</span></div><svg class="route-demo" viewBox="0 0 520 330" role="img" aria-label="'+D['aria']+'"><path class="terrain" d="M-40 220C90 80 100 330 280 100S500 40 570 160M-40 250C90 110 100 360 280 130S500 70 570 190M-40 280C90 140 100 390 280 160S500 100 570 220"/><path class="stream" d="M360-20C210 70 430 150 310 220S270 300 330 360"/><path class="way" d="M60 260 120 210 170 230 235 125 320 100 375 160 440 70M120 210 220 255 310 215 375 160"/><path id="old-route" d="M60 260 120 210 170 230 235 125 320 100 440 70"/><path id="demo-route" d="M60 260 120 210 170 230 235 125 320 100 440 70"/><circle class="start-point" cx="60" cy="260" r="9"/><circle class="end-point" cx="440" cy="70" r="9"/><g id="cafe-dot" opacity="0"><circle cx="310" cy="215" r="9"/><rect x="305" y="234" width="120" height="34" rx="5"/><text x="320" y="256">'+D['cafe']+'</text></g><text class="map-label" x="38" y="292">'+D['start']+'</text><text class="map-label" x="425" y="44">'+D['end']+'</text></svg><div class="demo-controls" aria-label="'+D['ctl']+'">'+buttons+'</div><p id="demo-text" aria-live="polite">'+D['t'][0]+'</p><span class="fine">'+D['fine']+'</span></div>'
-MORE={'de':dict(eye='Auf dem Rad und zu Fuß',h='Du bist unterwegs, OnPath denkt mit.',lead='OnPath sagt dir, wann du ankommst, wo du abbiegst und was vor dir liegt – ohne dass du lange suchen musst.',items=[('route','Wege passend zu deiner Aktivität.','Für jede Aktivität rechnet OnPath anders: mit dem Rad über Radwege und ruhige Nebenstraßen, mit dem Gravelbike gern auf Schotter, mit dem Mountainbike auf Trails, zu Fuß auf Wegen bis zu deiner Schwierigkeit. Hauptstraßen nur, wenn es nicht anders geht.'),('clock','Du weißt, wann du ankommst.','Nach etwa 15 Minuten richtet sich die Ankunftszeit nach deinem Tempo, getrennt für bergauf, flach und bergab.'),('pin','Hat die Hütte offen?','Ein Tipp auf den Ort öffnet ihn in Google Maps, mit Öffnungszeiten und Bildern. Zurück in OnPath nimmst du ihn als Stopp in die Route.'),('vibrate','Das Handy bleibt in der Tasche.','Wo du falsch abbiegen könntest, vibriert es: einmal für links, zweimal für rechts. Der Sperrbildschirm zeigt die nächste Abzweigung und die Ankunftszeit.'),('profile','Die Strecke vorher einschätzen.','Vor dem Start siehst du Steigungen, Untergrund und Hinweise wie „120 m Schieben · 2 steile Abschnitte“ oder „Fähre – Fahrzeiten prüfen“.'),('cable','Mit Seilbahn oder Bus? Die Tour stimmt trotzdem.','Fahrten werden erkannt und lassen sich am Ende einfach herausnehmen.')],links=[('/radfahren/','Mehr zum Radfahren'),('/wandern/','Mehr zum Wandern')]),'en':dict(eye='On the bike and on foot',h='You are out there. OnPath thinks ahead.',lead='OnPath tells you when you will arrive, where to turn and what lies ahead – without searching around in the app.',items=[('route','Paths that suit your activity.','OnPath routes differently for each activity: by bike on cycleways and quiet side roads, by gravel bike happily on gravel, by mountain bike on trails, on foot on paths up to your difficulty. Main roads only when there is no other way.'),('clock','You know when you will arrive.','After about 15 minutes the arrival time follows your own pace, uphill, flat and downhill separately.'),('pin','Is the hut open?','One tap opens the place in Google Maps, with opening hours and photos. Back in OnPath you add it to your route as a stop.'),('vibrate','Your phone stays in your pocket.','Where you could take the wrong way it vibrates: once for left, twice for right. The lock screen shows the next junction and your arrival time.'),('profile','Assess the route before setting off.','Before you start you see gradients, surfaces and notes like “120 m pushing · 2 steep sections” or “Ferry – check times”.'),('cable','Cable car or bus? Your tour still adds up.','Rides are recognised and can simply be left out at the end.')],links=[('/cycling/','More about cycling'),('/hiking/','More about hiking')])}
+MORE={'de': {'eye': 'Auf dem Rad und zu Fuß',
+        'h': 'Mehr Natur genießen. Weniger aufs Handy schauen.',
+        'lead': 'OnPath sagt dir, wann du ankommst, wo du abbiegst und was vor dir liegt – ohne dass du lange suchen '
+                'musst.',
+        'items': [('route',
+                   'Wege passend zu deiner Aktivität.',
+                   'Für jede Aktivität rechnet OnPath anders: mit dem Rad über Radwege und ruhige Nebenstraßen, mit '
+                   'dem Gravelbike gern auf Schotter, mit dem Mountainbike auf Trails, zu Fuß auf Wegen bis zu deiner '
+                   'Schwierigkeit. Hauptstraßen nur, wenn es nicht anders geht.'),
+                  ('clock',
+                   'Du weißt, wann du ankommst.',
+                   'Nach etwa 15 Minuten richtet sich die Ankunftszeit nach deinem Tempo, getrennt für bergauf, flach '
+                   'und bergab.'),
+                  ('pin',
+                   'Hat die Hütte offen?',
+                   'Ein Tipp auf den Ort öffnet ihn in Google Maps, mit Öffnungszeiten und Bildern. Zurück in OnPath '
+                   'nimmst du ihn als Stopp in die Route.'),
+                  ('vibrate',
+                   'Das Handy bleibt in der Tasche.',
+                   'Wo du falsch abbiegen könntest, vibriert es: einmal für links, zweimal für rechts. Der '
+                   'Sperrbildschirm zeigt die nächste Abzweigung und die Ankunftszeit.'),
+                  ('profile',
+                   'Die Strecke vorher einschätzen.',
+                   'Vor dem Start siehst du Steigungen, Untergrund und Hinweise wie „120 m Schieben · 2 steile '
+                   'Abschnitte“ oder „Fähre – Fahrzeiten prüfen“.'),
+                  ('cable',
+                   'Mit Seilbahn oder Bus? Die Tour stimmt trotzdem.',
+                   'Fahrten werden erkannt und lassen sich am Ende einfach herausnehmen.')],
+        'links': [('/radfahren/', 'Mehr zum Radfahren'), ('/wandern/', 'Mehr zum Wandern')]},
+ 'en': {'eye': 'On the bike and on foot',
+        'h': 'Enjoy more nature. Look at your phone less.',
+        'lead': 'OnPath tells you when you will arrive, where to turn and what lies ahead – without searching around '
+                'in the app.',
+        'items': [('route',
+                   'Paths that suit your activity.',
+                   'OnPath routes differently for each activity: by bike on cycleways and quiet side roads, by gravel '
+                   'bike happily on gravel, by mountain bike on trails, on foot on paths up to your difficulty. Main '
+                   'roads only when there is no other way.'),
+                  ('clock',
+                   'You know when you will arrive.',
+                   'After about 15 minutes the arrival time follows your own pace, uphill, flat and downhill '
+                   'separately.'),
+                  ('pin',
+                   'Is the hut open?',
+                   'One tap opens the place in Google Maps, with opening hours and photos. Back in OnPath you add it '
+                   'to your route as a stop.'),
+                  ('vibrate',
+                   'Your phone stays in your pocket.',
+                   'Where you could take the wrong way it vibrates: once for left, twice for right. The lock screen '
+                   'shows the next junction and your arrival time.'),
+                  ('profile',
+                   'Assess the route before setting off.',
+                   'Before you start you see gradients, surfaces and notes like “120 m pushing · 2 steep sections” or '
+                   '“Ferry – check times”.'),
+                  ('cable',
+                   'Cable car or bus? Your tour still adds up.',
+                   'Rides are recognised and can simply be left out at the end.')],
+        'links': [('/cycling/', 'More about cycling'), ('/hiking/', 'More about hiking')]}}
 SHOTS={'de':dict(top='So sieht OnPath aus',tag='App-Bildschirme',ctl='Bildschirm wählen',items=[('plan-wandern','Wandern','Planung einer Wanderung von Vellau zur Leiteralm mit Karte, Zeit und Höhenprofil','Wanderung T2 von Vellau zur Leiteralm: Zeit, Höhenmeter und ein Hinweis auf zwei steile Abschnitte – bevor du losgehst.'),('plan-ebike','E-Bike','Dieselbe Strecke mit dem E-Bike geplant, mit Hinweis auf Schiebestrecke','Dieselbe Strecke mit dem E-Bike: Du siehst vorher, wo es unbefestigt ist und wo du 120 m schieben musst.'),('ort-google-maps','Ort finden','Menü zum Gasthof Hochmuth mit „Als neues Ziel anhängen“ und „In Google Maps öffnen“','Gasthof Hochmuth gefunden: als Ziel oder Stopp übernehmen oder bei Google Maps nach den Öffnungszeiten schauen.')]),'en':dict(top='What OnPath looks like',tag='App screens',ctl='Choose a screen',items=[('plan-wandern','Hiking','A hike planned from Vellau to the Leiteralm with map, time and elevation profile','A T2 hike from Vellau to the Leiteralm: time, climbing and a note about two steep sections – before you set off.'),('plan-ebike','E-bike','The same route planned by e-bike, with a note about pushing','The same route by e-bike: you see in advance where it is unpaved and where you push for 120 m.'),('ort-google-maps','Find a place','Menu for the Gasthof Hochmuth with “Add as new destination” and “Open in Google Maps”','Found the Gasthof Hochmuth: add it as a destination or stop, or check the opening hours in Google Maps.')])}
 def app_shots(lang='de'):
     S=SHOTS[lang]; first=S['items'][0]
     src=lambda k:'/assets/app/'+k+'-'+lang+'.webp'
     buttons=''.join('<button data-shot="'+src(k)+'" data-alt="'+alt+'" data-text="'+txt+'" aria-pressed="'+('true' if i==0 else 'false')+'">'+label+'</button>' for i,(k,label,alt,txt) in enumerate(S['items']))
     return '<div class="demo shots"><div class="demo-top"><span>'+S['top']+'</span><span class="tag">'+S['tag']+'</span></div><div class="shots-phone"><img id="shot-img" src="'+src(first[0])+'" alt="'+first[2]+'" width="600" height="1333" loading="lazy"></div><div class="demo-controls" aria-label="'+S['ctl']+'">'+buttons+'</div><p id="shot-text" aria-live="polite">'+first[3]+'</p></div>'
-FEATURES={'de':dict(rows=[('route','Passende Wege für deine Tour.','OnPath bevorzugt ausgewiesene Rad- und Wanderwege und meidet beim Radfahren stark befahrene Straßen. Beim Wandern berücksichtigt es deine gewählte Schwierigkeit.','plan-ebike'),('profile','Die Strecke vorher einschätzen.','Steigungen, Untergrund und Schiebestellen siehst du vor dem Start.','plan-wandern'),('pin','Hat die Hütte offen?','Öffnungszeiten in Google Maps ansehen, dann als Stopp übernehmen.','ort-google-maps')],also='<b>Außerdem:</b> Vibration an entscheidenden Abzweigungen · Ankunftszeit, die dein Tempo lernt · Seilbahn und Bus werden erkannt.'),
-'en':dict(rows=[('route','Paths that suit your outing.','OnPath favours designated cycling and hiking routes and avoids busy roads when cycling. When hiking, it takes your chosen difficulty into account.','plan-ebike'),('profile','Assess the route before setting off.','You see gradients, surfaces and pushing sections before you start.','plan-wandern'),('pin','Is the hut open?','Check opening hours in Google Maps, then add it as a stop.','ort-google-maps')],also='<b>Also:</b> a vibration at decision points · an arrival time that learns your pace · cable cars and buses recognised.')}
-WAYS={'de':dict(eye='Am Computer vorbereiten',h='Groß planen.<br>Aufs Handy mitnehmen.',lead='Plane auf dem großen Bildschirm und übertrage die Tour per QR-Code in die OnPath-App.',cards=[('computer','Deine Tour vorbereiten',['Punkte mit der Maus setzen und verschieben.','Eine vorhandene Tourdatei (GPX) öffnen.']),('phone','Auf dem Handy weiter',['Den QR-Code mit der Handykamera scannen.','Oder die Geräte einmal koppeln: Gespeicherte Pläne werden dann abgeglichen.'])],note='Der Browserplaner braucht weder Konto noch Installation.',open='Am Computer planen'),
-'en':dict(eye='Prepare on your computer',h='Plan on a big screen.<br>Take it on your phone.',lead='Plan on the big screen, then transfer your route to the OnPath app by QR code.',cards=[('computer','Prepare your route',['Set and move points with the mouse.','Open an existing tour file (GPX).']),('phone','Continue on your phone',['Scan the QR code with your phone camera.','Or pair the devices once to sync saved plans.'])],note='The browser planner needs no account or installation.',open='Plan on your computer')}
+FEATURES={'de': {'rows': [('route',
+                  'Schöne Wege, passend zu deiner Tour.',
+                  'Wir haben die Routenplanung sorgfältig abgestimmt: OnPath bevorzugt ausgewiesene Rad- und '
+                  'Wanderwege, meidet beim Radfahren stark befahrene Straßen und berücksichtigt beim Wandern deine '
+                  'gewählte Schwierigkeit.',
+                  'plan-ebike'),
+                 ('pin',
+                  'Eine Einkehr, auf die du dich freust.',
+                  'Schau dir Fotos, Bewertungen und Öffnungszeiten in Google Maps an – direkt aus OnPath heraus. '
+                  'Gefällt dir die Hütte oder Gaststätte? Dann plane sie als Zwischenstopp ein.',
+                  'ort-google-maps')],
+        'also': '<b>Außerdem:</b> Vibration an entscheidenden Abzweigungen · Ankunftszeit, die dein Tempo lernt · '
+                'Seilbahn und Bus werden erkannt.'},
+ 'en': {'rows': [('route',
+                  'Beautiful paths for your outing.',
+                  'We have carefully tuned route planning: OnPath favours designated cycling and hiking routes, avoids '
+                  'busy roads when cycling and takes your chosen hiking difficulty into account.',
+                  'plan-ebike'),
+                 ('pin',
+                  'A stop to look forward to.',
+                  'See photos, reviews and opening hours in Google Maps – directly from OnPath. Like the hut or inn? '
+                  'Add it as a stop on your route.',
+                  'ort-google-maps')],
+        'also': '<b>Also:</b> a vibration at decision points · an arrival time that learns your pace · cable cars and '
+                'buses recognised.'}}
+WAYS={'de': {'eye': 'Am Computer vorbereiten',
+        'h': 'Bequem am großen Bildschirm planen. Unterwegs auf dem Handy dabei.',
+        'lead': 'Plane deine Tour am Computer und übertrage sie per QR-Code in die Android-App.',
+        'cards': [('computer',
+                   'Deine Tour vorbereiten',
+                   ['Punkte mit der Maus setzen und verschieben.', 'Eine vorhandene Tourdatei (GPX) öffnen.']),
+                  ('phone',
+                   'Auf dem Handy weiter',
+                   ['Den QR-Code mit der Handykamera scannen.',
+                    'Oder Browser und Handy koppeln (im Test): Gespeicherte Pläne werden abgeglichen.'])],
+        'note': 'Ohne Konto und Installation.',
+        'open': 'Im Browser planen'},
+ 'en': {'eye': 'Prepare on your computer',
+        'h': 'Plan comfortably on a big screen. Take it along on your phone.',
+        'lead': 'Plan your route on the computer and transfer it to the Android app by QR code.',
+        'cards': [('computer',
+                   'Prepare your route',
+                   ['Set and move points with the mouse.', 'Open an existing tour file (GPX).']),
+                  ('phone',
+                   'Continue on your phone',
+                   ['Scan the QR code with your phone camera.',
+                    'Or pair browser and phone (in testing) to sync saved plans.'])],
+        'note': 'No account or installation needed.',
+        'open': 'Plan in your browser'}}
 WEBSHOT={'de':dict(tabs=[('web-wandern','Planen','Der Planer im Browser: eine Wanderung von Vellau zur Leiteralm mit Zeit, Höhenprofil und Hinweisen','Große Karte, Höhenprofil und Hinweise wie „2 steile Abschnitte“ – wie in der App.'),('web-qr','Teilen','Der Dialog „Teilen“ mit QR-Code','Mit der OnPath-App den Code scannen – schon ist die Tour auf dem Handy.')],ctl='Planer-Bildschirm wählen'),
 'en':dict(tabs=[('web-wandern','Plan','The browser planner: a hike from Vellau to the Leiteralm with time, elevation profile and notes','A big map, elevation profile and notes like “2 steep sections” – as in the app.'),('web-qr','Share','The “Share” dialog with a QR code','Scan the code with the OnPath app – the tour is on your phone.')],ctl='Choose a planner screen')}
 def web_shot(lang='de'):
@@ -61,65 +164,210 @@ def ways_section(lang='de'):
     ways=''.join('<div class="way-lite">'+icon(ic)+'<div><h3>'+t+'</h3><ul>'+''.join('<li>'+x+'</li>' for x in li)+'</ul></div></div>' for ic,t,li in W['cards'])
     phone_alt='OnPath auf dem Handy: dieselbe Wanderung, bereit zum Losgehen' if lang=='de' else 'OnPath on the phone: the same hike, ready to go'
     duo='<figure class="duo"><div class="duo-browser"><div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>plan.onpath.earth</span></div><img src="/assets/app/web-wandern-de.webp" alt="'+T[0][2]+'" width="1440" height="900" loading="lazy"></div><img class="duo-phone" src="/assets/app/plan-wandern-'+lang+'.webp" alt="'+phone_alt+'" width="600" height="1333" loading="lazy"></figure>'
-    return '<section class="section" id="'+('planen' if lang=='de' else 'plan')+'"><div class="wrap split ways-split"><div><p class="eyebrow">'+W['eye']+'</p><h2>'+W['h']+'</h2><p class="ways-lead">'+W['lead']+'</p>'+ways+'<div class="ways-cta"><a class="button" href="https://plan.onpath.earth/">'+W['open']+icon('arrow')+'</a><span class="ways-note">'+W['note']+'</span></div></div>'+duo+'</div></section>'
-EXTRA={'de':[('clock','Du weißt, wann du ankommst.','Nach etwa 15 Minuten richtet sich die Ankunftszeit nach deinem Tempo – bergauf, flach und bergab getrennt.'),('vibrate','Weniger aufs Handy schauen.','An entscheidenden Abzweigungen vibriert das Handy: einmal für links, zweimal für rechts. Auf Wunsch hörst du kurze Sprachansagen, auch ohne Netz. Am Lenker zeigt die Ruheanzeige Richtung, Entfernung und Ankunft.'),('cable','Mit Seilbahn oder Bus? Die Tour stimmt trotzdem.','Fahrten werden erkannt. Am Ende nimmst du sie mit einem Tipp aus Strecke und Zeit heraus.')],
-'en':[('clock','You know when you will arrive.','After about 15 minutes the arrival time follows your pace – uphill, flat and downhill separately.'),('vibrate','Look at your phone less.','Your phone vibrates at decision points: once for left, twice for right. Optional short spoken directions also work offline. On the handlebar, the quiet view shows direction, distance and arrival.'),('cable','Cable car or bus? The tour still adds up.','Rides are recognised. At the end, one tap leaves them out of distance and time.')]}
-SMALL={'de':dict(eye='Im Alltag durchdacht',h='Kleine Details.<br>Große Ruhe unterwegs.',cols=[('Unterwegs',[('Nichts wird ohne Frage umgeplant.','Kommst du vom Weg ab, vibriert das Handy und fragt. Die alte Route bleibt grau sichtbar.'),('Speichern ohne viele Fragen.','Tour beenden sind zwei Tipps: „Tour beenden“, dann „Speichern“. Den Namen schlägt OnPath vor – nach den Orten, durch die du gekommen bist.'),('Jeder Punkt wird sofort gespeichert.','Die Aufzeichnung endet nur, wenn du sie beendest. Nach einem Neustart des Handys setzt du sie mit einem Tipp fort.')]),('Beim Planen',[('Ehrlich, wenn es nicht geht.','OnPath zeigt die Lücke, wenn sich dein Ziel mit der gewählten Aktivität nicht erreichen lässt.'),('Die Karte zeigt, was für dich geht.','Wege in Grün, Schwarz, Grau oder Rot – je nachdem, ob sie für deine Aktivität passen.'),('Wandern nach SAC-Skala.','T1 bis T5: Wege über deiner Stufe und Klettersteige lässt OnPath aus – soweit sie in der Karte eingetragen sind.'),('Adressen auch ohne Netz.','Straße mit Hausnummer, Dorf, Hütte oder Gipfel – gefunden direkt auf dem Handy.')])],link=('/hilfe/','Alles Schritt für Schritt in der Hilfe')),
-'en':dict(eye='Thoughtful in everyday use',h='Small details.<br>Peace of mind on the way.',cols=[('On the way',[('Nothing is re-routed without asking.','If you leave the route, the phone vibrates and asks. The old route stays visible in grey.'),('Saving without a lot of questions.','Ending a tour takes two taps: “End tour”, then “Save”. OnPath suggests the name from the places you passed.'),('Every point is saved at once.','A recording ends only when you end it. After a phone restart you continue it with one tap.')]),('When planning',[('Honest when it does not work.','OnPath shows the gap when your destination cannot be reached with the chosen activity.'),('The map shows what works for you.','Ways in green, black, grey or red – depending on whether they suit your activity.'),('Hiking by SAC scale.','T1 to T5: trails above your level and via ferratas are left out – as far as the map records them.'),('Addresses without signal.','Street and house number, village, hut or peak – found right on the phone.')])],link=('/help/','Everything step by step in the help'))}
-OPEN={
- 'de':dict(eye='Unabhängig und offen',h='Deine Touren gehören dir.',pts=[
-  ('Touren mitnehmen und sichern.','Deine Touren liegen auf deinem Handy und zusätzlich als GPX-Datei in einem Ordner deiner Wahl.'),
-  ('Der App-Code ist öffentlich.','OnPath ist Open Source: Jeder kann nachsehen, wie die App arbeitet.'),
-  ('Das Projekt fair tragen.','Spätere kostenpflichtige Zusatzangebote sollen Betrieb, Entwicklung und eine Spende ermöglichen.')],
-  founder='Ich habe Komoot viele Jahre gern genutzt. OnPath entwickle ich aus meinen Erfahrungen beim Wandern und Radfahren – mit Unterstützung von KI.',
-  role='Wanderer, Radfahrer und Entwickler',idea=('/idee/','Die Geschichte hinter OnPath'),funding=('/ausblick/','Mehr zur Finanzierung')),
- 'en':dict(eye='Independent and open',h='Your tours belong to you.',pts=[
-  ('Keep and take your tours with you.','Your tours live on your phone and also as GPX files in a folder you choose.'),
-  ('The app code is public.','OnPath is open source: anyone can see how the app works.'),
-  ('Support the project fairly.','Future paid extras are intended to support running costs, development and a donation.')],
-  founder='I used Komoot happily for many years. I am developing OnPath from my own experience on hikes and rides, with the help of AI.',
-  role='Hiker, cyclist and developer',idea=('/about/','The story behind OnPath'),funding=('/whats-next/','More on funding'))}
+    return '<section class="section" id="'+('planen' if lang=='de' else 'plan')+'"><div class="wrap split ways-split"><div><p class="eyebrow">'+W['eye']+'</p><h2>'+W['h']+'</h2><p class="ways-lead">'+W['lead']+'</p>'+ways+'<div class="ways-cta"><a class="button" href="https://plan.onpath.earth/">'+W['open']+icon('arrow')+'</a><span class="ways-note">'+W['note']+'</span></div>'+home_help(lang, 'browser', 0)+'</div>'+duo+'</div></section>'
+EXTRA={'de': [('clock',
+         'Wissen, wann du ankommst.',
+         'Ob noch Zeit für eine Pause ist? OnPath schätzt deine Ankunftszeit und passt sie unterwegs deinem Tempo an – '
+         'bergauf, auf ebener Strecke und bergab.'),
+        ('vibrate',
+         'Das Handy bleibt öfter in der Tasche.',
+         'OnPath sagt dir die Richtung und beschreibt den nächsten Weg. Mit Sprache, Vibrationen oder beidem – auch '
+         'offline.'),
+        ('cable',
+         'Deine Leistung zählt.',
+         'Ein Stück mit der Seilbahn oder dem Bus gefahren? OnPath erkennt solche Abschnitte. Du entscheidest, ob sie '
+         'in Strecke und Zeit mitzählen.')],
+ 'en': [('clock',
+         'Know when you will arrive.',
+         'Time for another break? OnPath estimates your arrival time and adapts it to your pace as you go – uphill, on '
+         'level ground and downhill.'),
+        ('vibrate',
+         'Keep your phone in your pocket more often.',
+         'OnPath tells you the direction and describes the next path. Use speech, vibrations or both – even offline.'),
+        ('cable',
+         'Your own effort counts.',
+         'Taken a cable car or bus for part of the way? OnPath recognises these sections. You decide whether they '
+         'count towards distance and time.')]}
+SMALL={'de': {'eye': 'Im Alltag durchdacht',
+        'h': 'Damit du deine Tour entspannt genießen kannst.',
+        'cols': [('Unterwegs',
+                  [('Tour beenden. Speichern. Fertig.',
+                    'Keine Nachfragen zu Fotos, Teilen oder Bewertungen. Speichere deine Tour und steck das Handy weg. '
+                    '<a href="/hilfe/navigation/#tour-beenden">Tour beenden und speichern →</a>')]),
+                 ('Beim Planen',
+                  [('Wanderwege, die zu dir passen.',
+                    'Wähle deine Schwierigkeit nach der SAC-Wanderskala des Schweizer Alpen-Clubs. OnPath '
+                    'berücksichtigt sie bei der Planung und zeigt anspruchsvollere Abschnitte an. <a '
+                    'href="/hilfe/route-planen/#schwierigkeit">Die Schwierigkeitsstufen →</a>'),
+                   ('Schneller eine schöne Tour planen.',
+                    'Eine kleine Runde in der Umgebung oder ein Stück auf einem Fernweg? OnPath hebt ausgeschilderte '
+                    'Rad- und Wanderrouten hervor und zeigt, welche Wege zu deiner Aktivität passen. So findest du '
+                    'leichter einen passenden Verlauf für deine Tour. <a href="/hilfe/route-planen/#kartenfarben">Wege '
+                    'und Routen auf der Karte →</a>'),
+                   ('Dein Ziel finden – auch ohne Netz.',
+                    'Kein Empfang und Google Maps nicht erreichbar? OnPath findet Adressen, Hütten und Gipfel in '
+                    'seiner eigenen Datenbank. Die lädt es automatisch mit den Karten herunter – und du kannst sie '
+                    'offline durchsuchen. <a href="/hilfe/orte/#offline-suche">So funktioniert die Suche →</a>')])],
+        'link': ('/hilfe/', 'Alles Schritt für Schritt in der Hilfe')},
+ 'en': {'eye': 'Thoughtful in everyday use',
+        'h': 'Enjoy your outing with peace of mind.',
+        'cols': [('On the way',
+                  [('End your outing. Save. Done.',
+                    'No questions about photos, sharing or ratings. Save your outing and put your phone away. <a '
+                    'href="/help/navigation/#finish">End and save an outing →</a>')]),
+                 ('When planning',
+                  [('Hiking paths that suit you.',
+                    'Choose your difficulty using the Swiss Alpine Club’s SAC hiking scale. OnPath takes it into '
+                    'account when planning and points out more demanding sections. <a '
+                    'href="/help/planning/#difficulty">The difficulty levels →</a>'),
+                   ('Plan a beautiful outing more quickly.',
+                    'A small local loop or a stretch of a long-distance trail? OnPath highlights signed cycling and '
+                    'hiking routes and shows which paths suit your activity. That makes it easier to find a course for '
+                    'your outing. <a href="/help/planning/#map-colours">Paths and routes on the map →</a>'),
+                   ('Find your destination – even without reception.',
+                    'No signal and no access to Google Maps? OnPath finds addresses, huts and peaks in its own '
+                    'database. It downloads this automatically with the maps, ready to search offline. <a '
+                    'href="/help/places/#offline-search">How search works →</a>')])],
+        'link': ('/help/', 'Everything step by step in the help')}}
+OPEN={'de': {'eye': 'Unabhängig und offen',
+        'h': 'Deine Touren gehören dir.',
+        'pts': [('',
+                 'OnPath sichert deine Touren zusätzlich als frei zugängliche GPX-Dateien. Du kannst sie weitergeben, '
+                 'in anderen Apps bearbeiten und unabhängig von OnPath nutzen. Alle abgeschlossenen Touren lassen sich '
+                 'auch zusammen als ZIP-Datei exportieren. <a href="/hilfe/gpx/#eigene-dateien">Tourdateien sichern '
+                 'und exportieren →</a>'),
+                ('Offen für die Zukunft.',
+                 'Mit OnPath bleibst du unabhängig: Der Quellcode ist öffentlich, deine Touren bleiben in deiner Hand. '
+                 'Beiträge unterstützen Betrieb, Weiterentwicklung und gemeinnützige Zwecke. Planen, navigieren und '
+                 'aufzeichnen bleiben kostenlos.')],
+        'founder': 'Ich bin selbst gern zu Fuß und mit dem Rad unterwegs. Mit OnPath entwickle ich die App, die ich '
+                   'dabei haben möchte: einfach, verlässlich und offen – mit Unterstützung von KI.',
+        'role': 'Wanderer, Radfahrer und Entwickler',
+        'idea': ('/idee/', 'Die Geschichte hinter OnPath'),
+        'funding': ('/ausblick/#abschnitt-5', 'Mehr zur Finanzierung'),
+        'founder_title': 'Aus Freude am Draußensein entwickelt.'},
+ 'en': {'eye': 'Independent and open',
+        'h': 'Your tours belong to you.',
+        'pts': [('',
+                 'OnPath also backs up your tours as accessible GPX files. Share them, edit them in other apps and use '
+                 'them independently of OnPath. Export all completed outings together as a ZIP file. <a '
+                 'href="/help/gpx/#your-files">Back up and export tour files →</a>'),
+                ('Open for the future.',
+                 'Stay independent with OnPath: the source code is public and your tours remain in your hands. '
+                 'Contributions support running costs, development and charitable causes. Planning, navigation and '
+                 'recording stay free.')],
+        'founder': 'I love being out on foot and by bike. With OnPath I am building the app I want to take along: '
+                   'simple, reliable and open – with the help of AI.',
+        'role': 'Hiker, cyclist and developer',
+        'idea': ('/about/', 'The story behind OnPath'),
+        'funding': ('/whats-next/#section-5', 'More on funding'),
+        'founder_title': 'Built from a love of the outdoors.'}}
 def open_section(lang='de'):
     O=OPEN[lang]
-    points=''.join('<p><b>'+title+'</b>'+text+'</p>' for title,text in O['pts'])
+    points=''.join('<p>'+('<b>'+title+'</b>' if title else '')+text+'</p>' for title,text in O['pts'])
     author='<div class="story-author"><img src="/assets/christian.webp" alt="" width="400" height="400"><span><b>Christian Neuhaus</b>'+O['role']+'</span></div>'
     links=''.join('<a class="text-link" href="'+url+'">'+label+' →</a>' for url,label in [O['idea'],O['funding']])
-    return '<section class="story-section"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+O['eye']+'</p><h2>'+O['h']+'</h2></div></div><div class="points trust-points">'+points+'</div><div class="founder-note">'+author+'<p>'+O['founder']+'</p></div><div class="trust-links">'+links+'</div></div></section>'
-FIRST_STEPS={
- 'de':dict(eye='So einfach geht’s',h='Planen, losgehen, umplanen.',lead='So beginnt deine erste Tour mit OnPath.',items=[
-  ('halten','Ziel wählen. Route ansehen.','Halte dein Ziel auf der Karte gedrückt und wähle „Hierhin“. OnPath plant den Weg von deinem Standort dorthin – passend zu deiner gewählten Aktivität.','OnPath beim Öffnen: die Karte, ein Punkt gedrückt gehalten'),
-  ('plan','Ein Tipp – und du bist unterwegs.','Zeit, Höhenmeter und steile Stellen siehst du sofort. Passt alles, startest du mit „Navigation starten“ deine Tour. Mehr Details? Zieh das Fenster einfach nach oben.','Die geplante Route mit Zeit, Höhenprofil und „Navigation starten“'),
-  ('navi','Unterwegs den Weg ändern.','Lust auf einen Abstecher? Schiebe „Stopp“ zur Seite. Dort kannst du pausieren, die Tour beenden oder den Weg ändern. Beim Umplanen läuft die Aufzeichnung weiter. Mit „Weiter“ kehrst du zur Navigation zurück.','Navigation mit dem Schieber „Stopp“ unten')],
-  prep='Für eine Tour ohne Empfang: Lade die Karten vorher, am besten zu Hause im WLAN. Ein neues Gebiet kann beim ersten Laden einige Minuten brauchen.',help=('/hilfe/offline/','Karten vorbereiten'),more=('/hilfe/erste-schritte/','Schritt für Schritt in der Hilfe')),
- 'en':dict(eye='It’s that simple',h='Plan, go, change your mind.',lead='This is how your first outing with OnPath begins.',items=[
-  ('halten','Choose a destination. See your route.','Press and hold your destination on the map and choose “Go here”. OnPath plans the way from your current location for your chosen activity.','OnPath when it opens: the map, a point held down (German screen)'),
-  ('plan','One tap and you are off.','Time, climbing and steep parts at a glance. All good? Tap “Start navigation” and go. Want more detail? Just pull the panel up.','The planned route with time, elevation profile and “Start navigation”'),
-  ('navi','Change your way as you go.','Fancy a detour? Slide “Stop” aside. There you can pause, end the outing or change the way ahead. Recording continues while you change the plan. Tap “Continue” to return to navigation.','Navigation with the “Stop” slider at the bottom (German screen)')],
-  prep='For an outing without reception, download your maps beforehand, ideally at home on Wi-Fi. A new area can take a few minutes to load the first time.',help=('/help/offline/','Prepare your maps'),more=('/help/getting-started/','Step by step in the help'))}
+    return '<section class="story-section"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+O['eye']+'</p><h2>'+O['h']+'</h2></div></div><div class="points trust-points">'+points+'</div><div class="founder-note">'+author+'<div><h3>'+O['founder_title']+'</h3><p>'+O['founder']+'</p></div></div><div class="trust-links">'+links+'</div></div></section>'
+FIRST_STEPS={'de': {'eye': 'So einfach geht’s',
+        'h': 'Schnell geplant. Draußen flexibel.',
+        'lead': 'So beginnt deine erste Tour mit OnPath.',
+        'items': [('halten',
+                   'Deine Route in wenigen Schritten.',
+                   'Drücke etwas länger auf dein Ziel – das verhindert versehentliches Auswählen. OnPath plant den Weg '
+                   'von deinem Standort dorthin, passend zum Wandern oder Radfahren.',
+                   'OnPath beim Öffnen: die Karte, ein Punkt gedrückt gehalten'),
+                  ('plan',
+                   'Vor dem Start wissen, ob die Tour zu dir passt.',
+                   'Du siehst, wie lange du unterwegs bist und wie viele Höhenmeter dich erwarten. Streckenhinweise '
+                   'machen dich auf Besonderheiten wie steile Abschnitte, Schiebestrecken oder Fähren aufmerksam. '
+                   'Passt alles, startest du die Navigation.',
+                   'Die geplante Route mit Zeit, Höhenprofil und „Navigation starten“'),
+                  ('navi',
+                   'Bleib spontan – auch ohne Empfang.',
+                   'OnPath lädt die nötigen Karten beim Planen automatisch herunter. Unterwegs kannst du deine Route '
+                   'einfach ändern und direkt weiterziehen – dein Handy berechnet den neuen Weg selbst.',
+                   'Navigation mit dem Schieber „Stopp“ unten')],
+        'prep': '',
+        'help': ('/hilfe/offline/', 'Karten vorbereiten'),
+        'more': ('/hilfe/erste-schritte/', 'Schritt für Schritt in der Hilfe')},
+ 'en': {'eye': 'It’s that simple',
+        'h': 'Quick to plan. Free to explore.',
+        'lead': 'This is how your first outing with OnPath begins.',
+        'items': [('halten',
+                   'Your route in a few simple steps.',
+                   'Press a little longer on your destination to avoid selecting it by accident. OnPath plans the way '
+                   'from your location, suited to hiking or cycling.',
+                   'OnPath when it opens: the map, a point held down (German screen)'),
+                  ('plan',
+                   'Know whether the route suits you before you start.',
+                   'See how long you will be out and how much climbing to expect. Route hints point out features such '
+                   'as steep sections, pushing sections or ferries. Happy with the plan? Start navigation.',
+                   'The planned route with time, elevation profile and “Start navigation”'),
+                  ('navi',
+                   'Stay spontaneous – even without reception.',
+                   'OnPath automatically downloads the maps you need while you plan. Change your route along the way '
+                   'and carry on – your phone calculates the new way itself.',
+                   'Navigation with the “Stop” slider at the bottom (German screen)')],
+        'prep': '',
+        'help': ('/help/offline/', 'Prepare your maps'),
+        'more': ('/help/getting-started/', 'Step by step in the help')}}
+HOME_HELP = {
+ 'de': {
+  'steps': [('/hilfe/route-planen/#punkte', 'Ziel und Zwischenstopps setzen'), ('/hilfe/route-planen/#streckenhinweise', 'Die Streckenhinweise erklärt'), ('/hilfe/unterwegs-aendern/#aendern', 'Unterwegs ändern und weitergehen')],
+  'features': [('/hilfe/route-planen/#aktivitaet', 'Die passende Aktivität wählen'), ('/hilfe/orte/#einkehr', 'Einen Ort ansehen und einplanen')],
+  'extras': [('/hilfe/navigation/#ankunft', 'So entsteht die Ankunftszeit'), ('/hilfe/navigation/#abbiegen', 'Sprache und Vibration einstellen'), ('/hilfe/navigation/#fahrten', 'Erkannte Fahrten prüfen')],
+  'browser': [('/hilfe/route-planen/#browser', 'Tour vom Computer aufs Handy übertragen')]
+ },
+ 'en': {
+  'steps': [('/help/planning/#points', 'Set a destination and stops'), ('/help/planning/#route-hints', 'Route hints explained'), ('/help/change-route/#edit', 'Change your route and carry on')],
+  'features': [('/help/planning/#activity', 'Choose your activity'), ('/help/places/#stop', 'Check a place and add a stop')],
+  'extras': [('/help/navigation/#arrival', 'How arrival time is estimated'), ('/help/navigation/#turns', 'Set up speech and vibration'), ('/help/navigation/#rides', 'Review recognised rides')],
+  'browser': [('/help/planning/#browser', 'Transfer a route to your phone')]
+ }
+}
+def home_help(lang, group, index):
+    url, label = HOME_HELP[lang][group][index]
+    return '<a class="context-help" href="'+url+'">'+label+' →</a>'
+
 def first_steps(lang='de'):
     F=FIRST_STEPS[lang]; anchor='entdecken' if lang=='de' else 'discover'
     pic=lambda k:'/assets/help/'+k+('-en' if lang=='en' and k=='plan' else '-de')+'.webp'
-    cards=''.join('<article class="feature know"><img class="know-shot" src="'+pic(k)+'" alt="'+alt+'" width="540" height="1200" loading="lazy" decoding="async"><div class="feature-top"><span>0'+str(i+1)+'</span></div><h3>'+title+'</h3><p>'+text+'</p></article>' for i,(k,title,text,alt) in enumerate(F['items']))
-    return '<section class="section" id="'+anchor+'"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+F['eye']+'</p><h2>'+F['h']+'</h2></div><div><p>'+F['lead']+'</p><a class="button outline small know-help" href="'+F['more'][0]+'">'+F['more'][1]+' →</a></div></div><div class="feature-grid">'+cards+'</div><p class="section-footnote">'+F['prep']+' <a href="'+F['help'][0]+'">'+F['help'][1]+' →</a></p></div></section>'
+    cards=''.join('<article class="feature know"><img class="know-shot" src="'+pic(k)+'" alt="'+alt+'" width="540" height="1200" loading="lazy" decoding="async"><div class="feature-top"><span>0'+str(i+1)+'</span></div><h3>'+title+'</h3><p>'+text+'</p>'+home_help(lang, 'steps', i)+'</article>' for i,(k,title,text,alt) in enumerate(F['items']))
+    return '<section class="section" id="'+anchor+'"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+F['eye']+'</p><h2>'+F['h']+'</h2></div><div><p>'+F['lead']+'</p><a class="button outline small know-help" href="'+F['more'][0]+'">'+F['more'][1]+' →</a></div></div><div class="feature-grid">'+cards+'</div></div></section>'
 def home_cta(lang='de'):
     if lang=='de':
-        eye='Gemeinsam besser machen';title='Teste OnPath auf einer kleinen Runde.'
-        text='OnPath ist im persönlichen Test. Schreib mir, wenn du bei einer Wanderung oder Radtour mittesten möchtest.'
-        action=('/ausprobieren/','Einladung anfragen');help=('/hilfe/','Hilfe für die erste Tour')
-        fine='Android ab Version 8 · Noch keine iPhone-Version'
+        eye='Gemeinsam besser machen';title='Mach OnPath mit deiner Erfahrung besser.'
+        text='Teste die Android-App auf einer kleinen Wanderung oder Radtour und erzähl mir, was gut klappt und was noch fehlt.'
+        action=('/ausprobieren/','Einladung zum Test anfragen');help=('/hilfe/','Hilfe für die erste Tour')
+        fine='Frühe Testversion · Android ab Version 8'
     else:
-        eye='Help make it useful';title='Try OnPath on a short walk or ride.'
-        text='OnPath is in personal testing. Write to me if you would like to try it on a walk or ride.'
-        action=('/try/','Ask for an invitation');help=('/help/','Help for your first outing')
-        fine='Android 8 or newer · No iPhone app yet'
+        eye='Help make it useful';title='Make OnPath better with your experience.'
+        text='Test the Android app on a short walk or ride and tell me what works well and what is still missing.'
+        action=('/try/','Ask for a test invitation');help=('/help/','Help for your first outing')
+        fine='Early test version · Android 8 or newer'
     return '<section class="section soft"><div class="wrap cta"><p class="eyebrow">'+eye+'</p><h2>'+title+'</h2><p>'+text+'</p><div class="actions">'+button(action[0],action[1])+'</div><span class="fine">'+fine+'</span><a class="text-link" href="'+help[0]+'">'+help[1]+' →</a></div></section>'
-DETAIL_HIGHLIGHTS={
- 'de':dict(summary='Mehr durchdachte Details',items=[
-  ('file','Nach einem Neustart weiter.','Deine Aufzeichnung bleibt erhalten. Nach einem Neustart des Handys setzt du sie mit einem Tipp fort.'),
-  ('pin','Dein Google-Maps-Ziel übernehmen.','In Google Maps „Teilen“ wählen, dann OnPath. Den Ort als Ziel oder Zwischenstopp übernehmen – OnPath plant den Weg für deine Aktivität.')]),
- 'en':dict(summary='More thoughtful details',items=[
-  ('file','Carry on after a restart.','Your recording is kept. After restarting your phone, continue it with one tap.'),
-  ('pin','Bring your Google Maps destination.','In Google Maps, choose “Share”, then OnPath. Add the place as a destination or stop – OnPath plans the way for your activity.')])}
+DETAIL_HIGHLIGHTS={'de': {'summary': 'Mehr durchdachte Details',
+        'items': [('file',
+                   'Deine Tour bleibt erhalten.',
+                   'OnPath sichert deine Aufzeichnung automatisch. Wird die App unterbrochen oder geht dein Handy aus, '
+                   'kannst du deine Tour danach einfach fortsetzen. <a href="/hilfe/probleme/#tour-fortsetzen">Eine '
+                   'unterbrochene Tour fortsetzen →</a>'),
+                  ('pin',
+                   'Dein Ziel gefunden? OnPath bringt dich hin.',
+                   'Ein Ort aus Google Maps oder ein Treffpunkt, den dir Freunde schicken: Teile ihn mit OnPath und '
+                   'lass dich auf passenden Wegen dorthin führen. <a href="/hilfe/orte/#geteilte-treffpunkte">Einen '
+                   'geteilten Ort übernehmen →</a>')]},
+ 'en': {'summary': 'More thoughtful details',
+        'items': [('file',
+                   'Your outing is kept.',
+                   'OnPath saves your recording automatically. If the app is interrupted or your phone turns off, you '
+                   'can simply continue your outing afterwards. <a href="/help/troubleshooting/#resume">Continue an '
+                   'interrupted outing →</a>'),
+                  ('pin',
+                   'Found your destination? OnPath takes you there.',
+                   'A place from Google Maps or a meeting point sent by friends: share it with OnPath and follow '
+                   'suitable paths to get there. <a href="/help/places/#shared-meeting-points">Use a shared place '
+                   '→</a>')]}}
 def small_section(lang='de'):
     S=SMALL[lang]; H=DETAIL_HIGHLIGHTS[lang]
     highlights=''.join('<article>'+icon(ic)+'<h3>'+title+'</h3><p>'+text+'</p></article>' for ic,title,text in H['items'])
@@ -132,64 +380,285 @@ EXTRA_SHOT={'de':{'ankunft':('Navigation beim Wandern: 110 m Links, 1:40 h und 3
 def more_section(lang='de'):
     M=MORE[lang]; F=FEATURES[lang]; S={k:(alt,txt) for k,_,alt,txt in SHOTS[lang]['items']}
     src=lambda k:'/assets/app/'+k+'-'+lang+'.webp'
-    rows=''.join('<button class="feature-row" data-shot="'+src(k)+'" data-alt="'+S[k][0]+'" data-text="'+S[k][1]+'" aria-pressed="'+('true' if i==0 else 'false')+'">'+icon(ic)+'<span><b>'+t+'</b>'+x+'</span></button>' for i,(ic,t,x,k) in enumerate(F['rows']))
+    rows=''.join('<div class="feature-entry"><button class="feature-row" data-shot="'+src(k)+'" data-alt="'+S[k][0]+'" data-text="'+S[k][1]+'" aria-pressed="'+('true' if i==0 else 'false')+'">'+icon(ic)+'<span><b>'+t+'</b>'+x+'</span></button>'+home_help(lang, 'features', i)+'</div>' for i,(ic,t,x,k) in enumerate(F['rows']))
     first=F['rows'][0][3]
     phone='<div class="demo shots"><div class="demo-top"><span>'+SHOTS[lang]['top']+'</span><span class="tag">'+SHOTS[lang]['tag']+'</span></div><div class="shots-phone"><img id="shot-img" src="'+src(first)+'" alt="'+S[first][0]+'" width="600" height="1333" loading="lazy"></div><p id="shot-text" aria-live="polite">'+S[first][1]+'</p></div>'
     links=''.join('<a class="text-link" href="'+u+'">'+l+' →</a>' for u,l in M['links'])
-    return '<section class="section soft" id="'+('so-gehts' if lang=='de' else 'how')+'"><div class="wrap split"><div><p class="eyebrow">'+M['eye']+'</p><h2>'+M['h']+'</h2><div class="feature-rows">'+rows+'</div><div class="mini-rows">'+''.join('<button class="mini-row" data-shot="'+src(k)+'" data-alt="'+EXTRA_SHOT[lang][k][0]+'" data-text="'+EXTRA_SHOT[lang][k][1]+'" aria-pressed="false">'+icon(ic)+'<span><b>'+t+'</b>'+x+'</span></button>' for (ic,t,x),k in zip(EXTRA[lang],['ankunft','ruheanzeige','fahrt']))+'</div><div class="more-links">'+links+'</div></div>'+phone+'</div></section>'
+    return '<section class="section soft" id="'+('so-gehts' if lang=='de' else 'how')+'"><div class="wrap split"><div><p class="eyebrow">'+M['eye']+'</p><h2>'+M['h']+'</h2><div class="feature-rows">'+rows+'</div><div class="mini-rows">'+''.join('<div class="feature-entry"><button class="mini-row" data-shot="'+src(k)+'" data-alt="'+EXTRA_SHOT[lang][k][0]+'" data-text="'+EXTRA_SHOT[lang][k][1]+'" aria-pressed="false">'+icon(ic)+'<span><b>'+t+'</b>'+x+'</span></button>'+home_help(lang, 'extras', i)+'</div>' for i,((ic,t,x),k) in enumerate(zip(EXTRA[lang],['ankunft','ruheanzeige','fahrt'])))+'</div><div class="more-links">'+links+'</div></div>'+phone+'</div></section>'
 
-body='''<section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span> Für Wandern und Radfahren</p><h1>Deine Tour.<br><span>Einfach geplant.</span></h1><p class="lead">Dein Ziel auf der Karte wählen – deine Route steht. Am Computer oder auf dem Handy. Unterwegs änderst du deinen Weg – auch ohne Empfang.</p><div class="actions">'''+button('https://plan.onpath.earth/','Im Browser planen')+'''<a class="plain-link" href="/ausprobieren/">Android-App testen →</a></div><p class="hero-value">Planen, navigieren und aufzeichnen bleiben kostenlos.</p><p class="hero-note">Ohne Konto · Ohne Werbung · Ohne Profil und Ranglisten<br>Für Android · Frühe Testversion mit persönlicher Einladung</p></div><figure class="hero-photo"><img src="/assets/vellau-path.webp" alt="Ein breiter Schotterweg mit Holzzaun unter gelbem Herbstlaub bei Vellau" width="1400" height="1054" fetchpriority="high"><img class="hero-phone" src="/assets/app/plan-wandern-de.webp" alt="OnPath auf dem Handy: eine geplante Wanderung mit Karte und Höhenprofil" width="600" height="1333"><figcaption><span>Der nächste Weg wartet schon.</span><span class="photo-location">Vellau bei Algund, Südtirol</span></figcaption></figure></div></section>'''+first_steps('de')+more_section('de')+ways_section('de')+small_section('de')+open_section('de')+home_cta('de')
+def home_hero(lang='de'):
+    if lang == 'de':
+        eye='Für Wandern und Radfahren'; title='Deine Tour.<br><span>Einfach geplant.</span>'
+        lead='Schnell eine passende Route finden und unterwegs spontan bleiben – auch ohne Empfang. Plane auf deinem Android-Handy oder vorab am Computer.'
+        together='Am Computer bequem planen. Mit der Android-App unterwegs sein.'
+        app=('/ausprobieren/','Android-App testen'); browser='Im Browser planen'
+        value='Planen, navigieren und aufzeichnen bleiben kostenlos.'
+        note='Ohne Konto · Ohne Werbung<br>Android · Frühe Testversion mit persönlicher Einladung'
+        photo='Ein Weg unter gelbem Herbstlaub bei Vellau'; web='OnPath im Browser: eine Wanderung von Vellau zur Leiteralm'
+        phone='Dieselbe Wanderung in der Android-App'; caption='Am Computer planen. Auf dem Handy dabei.'
+    else:
+        eye='For hiking and cycling'; title='Your route.<br><span>Simply planned.</span>'
+        lead='Quickly find a suitable route and stay spontaneous along the way – even without reception. Plan on your Android phone or on your computer beforehand.'
+        together='Plan comfortably on your computer. Head out with the Android app.'
+        app=('/try/','Test the Android app'); browser='Plan in your browser'
+        value='Planning, navigation and recording stay free.'
+        note='No account · No ads<br>Android · Early test version by personal invitation'
+        photo='A path under yellow autumn leaves near Vellau'; web='OnPath in the browser: a hike from Vellau to the Leiteralm (German screen)'
+        phone='The same hike in the Android app'; caption='Plan on your computer. Take it along on your phone.'
+    visual='<figure class="hero-photo hero-devices"><img src="/assets/vellau-path.webp" alt="'+photo+'" width="1400" height="1054" fetchpriority="high"><div class="hero-browser"><div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>plan.onpath.earth</span></div><img src="/assets/app/web-wandern-de.webp" alt="'+web+'" width="1440" height="900"></div><img class="hero-phone" src="/assets/app/plan-wandern-'+lang+'.webp" alt="'+phone+'" width="600" height="1333"><figcaption>'+caption+'</figcaption></figure>'
+    return '<section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><p class="eyebrow">'+eye+'</p><h1>'+title+'</h1><p class="lead">'+lead+'</p><p class="hero-together">'+together+'</p><div class="actions">'+button(*app)+button('https://plan.onpath.earth/',browser,True)+'</div><p class="hero-value">'+value+'</p><p class="hero-note">'+note+'</p></div>'+visual+'</div></section>'
+
+body=home_hero('de')+first_steps('de')+more_section('de')+ways_section('de')+small_section('de')+open_section('de')+home_cta('de')
 page('/','Deine Tour. Einfach geplant.','OnPath für Android: Wander- und Radtouren planen, unterwegs ändern und offline navigieren. Ohne Konto und Werbung.',body)
 
-HELP=[
-('erste-schritte','Deine erste Tour','Installieren, Gebiet laden und eine kleine Runde planen.','Start Installation Android Berechtigung Standort',[
-('OnPath installieren','<p>OnPath läuft auf Android ab Version 8. Eine iPhone-Version gibt es derzeit nicht.</p><p>Aktuell läuft Phase 1: Du brauchst eine persönliche Einladung und Freischaltung durch Christian. Deinen individuellen Link und die Installationshinweise bekommst du direkt von ihm. Die geschlossene Testgruppe über Google Play ist der nächste Schritt. Wie das geht, steht unter <a href="/ausprobieren/">OnPath ausprobieren</a>.</p><p>Für technisch Erfahrene gibt es frühe Fassungen auch als APK-Datei auf <a href="'+GITHUB+'/releases">GitHub</a>. Sie sind anders signiert als die Play-Fassung; sichere deine Touren, bevor du zwischen beiden wechselst.</p>'),
-('Zu Hause vorbereiten','<ol><li>Öffne OnPath mit Internetverbindung, möglichst im WLAN.</li><li>Erlaube den Standortzugriff, wenn du deine Position sehen und eine Tour aufzeichnen möchtest.</li><li>Suche dein Ziel oder bewege die Karte in dein Tourengebiet. Warte, bis die Karten und die Daten zur Routenberechnung vollständig geladen sind.</li><li>Wähle deine Aktivität. Beim Wandern legst du außerdem die gewünschte Schwierigkeit fest.</li></ol>'),
-('Die erste Runde planen','<p>Für eine Route von deinem Standort aus: Halte dein Ziel auf der Karte gedrückt und wähle „Hierhin“. OnPath verbindet deinen Standort mit dem Ziel über passende Wege. Prüfe Länge, Höhenmeter und Hinweise zur Strecke.</p><p>Möchtest du woanders starten, halte zuerst den gewünschten Startpunkt gedrückt und wähle „Hier starten“. Setze danach das Ziel und bei Bedarf Zwischenstopps.</p><p>Beginne am besten mit einer kurzen Strecke, die du kennst. So lernst du die Bedienung ohne Zeitdruck kennen.</p>'),
-('Navigation starten','<p>Tippe auf „Navigation starten“. Der Plan bleibt geschützt: Ein kurzer Tipp auf die Karte verändert die Route nicht. Möchtest du unterwegs etwas ändern, wechselst du bewusst in die Planung.</p>')]),
-('offline','Ohne Netz unterwegs','Karten vorbereiten und auch im Funkloch umplanen.','Karten Internet WLAN Funkloch Download Flugmodus',[
-('Was offline funktioniert','<p>In vollständig geladenen Gebieten kannst du Orte suchen, eine Route planen, navigieren und unterwegs neu berechnen. Die Berechnung findet auf deinem Handy statt.</p>'),
-('Vor der Tour laden','<ol><li>Plane die Strecke mit Internetverbindung.</li><li>Lass OnPath die Karten entlang deiner Route laden. Berücksichtige auch Gebiete für mögliche Abstecher und den Rückweg.</li><li>Prüfe den Download-Stand in den Einstellungen bei den Offline-Karten.</li><li>Teste die vorbereitete Strecke vor dem Aufbruch kurz im Flugmodus. Die Karte und die geplante Route müssen sichtbar sein; probiere auch eine kleine Änderung.</li></ol>'),
-('Wenn ein Gebiet fehlt','<p>Ein neues Gebiet benötigt Internet. Beim ersten Abruf kann die Bereitstellung einige Minuten dauern. Starte die Vorbereitung deshalb zu Hause. Sind nur Teile geladen, ist noch nicht alles offline verfügbar.</p>'),
-('Was Internet braucht','<p>Neue Karten, App-Updates und zusätzliche Online-Suchergebnisse benötigen eine Verbindung. Wenn du einen Ort in Google Maps öffnest, gelten außerdem dessen Offline-Möglichkeiten und Datenverbindungen.</p>')]),
-('route-planen','Eine eigene Route planen','Punkte setzen, Schwierigkeit wählen und die Strecke prüfen.','Punkte Route Wandern Rad T1 T2 T3 Höhenprofil Planung',[
-('Aktivität auswählen','<p>Wähle Fahrrad, Gravelbike, E-Bike, MTB, E-MTB oder Wandern. Beim Wandern kannst du die Schwierigkeit von T1 (einfache Wanderwege) bis T5 (anspruchsvolle alpine Wege) einstellen. OnPath berücksichtigt die in den Kartendaten eingetragene Schwierigkeit.</p>'),
-('Punkte setzen und ändern','<p>Halte den Finger auf eine freie Stelle in der Karte, um einen Punkt zu setzen. Halte einen bestehenden Punkt gedrückt, um seine Möglichkeiten zu öffnen. Möchtest du einen Punkt auf der Karte versetzen, löschst du ihn und setzt ihn neu.</p><p>In der aufgeklappten Punkteliste kannst du die Reihenfolge am Griff verändern und Punkte entfernen. Änderungen lassen sich rückgängig machen. Außerdem kannst du die Route umkehren oder zu einer Rundtour ergänzen.</p>'),
-('Die Strecke ansehen','<p>Das Höhenprofil zeigt, wo es auf- und abwärts geht. In den Routendetails findest du Wegarten und Untergrund. Hinweise können etwa auf Treppen, Schiebestellen oder eine Fähre aufmerksam machen.</p><p>Kann ein Ziel mit deiner Aktivität nicht erreicht werden, zeigt OnPath den fehlenden Abschnitt. Eine gestrichelte Verbindung ist kein bestätigter begehbarer Weg.</p>'),
-('Schwierigkeit ist keine Garantie','<p>Die Planung beruht auf OpenStreetMap. Angaben können fehlen oder veraltet sein. Prüfe bei Bergtouren zusätzlich Wetter, Wegzustand und deine Erfahrung. Sperrungen und Hinweise vor Ort gehen immer vor.</p>')]),
-('unterwegs-aendern','Unterwegs die Route ändern','Einen Abstecher einbauen und die Aufzeichnung fortsetzen.','Navigation Abstecher umplanen Slider neu berechnen Vibration',[
-('Bewusst zur Planung wechseln','<p>Schiebe unten „Stopp“ zur Seite. Damit öffnest du die Auswahl zum Pausieren, Beenden oder Ändern der Route. Der Wisch allein beendet die Aufzeichnung nicht. Beim Umplanen läuft sie weiter.</p>'),
-('Den weiteren Weg anpassen','<p>Entferne einen nicht mehr benötigten Stopp oder ergänze ein neues Ziel. Kontrolliere anschließend die Strecke. Solange die benötigten Daten auf dem Handy liegen, klappt die Neuberechnung auch ohne Internet.</p>'),
-('Weitergehen oder weiterfahren','<p>Tippe auf „Weiter“, dann bist du wieder in der Navigation. OnPath führt dich von deinem Standort aus weiter und überspringt bereits besuchte Zwischenpunkte. Deine Aufzeichnung läuft weiter.</p>'),
-('Du bist von der Route abgewichen','<p>OnPath meldet sich per Vibration und fragt nach, ob du eine neue Route möchtest. Es ändert den Weg nicht stillschweigend. Nach der Neuberechnung bleibt die ursprüngliche Route grau sichtbar.</p>')]),
-('orte','Orte suchen & Google Maps nutzen','Ein Café finden, einen Ort teilen oder Öffnungszeiten nachsehen.','Google Suche Adresse Hütte Gipfel teilen Öffnungszeiten Photon',[
-('In OnPath suchen','<p>Tippe in die Suche und gib einen Ort oder eine Adresse ein. Die geladenen Karten enthalten unter anderem Straßen, Hausnummern, Hütten, Gipfel und Bahnhöfe. Mit Internet ergänzt OnPath die Liste um Online-Ergebnisse.</p>'),
-('Einen Ort aus Google Maps übernehmen','<ol><li>Öffne den gewünschten Ort in Google Maps.</li><li>Tippe auf „Teilen“ und wähle OnPath.</li><li>Prüfe den markierten Ort auf der Karte.</li><li>Übernimm ihn als Start, Zwischenstopp oder Ziel.</li></ol><p>Übernommen werden der Ort und sein Name – keine vollständige Google-Route, Bewertungen oder Fotos. Bei einem verkürzten Link kann eine Internetverbindung zum Auflösen nötig sein.</p>'),
-('Öffnungszeiten oder Bilder ansehen','<p>Öffne in OnPath den gewünschten Ort und seine Details. Von dort kannst du zu Google Maps wechseln, um Öffnungszeiten, Bilder oder Bewertungen anzusehen. Kehre danach zu OnPath zurück und ergänze den Ort als Zwischenstopp oder Ziel. Den Weg dorthin berechnet OnPath für deine gewählte Aktivität.</p>'),
-('Welche Daten dabei übertragen werden','<p>Für Online-Suchergebnisse wird eine ungefähre Position von etwa einem Kilometer Genauigkeit übermittelt. Bei Google Maps gelten die Bedingungen und Datenschutzhinweise von Google. <a href="/datenschutz/">Mehr zum Datenschutz</a>.</p>')]),
-('gpx','Touren als Datei öffnen und sichern','Vorhandene Touren mitnehmen und deine eigenen behalten.','GPX Import Export Verein speichern Sicherung Backup Datei',[
-('Was ist eine GPX-Datei?','<p>Eine GPX-Datei enthält den Verlauf einer Strecke. Viele Tourismusregionen, Wanderseiten und Radvereine stellen Touren in diesem Format bereit. So kannst du eine Tour mit verschiedenen Apps nutzen.</p>'),
-('Eine Strecke öffnen','<p>Lade die GPX-Datei auf dein Handy. Öffne sie mit OnPath, zum Beispiel über die Dateiverwaltung von Android. Prüfe, ob Strecke und Aktivität passen. Lade vor dem Start die benötigten Karten vollständig.</p>'),
-('Was du damit machen kannst','<p>Du kannst importierten GPX-Strecken folgen. Sie lassen sich derzeit noch nicht in einen frei bearbeitbaren OnPath-Plan umwandeln. Wenn du selbst flexibel planen möchtest, lege die Route mit eigenen Punkten an.</p>'),
-('Eigene Touren sichern','<p>Wähle einen Ordner für deine GPX-Dateien. OnPath legt dort zusätzlich eine Kopie jeder gespeicherten Route und abgeschlossenen Tour ab. Für eine vollständige Sicherung gibt es außerdem einen ZIP-Export.</p><p>Speichern auf dem Handy ist keine Sicherung gegen Verlust des Handys. Kopiere wichtige Dateien regelmäßig auf ein weiteres Gerät oder an einen von dir gewählten Speicherort.</p>')]),
-('probleme','Wenn etwas nicht klappt','Fehlende Karten, Standortprobleme und Rückmeldungen.','Fehler Probleme GPS Diagnose Akku Download Support',[
-('Die Karte lädt nicht','<p>Prüfe deine Internetverbindung und den Download-Stand bei den Offline-Karten. Ein erstmals angefordertes Gebiet braucht länger. Im Funkloch kann OnPath ein fehlendes Gebiet nicht nachladen.</p>'),
-('Mein Standort fehlt','<p>Prüfe, ob die Standortfunktion von Android eingeschaltet ist und OnPath die nötige Berechtigung hat. Unter freiem Himmel lässt sich ein Standort meist leichter bestimmen als in Gebäuden. Warte auf eine brauchbare Position, bevor du die Navigation beurteilst.</p>'),
-('Die Tour wurde unterbrochen','<p>OnPath speichert aufgezeichnete Punkte fortlaufend und ist darauf ausgelegt, eine Tour nach einem Neustart fortzusetzen. Öffne die App und prüfe, ob eine laufende Tour zur Fortsetzung angeboten wird. Die Testversion kann dennoch Fehler enthalten.</p>'),
-('Einen Fehler melden','<p>Notiere dein Handy-Modell, die OnPath-Version, die Situation und was du erwartet hast. Unter Einstellungen → Diagnose → „Send problem report“ (der Knopf ist englisch) kannst du zusätzliche Informationen als Datei erzeugen. Prüfe sie vor dem Weitergeben, besonders auf Orts- und Tourdaten.</p><p><a href="'+GITHUB+'/issues">Auf GitHub einen Fehler melden ↗</a>. Ein GitHub-Konto ist dafür nötig. Öffentlich eingestellte Meldungen und Anhänge können andere lesen; verschicke keine privaten Daten unbedacht. OnPath sendet den Export nicht automatisch.</p>')])]
-
-
-HELP.extend([
-('navigation','Unterwegs den Weg finden','Abzweigungen, Ankunftszeit und das Ende deiner Tour.','Navigation Vibration links rechts Zeit Sperrbildschirm Aufzeichnung',[
-('Abzweigungen erkennen','<p>OnPath zeigt die nächste Abzweigung. Wo du falsch abbiegen könntest, vibriert das Handy: einmal für links, zweimal für rechts. Probiere die Hinweise zuerst auf einer bekannten Strecke aus: Wie deutlich du sie spürst, hängt auch davon ab, wo du das Handy trägst.</p>'),
-('Ein Blick auf den Sperrbildschirm','<p>Die OnPath-Benachrichtigung zeigt die nächste Abzweigung und die Ankunftszeit. Du musst dafür nicht jedes Mal die App öffnen. Dazu kommen kurze Sprachansagen; du schaltest sie unter Einstellungen → Navigation ein oder aus.</p>'),
-('Die Zeit passt sich deinem Tempo an','<p>Zu Beginn nutzt OnPath deine Fitness-Einstellung. Nach ungefähr 15 Minuten und einem Kilometer berücksichtigt die App dein tatsächliches Tempo – getrennt für bergauf, eben und bergab. Die Ankunftszeit bleibt eine Schätzung.</p>'),
-('Die Tour beenden und behalten','<p>Beende die Tour bewusst in der App und speichere sie. Ein bloßes Sperren des Bildschirms beendet sie nicht. Die Punkte werden während der Tour fortlaufend gespeichert.</p>')]),
-('akku-sicherung','Akku und Sicherung','Damit die Aufzeichnung weiterläuft und deine Touren erhalten bleiben.','Akku Hintergrund Batterie Sicherung Papierkorb ZIP Backup',[
-('Wenn die Aufzeichnung im Hintergrund stoppt','<p>Prüfe in den Android-Einstellungen bei Apps → OnPath die Standortfreigabe, Benachrichtigungen und die Akku-Einstellung. Eine starke Akku-Beschränkung kann die App im Hintergrund beenden. Je nach Handyhersteller heißen diese Einstellungen etwas anders.</p><p>Falls nötig, erlaube OnPath die Nutzung ohne Akku-Einschränkung. Prüfe anschließend auf einer kurzen Strecke, ob bei gesperrtem Bildschirm weiter aufgezeichnet wird.</p>'),
-('Vor einer längeren Wanderung','<p>Lade das Handy vorher und nimm bei Bedarf eine Powerbank mit. Der Akkuverbrauch ist noch nicht auf vielen Geräten gemessen. Display, Gerät und Empfang beeinflussen die Laufzeit.</p>'),
-('Eine zweite Kopie deiner Touren','<p>Richte in OnPath einen Ordner für die zusätzlichen Tourdateien ein. Kopiere wichtige Dateien regelmäßig auf den Computer oder einen anderen Speicher. Eine Kopie auf demselben Handy hilft nicht, wenn das Handy verloren geht.</p>'),
-('Alles sichern oder wiederherstellen','<p>In den Sicherungsfunktionen kannst du alle Touren gemeinsam als ZIP-Datei exportieren. Gelöschte Touren bleiben 30 Tage im Papierkorb. Nach einer Neuinstallation kann OnPath die Touren aus dem vorhandenen Sicherungsordner wiederherstellen; der Ordner muss dafür erneut zugänglich sein.</p>')])])
+HELP = [('erste-schritte',
+  'Deine erste Tour',
+  'Installieren, Gebiet laden und eine kleine Runde planen.',
+  'Start Installation Android Berechtigung Standort',
+  [('OnPath installieren',
+    '<p>OnPath läuft auf Android ab Version 8. Eine iPhone-Version gibt es derzeit nicht.</p><p>Aktuell läuft Phase 1: '
+    'Du brauchst eine persönliche Einladung und Freischaltung durch Christian. Deinen individuellen Link und die '
+    'Installationshinweise bekommst du direkt von ihm. Die geschlossene Testgruppe über Google Play ist der nächste '
+    'Schritt. Wie das geht, steht unter <a href="/ausprobieren/">OnPath ausprobieren</a>.</p><p>Für technisch '
+    'Erfahrene gibt es frühe Fassungen auch als APK-Datei auf <a '
+    'href="https://github.com/happychriss/OnPath/releases">GitHub</a>. Sie sind anders signiert als die Play-Fassung; '
+    'sichere deine Touren, bevor du zwischen beiden wechselst.</p>'),
+   ('Zu Hause vorbereiten',
+    '<ol><li>Öffne OnPath mit Internetverbindung, möglichst im WLAN.</li><li>Erlaube den Standortzugriff für '
+    'Navigation und Aufzeichnung.</li><li>Plane deine Strecke. OnPath lädt die nötigen Karten und die Orts- und '
+    'Adressdatenbank automatisch herunter.</li><li>Lass den Download vollständig abschließen. Prüfe unter '
+    'Einstellungen → Offline-Karten, ob die Gebiete bereit sind.</li></ol><p>Beim ersten Laden kann ein neues Gebiet '
+    'einige Minuten brauchen. <a href="/hilfe/offline/#vorbereiten">Die Offline-Vorbereitung im Detail →</a></p>'),
+   ('Die erste Runde planen',
+    '<p>Wähle deine Aktivität. Drücke etwas länger auf dein Ziel auf der Karte und wähle „Hierhin“. OnPath plant von '
+    'deinem Standort aus. Das längere Drücken verhindert versehentliche Änderungen durch kurzes '
+    'Antippen.</p><p>Möchtest du woanders starten, halte zuerst den Startpunkt gedrückt und wähle „Hier starten“. '
+    'Ergänze dann Ziel und Zwischenstopps. Prüfe Länge, Höhenmeter und Streckenhinweise; beginne mit einer kurzen, '
+    'bekannten Strecke.</p>'),
+   ('Navigation starten',
+    '<p>Tippe auf „Navigation starten“. Der Plan bleibt geschützt: Ein kurzer Tipp auf die Karte verändert die Route '
+    'nicht. Möchtest du unterwegs etwas ändern, wechselst du bewusst in die Planung.</p>')]),
+ ('offline',
+  'Ohne Netz unterwegs',
+  'Karten vorbereiten und auch im Funkloch umplanen.',
+  'Karten Internet WLAN Funkloch Download Flugmodus',
+  [('Was offline funktioniert',
+    '<p>OnPath lädt beim Planen automatisch Karten für deine Strecke und deren Umgebung herunter – einschließlich '
+    'Orts- und Adressdatenbank. In vollständig geladenen Gebieten kannst du Adressen und Orte suchen, Routen planen, '
+    'navigieren und unterwegs neu berechnen. Die Suche und Routenberechnung laufen direkt auf deinem '
+    'Handy.</p><p>Zusätzliche Online-Suchergebnisse ergänzen die lokale Suche, sie sind keine Voraussetzung dafür. Ein '
+    'Link zu Google Maps öffnet einen separaten Dienst; dessen Offline-Funktionen und gespeicherte Gebiete sind '
+    'unabhängig von OnPath.</p>'),
+   ('Vor der Tour laden',
+    '<ol><li>Plane deine Strecke mit Internet, am besten zu Hause im WLAN.</li><li>Lass den automatischen Download '
+    'vollständig abschließen. Berücksichtige auch größere Abstecher und den Rückweg.</li><li>Prüfe unter Einstellungen '
+    '→ Offline-Karten den Download-Stand.</li><li>Schalte zum Ausprobieren WLAN und mobile Daten aus, lass den '
+    'Standort eingeschaltet und teste Suche sowie eine kleine Routenänderung.</li></ol><p>Bereits geladene Gebiete '
+    'bleiben auf dem Handy. Führt ein Abstecher darüber hinaus, brauchst du zum Nachladen wieder Internet. Auch der '
+    'erste Download muss abgeschlossen sein, bevor du ohne Netz startest.</p>'),
+   ('Wenn ein Gebiet fehlt',
+    '<p>Ein neues Gebiet benötigt Internet. Beim ersten Abruf kann die Bereitstellung einige Minuten dauern. Starte '
+    'die Vorbereitung deshalb zu Hause. Sind nur Teile geladen, ist noch nicht alles offline verfügbar.</p>'),
+   ('Was Internet braucht',
+    '<p>Neue Karten, App-Updates und zusätzliche Online-Suchergebnisse benötigen eine Verbindung. Wenn du einen Ort in '
+    'Google Maps öffnest, gelten außerdem dessen Offline-Möglichkeiten und Datenverbindungen.</p>')]),
+ ('route-planen',
+  'Eine eigene Route planen',
+  'Punkte setzen, Schwierigkeit wählen und die Strecke prüfen.',
+  'Punkte Route Wandern Rad T1 T2 T3 Höhenprofil Planung',
+  [('Aktivität auswählen',
+    '<p>Wähle Fahrrad, Gravelbike, E-Bike, MTB, E-MTB oder Wandern. OnPath stimmt die Wegwahl auf die Aktivität ab. '
+    'Beim Radfahren berücksichtigt es unter anderem Untergrund und stark befahrene Straßen; ein Tourenrad wird anders '
+    'geplant als ein Gravelbike oder MTB.</p><p>Für Wanderungen wählst du außerdem die Schwierigkeit nach der '
+    'SAC-Wanderskala. <a href="#schwierigkeit">Die Stufen erklärt →</a></p>'),
+   ('Punkte setzen und ändern',
+    '<p>Drücke etwas länger auf eine freie Stelle der Karte und wähle die gewünschte Aktion, zum Beispiel „Hierhin“ '
+    'für eine Route von deinem Standort. Ein kurzer Tipp setzt kein neues Ziel – so ändert sich der Plan nicht '
+    'versehentlich.</p><p>Halte einen bestehenden Punkt gedrückt, um seine Möglichkeiten zu öffnen. Zum Versetzen auf '
+    'der Karte löschst du ihn und setzt ihn neu. In der aufgeklappten Punkteliste kannst du Stopps am Griff '
+    'umsortieren und entfernen. Änderungen lassen sich rückgängig machen; außerdem kannst du die Route umkehren oder '
+    'zur Rundtour ergänzen.</p>'),
+   ('Die Strecke ansehen',
+    '<p>Ziehe das Routenfenster nach oben, um Höhenprofil, Wegarten und Untergrund anzusehen. Die Hinweiszeile macht '
+    'dich je nach Aktivität auf steile Abschnitte, Schiebestrecken, Treppen, anspruchsvollere Wanderabschnitte, '
+    'Fähren, Baustellen, Wasserquerungen und bestimmte Hindernisse für Räder aufmerksam. Tippe auf einen Hinweis, um '
+    'die betroffenen Stellen auf der Karte anzusehen.</p><p>Bei Fähren prüfst du die Betriebszeiten selbst; bei '
+    'Baustellen kann der Weg gesperrt sein. Die Hinweise hängen von den vorhandenen Karteneinträgen ab und sind keine '
+    'vollständige Liste aktueller Gefahren.</p><p>Erreicht die Route einen gesetzten Punkt nicht, zeigt OnPath die '
+    'Lücke. Eine gestrichelte Verbindung bestätigt keinen begeh- oder befahrbaren Weg. Prüfe den Punkt und wähle bei '
+    'Bedarf einen anderen Zugang.</p>'),
+   ('Die Schwierigkeit wählen: SAC T1 bis T5',
+    '<p>OnPath verwendet die SAC-Wanderskala des Schweizer Alpen-Clubs. Du kannst T1 bis T5 wählen: T1 steht für '
+    'Wandern, T2 für Bergwandern, T3 für anspruchsvolles Bergwandern, T4 für Alpinwandern und T5 für anspruchsvolles '
+    'Alpinwandern. Mit den Stufen steigen die Anforderungen an Trittsicherheit, Schwindelfreiheit, Orientierung und '
+    'alpine Erfahrung.</p><p>Die Planung vermeidet Wege oberhalb deiner gewählten Stufe und Klettersteige. Enthält '
+    'eine Strecke dennoch einen als schwieriger erfassten Abschnitt, zeigt OnPath einen Hinweis. Die Einstufungen '
+    'beruhen auf OpenStreetMap und können fehlen oder veraltet sein. Wetter, Wegzustand und deine Erfahrung bleiben '
+    'entscheidend; Hinweise und Sperrungen vor Ort haben Vorrang.</p>'),
+   ('Kartenfarben und ausgeschilderte Routen',
+    '<p>Die Darstellung passt sich deiner Aktivität an. Grün hervorgehobene Wege helfen dir, passende Verbindungen zu '
+    'erkennen. Ausgeschilderte Rad- und Wanderrouten werden zusätzlich als Routen mit Namen dargestellt. Fernwege sind '
+    'mit einer rosa-grünen Markierung hervorgehoben; dazu gehören nationale und internationale Routen wie '
+    'EuroVelo.</p><p>In der Übersicht siehst du vor allem Fernwege. Beim Heranzoomen kommen regionale und lokale '
+    'Routen hinzu. So kannst du entweder einem längeren Routenverlauf folgen oder kleine Wege in deiner Umgebung zu '
+    'einer Tour verbinden.</p><p>Beim Radfahren weist die Darstellung auch auf den Untergrund hin. Die Farben '
+    'unterstützen die Planung, ersetzen aber nicht die Prüfung von Strecke, Schwierigkeit und Beschilderung.</p>'),
+   ('Am Computer planen und aufs Handy übertragen',
+    '<ol><li>Öffne <a href="https://plan.onpath.earth/">plan.onpath.earth</a> am Computer. Du brauchst kein Konto und '
+    'keine Installation.</li><li>Setze Start, Ziel und Zwischenstopps. Punkte lassen sich mit der Maus setzen und '
+    'verschieben; vorhandene GPX-Dateien kannst du öffnen.</li><li>Öffne „Teilen“ und scanne den QR-Code mit der '
+    'Handykamera. Öffne den Link in OnPath auf deinem Android-Handy.</li><li>Prüfe die Tour und lass die benötigten '
+    'Karten auf dem Handy vollständig laden, bevor du ohne Empfang startest.</li></ol><p>Das dauerhafte Koppeln von '
+    'Browser und Handy zum Abgleich gespeicherter Pläne ist im Test. Die einmalige QR-Übertragung kannst du bereits '
+    'nutzen. <a href="/ausblick/#abschnitt-3">Mehr zum Koppeln →</a></p>')]),
+ ('unterwegs-aendern',
+  'Unterwegs die Route ändern',
+  'Einen Abstecher einbauen und die Aufzeichnung fortsetzen.',
+  'Navigation Abstecher umplanen Slider neu berechnen Vibration',
+  [('Bewusst zur Planung wechseln',
+    '<p>Schiebe unten „Stopp“ zur Seite. Damit öffnest du die Auswahl zum Pausieren, Beenden oder Ändern der Route. '
+    'Der Wisch allein beendet die Aufzeichnung nicht. Beim Umplanen läuft sie weiter.</p>'),
+   ('Den weiteren Weg anpassen',
+    '<p>Entferne einen nicht mehr benötigten Stopp oder ergänze ein neues Ziel. Kontrolliere anschließend die Strecke. '
+    'Solange die benötigten Daten auf dem Handy liegen, klappt die Neuberechnung auch ohne Internet. <a href="/hilfe/offline/#vorbereiten">Automatische Downloads und Offline-Vorbereitung →</a></p>'),
+   ('Weitergehen oder weiterfahren',
+    '<p>Tippe auf „Weiter“, dann bist du wieder in der Navigation. OnPath führt dich von deinem Standort aus weiter '
+    'und überspringt bereits besuchte Zwischenpunkte. Deine Aufzeichnung läuft weiter.</p>'),
+   ('Du bist von der Route abgewichen',
+    '<p>OnPath meldet sich per Vibration und fragt nach, ob du eine neue Route möchtest. Es ändert den Weg nicht '
+    'stillschweigend. Nach der Neuberechnung bleibt die ursprüngliche Route grau sichtbar.</p>')]),
+ ('orte',
+  'Orte suchen & Google Maps nutzen',
+  'Ein Café finden, einen Ort teilen oder Öffnungszeiten nachsehen.',
+  'Google Suche Adresse Hütte Gipfel teilen Öffnungszeiten Photon',
+  [('In OnPath suchen',
+    '<p>Gib einen Ortsnamen oder eine Adresse ein. OnPath durchsucht die eigene Orts- und Adressdatenbank auf deinem '
+    'Handy. Sie wird automatisch mit den Karten geladen und enthält unter anderem Straßen mit Hausnummern, Dörfer, '
+    'Hütten, Gipfel und Bahnhöfe.</p><p>Diese Suche funktioniert in vollständig geladenen Gebieten ohne Netz. Mit '
+    'Internet kommen zusätzliche Online-Ergebnisse hinzu. Außerhalb der geladenen Gebiete brauchst du Internet zum '
+    'Nachladen; nicht jeder Ort oder jede Hausnummer ist erfasst.</p>'),
+   ('Einen Ort aus Google Maps übernehmen',
+    '<ol><li>Öffne den gewünschten Ort in Google Maps.</li><li>Tippe auf „Teilen“ und wähle OnPath.</li><li>Prüfe den '
+    'markierten Ort auf der Karte.</li><li>Übernimm ihn als Start, Zwischenstopp oder Ziel.</li></ol><p>Übernommen '
+    'werden der Ort und sein Name – keine vollständige Google-Route, Bewertungen oder Fotos. Bei einem verkürzten Link '
+    'kann eine Internetverbindung zum Auflösen nötig sein.</p>'),
+   ('Öffnungszeiten oder Bilder ansehen',
+    '<p>Öffne in OnPath den gewünschten Ort und seine Details. Von dort kannst du zu Google Maps wechseln, um '
+    'Öffnungszeiten, Bilder oder Bewertungen anzusehen. Kehre danach zu OnPath zurück und ergänze den Ort als '
+    'Zwischenstopp oder Ziel. Den Weg dorthin berechnet OnPath für deine gewählte Aktivität.</p>'),
+   ('Welche Daten dabei übertragen werden',
+    '<p>Für Online-Suchergebnisse wird eine ungefähre Position von etwa einem Kilometer Genauigkeit übermittelt. Bei '
+    'Google Maps gelten die Bedingungen und Datenschutzhinweise von Google. <a href="/datenschutz/">Mehr zum '
+    'Datenschutz</a>.</p>'),
+   ('Einen Treffpunkt aus einer Nachricht übernehmen',
+    '<p>Hat dir jemand einen Kartenlink oder Standort geschickt, etwa in Signal? Teile den Link oder die Nachricht '
+    'über die Android-Teilen-Funktion mit OnPath. Unterstützt werden unter anderem Google-Maps- und '
+    'OpenStreetMap-Links, geo:-Links und Koordinaten.</p><ol><li>Wähle beim Teilen OnPath.</li><li>Prüfe den '
+    'markierten Ort auf der Karte.</li><li>Wähle ihn als Ziel oder Zwischenstopp und starte die Navigation, wenn du '
+    'losgehen möchtest.</li></ol><p>OnPath liest keine Chats und verfolgt keinen Live-Standort. Es übernimmt den '
+    'geteilten Punkt; das genaue Vorgehen hängt von der Nachrichten-App und dem Linkformat ab. Kurze Google-Maps-Links '
+    'können Internet benötigen. Ist nur eine Adresse bekannt, prüfe die gefundene Position besonders sorgfältig. Nicht '
+    'jedes Nachrichtenformat lässt sich direkt übernehmen.</p>')]),
+ ('gpx',
+  'Touren als Datei öffnen und sichern',
+  'Vorhandene Touren mitnehmen und deine eigenen behalten.',
+  'GPX Import Export Verein speichern Sicherung Backup Datei',
+  [('Was ist eine GPX-Datei?',
+    '<p>Eine GPX-Datei enthält den Verlauf einer Strecke. Viele Tourismusregionen, Wanderseiten und Radvereine stellen '
+    'Touren in diesem Format bereit. So kannst du eine Tour mit verschiedenen Apps nutzen.</p>'),
+   ('Eine Strecke öffnen',
+    '<p>Lade die GPX-Datei auf dein Handy. Öffne sie mit OnPath, zum Beispiel über die Dateiverwaltung von Android. '
+    'Prüfe, ob Strecke und Aktivität passen. Lade vor dem Start die benötigten Karten vollständig.</p>'),
+   ('Was du damit machen kannst',
+    '<p>Du kannst importierten GPX-Strecken folgen. Sie lassen sich derzeit noch nicht in einen frei bearbeitbaren '
+    'OnPath-Plan umwandeln. Wenn du selbst flexibel planen möchtest, lege die Route mit eigenen Punkten an.</p>'),
+   ('Eigene Touren sichern',
+    '<p>Deine Touren liegen in der App. Zusätzlich legt OnPath gespeicherte Routen und abgeschlossene Touren als '
+    'GPX-Dateien in einem zugänglichen Ordner ab – standardmäßig Documents/OnPath. Unter Einstellungen → Sicherung '
+    'kannst du einen anderen Ordner wählen. Auf Android 8 und 9 ist für den Standardordner die Speicherfreigabe nötig; '
+    'nach einer Neuinstallation muss der Zugriff auf einen gewählten Ordner erneut erlaubt werden.</p><p>GPX ist ein '
+    'offenes Dateiformat. Über die Android-Dateiverwaltung kannst du die Dateien auf deinen Computer kopieren, an '
+    'Freunde weitergeben oder in anderen geeigneten Apps öffnen und bearbeiten. Änderungen außerhalb von OnPath werden '
+    'nicht automatisch in die App zurückübernommen.</p><p>In „Meine Routen“ kannst du alle abgeschlossenen Touren '
+    'zusammen als ZIP-Datei exportieren. Der Android-Teilen-Dialog bietet dir die verfügbaren Ziele zum Speichern oder '
+    'Weitergeben an. Eine laufende Aufzeichnung ist darin nicht enthalten.</p><p>Eine zusätzliche Datei auf demselben '
+    'Handy schützt nicht vor Geräteverlust. Kopiere wichtige Touren auch auf einen anderen Speicher. Wird die '
+    'automatische Sicherung nicht geschrieben, zeigt OnPath einen Hinweis an.</p>')]),
+ ('probleme',
+  'Wenn etwas nicht klappt',
+  'Fehlende Karten, Standortprobleme und Rückmeldungen.',
+  'Fehler Probleme GPS Diagnose Akku Download Support',
+  [('Die Karte lädt nicht',
+    '<p>Prüfe deine Internetverbindung und den Download-Stand bei den Offline-Karten. Ein erstmals angefordertes '
+    'Gebiet braucht länger. Im Funkloch kann OnPath ein fehlendes Gebiet nicht nachladen.</p>'),
+   ('Mein Standort fehlt',
+    '<p>Prüfe, ob die Standortfunktion von Android eingeschaltet ist und OnPath die nötige Berechtigung hat. Unter '
+    'freiem Himmel lässt sich ein Standort meist leichter bestimmen als in Gebäuden. Warte auf eine brauchbare '
+    'Position, bevor du die Navigation beurteilst.</p>'),
+   ('Die Tour wurde unterbrochen',
+    '<p>OnPath speichert aufgezeichnete Punkte fortlaufend und hält den Navigationsstand auf dem Handy fest. Wird die '
+    'App beendet, das Handy neu gestartet oder die Aufzeichnung unterbrochen, öffne OnPath erneut. Im Dialog zur '
+    'unterbrochenen Tour wählst du „Fortsetzen“, um weiterzumachen, oder „Speichern“, um den bisherigen Verlauf zu '
+    'behalten. „Löschen“ verwirft die Aufzeichnung bewusst.</p><p>Die Zeit, in der das Handy aus war, wird nicht '
+    'nachträglich aufgezeichnet. Wiederholte Unterbrechungen können durch Androids Akku-Beschränkungen entstehen. <a '
+    'href="/hilfe/akku-sicherung/#hintergrund">Hintergrundeinstellungen prüfen →</a></p>'),
+   ('Einen Fehler melden',
+    '<p>Notiere dein Handy-Modell, die OnPath-Version, die Situation und was du erwartet hast. Unter Einstellungen → '
+    'Diagnose → „Send problem report“ (der Knopf ist englisch) kannst du zusätzliche Informationen als Datei erzeugen. '
+    'Prüfe sie vor dem Weitergeben, besonders auf Orts- und Tourdaten.</p><p><a '
+    'href="https://github.com/happychriss/OnPath/issues">Auf GitHub einen Fehler melden ↗</a>. Ein GitHub-Konto ist '
+    'dafür nötig. Öffentlich eingestellte Meldungen und Anhänge können andere lesen; verschicke keine privaten Daten '
+    'unbedacht. OnPath sendet den Export nicht automatisch.</p>')]),
+ ('navigation',
+  'Unterwegs den Weg finden',
+  'Abzweigungen, Ankunftszeit und das Ende deiner Tour.',
+  'Navigation Vibration links rechts Zeit Sperrbildschirm Aufzeichnung',
+  [('Abzweigungen erkennen',
+    '<p>OnPath zeigt die nächste Abzweigung und gibt an entscheidenden Stellen Hinweise. Die Sprachansagen nennen '
+    'Richtung und Wegtyp und können auf den weiteren Verlauf hinweisen. Die Stimme kommt von deinem Handy und '
+    'funktioniert mit einer installierten Offline-Stimme ohne Netz.</p><p>Unter Einstellungen → Navigation wählst du '
+    'Sprache, Vibrationen oder beides. Die Einstellungen lassen sich getrennt anpassen; teste die Sprache zunächst '
+    'hörbar in der Einrichtung. Bei Vibrationen steht ein Impuls für links, zwei für rechts. Wie gut du sie spürst, '
+    'hängt vom Handy und davon ab, wo du es trägst. Probiere beides auf einer bekannten Strecke aus.</p>'),
+   ('Ein Blick auf den Sperrbildschirm',
+    '<p>Die OnPath-Benachrichtigung zeigt die nächste Abzweigung und die geschätzte Ankunftszeit. Am Fahrrad zeigt die '
+    'Ruheanzeige vor allem Richtung, Entfernung und Ankunft; vor der Abzweigung erscheint wieder die Karte. Die '
+    'Sprachansagen stellst du unter Einstellungen → Navigation ein.</p>'),
+   ('Die Zeit passt sich deinem Tempo an',
+    '<p>Zu Beginn nutzt OnPath deine Fitness-Einstellung. Nach ungefähr 15 Minuten und einem Kilometer berücksichtigt '
+    'die App dein tatsächliches Tempo – getrennt für bergauf, eben und bergab. Die Ankunftszeit bleibt eine '
+    'Schätzung.</p>'),
+   ('Die Tour beenden und behalten',
+    '<p>Schiebe „Stopp“ zur Seite, wähle „Tour beenden“ und anschließend „Speichern“. Du kannst die Tour behalten, '
+    'ohne danach Fotos hochzuladen, sie zu teilen oder zu bewerten. Ein bloßes Sperren des Bildschirms beendet die '
+    'Aufzeichnung nicht.</p><p>Wurde eine Fahrt erkannt, etwa mit Bus oder Seilbahn, kannst du beim Abschluss '
+    'entscheiden, wie sie in den Tourwerten berücksichtigt wird. <a href="#fahrten">Erkannte Fahrten prüfen →</a></p>'),
+   ('Bus- und Seilbahnfahrten berücksichtigen',
+    '<p>OnPath erkennt Abschnitte, die du voraussichtlich mit einem Fahrzeug oder Lift zurückgelegt hast. Beim Beenden '
+    'prüfst du die erkannten Fahrten und entscheidest, ob sie in Strecke und Zeit mitzählen. Die Erkennung ist ein '
+    'Vorschlag, den du selbst kontrollierst. Bei einer gespeicherten Tour kannst du die Fahrtanteile über das Tourmenü '
+    'erneut bearbeiten.</p>')]),
+ ('akku-sicherung',
+  'Akku und Sicherung',
+  'Damit die Aufzeichnung weiterläuft und deine Touren erhalten bleiben.',
+  'Akku Hintergrund Batterie Sicherung Papierkorb ZIP Backup',
+  [('Wenn die Aufzeichnung im Hintergrund stoppt',
+    '<p>Prüfe in den Android-Einstellungen bei Apps → OnPath die Standortfreigabe, Benachrichtigungen und die '
+    'Akku-Einstellung. Eine starke Akku-Beschränkung kann die App im Hintergrund beenden. Je nach Handyhersteller '
+    'heißen diese Einstellungen etwas anders.</p><p>Falls nötig, erlaube OnPath die Nutzung ohne Akku-Einschränkung. '
+    'Prüfe anschließend auf einer kurzen Strecke, ob bei gesperrtem Bildschirm weiter aufgezeichnet wird.</p>'),
+   ('Vor einer längeren Wanderung',
+    '<p>Lade das Handy vorher und nimm bei Bedarf eine Powerbank mit. Der Akkuverbrauch ist noch nicht auf vielen '
+    'Geräten gemessen. Display, Gerät und Empfang beeinflussen die Laufzeit.</p>'),
+   ('Eine zweite Kopie deiner Touren',
+    '<p>OnPath legt zusätzliche GPX-Dateien standardmäßig unter Documents/OnPath ab. Unter Einstellungen → Sicherung '
+    'kannst du einen anderen Ordner auswählen. Kopiere wichtige Dateien regelmäßig auf den Computer oder einen anderen '
+    'Speicher. Eine Kopie auf demselben Handy schützt nicht vor dessen Verlust. <a '
+    'href="/hilfe/gpx/#eigene-dateien">Dateien finden und exportieren →</a></p>'),
+   ('Alles sichern oder wiederherstellen',
+    '<p>Über „Meine Routen“ lassen sich alle abgeschlossenen Touren gemeinsam als ZIP-Datei teilen oder sichern. '
+    'Gelöschte Touren bleiben 30 Tage im Papierkorb. Nach einer Neuinstallation kannst du den vorhandenen '
+    'Sicherungsordner zur Wiederherstellung auswählen und den Zugriff erneut erlauben.</p>')])]
 
 def article(path,eye,title,desc,sections,help_page=False):
  side='<aside class="side-nav"><b>'+('Hilfe & erste Schritte' if help_page else 'Auf dieser Seite')+'</b>'
@@ -197,7 +666,9 @@ def article(path,eye,title,desc,sections,help_page=False):
  else:side+=''.join('<a href="#abschnitt-'+str(i)+'">'+t+'</a>' for i,(t,_) in enumerate(sections))
  side+='</aside>'
  slug=path.strip('/').split('/')[-1] if help_page else None
- prose=''.join('<section id="abschnitt-'+str(i)+'"><h2>'+t+'</h2>'+v+(shots_html('de',slug,i) if help_page else '')+'</section>' for i,(t,v) in enumerate(sections))
+ prose=''.join('<section id="abschnitt-'+str(i)+'"><h2'+(' id="'+help_anchor('de',slug,i)+'"' if help_page else '')+'>'+t+'</h2>'+v+(shots_html('de',slug,i) if help_page else '')+'</section>' for i,(t,v) in enumerate(sections))
+ if help_page:
+  prose='<nav class="help-contents" aria-label="In diesem Hilfethema"><b>In diesem Hilfethema</b><ul>'+''.join('<li><a href="#'+help_anchor('de',slug,i)+'">'+t+'</a></li>' for i,(t,_) in enumerate(sections))+'</ul></nav>'+prose
  content=ph(eye,title,desc,('<a href="/hilfe/">Hilfe</a> <span>/</span> ' if help_page else '')+title)+'<section class="section"><div class="wrap article-layout">'+side+'<article class="prose">'+prose+'<div class="article-end"><a href="/hilfe/">← Alle Hilfethemen</a><a href="/ausprobieren/">OnPath ausprobieren →</a></div></article></div></section>'
  page(path,title,desc,content,'/hilfe/' if help_page else path)
 for slug,title,desc,keys,sections in HELP:article('/hilfe/'+slug+'/','Hilfe & erste Schritte',title,desc,sections,True)

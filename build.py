@@ -4,6 +4,7 @@ from pathlib import Path
 import hashlib, html, json, re, runpy, shutil, sys
 from content_en import ARTICLES, HELP_EN
 from help_shots import shots_html
+from help_topics import help_anchor
 
 ROOT=Path(__file__).parent
 OUT=ROOT/'dist'
@@ -65,7 +66,9 @@ def article(path,title,desc,sections,help_page=False):
     else:
         side='<b>On this page</b>'+''.join(f'<a href="#section-{i}">{t}</a>' for i,(t,_) in enumerate(sections))
     slug=path.strip('/').split('/')[-1] if help_page else None
-    contents=''.join(f'<section id="section-{i}"><h2>{t}</h2><p>{text}</p>'+(shots_html('en',slug,i) if help_page else '')+'</section>' for i,(t,text) in enumerate(sections))
+    contents=''.join(f'<section id="section-{i}"><h2'+(f' id="{help_anchor("en",slug,i)}"' if help_page else '')+f'>{t}</h2><p>{text}</p>'+(shots_html('en',slug,i) if help_page else '')+'</section>' for i,(t,text) in enumerate(sections))
+    if help_page:
+        contents='<nav class="help-contents" aria-label="In this help topic"><b>In this help topic</b><ul>'+''.join(f'<li><a href="#{help_anchor("en",slug,i)}">{t}</a></li>' for i,(t,_) in enumerate(sections))+'</ul></nav>'+contents
     write(path,title,desc,intro(title,desc,'Help &amp; first steps' if help_page else 'OnPath')+f'<section class="section"><div class="wrap article-layout"><aside class="side-nav">{side}</aside><article class="prose">{contents}<div class="article-end"><a href="/help/">All help topics →</a><a href="/try/">Try OnPath →</a></div></article></div></section>')
 
 for path,(title,desc,body,active) in de['PAGES'].items():write(path,title,desc,body,'de',active)
@@ -75,7 +78,7 @@ write('/try/','Try OnPath by personal invitation','Phase 1: test OnPath with a p
 for slug,title,desc,keys,sections in HELP_EN:article('/help/'+slug+'/',title,desc,sections,True)
 cards=''.join(f'<a class="help-card" data-keywords="{keys}" href="/help/{slug}/"><h2>{title}</h2><p>{desc}</p><span aria-hidden="true">→</span></a>' for slug,title,desc,keys,_ in HELP_EN)
 write('/help/','Help for your next outing','Short, practical guides for planning, navigating and keeping your tours.',intro('How can we help?','Start with your first route or find an answer for a question along the way.','OnPath help')+f'<section class="section"><div class="wrap"><div class="help-search"><label for="help-search">Find a help topic</label><div>{icon("search")}<input type="search" id="help-search" placeholder="For example: maps, Google or battery"></div></div><p class="fine" id="search-count" role="status">9 help topics</p><div class="help-grid">{cards}</div><p id="no-results" hidden>No topic found. Try a shorter word.</p></div></section>')
-home=f'''<section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><p class="eyebrow">For hiking and cycling</p><h1>Your route.<br><span>Simply planned.</span></h1><p class="lead">Choose your destination on the map – your route is ready. On the computer or on your phone. Change your way as you go – even without reception.</p><div class="actions"><a class="button" href="https://plan.onpath.earth/">Plan in your browser {icon('arrow')}</a><a class="plain-link" href="/try/">Test the Android app →</a></div><p class="hero-value">Planning, navigation and recording stay free.</p><p class="hero-note">No account · No ads · No profiles or leaderboards<br>Android · Early test version by personal invitation</p></div><figure class="hero-photo"><img src="/assets/vellau-path.webp" alt="A wide gravel path with a wooden fence under yellow autumn leaves near Vellau" width="1400" height="1054" fetchpriority="high"><img class="hero-phone" src="/assets/app/plan-wandern-en.webp" alt="OnPath on a phone: a planned hike with map and elevation profile" width="600" height="1333"><figcaption>Your next path awaits.<span class="photo-location">Vellau near Algund, South Tyrol</span></figcaption></figure></div></section>'''
+home=de['home_hero']('en')
 home+=de['first_steps']('en')+de['more_section']('en')+de['ways_section']('en')+de['small_section']('en')+de['open_section']('en')+de['home_cta']('en')
 write('/','Your route. Simply planned.','Plan and follow cycling and hiking routes, change the plan and keep your own files.',home)
 write('/404/','Page not found','Find your way back to OnPath.',intro('This path ends here.','Use the home page or help to find your way back.')+'<section class="section"><div class="wrap actions"><a class="button" href="/">Home</a><a class="text-link" href="/help/">Help →</a></div></section>')

@@ -35,45 +35,198 @@ ARTICLES = {
  ('Independent', 'OnPath is not affiliated with Komoot or Google. No endorsement or partnership is claimed.')]),
 
 }
-HELP_EN = [
- ('getting-started','Your first outing','Install, prepare an area and plan a short route.', 'start install location android', [
- ('Prepare at home','OnPath needs Android 8 or newer. Phase 1 currently requires a personal invitation and approval from Christian. The closed test group is the next step; see the Try page for access. Allow the location access needed for navigation and recording. Prepare your area while connected, preferably on Wi-Fi.'),
- ('Plan a familiar route','Choose your activity. For a route from your current location, press and hold your destination on the map and choose “Go here”. To start elsewhere, first hold the start point and choose “Start here”, then add the destination and any stops. Check distance, climbing, time and route notices. Wait until the required maps are downloaded.'),
- ('Start navigation','Start on a short, familiar route. The route is protected against accidental map taps during navigation. Switch deliberately to editing when you want to change it.')]),
- ('offline','Without a connection','Download your maps before you head out.', 'map internet download wifi offline', [
- ('What works offline','With the required maps and route data downloaded, you can search local places, plan, navigate and recalculate routes on your phone.'),
- ('Before leaving','Plan while connected and let the areas along the route finish downloading. Include possible detours and the return route. Check download status in offline map settings. Test a small change with mobile data and Wi-Fi off, leaving location enabled.'),
- ('What still needs internet','New areas, additional online search and Google Maps information need a connection. Preparing a new area can take a few minutes. Missing data cannot be downloaded in a dead zone.')]),
- ('planning','Plan your own route','Set points and check the way ahead.', 'plan points difficulty climbing surface', [
- ('Choose an activity','Bike, Gravelbike, E-bike, MTB, E-MTB and Hike are available. For hiking choose a difficulty from T1 to T5. The choice relies on recorded map information; check conditions and your own experience too.'),
- ('Set and change points','Hold on the map to add a point. Hold an existing point to see its actions. To move a point on the map, delete and add it again. The expanded list lets you reorder or remove stops. Changes can be undone.'),
- ('Check the route','Inspect the elevation profile, surfaces and notices. A dashed gap to an unreachable destination is not a confirmed usable path. Signs, closures and conditions on the ground take priority.')]),
- ('change-route','Change the route along the way','Add a stop and keep your recording.', 'edit change detour route navigation', [
- ('Switch to editing','Slide “Stop” at the bottom of the screen aside. This opens the options to pause, end the outing or edit the route. The swipe alone does not end recording. Recording continues while you change the plan.'),
- ('Adjust the next part','Remove a stop or add a new destination and check the new route. Recalculation works offline when all the required areas are ready.'),
- ('Continue from here','Tap “Continue” to return to navigation. Points already visited are skipped. If you leave the route, OnPath asks before calculating a new one; the original stays visible in grey. Imported GPX tracks are not yet freely editable plans.')]),
- ('places','Places and Google Maps','Find a café, check details and plan the way there.', 'google maps search photon address hut cafe', [
- ('Find a place','Search a name or address in OnPath. Downloaded maps include streets, villages, huts, peaks and stations. With internet, additional online results are added.'),
- ('Check details in Google Maps','Open the place details in OnPath and use the Google Maps action to check opening hours, photos or reviews. Return to OnPath and add the place as a stop or destination. OnPath calculates the route for your activity.'),
- ('Bring a place from Google Maps','Open the place in Google Maps, choose Share and select OnPath. Check the marked location and use it as your start, stop or destination. This transfers the place, not a complete Google route. Short links may need a connection to resolve.'),
- ('Online search and privacy','Online search sends the query and a rough location to Photon. When you open Google Maps, Google’s own terms and privacy policy apply. Opening hours are not guaranteed to be current.')]),
- ('gpx','Use and save tour files','Take an existing route with you and keep your own.', 'gpx import export backup file adfc', [
- ('What a GPX file contains','It holds the course of a route. Tourist organisations, cycling clubs and other people can provide tours in this format.'),
- ('Open a route','Download the file to your phone and open it with OnPath. Check the activity and route, then download the maps. Imported tracks can be followed but are not yet freely editable OnPath plans.'),
- ('Keep your own files','Choose a folder for GPX copies of saved routes and completed tours. You can also export everything as a ZIP. Keep an additional copy on another device or storage location.')]),
- ('troubleshooting','If something goes wrong','Missing maps, location problems and feedback.', 'problem error gps battery map diagnostics', [
- ('Maps are missing','Check your connection and download status. A first request for a new area may take longer. Missing maps cannot be fetched without internet.'),
- ('Your position is missing','Check Android’s location setting and the app’s permission. Wait outdoors for a usable position; dense trees, buildings and valleys can reduce accuracy.'),
- ('Report a problem','Note your phone model, app version, what you tried and what happened. You can create a file with more details in Settings → Diagnostics → “Send problem report”. Nothing is sent automatically. Check it for private tour information before sharing.')]),
- ('navigation','Follow the way','Junctions, arrival time and ending your outing.', 'left right vibration recording time lock screen', [
- ('Before a turn','OnPath shows the next junction and, where you could take the wrong way, vibrates once for left and twice for right. Try the signals on a familiar route; their visibility depends on your phone and where you carry it. Short spoken directions come on top; switch them on or off in Settings → Navigation.'),
- ('Lock screen and time','The notification shows the next junction and estimated arrival. After about 15 minutes and one kilometre, the estimate starts adapting to your actual pace.'),
- ('Finish deliberately','End and save the outing in the app. Locking the phone does not finish it. Recorded points are saved continuously.')]),
- ('battery-backup','Battery and backup','Keep recording and keep a second copy of your tours.', 'battery backup zip recycle bin android background', [
- ('Background restrictions','If recording stops, check location permissions, notifications and Android’s battery restrictions for OnPath. Names differ by phone manufacturer. If necessary allow unrestricted background use, then test a short route with the screen locked.'),
- ('Before a long day','Charge your phone and consider a power bank. Battery use has not been measured across many devices. Screen use and reception affect runtime.'),
- ('A second copy','Copy important GPX files to another device. A copy on the same phone does not protect against losing it. Deleted tours stay in the recycle bin for 30 days. A backup folder can be used after reinstalling if you grant access again.')]),
-]
+HELP_EN = [('getting-started',
+  'Your first outing',
+  'Install, prepare an area and plan a short route.',
+  'start install location android',
+  [('Prepare at home',
+    'OnPath needs Android 8 or newer. Phase 1 requires a personal invitation and approval from Christian; see <a '
+    'href="/try/">test access</a>. Allow location access for navigation and recording. Plan while connected, '
+    'preferably at home on Wi-Fi. OnPath downloads the required maps and its place and address database automatically. '
+    'Wait for the download to finish and check Settings → Offline maps. A new area can take a few minutes. <a '
+    'href="/help/offline/#prepare">Offline preparation in detail →</a>'),
+   ('Plan a familiar route',
+    'Choose your activity. Press a little longer on your destination and choose “Go here” to plan from your location. '
+    'A short tap does not set a new destination, preventing accidental changes. To start elsewhere, hold the start '
+    'point and choose “Start here”, then add your destination and stops. Check distance, climbing, time and route '
+    'hints. Wait for the required maps to finish downloading and begin with a short, familiar route.'),
+   ('Start navigation',
+    'Start on a short, familiar route. The route is protected against accidental map taps during navigation. Switch '
+    'deliberately to editing when you want to change it.')]),
+ ('offline',
+  'Without a connection',
+  'Download your maps before you head out.',
+  'map internet download wifi offline',
+  [('What works offline',
+    'OnPath automatically downloads maps for your route and its surroundings while you plan, including its place and '
+    'address database. In fully downloaded areas, you can search addresses and places, plan, navigate and recalculate '
+    'routes directly on your phone. Additional online search supplements local results; it is not required for local '
+    'search. Google Maps is a separate service with its own downloaded areas and offline capabilities.'),
+   ('Before leaving',
+    'Plan while connected, preferably on Wi-Fi. Wait for automatic downloads to finish and include larger detours and '
+    'the return route. Check Settings → Offline maps. Try search and a small route change with mobile data and Wi-Fi '
+    'switched off, leaving location enabled. Downloaded areas stay on your phone. A detour beyond them needs a '
+    'connection to fetch more data; the initial download must also finish before you leave reception.'),
+   ('What still needs internet',
+    'New areas, additional online search and Google Maps information need a connection. Preparing a new area can take '
+    'a few minutes. Missing data cannot be downloaded in a dead zone.')]),
+ ('planning',
+  'Plan your own route',
+  'Set points and check the way ahead.',
+  'plan points difficulty climbing surface',
+  [('Choose an activity',
+    'Choose Bike, Gravelbike, E-bike, MTB, E-MTB or Hike. OnPath adapts route choices to your activity, considering '
+    'surfaces and busy roads for cycling. A touring bike is planned differently from a gravel bike or MTB. Hiking also '
+    'has a difficulty setting using the SAC hiking scale. <a href="#difficulty">Difficulty levels explained →</a>'),
+   ('Set and change points',
+    'Press a little longer on the map and choose an action, such as “Go here” to plan from your location. A short tap '
+    'does not set a new destination. Hold an existing point to open its actions. To move it on the map, delete and add '
+    'it again. In the expanded point list, drag stops into order or remove them. Undo changes, reverse the route or '
+    'make it a round trip.'),
+   ('Check the route',
+    'Pull the route panel up to inspect the elevation profile, surfaces and path types. Depending on activity, route '
+    'hints include steep sections, pushing, steps, demanding hiking sections, ferries, construction, fords and certain '
+    'barriers for bikes. Tap a hint to see the affected places on the map. Check ferry timetables yourself; '
+    'construction may mean a closure. Hints depend on available map entries and are not a complete list of current '
+    'hazards. A gap to an unreachable point is not a confirmed usable path. Check that point and choose another '
+    'approach if needed. Signs and conditions on the ground take priority.'),
+   ('Choose the difficulty: SAC T1 to T5',
+    'OnPath uses the Swiss Alpine Club’s SAC hiking scale. Choose T1 (hiking), T2 (mountain hiking), T3 (demanding '
+    'mountain hiking), T4 (alpine hiking) or T5 (demanding alpine hiking). Higher grades require more sure-footedness, '
+    'a head for heights, navigation skills and alpine experience. Planning avoids paths above your level and via '
+    'ferratas. If a route still contains a section marked as harder, OnPath shows a hint. OpenStreetMap grades can be '
+    'missing or outdated. Check weather, conditions and your own experience; signs and closures on the ground take '
+    'priority.'),
+   ('Map colours and signed routes',
+    'The display adapts to your activity. Green highlights help you recognise suitable paths. Signed cycling and '
+    'hiking routes are also shown with their names. Long-distance routes, including national and international '
+    'networks such as EuroVelo, have a pink-and-green marking. Zoomed out, you mainly see long-distance routes. '
+    'Regional and local routes appear as you zoom in. Follow a longer route or combine local paths into an outing. '
+    'Cycling maps also indicate surfaces. Colours help with planning; check the route, difficulty and signs too.'),
+   ('Plan on a computer and transfer to your phone',
+    'Open <a href="https://plan.onpath.earth/">plan.onpath.earth</a> on your computer, without an account or '
+    'installation. Set and move start, destination and stops with the mouse, or open a GPX file. Choose “Share”, scan '
+    'the QR code with your phone camera and open the link in the Android app. Check the route and wait for the phone’s '
+    'map downloads to finish before heading out without reception. Ongoing browser–phone pairing for saved plans is in '
+    'testing; one-off QR transfer is already available. <a href="/whats-next/#section-3">More about pairing →</a>')]),
+ ('change-route',
+  'Change the route along the way',
+  'Add a stop and keep your recording.',
+  'edit change detour route navigation',
+  [('Switch to editing',
+    'Slide “Stop” at the bottom of the screen aside. This opens the options to pause, end the outing or edit the '
+    'route. The swipe alone does not end recording. Recording continues while you change the plan.'),
+   ('Adjust the next part',
+    'Remove a stop or add a new destination and check the new route. Recalculation works offline when all the required '
+    'areas are ready.'),
+   ('Continue from here',
+    'Tap “Continue” to return to navigation. Points already visited are skipped. If you leave the route, OnPath asks '
+    'before calculating a new one; the original stays visible in grey. Imported GPX tracks are not yet freely editable '
+    'plans.')]),
+ ('places',
+  'Places and Google Maps',
+  'Find a café, check details and plan the way there.',
+  'google maps search photon address hut cafe',
+  [('Find a place',
+    'Search a name or address. OnPath searches its own place and address database on your phone, downloaded '
+    'automatically with the maps. It includes streets, house numbers, villages, huts, peaks and stations. In fully '
+    'downloaded areas this works without reception. Online results are added when connected. New areas need a '
+    'connection to download; not every place or house number is recorded.'),
+   ('Check details in Google Maps',
+    'Open the place details in OnPath and use the Google Maps action to check opening hours, photos or reviews. Return '
+    'to OnPath and add the place as a stop or destination. OnPath calculates the route for your activity.'),
+   ('Bring a place from Google Maps',
+    'Open the place in Google Maps, choose Share and select OnPath. Check the marked location and use it as your '
+    'start, stop or destination. This transfers the place, not a complete Google route. Short links may need a '
+    'connection to resolve.'),
+   ('Online search and privacy',
+    'Online search sends the query and a rough location to Photon. When you open Google Maps, Google’s own terms and '
+    'privacy policy apply. Opening hours are not guaranteed to be current.'),
+   ('Use a meeting point from a message',
+    'Someone sent you a map link or location, for example in Signal? Share the link or message with OnPath through '
+    'Android’s Share function. Supported formats include Google Maps and OpenStreetMap links, geo: links and '
+    'coordinates. Check the marked place, choose it as your destination or stop, and start navigation when ready. '
+    'OnPath does not read chats or follow a live location; it uses the shared point. The exact steps depend on the '
+    'messaging app and link format, and not every format is supported. Short map links may need internet. If a '
+    'position was found from an address, check it carefully.')]),
+ ('gpx',
+  'Use and save tour files',
+  'Take an existing route with you and keep your own.',
+  'gpx import export backup file adfc',
+  [('What a GPX file contains',
+    'It holds the course of a route. Tourist organisations, cycling clubs and other people can provide tours in this '
+    'format.'),
+   ('Open a route',
+    'Download the file to your phone and open it with OnPath. Check the activity and route, then download the maps. '
+    'Imported tracks can be followed but are not yet freely editable OnPath plans.'),
+   ('Keep your own files',
+    'Your tours are stored in the app. OnPath also writes saved routes and completed outings as GPX files in an '
+    'accessible folder, Documents/OnPath by default. Choose another folder in Settings → Backup. Android 8–9 needs '
+    'storage permission for the default folder; after reinstalling, grant access to a chosen folder again. Use '
+    'Android’s file manager to copy the files to a computer, share them or edit them in suitable apps. GPX is an open '
+    'format. External edits are not automatically imported back into OnPath. In My routes, export all completed '
+    'outings together as a ZIP, then choose a save or sharing destination in Android’s Share dialog. A running '
+    'recording is not included. Keep another copy off your phone to protect against device loss. OnPath shows a notice '
+    'if an automatic backup fails.')]),
+ ('troubleshooting',
+  'If something goes wrong',
+  'Missing maps, location problems and feedback.',
+  'problem error gps battery map diagnostics',
+  [('Maps are missing',
+    'Check your connection and download status. A first request for a new area may take longer. Missing maps cannot be '
+    'fetched without internet.'),
+   ('Your position is missing',
+    'Check Android’s location setting and the app’s permission. Wait outdoors for a usable position; dense trees, '
+    'buildings and valleys can reduce accuracy.'),
+   ('Report a problem',
+    'Note your phone model, app version, what you tried and what happened. You can create a file with more details in '
+    'Settings → Diagnostics → “Send problem report”. Nothing is sent automatically. Check it for private tour '
+    'information before sharing.'),
+   ('Continue an interrupted outing',
+    'OnPath saves recorded points continuously and keeps the navigation state on the phone. If the app is stopped, the '
+    'phone restarts or recording is interrupted, reopen OnPath. In the unfinished-tour dialog, choose “Continue” to '
+    'carry on, “Save” to keep the recorded part, or “Delete” to discard it deliberately. Time while the phone was off '
+    'cannot be recorded afterwards. Repeated interruptions may be caused by Android battery restrictions. <a '
+    'href="/help/battery-backup/#background">Check background settings →</a>')]),
+ ('navigation',
+  'Follow the way',
+  'Junctions, arrival time and ending your outing.',
+  'left right vibration recording time lock screen',
+  [('Before a turn',
+    'OnPath shows the next turn and gives cues where you could take the wrong way. Spoken directions name the '
+    'direction and way type and may describe what follows. The voice comes from your phone and works without reception '
+    'with an installed offline voice. In Settings → Navigation choose speech, vibrations or both and adjust them '
+    'separately. First try the audible setup test. One vibration means left, two mean right. How clearly you feel them '
+    'depends on your phone and where you carry it. Test on a familiar route.'),
+   ('Lock screen and time',
+    'The notification shows the next junction and estimated arrival. After about 15 minutes and one kilometre, the '
+    'estimate starts adapting to your pace, separately uphill, on level ground and downhill. It remains an estimate. '
+    'On the handlebar, the quiet view shows direction, distance and arrival; the map returns before the turn.'),
+   ('Finish deliberately',
+    'Slide “Stop” aside, choose “End tour”, then “Save”. Keep your outing without questions about uploading photos, '
+    'sharing or ratings. Locking the phone does not end recording. If OnPath detected a bus or cable-car section, '
+    'review how it should count. <a href="#rides">Review detected rides →</a>'),
+   ('Review bus and cable-car sections',
+    'OnPath recognises sections likely travelled by vehicle or lift. When finishing, review them and decide whether '
+    'they count towards distance and time. Detection is a suggestion for you to check. You can edit ride contributions '
+    'again through the saved outing’s menu.')]),
+ ('battery-backup',
+  'Battery and backup',
+  'Keep recording and keep a second copy of your tours.',
+  'battery backup zip recycle bin android background',
+  [('Background restrictions',
+    'If recording stops, check location permissions, notifications and Android’s battery restrictions for OnPath. '
+    'Names differ by phone manufacturer. If necessary allow unrestricted background use, then test a short route with '
+    'the screen locked.'),
+   ('Before a long day',
+    'Charge your phone and consider a power bank. Battery use has not been measured across many devices. Screen use '
+    'and reception affect runtime.'),
+   ('A second copy',
+    'OnPath writes additional GPX files to Documents/OnPath by default; choose another folder in Settings → Backup. '
+    'Copy important files to a computer or other storage. A copy on the same phone does not protect against losing it. '
+    'In My routes export all completed outings together as a ZIP to save or share. Deleted tours stay in the recycle '
+    'bin for 30 days. After reinstalling, select the existing backup folder to restore and grant access again. <a '
+    'href="/help/gpx/#your-files">Find and export your files →</a>')])]
 
 from legal_content import EN_LEGAL, EN_PRIVACY
 ARTICLES['/legal/']=('Legal notice','Provider and contact for OnPath.',EN_LEGAL)

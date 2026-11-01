@@ -59,3 +59,26 @@ nav{gap:20px}
 .cta>.text-link{display:block;width:fit-content;margin:20px auto 0}
 .detail-more .small-cols li{font-size:16px;line-height:1.6}
 @media(max-width:740px){.founder-note{grid-template-columns:1fr;gap:20px}}
+
+/* App and browser belong to the same tour, with the app as the primary entry. */
+.hero-together{font-size:16px;line-height:1.6;color:#526057;margin-top:18px;max-width:42ch}
+.hero .actions{flex-wrap:wrap;gap:12px}
+.hero-devices .hero-browser{position:absolute;z-index:1;left:5%;top:23%;width:85%;border:1px solid #d6dece;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 16px 36px #0b1a1355}
+.hero-devices .hero-browser img{display:block;width:100%;height:auto;object-fit:contain;filter:none}
+.hero-devices .hero-phone{right:4%;bottom:12%;width:29%}
+.hero-devices figcaption{left:6%;right:6%;bottom:20px;font-size:14px;line-height:1.5}
+.feature-entry{min-width:0}
+.feature-entry>button{width:100%}
+.context-help{display:block;width:fit-content;font-size:14px;line-height:1.5;color:#245f46;text-decoration:underline;text-underline-offset:4px;padding:10px 0;min-height:44px}
+.feature-entry>.context-help{margin-left:60px;padding-top:6px}
+.detail-highlights p a,.small-cols li a{display:block;color:#245f46;text-decoration:underline;text-underline-offset:4px;margin-top:8px}
+.story-section .trust-points{grid-template-columns:repeat(2,minmax(0,1fr))}
+.story-section .trust-points a{display:block;color:#fcfcf2;text-decoration:underline;text-underline-offset:4px;margin-top:12px}
+.founder-note h3{font-size:22px;line-height:1.4;margin-bottom:12px}
+.small-cols{grid-template-columns:1fr 2fr}
+.help-contents{position:static;display:block;background:#eef0e8;border:1px solid #d6dece;border-radius:8px;padding:20px 24px;margin-bottom:36px;box-shadow:none}
+.help-contents ul{margin:10px 0 0;padding-left:20px}
+.help-contents li{padding:4px 0}
+.prose h2[id]{scroll-margin-top:115px}
+.prose h2:target{outline:2px solid #245f46;outline-offset:8px;border-radius:2px}
+@media(max-width:740px){.hero-together{font-size:15px}.hero .actions .button{justify-content:center}.hero-devices .hero-browser{top:17%;width:83%}.hero-devices .hero-phone{bottom:16%;width:27%}.hero-devices figcaption{font-size:13px}.story-section .trust-points,.small-cols{grid-template-columns:1fr}.feature-entry>.context-help{margin-left:18px}.help-contents{padding:18px}.prose h2[id]{scroll-margin-top:95px}}
