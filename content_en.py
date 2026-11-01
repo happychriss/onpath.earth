@@ -49,7 +49,7 @@ HELP_EN = [
  ('Set and change points','Hold on the map to add a point. Hold an existing point to see its actions. To move a point on the map, delete and add it again. The expanded list lets you reorder or remove stops. Changes can be undone.'),
  ('Check the route','Inspect the elevation profile, surfaces and notices. A dashed gap to an unreachable destination is not a confirmed usable path. Signs, closures and conditions on the ground take priority.')]),
  ('change-route','Change the route along the way','Add a stop and keep your recording.', 'edit change detour route navigation', [
- ('Switch to editing','Slide the “Tour menu” at the bottom of the screen aside. There you can change the route, pause or end the tour. While you change the route, your recording keeps running.'),
+ ('Switch to editing','Slide “Stop” at the bottom of the screen aside. Then you can pause, end the tour or change the route. While you change the route, your recording keeps running.'),
  ('Adjust the next part','Remove a stop or add a new destination and check the new route. Recalculation works offline when all the required areas are ready.'),
  ('Continue from here','Tap “Continue” to return to navigation. Points already visited are skipped. If you leave the route, OnPath asks before calculating a new one; the original stays visible in grey. Imported GPX tracks are not yet freely editable plans.')]),
  ('places','Places and Google Maps','Find a café, check details and plan the way there.', 'google maps search photon address hut cafe', [
