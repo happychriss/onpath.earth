@@ -112,14 +112,16 @@ HELP_EN = [('getting-started',
     'both. <a href="#pair">How to pair →</a></p>'),
    ('Pair browser and phone',
     '<p>Pair once – then your saved routes are in the browser and on your phone, both ways.</p>'
-    '<h3>Pair</h3><ol><li>In the browser: click “Pair phone” at the top, then “Pair phone” again in the window. A QR '
+    '<h3>Pair</h3><ol><li>In the browser: click “Pair phone” at the top right, then “Pair phone” again in the window. A QR '
     'code appears.</li><li>On your phone: open OnPath, tap ☰ → “Pair with browser” → “Open camera” and scan the '
     'code.</li><li>OnPath shows six check digits. If they match the browser, tap “Pair”.</li></ol>[[shots:web-handy,web-koppeln,app-koppeln]]'
-    '<h3>Your routes on both</h3><p>Save a route in the browser and it appears in the app under “My routes”, marked '
-    '“New” or “Changed”. What you save on your phone shows up in the browser under “My routes”. They sync while OnPath '
-    'is open on the phone and while the browser page is open. Recorded outings stay on your phone.</p>[[shots:app-verbunden,app-routen]]'
-    '<h3>Unpair</h3><p>In the app: Settings → Browser sync → “Unpair”. Or in the browser: “Phone” → “Unpair”. Your '
-    'routes stay on both devices.</p>[[shots:app-trennen]]'
+    '<h3>Your routes on both</h3><p>At the top right you now see your phone’s name with a green dot, and “Save” '
+    'becomes “Save to phone”. One click saves the route and sends it to your phone – it appears there under “My '
+    'routes”, marked “New” or “Changed”. When the button says “✓ On the phone”, everything is there.</p><p>What you '
+    'save on your phone comes to the browser’s “My routes” by itself. They sync while OnPath is open on the phone. '
+    'Recorded outings stay on your phone.</p>[[shots:app-verbunden,app-routen]]'
+    '<h3>Unpair</h3><p>In the browser: click your phone at the top right, then “Unpair” at the bottom of the window. '
+    'Or in the app: Settings → Browser sync → “Unpair”. Your routes stay on both devices.</p>[[shots:app-trennen]]'
     '<p>End-to-end encrypted, no account. Keep the QR code to yourself – whoever scans it sees your saved routes.</p>')]),
  ('change-route',
   'Change the route along the way',

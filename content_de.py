@@ -529,16 +529,17 @@ HELP = [('erste-schritte',
     'gespeicherten Routen sind danach auf beiden Geräten. <a href="#koppeln">So koppelst du →</a></p>'),
    ('Browser und Handy koppeln',
     '<p>Einmal koppeln – dann sind deine gespeicherten Routen im Browser und auf dem Handy, in beide Richtungen.</p>'
-    '<h3>Koppeln</h3><ol><li>Im Browser: Klicke oben auf „Handy verbinden“ und im Fenster noch einmal auf „Handy '
+    '<h3>Koppeln</h3><ol><li>Im Browser: Klicke oben rechts auf „Handy verbinden“ und im Fenster noch einmal auf „Handy '
     'verbinden“. Ein QR-Code erscheint.</li><li>Auf dem Handy: Öffne OnPath, tippe auf ☰ → „Mit Browser verbinden“ → '
     '„Kamera öffnen“ und scanne den Code.</li><li>OnPath zeigt sechs Prüfziffern. Stimmen sie mit denen im Browser '
     'überein, tippe auf „Verbinden“.</li></ol>[[shots:web-handy,web-koppeln,app-koppeln]]'
-    '<h3>Deine Routen auf beiden Geräten</h3><p>Speicherst du im Browser eine Route, erscheint sie in der App unter '
-    '„Meine Routen“ – markiert mit „Neu“ oder „Geändert“. Was du auf dem Handy speicherst, findest du im Browser unter '
-    '„Meine Routen“. Abgeglichen wird, wenn OnPath auf dem Handy offen ist und solange die Browserseite offen ist. '
-    'Aufgezeichnete Touren bleiben auf dem Handy.</p>[[shots:app-verbunden,app-routen]]'
-    '<h3>Trennen</h3><p>In der App: Einstellungen → Browser-Abgleich → „Trennen“. Oder im Browser: „Handy“ → '
-    '„Trennen“. Deine Routen bleiben auf beiden Geräten.</p>[[shots:app-trennen]]'
+    '<h3>Deine Routen auf beiden Geräten</h3><p>Oben rechts siehst du jetzt den Namen deines Handys mit einem grünen '
+    'Punkt, und aus „Speichern“ wird „Aufs Handy sichern“. Ein Klick darauf speichert die Route und schickt sie aufs '
+    'Handy – dort erscheint sie unter „Meine Routen“, markiert mit „Neu“ oder „Geändert“. Steht auf dem Knopf „✓ Auf '
+    'dem Handy“, ist alles drüben.</p><p>Was du auf dem Handy speicherst, kommt von selbst in den Browser unter „Meine '
+    'Routen“. Abgeglichen wird, wenn OnPath auf dem Handy offen ist. Aufgezeichnete Touren bleiben auf dem Handy.</p>[[shots:app-verbunden,app-routen]]'
+    '<h3>Trennen</h3><p>Im Browser: Klicke oben rechts auf dein Handy und im Fenster unten auf „Trennen“. Oder in der '
+    'App: Einstellungen → Browser-Abgleich → „Trennen“. Deine Routen bleiben auf beiden Geräten.</p>[[shots:app-trennen]]'
     '<p>Ende-zu-Ende verschlüsselt, ohne Konto. Gib den QR-Code nicht weiter – wer ihn scannt, sieht deine '
     'gespeicherten Routen.</p>')]),
  ('unterwegs-aendern',
