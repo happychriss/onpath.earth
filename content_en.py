@@ -38,7 +38,7 @@ ARTICLES = {
 HELP_EN = [
  ('getting-started','Your first outing','Install, prepare an area and plan a short route.', 'start install location android', [
  ('Prepare at home','OnPath needs Android 8 or newer. Phase 1 currently requires a personal invitation and approval from Christian. The closed test group is the next step; see the Try page for access. Allow the location access needed for navigation and recording. Prepare your area while connected, preferably on Wi-Fi.'),
- ('Plan a familiar route','Choose your activity. For a route from your current location, press and hold your destination on the map and choose “Go here”. To start elsewhere, first hold the start point and choose “Start here”, then add the destination and any stops. Check distance, climbing, time and route notices. Wait until the required maps are downloaded.'),
+ ('Plan a familiar route','Choose your activity. For a route from your current location, press and hold your destination on the map and choose “Go here from my location”. To start elsewhere, first hold the start point and choose “Start here”, then add the destination and any stops. Check distance, climbing, time and route notices. Wait until the required maps are downloaded.'),
  ('Start navigation','Start on a short, familiar route. The route is protected against accidental map taps during navigation. Switch deliberately to editing when you want to change it.')]),
  ('offline','Without a connection','Download your maps before you head out.', 'map internet download wifi offline', [
  ('What works offline','With the required maps and route data downloaded, you can search local places, plan, navigate and recalculate routes on your phone.'),

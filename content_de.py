@@ -1,6 +1,6 @@
 import sys as _sys, os as _os
 _sys.path.insert(0,_os.path.dirname(_os.path.abspath(__file__)))
-from help_shots import shots_html
+from help_shots import shots_html, files as help_files
 from pathlib import Path
 import html, json
 ROOT=Path(__file__).parent; D=ROOT/'dist'; A=D/'assets'; A.mkdir(parents=True,exist_ok=True)
@@ -87,18 +87,18 @@ def open_section(lang='de'):
     return '<section class="story-section"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+O['eye']+'</p><h2>'+O['h']+'</h2></div></div><div class="points trust-points">'+points+'</div><div class="founder-note">'+author+'<p>'+O['founder']+'</p></div><div class="trust-links">'+links+'</div></div></section>'
 FIRST_STEPS={
  'de':dict(eye='So einfach geht’s',h='Planen, losgehen, umplanen.',lead='So beginnt deine erste Tour mit OnPath.',items=[
-  ('halten','Ziel wählen. Route ansehen.','Halte dein Ziel auf der Karte gedrückt und wähle „Hierhin“. OnPath plant den Weg von deinem Standort dorthin – passend zu deiner gewählten Aktivität.','OnPath beim Öffnen: die Karte, ein Punkt gedrückt gehalten'),
+  ('halten','Ziel wählen. Route ansehen.','Halte dein Ziel auf der Karte gedrückt und wähle „Von meinem Standort hierhin“. OnPath plant den Weg von deinem Standort dorthin – passend zu deiner gewählten Aktivität.','OnPath beim Öffnen: die Karte, ein Punkt gedrückt gehalten'),
   ('plan','Ein Tipp – und du bist unterwegs.','Zeit, Höhenmeter und steile Stellen siehst du sofort. Passt alles, startest du mit „Navigation starten“ deine Tour. Mehr Details? Zieh das Fenster einfach nach oben.','Die geplante Route mit Zeit, Höhenprofil und „Navigation starten“'),
   ('navi','Unterwegs den Weg ändern.','Lust auf einen Abstecher? Schiebe „Stopp“ zur Seite. Dort kannst du pausieren, die Tour beenden oder den Weg ändern. Beim Umplanen läuft die Aufzeichnung weiter. Mit „Weiter“ kehrst du zur Navigation zurück.','Navigation mit dem Schieber „Stopp“ unten')],
   prep='Für eine Tour ohne Empfang: Lade die Karten vorher, am besten zu Hause im WLAN. Ein neues Gebiet kann beim ersten Laden einige Minuten brauchen.',help=('/hilfe/offline/','Karten vorbereiten'),more=('/hilfe/erste-schritte/','Schritt für Schritt in der Hilfe')),
  'en':dict(eye='It’s that simple',h='Plan, go, change your mind.',lead='This is how your first outing with OnPath begins.',items=[
-  ('halten','Choose a destination. See your route.','Press and hold your destination on the map and choose “Go here”. OnPath plans the way from your current location for your chosen activity.','OnPath when it opens: the map, a point held down (German screen)'),
+  ('halten','Choose a destination. See your route.','Press and hold your destination on the map and choose “Go here from my location”. OnPath plans the way from your current location for your chosen activity.','OnPath when it opens: the map, a point held down'),
   ('plan','One tap and you are off.','Time, climbing and steep parts at a glance. All good? Tap “Start navigation” and go. Want more detail? Just pull the panel up.','The planned route with time, elevation profile and “Start navigation”'),
-  ('navi','Change your way as you go.','Fancy a detour? Slide “Stop” aside. There you can pause, end the outing or change the way ahead. Recording continues while you change the plan. Tap “Continue” to return to navigation.','Navigation with the “Stop” slider at the bottom (German screen)')],
+  ('navi','Change your way as you go.','Fancy a detour? Slide “Stop” aside. There you can pause, end the outing or change the way ahead. Recording continues while you change the plan. Tap “Continue” to return to navigation.','Navigation with the “Stop” slider at the bottom')],
   prep='For an outing without reception, download your maps beforehand, ideally at home on Wi-Fi. A new area can take a few minutes to load the first time.',help=('/help/offline/','Prepare your maps'),more=('/help/getting-started/','Step by step in the help'))}
 def first_steps(lang='de'):
     F=FIRST_STEPS[lang]; anchor='entdecken' if lang=='de' else 'discover'
-    pic=lambda k:'/assets/help/'+k+('-en' if lang=='en' and k=='plan' else '-de')+'.webp'
+    pic=lambda k:'/assets/help/'+help_files(k)[1 if lang=='en' else 0]
     cards=''.join('<article class="feature know"><img class="know-shot" src="'+pic(k)+'" alt="'+alt+'" width="540" height="1200" loading="lazy" decoding="async"><div class="feature-top"><span>0'+str(i+1)+'</span></div><h3>'+title+'</h3><p>'+text+'</p></article>' for i,(k,title,text,alt) in enumerate(F['items']))
     return '<section class="section" id="'+anchor+'"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+F['eye']+'</p><h2>'+F['h']+'</h2></div><div><p>'+F['lead']+'</p><a class="button outline small know-help" href="'+F['more'][0]+'">'+F['more'][1]+' →</a></div></div><div class="feature-grid">'+cards+'</div><p class="section-footnote">'+F['prep']+' <a href="'+F['help'][0]+'">'+F['help'][1]+' →</a></p></div></section>'
 def home_cta(lang='de'):
@@ -145,7 +145,7 @@ HELP=[
 ('erste-schritte','Deine erste Tour','Installieren, Gebiet laden und eine kleine Runde planen.','Start Installation Android Berechtigung Standort',[
 ('OnPath installieren','<p>OnPath läuft auf Android ab Version 8. Eine iPhone-Version gibt es derzeit nicht.</p><p>Aktuell läuft Phase 1: Du brauchst eine persönliche Einladung und Freischaltung durch Christian. Deinen individuellen Link und die Installationshinweise bekommst du direkt von ihm. Die geschlossene Testgruppe über Google Play ist der nächste Schritt. Wie das geht, steht unter <a href="/ausprobieren/">OnPath ausprobieren</a>.</p><p>Für technisch Erfahrene gibt es frühe Fassungen auch als APK-Datei auf <a href="'+GITHUB+'/releases">GitHub</a>. Sie sind anders signiert als die Play-Fassung; sichere deine Touren, bevor du zwischen beiden wechselst.</p>'),
 ('Zu Hause vorbereiten','<ol><li>Öffne OnPath mit Internetverbindung, möglichst im WLAN.</li><li>Erlaube den Standortzugriff, wenn du deine Position sehen und eine Tour aufzeichnen möchtest.</li><li>Suche dein Ziel oder bewege die Karte in dein Tourengebiet. Warte, bis die Karten und die Daten zur Routenberechnung vollständig geladen sind.</li><li>Wähle deine Aktivität. Beim Wandern legst du außerdem die gewünschte Schwierigkeit fest.</li></ol>'),
-('Die erste Runde planen','<p>Für eine Route von deinem Standort aus: Halte dein Ziel auf der Karte gedrückt und wähle „Hierhin“. OnPath verbindet deinen Standort mit dem Ziel über passende Wege. Prüfe Länge, Höhenmeter und Hinweise zur Strecke.</p><p>Möchtest du woanders starten, halte zuerst den gewünschten Startpunkt gedrückt und wähle „Hier starten“. Setze danach das Ziel und bei Bedarf Zwischenstopps.</p><p>Beginne am besten mit einer kurzen Strecke, die du kennst. So lernst du die Bedienung ohne Zeitdruck kennen.</p>'),
+('Die erste Runde planen','<p>Für eine Route von deinem Standort aus: Halte dein Ziel auf der Karte gedrückt und wähle „Von meinem Standort hierhin“. OnPath verbindet deinen Standort mit dem Ziel über passende Wege. Prüfe Länge, Höhenmeter und Hinweise zur Strecke.</p><p>Möchtest du woanders starten, halte zuerst den gewünschten Startpunkt gedrückt und wähle „Hier starten“. Setze danach das Ziel und bei Bedarf Zwischenstopps.</p><p>Beginne am besten mit einer kurzen Strecke, die du kennst. So lernst du die Bedienung ohne Zeitdruck kennen.</p>'),
 ('Navigation starten','<p>Tippe auf „Navigation starten“. Der Plan bleibt geschützt: Ein kurzer Tipp auf die Karte verändert die Route nicht. Möchtest du unterwegs etwas ändern, wechselst du bewusst in die Planung.</p>')]),
 ('offline','Ohne Netz unterwegs','Karten vorbereiten und auch im Funkloch umplanen.','Karten Internet WLAN Funkloch Download Flugmodus',[
 ('Was offline funktioniert','<p>In vollständig geladenen Gebieten kannst du Orte suchen, eine Route planen, navigieren und unterwegs neu berechnen. Die Berechnung findet auf deinem Handy statt.</p>'),
