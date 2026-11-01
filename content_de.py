@@ -74,7 +74,7 @@ MORE={'de': {'eye': 'Auf dem Rad und zu Fuß',
         'lead': 'OnPath tells you when you will arrive, where to turn and what lies ahead – without searching around '
                 'in the app.',
         'items': [('route',
-                   'Paths that suit your activity.',
+                   'Routing to suit your activity.',
                    'OnPath routes differently for each activity: by bike on cycleways and quiet side roads, by gravel '
                    'bike happily on gravel, by mountain bike on trails, on foot on paths up to your difficulty. Main '
                    'roads only when there is no other way.'),
@@ -361,9 +361,9 @@ def more_section(lang='de'):
     change=FIRST_STEPS[lang]['items'][2]
     sac_help='<a class="context-help" '+sac[1].partition(' <a ')[2]
     map_help='<a class="context-help" '+colours[1].partition(' <a ')[2]
-    route_title='Passende Wege für deine Aktivität.' if de else 'Paths that suit your activity.'
+    route_title='Routing passend zu deiner Aktivität.' if de else 'Routing to suit your activity.'
     route_text=('<span class="feature-detail">Sorgfältig abgestimmt: OnPath bevorzugt ausgewiesene Rad- und Wanderwege und meidet beim Radfahren stark befahrene Straßen.</span><span class="feature-detail"><strong>Beim Wandern:</strong> Wähle deine Schwierigkeit nach der SAC-Wanderskala des Schweizer Alpen-Clubs. OnPath berücksichtigt sie und zeigt anspruchsvollere Abschnitte an.</span>' if de else '<span class="feature-detail">Carefully tuned: OnPath favours designated cycling and hiking paths and avoids busy roads when cycling.</span><span class="feature-detail"><strong>When hiking:</strong> Choose your difficulty using the Swiss Alpine Club’s SAC hiking scale. OnPath takes it into account and highlights more demanding sections.</span>')
-    discover_title='Schöne Strecken und Einkehr entdecken.' if de else 'Discover scenic routes and inviting stops.'
+    discover_title='Tourenplanung: schöne Strecken und Einkehr.' if de else 'Route planning: scenic paths and inviting stops.'
     discover_text=('<span class="feature-detail"><strong>Für die Strecke:</strong> Erkennbare Wegarten und hervorgehobene Rad- und Wanderrouten helfen dir bei der Auswahl – von der kleinen Runde bis zum Fernweg.</span><span class="feature-detail"><strong>Für die Pause:</strong> Sieh dir Fotos, Bewertungen und Öffnungszeiten in Google Maps an, direkt aus OnPath. Deine Einkehr planst du als Stopp ein.</span>' if de else '<span class="feature-detail"><strong>For your route:</strong> Clear path types and highlighted cycling and hiking routes help you choose – from a local loop to a long-distance trail.</span><span class="feature-detail"><strong>For your break:</strong> Check photos, reviews and opening hours in Google Maps, straight from OnPath. Add your chosen place as a stop.</span>')
     groups=[
       ('Schöne Wege finden' if de else 'Find beautiful paths',[
