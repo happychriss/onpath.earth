@@ -359,14 +359,18 @@ def more_section(lang='de'):
     finish=SMALL[lang]['cols'][0][1][0]
     recovery,shared=DETAIL_HIGHLIGHTS[lang]['items']
     change=FIRST_STEPS[lang]['items'][2]
+    sac_help='<a class="context-help" '+sac[1].partition(' <a ')[2]
+    map_help='<a class="context-help" '+colours[1].partition(' <a ')[2]
+    route_title='Passende Wege für deine Aktivität.' if de else 'Paths that suit your activity.'
+    route_text=('<span class="feature-detail">Sorgfältig abgestimmt: OnPath bevorzugt ausgewiesene Rad- und Wanderwege und meidet beim Radfahren stark befahrene Straßen.</span><span class="feature-detail"><strong>Beim Wandern:</strong> Wähle deine Schwierigkeit nach der SAC-Wanderskala des Schweizer Alpen-Clubs. OnPath berücksichtigt sie und zeigt anspruchsvollere Abschnitte an.</span>' if de else '<span class="feature-detail">Carefully tuned: OnPath favours designated cycling and hiking paths and avoids busy roads when cycling.</span><span class="feature-detail"><strong>When hiking:</strong> Choose your difficulty using the Swiss Alpine Club’s SAC hiking scale. OnPath takes it into account and highlights more demanding sections.</span>')
+    discover_title='Schöne Strecken und Einkehr entdecken.' if de else 'Discover scenic routes and inviting stops.'
+    discover_text=('<span class="feature-detail"><strong>Für die Strecke:</strong> Erkennbare Wegarten und hervorgehobene Rad- und Wanderrouten helfen dir bei der Auswahl – von der kleinen Runde bis zum Fernweg.</span><span class="feature-detail"><strong>Für die Pause:</strong> Sieh dir Fotos, Bewertungen und Öffnungszeiten in Google Maps an, direkt aus OnPath. Deine Einkehr planst du als Stopp ein.</span>' if de else '<span class="feature-detail"><strong>For your route:</strong> Clear path types and highlighted cycling and hiking routes help you choose – from a local loop to a long-distance trail.</span><span class="feature-detail"><strong>For your break:</strong> Check photos, reviews and opening hours in Google Maps, straight from OnPath. Add your chosen place as a stop.</span>')
     groups=[
       ('Schöne Wege finden' if de else 'Find beautiful paths',[
-        app(*routes[:3],routes[3],home_help(lang,'features',0)),
-        app('mountain',*sac,'plan-wandern'),
-        app('route',*colours,'plan-wandern'),
-        app(*inn[:3],inn[3],home_help(lang,'features',1))]),
+        app('route',route_title,route_text,routes[3],'<div class="feature-help-links">'+home_help(lang,'features',0)+sac_help+'</div>'),
+        app('pin',discover_title,discover_text,inn[3],'<div class="feature-help-links">'+map_help+home_help(lang,'features',1)+'</div>')]),
       ('Entspannt unterwegs' if de else 'Enjoy the journey',[
-        app(*EXTRA[lang][1],'ruheanzeige',home_help(lang,'extras',1)),
+        app(*EXTRA[lang][1],'ankunft',home_help(lang,'extras',1)),
         app(*EXTRA[lang][0],'ankunft',home_help(lang,'extras',0)),
         help_item(recovery,'neustart'),
         help_item(('check',*finish),'beenden')]),
@@ -377,7 +381,7 @@ def more_section(lang='de'):
         app(*EXTRA[lang][2],'fahrt',home_help(lang,'extras',2))])]
     sections=[]
     for gi,(title,entries) in enumerate(groups):
-        preview_index=1 if gi==1 else 0
+        preview_index=0
         first=entries[preview_index]
         visual='<figure class="group-preview">'+screenshot_button(first[3],first[4],lang,dynamic=True)+'<figcaption data-preview-text aria-live="polite">'+first[5]+'</figcaption></figure>'
         rows=[]
@@ -385,10 +389,16 @@ def more_section(lang='de'):
             text,sep,embedded=text.partition(' <a ')
             if sep: help_link='<a class="context-help" '+embedded
             selected='true' if i==preview_index else 'false'
-            rows.append('<article class="feature-entry'+(' feature-primary' if i==0 else '')+'"><button class="feature-row" data-shot="'+src+'" data-alt="'+html.escape(alt,quote=True)+'" data-text="'+html.escape(caption,quote=True)+'" aria-pressed="'+selected+'">'+icon(ic)+'<span><b>'+t+'</b>'+text+'</span></button><figure class="inline-shot">'+screenshot_button(src,alt,lang,'inline-preview')+'</figure>'+help_link+'</article>')
+            subview=''
+            if gi==1 and i==0:
+                dark_src='/assets/app/ruheanzeige-'+lang+'.webp'
+                dark_alt,dark_caption=EXTRA_SHOT[lang]['ruheanzeige']
+                dark_label='Fürs Rad: dunkle Lenkeransicht' if de else 'For cycling: a dark handlebar view'
+                subview='<div class="feature-subview"><button type="button" class="feature-suboption" data-shot="'+dark_src+'" data-alt="'+html.escape(dark_alt,quote=True)+'" data-text="'+html.escape(dark_caption,quote=True)+'" aria-pressed="false">'+dark_label+'</button><figure class="inline-shot">'+screenshot_button(dark_src,dark_alt,lang,'inline-preview')+'</figure></div>'
+            rows.append('<article class="feature-entry'+(' feature-primary' if i==0 else '')+'"><button class="feature-row" data-shot="'+src+'" data-alt="'+html.escape(alt,quote=True)+'" data-text="'+html.escape(caption,quote=True)+'" aria-pressed="'+selected+'">'+icon(ic)+'<span><b>'+t+'</b>'+text+'</span></button><figure class="inline-shot">'+screenshot_button(src,alt,lang,'inline-preview')+'</figure>'+help_link+subview+'</article>')
         hint='<p class="benefits-hint">'+('Wähle einen Vorteil, um das passende Bild zu sehen.' if de else 'Choose a benefit to see its screen.')+'</p>' if gi==0 else ''
         links=''.join('<a class="text-link" href="'+u+'">'+label+' →</a>' for u,label in MORE[lang]['links']) if gi==0 else ''
-        sections.append('<section class="benefit-band'+(' soft' if gi%2==0 else '')+'"><div class="wrap benefit-group" aria-labelledby="benefit-group-'+str(gi)+'"><h2 id="benefit-group-'+str(gi)+'">'+title+'</h2>'+visual+'<div class="feature-rows">'+''.join(rows)+'</div>'+('<div class="benefit-footer">'+hint+links+'</div>' if hint or links else '')+'</div></section>')
+        sections.append('<section class="benefit-band'+(' soft' if gi%2==0 else '')+'"><div class="wrap benefit-group'+(' feature-pair' if gi==0 else '')+'" aria-labelledby="benefit-group-'+str(gi)+'"><h2 id="benefit-group-'+str(gi)+'">'+title+'</h2>'+visual+'<div class="feature-rows">'+''.join(rows)+'</div>'+('<div class="benefit-footer">'+hint+links+'</div>' if hint or links else '')+'</div></section>')
     return '<div class="benefits-section" id="'+('so-gehts' if de else 'how')+'">'+''.join(sections)+ways_section(lang)+'</div>'
 
 def home_hero(lang='de'):
