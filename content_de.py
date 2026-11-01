@@ -1,6 +1,6 @@
 import sys as _sys, os as _os
 _sys.path.insert(0,_os.path.dirname(_os.path.abspath(__file__)))
-from help_shots import shots_html, files as shot_files, IMAGES as HELP_IMAGES
+from help_shots import shots_html, inline as help_inline, files as shot_files, IMAGES as HELP_IMAGES
 from help_topics import help_anchor
 from pathlib import Path
 import html, json
@@ -521,13 +521,26 @@ HELP = [('erste-schritte',
     'einer Tour verbinden.</p><p>Beim Radfahren weist die Darstellung auch auf den Untergrund hin. Die Farben '
     'unterstützen die Planung, ersetzen aber nicht die Prüfung von Strecke, Schwierigkeit und Beschilderung.</p>'),
    ('Am Computer planen und aufs Handy übertragen',
-    '<ol><li>Öffne <a href="https://plan.onpath.earth/">plan.onpath.earth</a> am Computer. Du brauchst kein Konto und '
-    'keine Installation.</li><li>Setze Start, Ziel und Zwischenstopps. Punkte lassen sich mit der Maus setzen und '
-    'verschieben; vorhandene GPX-Dateien kannst du öffnen.</li><li>Öffne „Teilen“ und scanne den QR-Code mit der '
-    'Handykamera. Öffne den Link in OnPath auf deinem Android-Handy.</li><li>Prüfe die Tour und lass die benötigten '
-    'Karten auf dem Handy vollständig laden, bevor du ohne Empfang startest.</li></ol><p>Das dauerhafte Koppeln von '
-    'Browser und Handy zum Abgleich gespeicherter Pläne ist im Test. Die einmalige QR-Übertragung kannst du bereits '
-    'nutzen. <a href="/ausblick/#abschnitt-3">Mehr zum Koppeln →</a></p>')]),
+    '<ol><li>Öffne <a href="https://plan.onpath.earth/">plan.onpath.earth</a> am Computer – ohne Konto und ohne '
+    'Installation.</li><li>Setze Start, Ziel und Zwischenstopps mit der Maus oder öffne eine GPX-Datei. Zeit, '
+    'Höhenprofil und Hinweise siehst du wie in der App.</li><li>Klicke auf „Teilen“ und scanne den QR-Code mit der '
+    'Handykamera. Die Route öffnet sich in OnPath.</li><li>Lass die Karten für die Strecke auf dem Handy laden, bevor '
+    'du ohne Empfang startest.</li></ol><p>Du planst öfter am Computer? Dann kopple Browser und Handy einmal – deine '
+    'gespeicherten Routen sind danach auf beiden Geräten. <a href="#koppeln">So koppelst du →</a></p>'),
+   ('Browser und Handy koppeln',
+    '<p>Einmal koppeln – dann sind deine gespeicherten Routen im Browser und auf dem Handy, in beide Richtungen.</p>'
+    '<h3>Koppeln</h3><ol><li>Im Browser: Klicke oben auf „Handy verbinden“ und im Fenster noch einmal auf „Handy '
+    'verbinden“. Ein QR-Code erscheint.</li><li>Auf dem Handy: Öffne OnPath, tippe auf ☰ → „Mit Browser verbinden“ → '
+    '„Kamera öffnen“ und scanne den Code.</li><li>OnPath zeigt sechs Prüfziffern. Stimmen sie mit denen im Browser '
+    'überein, tippe auf „Verbinden“.</li></ol>[[shots:web-handy,web-koppeln,app-koppeln]]'
+    '<h3>Deine Routen auf beiden Geräten</h3><p>Speicherst du im Browser eine Route, erscheint sie in der App unter '
+    '„Meine Routen“ – markiert mit „Neu“ oder „Geändert“. Was du auf dem Handy speicherst, findest du im Browser unter '
+    '„Meine Routen“. Abgeglichen wird, wenn OnPath auf dem Handy offen ist und solange die Browserseite offen ist. '
+    'Aufgezeichnete Touren bleiben auf dem Handy.</p>[[shots:app-verbunden,app-routen]]'
+    '<h3>Trennen</h3><p>In der App: Einstellungen → Browser-Abgleich → „Trennen“. Oder im Browser: „Handy“ → '
+    '„Trennen“. Deine Routen bleiben auf beiden Geräten.</p>[[shots:app-trennen]]'
+    '<p>Ende-zu-Ende verschlüsselt, ohne Konto. Gib den QR-Code nicht weiter – wer ihn scannt, sieht deine '
+    'gespeicherten Routen.</p>')]),
  ('unterwegs-aendern',
   'Unterwegs die Route ändern',
   'Einen Abstecher einbauen und die Aufzeichnung fortsetzen.',
@@ -683,7 +696,7 @@ def article(path,eye,title,desc,sections,help_page=False):
  else:side+=''.join('<a href="#abschnitt-'+str(i)+'">'+t+'</a>' for i,(t,_) in enumerate(sections))
  side+='</aside>'
  slug=path.strip('/').split('/')[-1] if help_page else None
- prose=''.join('<section id="abschnitt-'+str(i)+'"><h2'+(' id="'+help_anchor('de',slug,i)+'"' if help_page else '')+'>'+t+'</h2>'+v+(shots_html('de',slug,i) if help_page else '')+'</section>' for i,(t,v) in enumerate(sections))
+ prose=''.join('<section id="abschnitt-'+str(i)+'"><h2'+(' id="'+help_anchor('de',slug,i)+'"' if help_page else '')+'>'+t+'</h2>'+help_inline('de',v)+(shots_html('de',slug,i) if help_page else '')+'</section>' for i,(t,v) in enumerate(sections))
  if help_page:
   prose='<nav class="help-contents" aria-label="In diesem Hilfethema"><b>In diesem Hilfethema</b><ul>'+''.join('<li><a href="#'+help_anchor('de',slug,i)+'">'+t+'</a></li>' for i,(t,_) in enumerate(sections))+'</ul></nav>'+prose
  content=ph(eye,title,desc,('<a href="/hilfe/">Hilfe</a> <span>/</span> ' if help_page else '')+title)+'<section class="section"><div class="wrap article-layout">'+side+'<article class="prose">'+prose+'<div class="article-end"><a href="/hilfe/">← Alle Hilfethemen</a><a href="/ausprobieren/">OnPath ausprobieren →</a></div></article></div></section>'

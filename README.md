@@ -21,7 +21,10 @@ English is at `/`, German at `/de/`. Every page has a corresponding language-swi
 
 App screens on the help pages: `help_shots.py` says which picture goes under which help section (DE and EN) with its
 caption. Swap or add pictures: put the PNGs (phone screenshots, 1080 × 2400) in a folder, run
-`python3 scripts/help_shots.py <folder>` (writes `assets/help/*.webp`), then `python3 build.py`.
+`python3 scripts/help_shots.py <folder> …` (writes `assets/help/*.webp` and `sizes.json`), then `python3 build.py`.
+Sources today: `onpath.private/marketing/bilder/{a019,a019-nachtrag,a019-nachtrag2,2026-11-01-donald,2026-11-01-web}`
+and the app's screenshot tests `OnPath/app/src/test/snapshots/images` (pairing screens); later folders win.
+Pictures can also sit inside a help text: `[[shots:name,name]]`.
 
 ## Review and public launch
 

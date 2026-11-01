@@ -104,11 +104,23 @@ HELP_EN = [('getting-started',
     'Regional and local routes appear as you zoom in. Follow a longer route or combine local paths into an outing. '
     'Cycling maps also indicate surfaces. Colours help with planning; check the route, difficulty and signs too.'),
    ('Plan on a computer and transfer to your phone',
-    'Open <a href="https://plan.onpath.earth/">plan.onpath.earth</a> on your computer, without an account or '
-    'installation. Set and move start, destination and stops with the mouse, or open a GPX file. Choose “Share”, scan '
-    'the QR code with your phone camera and open the link in the Android app. Check the route and wait for the phone’s '
-    'map downloads to finish before heading out without reception. Ongoing browser–phone pairing for saved plans is in '
-    'testing; one-off QR transfer is already available. <a href="/whats-next/#section-3">More about pairing →</a>')]),
+    '<ol><li>Open <a href="https://plan.onpath.earth/">plan.onpath.earth</a> on your computer – no account, nothing '
+    'to install.</li><li>Set start, destination and stops with the mouse, or open a GPX file. You see time, elevation '
+    'profile and notes as in the app.</li><li>Click “Share” and scan the QR code with your phone camera. The route '
+    'opens in OnPath.</li><li>Let the phone download the maps for the route before you head out without '
+    'reception.</li></ol><p>Often plan on the computer? Pair browser and phone once – your saved routes are then on '
+    'both. <a href="#pair">How to pair →</a></p>'),
+   ('Pair browser and phone',
+    '<p>Pair once – then your saved routes are in the browser and on your phone, both ways.</p>'
+    '<h3>Pair</h3><ol><li>In the browser: click “Pair phone” at the top, then “Pair phone” again in the window. A QR '
+    'code appears.</li><li>On your phone: open OnPath, tap ☰ → “Pair with browser” → “Open camera” and scan the '
+    'code.</li><li>OnPath shows six check digits. If they match the browser, tap “Pair”.</li></ol>[[shots:web-handy,web-koppeln,app-koppeln]]'
+    '<h3>Your routes on both</h3><p>Save a route in the browser and it appears in the app under “My routes”, marked '
+    '“New” or “Changed”. What you save on your phone shows up in the browser under “My routes”. They sync while OnPath '
+    'is open on the phone and while the browser page is open. Recorded outings stay on your phone.</p>[[shots:app-verbunden,app-routen]]'
+    '<h3>Unpair</h3><p>In the app: Settings → Browser sync → “Unpair”. Or in the browser: “Phone” → “Unpair”. Your '
+    'routes stay on both devices.</p>[[shots:app-trennen]]'
+    '<p>End-to-end encrypted, no account. Keep the QR code to yourself – whoever scans it sees your saved routes.</p>')]),
  ('change-route',
   'Change the route along the way',
   'Add a stop and keep your recording.',

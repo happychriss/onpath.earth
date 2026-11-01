@@ -8,8 +8,12 @@ IMAGES: name -> (source PNG German app, source PNG English app or None, German t
         The text is both the alt text and the caption. Without an English PNG the English pages show
         the German screen and say so.
 SHOTS:  language -> (help page slug, section number from 0) -> picture names, shown under that section.
+        Inside a section's text, [[shots:name,name]] puts pictures at that place instead (see inline()).
 """
+import json
+import re
 from html import escape
+from pathlib import Path
 
 IMAGES = {
     'leer': ('08a-erste-route-leer.png', None, 'Leerer Plan: Hier setzt du den ersten Punkt.', 'Empty plan: this is where you set the first point.'),
@@ -35,6 +39,14 @@ IMAGES = {
     'fahrt': ('07-fahrt.png', 'fahrt-en.png', 'Eine erkannte Liftfahrt: Du entscheidest, ob sie zählt.', 'A recognised chairlift ride: you decide whether it counts.'),
     'gespeichert': ('10b-tour-gespeichert.png', None, 'Die Tour ist gespeichert, auf Wunsch auch als GPX.', 'The tour is saved, also as GPX if you like.'),
     'meine-routen': ('10c-meine-routen.png', None, 'Meine Routen → Gemacht: deine Touren.', 'My routes → Done: your tours.'),
+    'web-plan': ('web-plan-de.png', 'web-plan-en.png', 'Der Planer im Browser: Route, Zeit, Höhenprofil und Punkte.', 'The planner in the browser: route, time, elevation profile and points.'),
+    'web-teilen': ('web-teilen-de.png', 'web-teilen-en.png', '„Teilen“: den QR-Code mit der Handykamera scannen.', '“Share”: scan the QR code with your phone camera.'),
+    'web-handy': ('web-handy-de.png', 'web-handy-en.png', 'Im Browser oben „Handy verbinden“ – hier steht auch, wie es funktioniert.', '“Pair phone” at the top of the browser – it also says how it works.'),
+    'web-koppeln': ('web-koppeln-de.png', None, 'Der Code zum Koppeln (hier unkenntlich gemacht) – mit OnPath scannen.', 'The pairing code (blurred here) – scan it with OnPath.'),
+    'app-koppeln': ('com.onpath.app.ui_GermanScreenshotTest_planPairHint.png', 'com.onpath.app.ui_ScreenshotTest_planPairHint.png', 'In der App: ☰ → „Mit Browser verbinden“ → „Kamera öffnen“.', 'In the app: ☰ → “Pair with browser” → “Open camera”.'),
+    'app-verbunden': ('com.onpath.app.ui_GermanScreenshotTest_planPairedNote.png', 'com.onpath.app.ui_ScreenshotTest_planPairedNote.png', 'Verbunden – was du im Browser speicherst, kommt aufs Handy.', 'Paired – what you save in the browser comes to your phone.'),
+    'app-routen': ('com.onpath.app.ui_GermanScreenshotTest_toursFromBrowser.png', 'com.onpath.app.ui_ScreenshotTest_toursFromBrowser.png', '„Meine Routen“: Routen aus dem Browser mit „Neu“ oder „Geändert“.', '“My routes”: routes from the browser marked “New” or “Changed”.'),
+    'app-trennen': ('com.onpath.app.ui_GermanScreenshotTest_settingsSyncPaired.png', None, 'Einstellungen → Browser-Abgleich: hier trennst du.', 'Settings → Browser sync: this is where you unpair.'),
     'neustart-hinweis': ('neustart-hinweis-de.png', 'neustart-hinweis-en.png', 'Nach einem Neustart: Die Aufzeichnung ist gespeichert.', 'After a restart: the recording is saved.'),
     'neustart': ('neustart-de.png', 'neustart-en.png', '„Unterbrochene Tour“: fortsetzen, löschen oder speichern.', '“Unfinished tour”: continue, delete or save.'),
 }
@@ -53,6 +65,7 @@ SHOTS = {
         ('orte', 0): ['suche'],
         ('orte', 1): ['g-uebernommen', 'g-route'],
         ('orte', 2): ['ort'],
+        ('route-planen', 5): ['web-plan', 'web-teilen'],
         ('gpx', 3): ['gespeichert', 'meine-routen'],
         ('probleme', 2): ['neustart-hinweis', 'neustart'],
         ('navigation', 0): ['ankunft', 'ruhe'],
@@ -71,13 +84,26 @@ SHOTS = {
         ('places', 0): ['suche'],
         ('places', 1): ['ort'],
         ('places', 2): ['g-uebernommen', 'g-route'],
+        ('planning', 5): ['web-plan', 'web-teilen'],
         ('gpx', 2): ['gespeichert', 'meine-routen'],
         ('navigation', 0): ['ankunft', 'ruhe'],
         ('navigation', 2): ['beenden', 'fahrt'],
     },
 }
 
-WIDTH, HEIGHT = 540, 1200  # stored size (phone screens 1080 × 2400, halved)
+WIDTH, HEIGHT = 540, 1200  # phone screens are stored 540 wide (1080 × 2400 halved); other shapes keep their ratio
+WIDE = {'web-plan'}           # browser screens shown across the text column, stored up to 1200 wide
+WIDE_MAX = 1200
+TOP = {'app-routen': 0.335, 'app-trennen': 0.2}  # keep only this top share of a mostly empty screen
+SIZES_FILE = Path(__file__).resolve().parent / 'assets' / 'help' / 'sizes.json'
+
+
+def sizes():
+    """Stored picture sizes, written by scripts/help_shots.py ({file: [width, height]})."""
+    try:
+        return json.loads(SIZES_FILE.read_text())
+    except (OSError, ValueError):
+        return {}
 
 
 def files(name):
@@ -87,10 +113,18 @@ def files(name):
 
 
 def shots_html(lang, slug, index):
-    names = SHOTS[lang].get((slug, index), [])
+    return figures(lang, SHOTS[lang].get((slug, index), []))
+
+
+def inline(lang, text):
+    """Pictures inside a section's text: [[shots:name,name]] becomes a row of pictures at that place."""
+    return re.sub(r'\[\[shots:([a-z0-9,-]+)\]\]', lambda m: figures(lang, m.group(1).split(',')), text)
+
+
+def figures(lang, names):
     if not names:
         return ''
-    figs = ''
+    figs, known = '', sizes()
     for name in names:
         de_src, en_src, de_text, en_text = IMAGES[name]
         if lang == 'de':
@@ -98,6 +132,8 @@ def shots_html(lang, slug, index):
         else:
             file, text = files(name)[1], en_text + ('' if en_src else ' (German screen)')
         t = escape(text)
-        figs += (f'<figure><img src="/assets/help/{file}" alt="{t}" width="{WIDTH}" height="{HEIGHT}" '
+        w, h = known.get(file, (WIDTH, HEIGHT))
+        wide = ' class="wide"' if name in WIDE else (' class="part"' if name in TOP else '')
+        figs += (f'<figure{wide}><img src="/assets/help/{file}" alt="{t}" width="{w}" height="{h}" '
                  f'loading="lazy" decoding="async"><figcaption>{t}</figcaption></figure>')
     return f'<div class="help-shots">{figs}</div>'
