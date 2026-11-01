@@ -333,7 +333,9 @@ def first_steps(lang='de'):
     F=FIRST_STEPS[lang]; anchor='entdecken' if lang=='de' else 'discover'
     pic=lambda k:'/assets/help/'+k+('-en' if lang=='en' and k=='plan' else '-de')+'.webp'
     cards=''.join('<article class="feature know"><img class="know-shot" src="'+pic(k)+'" alt="'+alt+'" width="540" height="1200" loading="lazy" decoding="async"><div class="feature-top"><span>0'+str(i+1)+'</span></div><h3>'+title+'</h3><p>'+text+'</p>'+home_help(lang, 'steps', i)+'</article>' for i,(k,title,text,alt) in enumerate(F['items']))
-    return '<section class="section" id="'+anchor+'"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+F['eye']+'</p><h2>'+F['h']+'</h2></div><div><p>'+F['lead']+'</p><a class="button outline small know-help" href="'+F['more'][0]+'">'+F['more'][1]+' →</a></div></div><div class="feature-grid">'+cards+'</div></div></section>'
+    offline_title,offline_text=SMALL[lang]['cols'][1][1][2]
+    offline='<details class="first-offline"><summary>'+offline_title+'</summary><p>'+offline_text+'</p></details>'
+    return '<section class="section" id="'+anchor+'"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+F['eye']+'</p><h2>'+F['h']+'</h2></div><div><p>'+F['lead']+'</p><a class="button outline small know-help" href="'+F['more'][0]+'">'+F['more'][1]+' →</a></div></div><div class="feature-grid">'+cards+'</div>'+offline+'</div></section>'
 def home_cta(lang='de'):
     if lang=='de':
         eye='Gemeinsam besser machen';title='Mach OnPath mit deiner Erfahrung besser.'
@@ -368,23 +370,39 @@ DETAIL_HIGHLIGHTS={'de': {'summary': 'Mehr durchdachte Details',
                    'A place from Google Maps or a meeting point sent by friends: share it with OnPath and follow '
                    'suitable paths to get there. <a href="/help/places/#shared-meeting-points">Use a shared place '
                    '→</a>')]}}
-def small_section(lang='de'):
-    S=SMALL[lang]; H=DETAIL_HIGHLIGHTS[lang]
-    highlights=''.join('<article>'+icon(ic)+'<h3>'+title+'</h3><p>'+text+'</p></article>' for ic,title,text in H['items'])
-    # Recording recovery is highlighted above; keep automatic naming in the disclosure.
-    highlighted={'Jeder Punkt wird sofort gespeichert.','Every point is saved at once.'}
-    cols=''.join('<div><h3>'+t+'</h3><ul>'+''.join('<li><b>'+b+'</b> '+x+'</li>' for b,x in items if b not in highlighted)+'</ul></div>' for t,items in S['cols'])
-    return '<section class="section soft"><div class="wrap"><div class="section-heading stacked"><div><p class="eyebrow">'+S['eye']+'</p><h2>'+S['h']+'</h2></div></div><div class="detail-highlights">'+highlights+'</div><details class="detail-more"><summary>'+H['summary']+'</summary><div class="small-cols">'+cols+'</div></details><a class="text-link" href="'+S['link'][0]+'">'+S['link'][1]+' →</a></div></section>'
 EXTRA_SHOT={'de':{'ankunft':('Navigation beim Wandern: 110 m Links, 1:40 h und 3,2 km bis zur Leiteralm, Ankunft 13:55','Unterwegs immer im Blick: wie weit, wie lange und wann du ankommst.'),'ruheanzeige':('Ruheanzeige am Rad: schwarzer Bildschirm mit Pfeil, 2,3 km Links, 25 min und Ankunft 12:55','Am Lenker nur Pfeil, Entfernung und Ankunft. Die Karte kommt kurz vor der Abzweigung.'),'fahrt':('Tour beenden: OnPath hat eine Liftfahrt erkannt und fragt, was zählen soll','Mit dem Sessellift nach Vellau: OnPath erkennt die Fahrt und fragt, was zählen soll.')},
 'en':{'ankunft':('Navigating on a hike: 60 m sharp right, 1:35 h and 3.1 km to the Leiteralm, arrival 13:50','Always in view on the way: how far, how long and when you arrive.'),'ruheanzeige':('Rest view on the bike: black screen with arrow, 600 m slight right, 35 min and arrival 11:05','On the handlebar only arrow, distance and arrival. The map returns shortly before the turn.'),'fahrt':('Ending a tour: OnPath recognised a chairlift ride and asks what should count','By chairlift to Vellau: OnPath recognises the ride and asks what should count.')}}
 def more_section(lang='de'):
-    M=MORE[lang]; F=FEATURES[lang]; S={k:(alt,txt) for k,_,alt,txt in SHOTS[lang]['items']}
-    src=lambda k:'/assets/app/'+k+'-'+lang+'.webp'
-    rows=''.join('<div class="feature-entry"><button class="feature-row" data-shot="'+src(k)+'" data-alt="'+S[k][0]+'" data-text="'+S[k][1]+'" aria-pressed="'+('true' if i==0 else 'false')+'">'+icon(ic)+'<span><b>'+t+'</b>'+x+'</span></button>'+home_help(lang, 'features', i)+'</div>' for i,(ic,t,x,k) in enumerate(F['rows']))
-    first=F['rows'][0][3]
-    phone='<div class="demo shots"><div class="demo-top"><span>'+SHOTS[lang]['top']+'</span><span class="tag">'+SHOTS[lang]['tag']+'</span></div><div class="shots-phone"><img id="shot-img" src="'+src(first)+'" alt="'+S[first][0]+'" width="600" height="1333" loading="lazy"></div><p id="shot-text" aria-live="polite">'+S[first][1]+'</p></div>'
-    links=''.join('<a class="text-link" href="'+u+'">'+l+' →</a>' for u,l in M['links'])
-    return '<section class="section soft" id="'+('so-gehts' if lang=='de' else 'how')+'"><div class="wrap split"><div><p class="eyebrow">'+M['eye']+'</p><h2>'+M['h']+'</h2><div class="feature-rows">'+rows+'</div><div class="mini-rows">'+''.join('<div class="feature-entry"><button class="mini-row" data-shot="'+src(k)+'" data-alt="'+EXTRA_SHOT[lang][k][0]+'" data-text="'+EXTRA_SHOT[lang][k][1]+'" aria-pressed="false">'+icon(ic)+'<span><b>'+t+'</b>'+x+'</span></button>'+home_help(lang, 'extras', i)+'</div>' for i,((ic,t,x),k) in enumerate(zip(EXTRA[lang],['ankunft','ruheanzeige','fahrt'])))+'</div><div class="more-links">'+links+'</div></div>'+phone+'</div></section>'
+    M=MORE[lang]; F=FEATURES[lang]
+    screens={k:(alt,txt) for k,_,alt,txt in SHOTS[lang]['items']}
+    entries=[]
+    for i,(ic,title,text,k) in enumerate(F['rows']):
+        alt,caption=screens[k]
+        entries.append((ic,title,text,'/assets/app/'+k+'-'+lang+'.webp',alt,caption,home_help(lang,'features',i)))
+    for i,((ic,title,text),k) in enumerate(zip(EXTRA[lang],['ankunft','ruheanzeige','fahrt'])):
+        alt,caption=EXTRA_SHOT[lang][k]
+        entries.append((ic,title,text,'/assets/app/'+k+'-'+lang+'.webp',alt,caption,home_help(lang,'extras',i)))
+    recovery,shared=DETAIL_HIGHLIGHTS[lang]['items']
+    for (ic,title,text),k in [(shared,'g-uebernommen'),(recovery,'neustart')]:
+        entries.append((ic,title,text,'/assets/help/'+k+'-'+lang+'.webp',title,title,''))
+    rows=[]
+    for i,(ic,title,text,src,alt,caption,help_link) in enumerate(entries):
+        # Links are siblings of the screenshot selector, never nested inside a button.
+        text,sep,embedded=text.partition(' <a ')
+        if sep: help_link='<a class="context-help" '+embedded
+        selected='true' if i==0 else 'false'
+        rows.append('<article class="feature-entry"><button class="feature-row" data-shot="'+src+'" data-alt="'+html.escape(alt,quote=True)+'" data-text="'+html.escape(caption,quote=True)+'" aria-pressed="'+selected+'">'+icon(ic)+'<span><b>'+title+'</b>'+text+'</span></button><figure class="inline-shot"><img src="'+src+'" alt="'+html.escape(alt,quote=True)+'" width="600" height="1333" loading="lazy"><figcaption>'+caption+'</figcaption></figure>'+help_link+'</article>')
+    first=entries[0]
+    phone='<aside class="demo shots benefits-preview" aria-label="'+('Passender App-Bildschirm' if lang=='de' else 'Matching app screen')+'"><div class="demo-top"><span>'+SHOTS[lang]['top']+'</span><span class="tag">'+SHOTS[lang]['tag']+'</span></div><div class="shots-phone"><img id="shot-img" src="'+first[3]+'" alt="'+first[4]+'" width="600" height="1333" loading="lazy"></div><p id="shot-text" aria-live="polite">'+first[5]+'</p></aside>'
+    more_title='Was dir unterwegs noch hilft' if lang=='de' else 'More help along the way'
+    # Hiking grades and route colours sit next to the route benefits. Offline search is in step 1.
+    planning=SMALL[lang]['cols'][1][1][:2]
+    detail_items=''.join('<article><h3>'+title+'</h3><p>'+text+'</p></article>' for title,text in planning)
+    end_title,end_text=SMALL[lang]['cols'][0][1][0]
+    details='<details class="benefits-more"><summary>'+more_title+'</summary><div class="benefits-details">'+detail_items+'</div></details><div class="tour-finish"><h3>'+end_title+'</h3><p>'+end_text+'</p></div>'
+    links=''.join('<a class="text-link" href="'+u+'">'+label+' →</a>' for u,label in M['links'])
+    hint='Tippe auf einen Vorteil, um den passenden App-Bildschirm zu sehen.' if lang=='de' else 'Tap a benefit to see the matching app screen.'
+    return '<section class="section soft benefits-section" id="'+('so-gehts' if lang=='de' else 'how')+'"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+M['eye']+'</p><h2>'+M['h']+'</h2><p class="benefits-hint">'+hint+'</p></div></div><div class="benefits-layout"><div class="feature-rows">'+''.join(rows)+'</div>'+phone+'</div>'+details+'<div class="more-links">'+links+'</div></div></section>'
 
 def home_hero(lang='de'):
     if lang == 'de':
@@ -408,7 +426,7 @@ def home_hero(lang='de'):
     visual='<figure class="hero-photo hero-devices"><img src="/assets/vellau-path.webp" alt="'+photo+'" width="1400" height="1054" fetchpriority="high"><div class="hero-browser"><div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>plan.onpath.earth</span></div><img src="/assets/app/web-wandern-de.webp" alt="'+web+'" width="1440" height="900"></div><img class="hero-phone" src="/assets/app/plan-wandern-'+lang+'.webp" alt="'+phone+'" width="600" height="1333"><figcaption>'+caption+'</figcaption></figure>'
     return '<section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><p class="eyebrow">'+eye+'</p><h1>'+title+'</h1><p class="lead">'+lead+'</p><p class="hero-together">'+together+'</p><div class="actions">'+button(*app)+button('https://plan.onpath.earth/',browser,True)+'</div><p class="hero-value">'+value+'</p><p class="hero-note">'+note+'</p></div>'+visual+'</div></section>'
 
-body=home_hero('de')+first_steps('de')+more_section('de')+ways_section('de')+small_section('de')+open_section('de')+home_cta('de')
+body=home_hero('de')+first_steps('de')+more_section('de')+ways_section('de')+open_section('de')+home_cta('de')
 page('/','Deine Tour. Einfach unterwegs.','OnPath für Android: Wander- und Radtouren planen, unterwegs ändern und offline navigieren. Ohne Konto und Werbung.',body)
 
 HELP = [('erste-schritte',
