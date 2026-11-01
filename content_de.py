@@ -1,6 +1,6 @@
 import sys as _sys, os as _os
 _sys.path.insert(0,_os.path.dirname(_os.path.abspath(__file__)))
-from help_shots import shots_html
+from help_shots import shots_html, files as shot_files
 from help_topics import help_anchor
 from pathlib import Path
 import html, json
@@ -329,13 +329,15 @@ def home_help(lang, group, index):
     url, label = HOME_HELP[lang][group][index]
     return '<a class="context-help" href="'+url+'">'+label+' →</a>'
 
+STEP_COPY={
+ 'de':[('Ziel wählen.','Drücke etwas länger auf dein Ziel auf der Karte – deine Route entsteht.'),('Tour prüfen.','Sieh dir Dauer, Höhenmeter und Streckenhinweise an.'),('Losgehen. Flexibel bleiben.','Starte die Navigation und passe deinen Weg unterwegs bei Bedarf an.')],
+ 'en':[('Choose a destination.','Press a little longer on your destination on the map to create your route.'),('Check your route.','Review time, climbing and route hints.'),('Set off. Stay flexible.','Start navigation and adjust your way along the journey when needed.')]
+}
 def first_steps(lang='de'):
-    F=FIRST_STEPS[lang]; anchor='entdecken' if lang=='de' else 'discover'
+    F=dict(FIRST_STEPS[lang]); F['items']=[(k,t,x,alt) for (k,_,_,alt),(t,x) in zip(F['items'],STEP_COPY[lang])]; anchor='entdecken' if lang=='de' else 'discover'
     pic=lambda k:'/assets/help/'+k+('-en' if lang=='en' and k=='plan' else '-de')+'.webp'
     cards=''.join('<article class="feature know"><img class="know-shot" src="'+pic(k)+'" alt="'+alt+'" width="540" height="1200" loading="lazy" decoding="async"><div class="feature-top"><span>0'+str(i+1)+'</span></div><h3>'+title+'</h3><p>'+text+'</p>'+home_help(lang, 'steps', i)+'</article>' for i,(k,title,text,alt) in enumerate(F['items']))
-    offline_title,offline_text=SMALL[lang]['cols'][1][1][2]
-    offline='<details class="first-offline"><summary>'+offline_title+'</summary><p>'+offline_text+'</p></details>'
-    return '<section class="section" id="'+anchor+'"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+F['eye']+'</p><h2>'+F['h']+'</h2></div><div><p>'+F['lead']+'</p><a class="button outline small know-help" href="'+F['more'][0]+'">'+F['more'][1]+' →</a></div></div><div class="feature-grid">'+cards+'</div>'+offline+'</div></section>'
+    return '<section class="section" id="'+anchor+'"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+F['eye']+'</p><h2>'+F['h']+'</h2></div><div><p>'+F['lead']+'</p><a class="button outline small know-help" href="'+F['more'][0]+'">'+F['more'][1]+' →</a></div></div><div class="feature-grid">'+cards+'</div>'+'</div></section>'
 def home_cta(lang='de'):
     if lang=='de':
         eye='Gemeinsam besser machen';title='Mach OnPath mit deiner Erfahrung besser.'
@@ -373,36 +375,51 @@ DETAIL_HIGHLIGHTS={'de': {'summary': 'Mehr durchdachte Details',
 EXTRA_SHOT={'de':{'ankunft':('Navigation beim Wandern: 110 m Links, 1:40 h und 3,2 km bis zur Leiteralm, Ankunft 13:55','Unterwegs immer im Blick: wie weit, wie lange und wann du ankommst.'),'ruheanzeige':('Ruheanzeige am Rad: schwarzer Bildschirm mit Pfeil, 2,3 km Links, 25 min und Ankunft 12:55','Am Lenker nur Pfeil, Entfernung und Ankunft. Die Karte kommt kurz vor der Abzweigung.'),'fahrt':('Tour beenden: OnPath hat eine Liftfahrt erkannt und fragt, was zählen soll','Mit dem Sessellift nach Vellau: OnPath erkennt die Fahrt und fragt, was zählen soll.')},
 'en':{'ankunft':('Navigating on a hike: 60 m sharp right, 1:35 h and 3.1 km to the Leiteralm, arrival 13:50','Always in view on the way: how far, how long and when you arrive.'),'ruheanzeige':('Rest view on the bike: black screen with arrow, 600 m slight right, 35 min and arrival 11:05','On the handlebar only arrow, distance and arrival. The map returns shortly before the turn.'),'fahrt':('Ending a tour: OnPath recognised a chairlift ride and asks what should count','By chairlift to Vellau: OnPath recognises the ride and asks what should count.')}}
 def more_section(lang='de'):
-    M=MORE[lang]; F=FEATURES[lang]
+    de=lang=='de'
     screens={k:(alt,txt) for k,_,alt,txt in SHOTS[lang]['items']}
-    entries=[]
-    for i,(ic,title,text,k) in enumerate(F['rows']):
-        alt,caption=screens[k]
-        entries.append((ic,title,text,'/assets/app/'+k+'-'+lang+'.webp',alt,caption,home_help(lang,'features',i)))
-    for i,((ic,title,text),k) in enumerate(zip(EXTRA[lang],['ankunft','ruheanzeige','fahrt'])):
-        alt,caption=EXTRA_SHOT[lang][k]
-        entries.append((ic,title,text,'/assets/app/'+k+'-'+lang+'.webp',alt,caption,home_help(lang,'extras',i)))
+    def app(ic,title,text,key,help_link=''):
+        alt,caption=screens.get(key,EXTRA_SHOT[lang].get(key,(title,title)))
+        return (ic,title,text,'/assets/app/'+key+'-'+lang+'.webp',alt,caption,help_link)
+    def help_item(item,key):
+        ic,title,text=item
+        return (ic,title,text,'/assets/help/'+shot_files(key)[0 if de else 1],title,title,'')
+    routes=FEATURES[lang]['rows'][0]
+    inn=FEATURES[lang]['rows'][1]
+    sac,colours,offline=SMALL[lang]['cols'][1][1]
+    finish=SMALL[lang]['cols'][0][1][0]
     recovery,shared=DETAIL_HIGHLIGHTS[lang]['items']
-    for (ic,title,text),k in [(shared,'g-uebernommen'),(recovery,'neustart')]:
-        entries.append((ic,title,text,'/assets/help/'+k+'-'+lang+'.webp',title,title,''))
-    rows=[]
-    for i,(ic,title,text,src,alt,caption,help_link) in enumerate(entries):
-        # Links are siblings of the screenshot selector, never nested inside a button.
-        text,sep,embedded=text.partition(' <a ')
-        if sep: help_link='<a class="context-help" '+embedded
-        selected='true' if i==0 else 'false'
-        rows.append('<article class="feature-entry"><button class="feature-row" data-shot="'+src+'" data-alt="'+html.escape(alt,quote=True)+'" data-text="'+html.escape(caption,quote=True)+'" aria-pressed="'+selected+'">'+icon(ic)+'<span><b>'+title+'</b>'+text+'</span></button><figure class="inline-shot"><img src="'+src+'" alt="'+html.escape(alt,quote=True)+'" width="600" height="1333" loading="lazy"><figcaption>'+caption+'</figcaption></figure>'+help_link+'</article>')
-    first=entries[0]
-    phone='<aside class="demo shots benefits-preview" aria-label="'+('Passender App-Bildschirm' if lang=='de' else 'Matching app screen')+'"><div class="demo-top"><span>'+SHOTS[lang]['top']+'</span><span class="tag">'+SHOTS[lang]['tag']+'</span></div><div class="shots-phone"><img id="shot-img" src="'+first[3]+'" alt="'+first[4]+'" width="600" height="1333" loading="lazy"></div><p id="shot-text" aria-live="polite">'+first[5]+'</p></aside>'
-    more_title='Was dir unterwegs noch hilft' if lang=='de' else 'More help along the way'
-    # Hiking grades and route colours sit next to the route benefits. Offline search is in step 1.
-    planning=SMALL[lang]['cols'][1][1][:2]
-    detail_items=''.join('<article><h3>'+title+'</h3><p>'+text+'</p></article>' for title,text in planning)
-    end_title,end_text=SMALL[lang]['cols'][0][1][0]
-    details='<details class="benefits-more"><summary>'+more_title+'</summary><div class="benefits-details">'+detail_items+'</div></details><div class="tour-finish"><h3>'+end_title+'</h3><p>'+end_text+'</p></div>'
-    links=''.join('<a class="text-link" href="'+u+'">'+label+' →</a>' for u,label in M['links'])
-    hint='Tippe auf einen Vorteil, um den passenden App-Bildschirm zu sehen.' if lang=='de' else 'Tap a benefit to see the matching app screen.'
-    return '<section class="section soft benefits-section" id="'+('so-gehts' if lang=='de' else 'how')+'"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+M['eye']+'</p><h2>'+M['h']+'</h2><p class="benefits-hint">'+hint+'</p></div></div><div class="benefits-layout"><div class="feature-rows">'+''.join(rows)+'</div>'+phone+'</div>'+details+'<div class="more-links">'+links+'</div></div></section>'
+    change=FIRST_STEPS[lang]['items'][2]
+    groups=[
+      ('Schöne Wege finden' if de else 'Find beautiful paths',[
+        app(*routes[:3],routes[3],home_help(lang,'features',0)),
+        app('mountain',*sac,'plan-wandern'),
+        app('route',*colours,'plan-wandern'),
+        app(*inn[:3],inn[3],home_help(lang,'features',1))]),
+      ('Entspannt unterwegs' if de else 'Enjoy the journey',[
+        app(*EXTRA[lang][1],'ruheanzeige',home_help(lang,'extras',1)),
+        app(*EXTRA[lang][0],'ankunft',home_help(lang,'extras',0)),
+        help_item(recovery,'neustart'),
+        help_item(('check',*finish),'beenden')]),
+      ('Flexibel bleiben' if de else 'Stay flexible',[
+        help_item(('route',change[1],change[2]+(' <a href="/hilfe/unterwegs-aendern/#aendern">Unterwegs umplanen →</a>' if de else ' <a href="/help/change-route/#edit">Change your route →</a>')),'neue-route'),
+        help_item(shared,'g-uebernommen'),
+        help_item(('search',*offline),'suche'),
+        app(*EXTRA[lang][2],'fahrt',home_help(lang,'extras',2))])]
+    sections=[]
+    for gi,(title,entries) in enumerate(groups):
+        first=entries[0]
+        visual='<figure class="group-preview"><div class="shots-phone"><img data-preview-img src="'+first[3]+'" alt="'+html.escape(first[4],quote=True)+'" width="600" height="1333" loading="lazy"></div><figcaption data-preview-text aria-live="polite">'+first[5]+'</figcaption></figure>'
+        rows=[]
+        for i,(ic,t,text,src,alt,caption,help_link) in enumerate(entries):
+            text,sep,embedded=text.partition(' <a ')
+            if sep: help_link='<a class="context-help" '+embedded
+            selected='true' if i==0 else 'false'
+            rows.append('<article class="feature-entry"><button class="feature-row" data-shot="'+src+'" data-alt="'+html.escape(alt,quote=True)+'" data-text="'+html.escape(caption,quote=True)+'" aria-pressed="'+selected+'">'+icon(ic)+'<span><b>'+t+'</b>'+text+'</span></button><figure class="inline-shot"><img src="'+src+'" alt="'+html.escape(alt,quote=True)+'" width="600" height="1333" loading="lazy"><figcaption>'+caption+'</figcaption></figure>'+help_link+'</article>')
+        sections.append('<section class="benefit-group" aria-labelledby="benefit-group-'+str(gi)+'"><h3 id="benefit-group-'+str(gi)+'">'+title+'</h3>'+visual+'<div class="feature-rows">'+''.join(rows)+'</div></section>')
+    heading='Was OnPath besonders macht.' if de else 'What makes OnPath special.'
+    hint='Alle Vorteile im Überblick. Tippe auf einen Vorteil, um den passenden App-Bildschirm zu sehen.' if de else 'All the benefits at a glance. Tap a benefit to see its app screen.'
+    links=''.join('<a class="text-link" href="'+u+'">'+label+' →</a>' for u,label in MORE[lang]['links'])
+    return '<section class="section soft benefits-section" id="'+('so-gehts' if de else 'how')+'"><div class="wrap"><div class="section-heading"><div><h2>'+heading+'</h2><p class="benefits-hint">'+hint+'</p></div></div><div class="benefit-groups">'+''.join(sections)+'</div><div class="more-links">'+links+'</div></div></section>'
 
 def home_hero(lang='de'):
     if lang == 'de':
