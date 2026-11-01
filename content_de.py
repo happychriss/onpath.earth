@@ -86,20 +86,21 @@ def open_section(lang='de'):
     links=''.join('<a class="text-link" href="'+url+'">'+label+' →</a>' for url,label in [O['idea'],O['funding']])
     return '<section class="story-section"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+O['eye']+'</p><h2>'+O['h']+'</h2></div></div><div class="points trust-points">'+points+'</div><div class="founder-note">'+author+'<p>'+O['founder']+'</p></div><div class="trust-links">'+links+'</div></div></section>'
 FIRST_STEPS={
- 'de':dict(eye='Deine erste Tour mit der App',h='In drei Schritten zur Tour.',items=[
-  ('bike','Aktivität wählen.','Wähle Wandern, Fahrrad, Gravelbike, E-Bike oder Mountainbike.'),
-  ('pin','Start und Ziel setzen.','Halte die gewünschten Stellen auf der Karte gedrückt. OnPath verbindet sie über passende Wege.'),
-  ('route','Route prüfen und starten.','Sieh dir Strecke, Zeit und Höhenprofil an. Dann startest du die Navigation.')],
-  prep='Für eine Tour ohne Empfang: Lade die Karten vorher, am besten zu Hause im WLAN. Ein neues Gebiet kann beim ersten Laden einige Minuten brauchen.',help=('/hilfe/offline/','Karten vorbereiten')),
- 'en':dict(eye='Your first outing with the app',h='Three steps to your route.',items=[
-  ('bike','Choose your activity.','Choose hiking, cycling, gravel bike, e-bike or mountain bike.'),
-  ('pin','Set your start and destination.','Press and hold the places on the map. OnPath connects them along suitable paths.'),
-  ('route','Check the route and set off.','Review distance, time and the elevation profile. Then start navigation.')],
-  prep='For an outing without reception, download your maps beforehand, ideally at home on Wi-Fi. A new area can take a few minutes to load the first time.',help=('/help/offline/','Prepare your maps'))}
+ 'de':dict(eye='Bevor du loslegst',h='Drei Dinge – dann planst du deine erste Tour.',lead='Mehr musst du für den Anfang nicht wissen.',items=[
+  ('halten','Gedrückt halten setzt einen Punkt.','Kurz tippen reicht nicht: Halte den Finger einen Moment auf die Karte. Dann wählst du Start oder Ziel – OnPath verbindet die Punkte über passende Wege.','Karte gedrückt halten: „Hier starten“ oder „Hierhin“'),
+  ('plan','Das Fenster unten hochziehen.','Unter der Karte liegt dein Plan. Zieh ihn am Griff nach oben: Dort stehen Zeit, Höhenprofil, Hinweise wie steile Abschnitte und alle Punkte deiner Route.','Der Plan unter der Karte: Zeit, Höhenprofil und Hinweise'),
+  ('navi','Planen und Navigieren sind getrennt.','Unterwegs ist die Karte geschützt – ein versehentlicher Tipp ändert nichts. Zum Ändern schiebst du unten das „Tour-Menü“ zur Seite. Mit „Weiter“ geht es zurück.','Navigation mit dem Schieber „Tour-Menü“ unten')],
+  prep='Für eine Tour ohne Empfang: Lade die Karten vorher, am besten zu Hause im WLAN. Ein neues Gebiet kann beim ersten Laden einige Minuten brauchen.',help=('/hilfe/offline/','Karten vorbereiten'),more=('/hilfe/erste-schritte/','Deine erste Tour Schritt für Schritt')),
+ 'en':dict(eye='Before you start',h='Three things – then you plan your first route.',lead='That is all you need to know to begin.',items=[
+  ('halten','Press and hold to set a point.','A short tap is not enough: keep your finger on the map for a moment. Then choose start or destination – OnPath connects the points along suitable paths.','Hold the map: start here or go here (German screen)'),
+  ('plan','Pull the panel up.','Your plan sits below the map. Pull it up by the handle to see time, elevation profile, notes such as steep sections and all points of your route.','The plan below the map: time, elevation profile and notes'),
+  ('navi','Planning and navigating are separate.','On the way the map is protected – an accidental tap changes nothing. To change the route, slide the “Tour menu” at the bottom aside. “Continue” takes you back.','Navigation with the “Tour menu” slider at the bottom (German screen)')],
+  prep='For an outing without reception, download your maps beforehand, ideally at home on Wi-Fi. A new area can take a few minutes to load the first time.',help=('/help/offline/','Prepare your maps'),more=('/help/getting-started/','Your first outing step by step'))}
 def first_steps(lang='de'):
     F=FIRST_STEPS[lang]; anchor='entdecken' if lang=='de' else 'discover'
-    cards=''.join('<article class="feature"><div class="feature-top">'+icon(ic)+'<span>0'+str(i+1)+'</span></div><h3>'+title+'</h3><p>'+text+'</p></article>' for i,(ic,title,text) in enumerate(F['items']))
-    return '<section class="section" id="'+anchor+'"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+F['eye']+'</p><h2>'+F['h']+'</h2></div></div><div class="feature-grid">'+cards+'</div><p class="section-footnote">'+F['prep']+' <a href="'+F['help'][0]+'">'+F['help'][1]+' →</a></p></div></section>'
+    pic=lambda k:'/assets/help/'+k+('-en' if lang=='en' and k=='plan' else '-de')+'.webp'
+    cards=''.join('<article class="feature know"><img class="know-shot" src="'+pic(k)+'" alt="'+alt+'" width="540" height="1200" loading="lazy" decoding="async"><div class="feature-top"><span>0'+str(i+1)+'</span></div><h3>'+title+'</h3><p>'+text+'</p></article>' for i,(k,title,text,alt) in enumerate(F['items']))
+    return '<section class="section" id="'+anchor+'"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+F['eye']+'</p><h2>'+F['h']+'</h2></div><p>'+F['lead']+' <a class="text-link" href="'+F['more'][0]+'">'+F['more'][1]+' →</a></p></div><div class="feature-grid">'+cards+'</div><p class="section-footnote">'+F['prep']+' <a href="'+F['help'][0]+'">'+F['help'][1]+' →</a></p></div></section>'
 def home_cta(lang='de'):
     if lang=='de':
         eye='Gemeinsam besser machen';title='Teste OnPath auf einer kleinen Runde.'
