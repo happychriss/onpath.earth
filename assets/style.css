@@ -18,8 +18,33 @@ header{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1p
 /* A single promise and one quiet product composition. */
 .hero{padding-block:64px}.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}.hero-copy{min-width:0}.hero h1 span{display:block;color:var(--ink);white-space:nowrap}.hero .lead{margin-top:24px;max-width:49ch}.hero-together{font-size:var(--body);line-height:1.65;margin-top:24px;max-width:45ch}.hero .actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:520px;margin:16px 0 24px;align-items:stretch}.hero .button{width:100%}.hero-value{font-size:var(--small);font-weight:700;color:var(--green);margin-bottom:8px}.hero-note{margin:0;max-width:54ch}
 .hero-product{position:relative;min-width:0;padding:56px 40px 70px 0}.product-browser{width:92%;overflow:hidden;border-radius:var(--radius);box-shadow:0 10px 30px #243c3115}.product-browser img{width:100%}.product-phone{position:absolute;right:0;top:8px;width:28%;border:4px solid var(--ink);border-radius:18px;box-shadow:0 12px 24px #243c3120}.hero-product figcaption{font-size:var(--small);line-height:1.6;margin-top:24px;max-width:32ch;color:var(--text)}
+/* The landscape stays the visual centre of the opening. */
+.hero-product.with-landscape{padding:0 0 64px;align-self:center}
+.product-landscape{width:100%;aspect-ratio:1.15;object-fit:cover;object-position:center;border-radius:var(--radius)}
+.with-landscape .product-browser{position:absolute;left:16px;bottom:84px;width:60%;border:3px solid var(--paper);box-shadow:0 12px 24px #243c3130}
+.with-landscape .product-phone{top:auto;right:16px;bottom:80px;width:22%;border-width:3px}
+.with-landscape figcaption{position:absolute;left:0;bottom:0;margin:0;max-width:none;font-size:var(--small)}
+.photo-location{display:block;color:#5a685e}
+.story-personal:has(>.founder-note:only-child){grid-template-columns:1fr}
+.story-personal>.founder-note:only-child{max-width:760px}
 /* Short introductory steps; full screens live in the benefit chapters and help. */
 .section-heading{display:block;max-width:780px;margin-bottom:36px}.section-heading h2{margin:0}.section-heading p:not(.eyebrow){margin-top:16px}.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}.feature{border-top:1px solid var(--line);padding-top:24px}.feature-top{font-size:var(--small);color:var(--green);margin-bottom:16px}.feature h3{margin-bottom:12px}.feature p{font-size:var(--body)}.feature .context-help{margin-top:8px}.steps-help{margin-top:24px}
+/* Prominent step numbers and compact, independently expandable app previews. */
+.steps-section .feature{border-top:0;padding-top:0}
+.step-heading{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.step-heading h3{margin:0}
+.step-number{display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;border-radius:50%;background:var(--green);color:white;font-size:var(--title);font-weight:700;line-height:1}
+.step-preview{margin-top:20px;padding:0;border:0}
+.step-preview summary{display:flex;align-items:center;gap:20px;padding:8px 0;font-size:var(--small);font-weight:400;color:var(--green-hover)}
+.step-preview summary:after{content:none}
+.step-preview .step-thumb{width:64px;height:auto;flex-shrink:0;border:1px solid var(--line);border-radius:7px}
+.step-expand,.step-collapse{text-decoration:underline;text-underline-offset:4px}
+.step-collapse{display:none}
+.step-preview[open] .step-expand,.step-preview[open] .step-thumb{display:none}
+.step-preview[open] .step-collapse{display:inline}
+.step-preview figure{padding:12px 0}
+.step-preview figure img{width:200px;max-width:100%;height:auto;border:1px solid var(--line);border-radius:12px}
+.steps-section .feature-grid{align-items:start}
 /* All twelve benefits remain readable. Only the illustrations switch. */
 .benefits-hint{font-size:var(--small)}.benefit-groups{display:grid;gap:56px}.benefit-group{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:28px 56px;align-items:start;border-top:1px solid var(--line);padding-top:32px;min-width:0}.benefit-group>h3{grid-column:1/-1;font-size:var(--section)}
 .benefit-group .feature-rows{grid-column:1;grid-row:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;align-items:start}.feature-entry{min-width:0}.feature-row{display:block;width:100%;text-align:left;padding:0 0 0 14px;border:0;border-left:2px solid transparent;border-radius:0;background:none;color:var(--text);font-size:var(--body);line-height:1.65;scroll-margin-top:100px}.feature-row .icon{display:none}.feature-row b{display:block;color:var(--ink);font-size:var(--title);font-weight:700;line-height:1.35;letter-spacing:-.025em;margin-bottom:12px}.feature-row[aria-pressed=true],.feature-row:hover{border-left-color:var(--green)}.feature-row:hover b{text-decoration:underline;text-underline-offset:4px}.feature-entry>.context-help{margin:8px 0 0 16px}

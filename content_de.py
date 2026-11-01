@@ -268,7 +268,7 @@ def open_section(lang='de'):
     author='<div class="story-author"><img src="/assets/christian.webp" alt="" width="400" height="400"><span><b>Christian Neuhaus</b>'+O['role']+'</span></div>'
     links=''.join('<a class="text-link" href="'+url+'">'+label+' →</a>' for url,label in [O['idea'],O['funding']])
     landscape='<figure class="story-landscape"><img src="/assets/vellau-path.webp" alt="'+('Herbstlicher Weg bei Vellau in Südtirol' if lang=='de' else 'Autumn path near Vellau in South Tyrol')+'" width="1400" height="1054" loading="lazy"><figcaption>Vellau '+('bei Algund, Südtirol' if lang=='de' else 'near Algund, South Tyrol')+'</figcaption></figure>'
-    return '<section class="story-section"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+O['eye']+'</p><h2>'+O['h']+'</h2></div></div><div class="points trust-points">'+points+'</div><div class="story-personal">'+landscape+'<div class="founder-note">'+author+'<div><h3>'+O['founder_title']+'</h3><p>'+O['founder']+'</p></div></div></div><div class="trust-links">'+links+'</div></div></section>'
+    return '<section class="story-section"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">'+O['eye']+'</p><h2>'+O['h']+'</h2></div></div><div class="points trust-points">'+points+'</div><div class="story-personal">'+'<div class="founder-note">'+author+'<div><h3>'+O['founder_title']+'</h3><p>'+O['founder']+'</p></div></div></div><div class="trust-links">'+links+'</div></div></section>'
 FIRST_STEPS={'de': {'eye': 'So einfach geht’s',
         'h': 'Schnell geplant. Draußen flexibel.',
         'lead': 'So beginnt deine erste Tour mit OnPath.',
@@ -336,7 +336,14 @@ STEP_COPY={
 }
 def first_steps(lang='de'):
     F=dict(FIRST_STEPS[lang]); F['items']=[(k,t,x,alt) for (k,_,_,alt),(t,x) in zip(F['items'],STEP_COPY[lang])]; anchor='entdecken' if lang=='de' else 'discover'
-    cards=''.join('<article class="feature know"><div class="feature-top"><span>0'+str(i+1)+'</span></div><h3>'+title+'</h3><p>'+text+'</p>'+home_help(lang,'steps',i)+'</article>' for i,(k,title,text,alt) in enumerate(F['items']))
+    cards=[]
+    for i,(key,title,text,alt) in enumerate(F['items']):
+        src='/assets/help/'+shot_files(key)[0 if lang=='de' else 1]
+        expand='Ansicht vergrößern' if lang=='de' else 'Enlarge screen'
+        close='Ansicht verkleinern' if lang=='de' else 'Reduce screen'
+        preview='<details class="step-preview"><summary><img class="step-thumb" src="'+src+'" alt="'+html.escape(alt,quote=True)+'" width="540" height="1200" loading="lazy"><span class="step-expand">'+expand+'</span><span class="step-collapse">'+close+'</span></summary><figure><img src="'+src+'" alt="'+html.escape(alt,quote=True)+'" width="540" height="1200" loading="lazy"></figure></details>'
+        cards.append('<article class="feature know"><div class="step-heading"><span class="step-number" aria-label="'+('Schritt ' if lang=='de' else 'Step ')+str(i+1)+'">'+str(i+1)+'</span><h3>'+title+'</h3></div><p>'+text+'</p>'+preview+home_help(lang,'steps',i)+'</article>')
+    cards=''.join(cards)
     return '<section class="section steps-section" id="'+anchor+'"><div class="wrap"><div class="section-heading"><p class="eyebrow">'+F['eye']+'</p><h2>'+F['h']+'</h2><p>'+F['lead']+'</p></div><div class="feature-grid">'+cards+'</div><a class="text-link steps-help" href="'+F['more'][0]+'">'+F['more'][1]+' →</a></div></section>'
 def home_cta(lang='de'):
     if lang=='de':
@@ -415,7 +422,7 @@ def more_section(lang='de'):
             text,sep,embedded=text.partition(' <a ')
             if sep: help_link='<a class="context-help" '+embedded
             selected='true' if i==preview_index else 'false'
-            rows.append('<article class="feature-entry"><button class="feature-row" data-shot="'+src+'" data-alt="'+html.escape(alt,quote=True)+'" data-text="'+html.escape(caption,quote=True)+'" aria-pressed="'+selected+'">'+icon(ic)+'<span><b>'+t+'</b>'+text+'</span></button><figure class="inline-shot"><img src="'+src+'" alt="'+html.escape(alt,quote=True)+'" width="600" height="1333" loading="lazy"><figcaption>'+caption+'</figcaption></figure>'+help_link+'</article>')
+            rows.append('<article class="feature-entry"><button class="feature-row" data-shot="'+src+'" data-alt="'+html.escape(alt,quote=True)+'" data-text="'+html.escape(caption,quote=True)+'" aria-pressed="'+selected+'">'+icon(ic)+'<span><b>'+t+'</b>'+text+'</span></button><figure class="inline-shot"><img src="'+src+'" alt="'+html.escape(alt,quote=True)+'" width="600" height="1333" loading="lazy"><figcaption>'+caption+' <span class="photo-location">Vellau '+('bei Algund, Südtirol' if lang=='de' else 'near Algund, South Tyrol')+'</span></figcaption></figure>'+help_link+'</article>')
         sections.append('<section class="benefit-group" aria-labelledby="benefit-group-'+str(gi)+'"><h3 id="benefit-group-'+str(gi)+'">'+title+'</h3>'+visual+'<div class="feature-rows">'+''.join(rows)+'</div></section>')
     heading='Was OnPath besonders macht.' if de else 'What makes OnPath special.'
     hint='Alle Vorteile im Überblick. Tippe auf einen Vorteil, um den passenden App-Bildschirm zu sehen.' if de else 'All the benefits at a glance. Tap a benefit to see its app screen.'
@@ -441,7 +448,7 @@ def home_hero(lang='de'):
         note='No account · No ads<br>Android · Early test version by personal invitation'
         photo='A path under yellow autumn leaves near Vellau'; web='OnPath in the browser: a hike from Vellau to the Leiteralm (German screen)'
         phone='The same hike in the Android app'; caption='Plan on your computer. Take it along on your phone.'
-    visual='<figure class="hero-product"><div class="product-browser"><img src="/assets/app/web-wandern-de.webp" alt="'+web+'" width="1440" height="900" fetchpriority="high"></div><img class="product-phone" src="/assets/app/plan-wandern-'+lang+'.webp" alt="'+phone+'" width="600" height="1333" fetchpriority="high"><figcaption>'+caption+'</figcaption></figure>'
+    visual='<figure class="hero-product with-landscape"><img class="product-landscape" src="/assets/vellau-path.webp" alt="'+photo+'" width="1400" height="1054" fetchpriority="high"><div class="product-browser"><img src="/assets/app/web-wandern-de.webp" alt="'+web+'" width="1440" height="900" fetchpriority="high"></div><img class="product-phone" src="/assets/app/plan-wandern-'+lang+'.webp" alt="'+phone+'" width="600" height="1333" fetchpriority="high"><figcaption>'+caption+' <span class="photo-location">Vellau '+('bei Algund, Südtirol' if lang=='de' else 'near Algund, South Tyrol')+'</span></figcaption></figure>'
     return '<section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><p class="eyebrow">'+eye+'</p><h1>'+title+'</h1><p class="lead">'+lead+'</p><p class="hero-together">'+together+'</p><div class="actions">'+button(*app)+button('https://plan.onpath.earth/',browser,True)+'</div><p class="hero-value">'+value+'</p><p class="hero-note">'+note+'</p></div>'+visual+'</div></section>'
 
 body=home_hero('de')+first_steps('de')+more_section('de')+ways_section('de')+open_section('de')+home_cta('de')
