@@ -20,8 +20,7 @@ header{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1p
 .hero-product{position:relative;min-width:0;padding:56px 40px 70px 0}.product-browser{width:92%;overflow:hidden;border-radius:var(--radius);box-shadow:0 10px 30px #243c3115}.product-browser img{width:100%}.product-phone{position:absolute;right:0;top:8px;width:28%;border:4px solid var(--ink);border-radius:18px;box-shadow:0 12px 24px #243c3120}.hero-product figcaption{font-size:var(--small);line-height:1.6;margin-top:24px;max-width:32ch;color:var(--text)}
 /* The landscape stays the visual centre of the opening. */
 .hero-product.with-landscape{padding:0 0 64px;align-self:center}
-.product-landscape{width:100%;aspect-ratio:1.15;object-fit:cover;object-position:center;border-radius:var(--radius)}
-.with-landscape .product-browser{position:absolute;left:16px;bottom:84px;width:60%;border:3px solid var(--paper);box-shadow:0 12px 24px #243c3130}
+.product-landscape{width:100%;height:auto;border-radius:var(--radius)}
 .with-landscape .product-phone{top:auto;right:16px;bottom:80px;width:22%;border-width:3px}
 .with-landscape figcaption{position:absolute;left:0;bottom:0;margin:0;max-width:none;font-size:var(--small)}
 .photo-location{display:block;color:#5a685e}
