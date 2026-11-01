@@ -388,8 +388,8 @@ def more_section(lang='de'):
 
 def home_hero(lang='de'):
     if lang == 'de':
-        eye='Für Wandern und Radfahren'; title='Deine Tour.<br><span>Einfach geplant.</span>'
-        lead='Schnell eine passende Route finden und unterwegs spontan bleiben – auch ohne Empfang. Plane auf deinem Android-Handy oder vorab am Computer.'
+        eye='Für Wandern und Radfahren'; title='Deine Tour.<br><span>Einfach unterwegs.</span>'
+        lead='Plane schnell deinen Weg, lass dich führen und bleib unterwegs spontan – auch ohne Empfang.'
         together='Am Computer bequem planen. Mit der Android-App unterwegs sein.'
         app=('/ausprobieren/','Android-App testen'); browser='Im Browser planen'
         value='Planen, navigieren und aufzeichnen bleiben kostenlos.'
@@ -397,8 +397,8 @@ def home_hero(lang='de'):
         photo='Ein Weg unter gelbem Herbstlaub bei Vellau'; web='OnPath im Browser: eine Wanderung von Vellau zur Leiteralm'
         phone='Dieselbe Wanderung in der Android-App'; caption='Am Computer planen. Auf dem Handy dabei.'
     else:
-        eye='For hiking and cycling'; title='Your route.<br><span>Simply planned.</span>'
-        lead='Quickly find a suitable route and stay spontaneous along the way – even without reception. Plan on your Android phone or on your computer beforehand.'
+        eye='For hiking and cycling'; title='Your route.<br><span>Simply on your way.</span>'
+        lead='Plan your way quickly, follow directions and stay spontaneous along the way – even without reception.'
         together='Plan comfortably on your computer. Head out with the Android app.'
         app=('/try/','Test the Android app'); browser='Plan in your browser'
         value='Planning, navigation and recording stay free.'
@@ -409,7 +409,7 @@ def home_hero(lang='de'):
     return '<section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><p class="eyebrow">'+eye+'</p><h1>'+title+'</h1><p class="lead">'+lead+'</p><p class="hero-together">'+together+'</p><div class="actions">'+button(*app)+button('https://plan.onpath.earth/',browser,True)+'</div><p class="hero-value">'+value+'</p><p class="hero-note">'+note+'</p></div>'+visual+'</div></section>'
 
 body=home_hero('de')+first_steps('de')+more_section('de')+ways_section('de')+small_section('de')+open_section('de')+home_cta('de')
-page('/','Deine Tour. Einfach geplant.','OnPath für Android: Wander- und Radtouren planen, unterwegs ändern und offline navigieren. Ohne Konto und Werbung.',body)
+page('/','Deine Tour. Einfach unterwegs.','OnPath für Android: Wander- und Radtouren planen, unterwegs ändern und offline navigieren. Ohne Konto und Werbung.',body)
 
 HELP = [('erste-schritte',
   'Deine erste Tour',
