@@ -407,13 +407,14 @@ def more_section(lang='de'):
         app(*EXTRA[lang][2],'fahrt',home_help(lang,'extras',2))])]
     sections=[]
     for gi,(title,entries) in enumerate(groups):
-        first=entries[0]
+        preview_index=1 if gi==1 else 0
+        first=entries[preview_index]
         visual='<figure class="group-preview"><div class="shots-phone"><img data-preview-img src="'+first[3]+'" alt="'+html.escape(first[4],quote=True)+'" width="600" height="1333" loading="lazy"></div><figcaption data-preview-text aria-live="polite">'+first[5]+'</figcaption></figure>'
         rows=[]
         for i,(ic,t,text,src,alt,caption,help_link) in enumerate(entries):
             text,sep,embedded=text.partition(' <a ')
             if sep: help_link='<a class="context-help" '+embedded
-            selected='true' if i==0 else 'false'
+            selected='true' if i==preview_index else 'false'
             rows.append('<article class="feature-entry"><button class="feature-row" data-shot="'+src+'" data-alt="'+html.escape(alt,quote=True)+'" data-text="'+html.escape(caption,quote=True)+'" aria-pressed="'+selected+'">'+icon(ic)+'<span><b>'+t+'</b>'+text+'</span></button><figure class="inline-shot"><img src="'+src+'" alt="'+html.escape(alt,quote=True)+'" width="600" height="1333" loading="lazy"><figcaption>'+caption+'</figcaption></figure>'+help_link+'</article>')
         sections.append('<section class="benefit-group" aria-labelledby="benefit-group-'+str(gi)+'"><h3 id="benefit-group-'+str(gi)+'">'+title+'</h3>'+visual+'<div class="feature-rows">'+''.join(rows)+'</div></section>')
     heading='Was OnPath besonders macht.' if de else 'What makes OnPath special.'
