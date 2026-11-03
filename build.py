@@ -54,7 +54,7 @@ def write(path,title,desc,body,lang='en',original=None):
         f=re.sub(r'href="(/[^\"]*)"',lambda m:'href="/de'+m[1]+'"',f)
         body=re.sub(r'href="(/[^\"]*)"',lambda m:'href="/de'+m[1]+'"',body)
     else:
-        h=f'<a class="skip" href="#inhalt">Skip to content</a><header><div class="wrap header-row">{brand(lang)}<button class="menu" aria-expanded="false" aria-controls="navigation">Menu ☰</button><nav id="navigation" aria-label="Main navigation"><a href="/#discover">The app</a><a href="/about/">The idea</a><a href="/whats-next/">What’s next</a><a href="/help/">Help</a><a class="button small" href="/try/">Try OnPath {icon("arrow")}</a>{languages(lang,path)}</nav></div></header>'
+        h=f'<a class="skip" href="#inhalt">Skip to content</a><header><div class="wrap header-row">{brand(lang)}<button class="menu" aria-expanded="false" aria-controls="navigation">Menu ☰</button><nav id="navigation" aria-label="Main navigation"><a href="/#discover">The app</a><a href="/about/">The idea</a><a href="/whats-next/">What’s next</a><a href="/help/">Help</a><a href="https://plan.onpath.earth/">Plan in your browser</a><a class="button small" href="/try/">Try OnPath {icon("arrow")}</a>{languages(lang,path)}</nav></div></header>'
         f=footer_en()
     document='<!doctype html><html lang="'+lang+'"><head>'+head+'</head><body>'+h+'<main id="inhalt">'+body+'</main>'+f+'</body></html>'
     dest=OUT/local.strip('/')/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(document)
