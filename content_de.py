@@ -422,7 +422,7 @@ OVERVIEW={'de':dict(eye='Alles drin, was du draußen brauchst',h='OnPath auf ein
   ('cable','Lift und Bus erkannt','Du entscheidest, was zur Tour zählt.','/hilfe/navigation/'),
   ('shield','Keine Tour geht verloren','Die Aufzeichnung bleibt erhalten, auch nach einem Neustart.','/hilfe/probleme/'),
   ('file','GPX rein und raus','Tracks öffnen, als Plan übernehmen, Touren exportieren.','/hilfe/gpx/'),
-  ('heart','Ohne Konto, ohne Werbung','Deine Daten bleiben bei dir. Der Code ist offen.','/datenschutz/')]),
+  ('heart','Ohne Konto, ohne Werbung','Keine Analyse, kein Tracking-Dienst. Der Code ist offen.','/datenschutz/')]),
  'en':dict(eye='Everything you need outdoors',h='OnPath at a glance',items=[
   ('offline','No signal needed','Map, route and changes of plan all run on your phone.','/help/offline/'),
   ('route','Paths that suit you','Hiking T1–T5, bike, gravel, e‑bike, MTB and e‑MTB.','/help/planning/'),
@@ -435,7 +435,7 @@ OVERVIEW={'de':dict(eye='Alles drin, was du draußen brauchst',h='OnPath auf ein
   ('cable','Lifts and buses recognised','You decide what counts towards the tour.','/help/navigation/'),
   ('shield','No tour gets lost','Your recording is kept, even after a restart.','/help/troubleshooting/'),
   ('file','GPX in and out','Open tracks, use them as a plan, export your tours.','/help/gpx/'),
-  ('heart','No account, no ads','Your data stays with you. The code is open.','/privacy/')])}
+  ('heart','No account, no ads','No analytics, no tracking service. The code is open.','/privacy/')])}
 def overview(lang='de'):
     O=OVERVIEW[lang]
     tiles=''.join('<a class="ov-item" href="'+u+'">'+icon(k)+'<b>'+t+'</b><span>'+x+'</span></a>' for k,t,x,u in O['items'])
