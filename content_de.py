@@ -571,8 +571,7 @@ HELP = [('erste-schritte',
    ('Du bist von der Route abgewichen',
     '<p>OnPath zeigt zuerst die Karte „Abseits der Route“ und sucht einen Rückweg. Dann fragt es, auch per Ansage: '
     '„Neue Route“ oder „Original behalten“. Es ändert den Weg nicht stillschweigend. Würde die neue Route einen Stopp '
-    'auslassen, fragt OnPath: über den Stopp oder ihn auslassen. Nach einer neuen Route bleibt die ursprüngliche '
-    'als dünne graue Linie sichtbar.</p><p>Während einer Pause stellt OnPath keine Fragen.</p>')]),
+    'auslassen, fragt OnPath: über den Stopp oder ihn auslassen.</p><p>Während einer Pause stellt OnPath keine Fragen.</p>')]),
  ('orte',
   'Orte suchen & Google Maps nutzen',
   'Ein Café finden, einen Ort teilen oder Öffnungszeiten nachsehen.',

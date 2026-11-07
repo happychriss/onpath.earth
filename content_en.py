@@ -142,7 +142,7 @@ HELP_EN = [('getting-started',
    ('Continue from here',
     'Tap “Let’s go on” at the bottom to return to navigation. OnPath says once how far it is now; points already '
     'visited are skipped. If you leave the route, OnPath first shows “Off route” while it looks for a way back, then '
-    'asks – also by voice – “New route” or “Keep original”. After a new route the original stays as a thin grey line. '
+    'asks – also by voice – “New route” or “Keep original”. '
     'No questions while paused.')]),
  ('places',
   'Places and Google Maps',
