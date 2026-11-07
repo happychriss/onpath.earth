@@ -403,6 +403,43 @@ def more_section(lang='de'):
         sections.append('<section class="benefit-band'+(' soft' if gi%2==0 else '')+'"><div class="wrap benefit-group'+(' feature-pair' if gi==0 else '')+'" aria-labelledby="benefit-group-'+str(gi)+'"><h2 id="benefit-group-'+str(gi)+'">'+title+'</h2>'+visual+'<div class="feature-rows">'+''.join(rows)+'</div>'+('<div class="benefit-footer">'+hint+links+'</div>' if hint or links else '')+'</div></section>')
     return '<div class="benefits-section" id="'+('so-gehts' if de else 'how')+'">'+''.join(sections)+ways_section(lang)+'</div>'
 
+
+# Feature overview right under the hero: one icon, a short benefit, one line each (draft 2026-11-07, owner to approve)
+icons.update({'voice':'<path d="M4 9v6h4l5 4V5L8 9Z"/><path d="M16 9a4 4 0 0 1 0 6m3-9a8 8 0 0 1 0 12"/>',
+ 'cube':'<path d="M12 2 3 7v10l9 5 9-5V7Z"/><path d="m3 7 9 5 9-5M12 12v10"/>',
+ 'list':'<rect x="3" y="4" width="6" height="6" rx="1"/><rect x="3" y="14" width="6" height="6" rx="1"/><path d="M12 7h9m-9 10h9"/>',
+ 'replan':'<circle cx="5" cy="19" r="2"/><path d="M7 19h4a4 4 0 0 0 4-4V9"/><path d="m12 12 3-3 3 3"/><circle cx="15" cy="5" r="2"/>',
+ 'link':'<rect x="2" y="4" width="12" height="9" rx="1.5"/><rect x="16" y="8" width="6" height="12" rx="1.5"/><path d="M6 17h6m-3-4v4"/>'})
+OVERVIEW={'de':dict(eye='Alles drin, was du draußen brauchst',h='OnPath auf einen Blick',items=[
+  ('offline','Ohne Netz unterwegs','Karte, Route und Umplanen laufen ganz auf dem Handy.','/hilfe/offline/'),
+  ('route','Wege, die zu dir passen','Wandern T1–T5, Fahrrad, Gravel, E‑Bike, MTB und E‑MTB.','/hilfe/route-planen/'),
+  ('replan','Unterwegs umplanen','Einkehr finden, als Stopp anhängen, weiter geht’s.','/hilfe/unterwegs-aendern/'),
+  ('voice','Ansagen an Abzweigungen','Per Stimme oder Vibration – das Handy bleibt in der Tasche.','/hilfe/navigation/'),
+  ('profile','Steile Stellen vorher sehen','Höhenprofil, Schwierigkeit und Schiebestücke vor dem Start.','/hilfe/route-planen/'),
+  ('computer','Im Browser planen','Große Karte, 3D-Ansicht und Abflug entlang der Route.','https://plan.onpath.earth/'),
+  ('link','Mit dem Handy gekoppelt','Im Browser speichern, auf dem Handy losgehen.','/hilfe/route-planen/#koppeln'),
+  ('list','Meine Touren','Jede Route mit kleinem Kartenbild – ein Tipp, und los.','/hilfe/gpx/'),
+  ('cable','Lift und Bus erkannt','Du entscheidest, was zur Tour zählt.','/hilfe/navigation/'),
+  ('shield','Keine Tour geht verloren','Die Aufzeichnung bleibt erhalten, auch nach einem Neustart.','/hilfe/probleme/'),
+  ('file','GPX rein und raus','Tracks öffnen, als Plan übernehmen, Touren exportieren.','/hilfe/gpx/'),
+  ('heart','Ohne Konto, ohne Werbung','Deine Daten bleiben bei dir. Der Code ist offen.','/datenschutz/')]),
+ 'en':dict(eye='Everything you need outdoors',h='OnPath at a glance',items=[
+  ('offline','No signal needed','Map, route and changes of plan all run on your phone.','/help/offline/'),
+  ('route','Paths that suit you','Hiking T1–T5, bike, gravel, e‑bike, MTB and e‑MTB.','/help/planning/'),
+  ('replan','Change plans on the way','Find a café, add it as a stop, on you go.','/help/change-route/'),
+  ('voice','Directions at every turn','By voice or vibration – your phone stays in your pocket.','/help/navigation/'),
+  ('profile','See the steep bits first','Elevation profile, difficulty and pushing sections before you start.','/help/planning/'),
+  ('computer','Plan in your browser','Big map, 3D view and a fly-along of the route.','https://plan.onpath.earth/'),
+  ('link','Paired with your phone','Save in the browser, head out with your phone.','/help/planning/#pair'),
+  ('list','My tours','Every route with a small map picture – one tap and go.','/help/gpx/'),
+  ('cable','Lifts and buses recognised','You decide what counts towards the tour.','/help/navigation/'),
+  ('shield','No tour gets lost','Your recording is kept, even after a restart.','/help/troubleshooting/'),
+  ('file','GPX in and out','Open tracks, use them as a plan, export your tours.','/help/gpx/'),
+  ('heart','No account, no ads','Your data stays with you. The code is open.','/privacy/')])}
+def overview(lang='de'):
+    O=OVERVIEW[lang]
+    tiles=''.join('<a class="ov-item" href="'+u+'">'+icon(k)+'<b>'+t+'</b><span>'+x+'</span></a>' for k,t,x,u in O['items'])
+    return '<section class="section overview"><div class="wrap"><div class="section-heading"><p class="eyebrow">'+O['eye']+'</p><h2>'+O['h']+'</h2></div><div class="ov-grid">'+tiles+'</div></div></section>'
 def home_hero(lang='de'):
     if lang == 'de':
         eye='Für Wandern und Radfahren'; title='Deine Tour.<br><span>Einfach unterwegs.</span>'
@@ -425,7 +462,7 @@ def home_hero(lang='de'):
     visual='<figure class="hero-product with-landscape"><img class="product-landscape" src="/assets/vellau-path.webp" alt="'+photo+'" width="1400" height="1054" fetchpriority="high"><img class="product-phone" src="/assets/app/plan-wandern-'+lang+'.webp" alt="'+phone+'" width="600" height="1333" fetchpriority="high"><figcaption>Vellau '+('bei Algund, Südtirol' if lang=='de' else 'near Algund, South Tyrol')+'</figcaption></figure>'
     return '<section class="hero soft"><div class="wrap hero-grid"><div class="hero-copy"><p class="eyebrow">'+eye+'</p><h1>'+title+'</h1><p class="lead">'+lead+'</p><p class="hero-together">'+together+'</p><div class="actions">'+button(*app)+button('https://plan.onpath.earth/',browser,True)+'</div><p class="hero-value">'+value+'</p><p class="hero-note">'+note+'</p></div>'+visual+'</div></section>'
 
-body=home_hero('de')+first_steps('de')+more_section('de')+open_section('de')+home_cta('de')
+body=home_hero('de')+overview('de')+first_steps('de')+more_section('de')+open_section('de')+home_cta('de')
 page('/','Deine Tour. Einfach unterwegs.','OnPath für Android: Wander- und Radtouren planen, unterwegs ändern und offline navigieren. Ohne Konto und Werbung.',body)
 
 HELP = [('erste-schritte',
@@ -714,7 +751,7 @@ article('/wandern/','Zu Fuß unterwegs','Zeit für deinen Weg.','Du musst nicht 
 ('Eine Zeitangabe, die sich anpasst','<p>Die erste Schätzung orientiert sich an deiner eingestellten Fitness. Nach etwa 15 Minuten und einem Kilometer berücksichtigt OnPath dein tatsächliches Tempo auf dieser Tour – getrennt nach bergauf, eben und bergab. Pausen werden dabei herausgerechnet.</p>'),
 ('Weniger aufs Display schauen','<p>Wo du falsch abbiegen könntest, vibriert das Handy: einmal für links, zweimal für rechts. Auf dem Sperrbildschirm findest du die nächste Abzweigung und die Ankunftszeit. Dazu kommen kurze Sprachansagen; du schaltest sie unter Einstellungen → Navigation ein oder aus.</p>'+button('/hilfe/erste-schritte/','Die erste Tour vorbereiten'))])
 article('/radfahren/','Mit dem Rad unterwegs','Eine Runde, wie du sie magst.','Am Fluss entlang, durch die Stadt oder über Schotter: Wähle dein Rad und plane deinen Weg.',[
-('Das passende Rad auswählen','<p>Fahrrad, Gravelbike, E-Bike, MTB und E-MTB stehen zur Auswahl. Die gewählte Aktivität beeinflusst, welche Wege OnPath bei der Planung bevorzugt. In den Routendetails siehst du Untergrund und Wegarten.</p>'),
+('Das passende Rad auswählen','<p>Fahrrad, Gravelbike, E‑Bike, MTB und E‑MTB stehen zur Auswahl. Die gewählte Aktivität beeinflusst, welche Wege OnPath bei der Planung bevorzugt. In den Routendetails siehst du Untergrund und Wegarten.</p>'),
 ('Vorher wissen, was auf der Strecke liegt','<p>Hinweise können dich auf Treppen, steile Abschnitte, Schiebestellen oder eine Fähre aufmerksam machen. Prüfe bei Fähren vorher die Betriebszeiten. Kartendaten beschreiben die Strecke, können aber keine tagesaktuellen Sperrungen garantieren.</p>'),
 ('Touren von Verein oder Tourenportal','<p>Du hast von deinem Radverein oder aus einem Tourenportal eine GPX-Datei bekommen? Öffne sie in OnPath und nimm die Strecke mit aufs Rad. Ein OnPath-Konto ist dafür nicht erforderlich.</p><p>Wer eine eigene Tour vorbereitet, kann die Strecke als GPX mitnehmen und weitergeben. Das ist auch bei einer gemeinsamen Ausfahrt praktisch. OnPath selbst ist auf Planung und Navigation ausgerichtet; eine Gruppenverwaltung gibt es nicht.</p>'),
 ('Unterwegs einen Abstecher einbauen','<p>Für eigene Pläne kannst du den weiteren Weg ändern, ohne die Aufzeichnung zu stoppen. Halte dafür an, passe deine Route an und fahre weiter. Importierte GPX-Strecken lassen sich derzeit noch nicht wie ein eigener Plan bearbeiten.</p>'+button('/hilfe/gpx/','GPX-Touren nutzen'))])
