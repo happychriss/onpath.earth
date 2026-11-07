@@ -161,8 +161,10 @@ HELP_EN = [('getting-started',
     'start, stop or destination. This transfers the place, not a complete Google route. Short links may need a '
     'connection to resolve.'),
    ('Online search and privacy',
-    'Online search sends the query and a rough location to Photon. When you open Google Maps, Google’s own terms and '
-    'privacy policy apply. Opening hours are not guaranteed to be current.'),
+    'When you are online, search sends the query and a position rounded to about 1 km to komoot’s Photon service. For a '
+    'shared place OnPath may resolve a short Google Maps link at Google and, if its own search finds nothing certain, '
+    'ask your phone’s address service (usually Google). When you open Google Maps, Google’s own terms and privacy '
+    'policy apply. Opening hours are not guaranteed to be current. <a href="/privacy/">More on privacy</a>.'),
    ('Use a meeting point from a message',
     'Someone sent you a map link or location, for example in Signal? Share the link or message with OnPath through '
     'Android’s Share function. Supported formats include Google Maps and OpenStreetMap links, geo: links and '

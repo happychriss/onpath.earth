@@ -592,9 +592,10 @@ HELP = [('erste-schritte',
     'Öffnungszeiten, Bilder oder Bewertungen anzusehen. Kehre danach zu OnPath zurück und ergänze den Ort als '
     'Zwischenstopp oder Ziel. Den Weg dorthin berechnet OnPath für deine gewählte Aktivität.</p>'),
    ('Welche Daten dabei übertragen werden',
-    '<p>Für Online-Suchergebnisse wird eine ungefähre Position von etwa einem Kilometer Genauigkeit übermittelt. Bei '
-    'Google Maps gelten die Bedingungen und Datenschutzhinweise von Google. <a href="/datenschutz/">Mehr zum '
-    'Datenschutz</a>.</p>'),
+    '<p>Hast du Internet, gehen dein Suchtext und eine auf etwa 1 km gerundete Position an den Suchdienst Photon von '
+    'komoot. Bei einem geteilten Ort kann OnPath einen kurzen Google-Maps-Link bei Google auflösen und, wenn die eigene '
+    'Suche nichts Sicheres findet, den Adressdienst deines Handys fragen (meist Google). Bei Google Maps gelten die '
+    'Bedingungen und Datenschutzhinweise von Google. <a href="/datenschutz/">Mehr zum Datenschutz</a>.</p>'),
    ('Einen Treffpunkt aus einer Nachricht übernehmen',
     '<p>Hat dir jemand einen Kartenlink oder Standort geschickt, etwa in Signal? Teile den Link oder die Nachricht '
     'über die Android-Teilen-Funktion mit OnPath. Unterstützt werden unter anderem Google-Maps- und '
