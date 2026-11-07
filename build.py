@@ -88,7 +88,7 @@ write('/404/','Page not found','Find your way back to OnPath.',intro('This path 
 if release:
     for legal_path in ['legal/index.html','privacy/index.html','de/impressum/index.html','de/datenschutz/index.html']:
         legal_text=(OUT/legal_path).read_text()
-        if any(marker in legal_text for marker in ['Noch zu ergänzen','not a completed legal','incomplete draft','müssen die Angaben','Entwurf für den späteren','Draft provider information']):
+        if any(marker in legal_text for marker in ['Noch zu ergänzen','not a completed legal','incomplete draft','müssen die Angaben','Entwurf für den späteren','Draft provider information','[[OWNER:']):
             raise SystemExit('Release blocked: unresolved legal draft text in '+legal_path)
     (OUT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+CFG['origin']+p+'</loc></url>' for p in list(MAP.values())+['/de'+p for p in MAP])+ '</urlset>')
 print('Built',len(MAP)*2,'pages; mode:', 'release' if release else 'review')
