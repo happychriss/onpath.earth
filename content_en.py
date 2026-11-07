@@ -115,18 +115,20 @@ HELP_EN = [('getting-started',
     'reception.</li></ol><p>Often plan on the computer? Pair browser and phone once – your saved plans are then on '
     'both. <a href="#pair">How to pair →</a></p>'),
    ('Pair browser and phone',
-    '<p>Pair once – then your saved routes are in the browser and on your phone, both ways.</p>'
+    '<p>Pair once – then your saved plans are in the browser and on your phone, both ways.</p>'
     '<h3>Pair</h3><ol><li>In the browser: click “Pair phone” at the top right, then “Pair phone” again in the window. A QR '
     'code appears.</li><li>On your phone: open OnPath, tap ☰ → “Pair with browser” → “Open camera” and scan the '
-    'code.</li><li>OnPath shows six check digits. If they match the browser, tap “Pair”.</li></ol>[[shots:web-handy,web-koppeln,app-koppeln]]'
-    '<h3>Your routes on both</h3><p>At the top right you now see your phone’s name with a green dot, and “Save” '
-    'becomes “Save to phone”. One click saves the route and sends it to your phone – it appears there under “My '
-    'routes”, marked “New” or “Changed”. When the button says “✓ On the phone”, everything is there.</p><p>What you '
-    'save on your phone comes to the browser’s “My routes” by itself. They sync while OnPath is open on the phone. '
+    'code.</li><li>OnPath shows six check digits. If they match the browser, tap “Pair”.</li></ol><p>Scan the code with OnPath, not with the phone’s camera '
+    'app – that opens it in the browser. If the browser still opens: Android settings → Apps → OnPath → “Open by '
+    'default” → turn on “Open supported links”.</p>[[shots:web-handy,web-koppeln,app-koppeln]]'
+    '<h3>Your plans on both</h3><p>At the top right you now see your phone’s name with a green dot, and “Save” '
+    'becomes “Save to phone”. One click saves the plan and sends it to your phone – it appears there under “My '
+    'tours”, marked “New” or “Changed”. When the button says “✓ On the phone”, everything is there.</p><p>What you '
+    'save on your phone comes to the browser’s “My tours” by itself. They sync while OnPath is open on the phone. '
     'Recorded outings stay on your phone.</p>[[shots:app-verbunden,app-routen]]'
     '<h3>Unpair</h3><p>In the browser: click your phone at the top right, then “Unpair” at the bottom of the window. '
-    'Or in the app: Settings → Browser sync → “Unpair”. Your routes stay on both devices.</p>[[shots:app-trennen]]'
-    '<p>End-to-end encrypted, no account. Keep the QR code to yourself – whoever scans it sees your saved routes.</p>')]),
+    'Or in the app: Settings → Browser sync → “Unpair”. Your plans stay on both devices.</p>[[shots:app-trennen]]'
+    '<p>End-to-end encrypted, no account. Keep the QR code to yourself – whoever scans it sees your saved plans.</p>')]),
  ('change-route',
   'Change the route along the way',
   'Add a stop and keep your recording.',
