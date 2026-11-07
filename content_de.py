@@ -1,7 +1,8 @@
 import sys as _sys, os as _os
 _sys.path.insert(0,_os.path.dirname(_os.path.abspath(__file__)))
-from help_shots import shots_html, inline as help_inline, files as shot_files, IMAGES as HELP_IMAGES
+from help_shots import shots_html, inline as help_inline, files as shot_files, IMAGES as HELP_IMAGES, article_pictures
 from help_topics import help_anchor
+from home_page import home as new_home
 from pathlib import Path
 import html, json
 ROOT=Path(__file__).parent; D=ROOT/'dist'; A=D/'assets'; A.mkdir(parents=True,exist_ok=True)
@@ -425,7 +426,7 @@ def home_hero(lang='de'):
     visual='<figure class="hero-product with-landscape"><img class="product-landscape" src="/assets/vellau-path.webp" alt="'+photo+'" width="1400" height="1054" fetchpriority="high"><img class="product-phone" src="/assets/app/plan-wandern-'+lang+'.webp" alt="'+phone+'" width="600" height="1333" fetchpriority="high"><figcaption>Vellau '+('bei Algund, Südtirol' if lang=='de' else 'near Algund, South Tyrol')+'</figcaption></figure>'
     return '<section class="hero soft"><div class="wrap hero-grid"><div class="hero-copy"><p class="eyebrow">'+eye+'</p><h1>'+title+'</h1><p class="lead">'+lead+'</p><p class="hero-together">'+together+'</p><div class="actions">'+button(*app)+button('https://plan.onpath.earth/',browser,True)+'</div><p class="hero-value">'+value+'</p><p class="hero-note">'+note+'</p></div>'+visual+'</div></section>'
 
-body=home_hero('de')+first_steps('de')+more_section('de')+open_section('de')+home_cta('de')
+body=new_home('de')
 page('/','Deine Tour. Einfach unterwegs.','OnPath für Android: Wander- und Radtouren planen, unterwegs ändern und offline navigieren. Ohne Konto und Werbung.',body)
 
 HELP = [('erste-schritte',
@@ -715,7 +716,7 @@ def article(path,eye,title,desc,sections,help_page=False):
  else:side+=''.join('<a href="#abschnitt-'+str(i)+'">'+t+'</a>' for i,(t,_) in enumerate(sections))
  side+='</aside>'
  slug=path.strip('/').split('/')[-1] if help_page else None
- prose=''.join('<section id="abschnitt-'+str(i)+'"><h2'+(' id="'+help_anchor('de',slug,i)+'"' if help_page else '')+'>'+t+'</h2>'+help_inline('de',v)+(shots_html('de',slug,i) if help_page else '')+'</section>' for i,(t,v) in enumerate(sections))
+ prose=''.join('<section id="abschnitt-'+str(i)+'"><h2'+(' id="'+help_anchor('de',slug,i)+'"' if help_page else '')+'>'+t+'</h2>'+help_inline('de',v)+(shots_html('de',slug,i) if help_page else article_pictures('de',path,i))+'</section>' for i,(t,v) in enumerate(sections))
  if help_page:
   prose='<nav class="help-contents" aria-label="In diesem Hilfethema"><b>In diesem Hilfethema</b><ul>'+''.join('<li><a href="#'+help_anchor('de',slug,i)+'">'+t+'</a></li>' for i,(t,_) in enumerate(sections))+'</ul></nav>'+prose
  content=ph(eye,title,desc,('<a href="/hilfe/">Hilfe</a> <span>/</span> ' if help_page else '')+title)+'<section class="section"><div class="wrap article-layout">'+side+'<article class="prose">'+prose+'<div class="article-end"><a href="/hilfe/">← Alle Hilfethemen</a><a href="/ausprobieren/">OnPath ausprobieren →</a></div></article></div></section>'

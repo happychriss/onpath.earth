@@ -3,7 +3,7 @@
 from pathlib import Path
 import hashlib, html, json, re, runpy, shutil, sys
 from content_en import ARTICLES, HELP_EN
-from help_shots import shots_html, inline as help_inline
+from help_shots import shots_html, inline as help_inline, article_pictures
 from help_topics import help_anchor
 
 ROOT=Path(__file__).parent
@@ -26,6 +26,8 @@ def versioned_asset(filename):
 
 STYLESHEET_URL=versioned_asset('style.css')
 SCRIPT_URL=versioned_asset('app.js')
+HOME_STYLESHEET_URL=versioned_asset('home-v2.css')
+EDITORIAL_STYLESHEET_URL=versioned_asset('editorial.css')
 de=runpy.run_path(str(ROOT/'content_de.py'))
 icon=de['icon']
 MAP={'/':'/','/wandern/':'/hiking/','/radfahren/':'/cycling/','/idee/':'/about/','/ausblick/':'/whats-next/','/ausprobieren/':'/try/','/datenschutz/':'/privacy/','/projekt/':'/project/','/hilfe/':'/help/','/impressum/':'/legal/','/404/':'/404/'}
@@ -43,6 +45,8 @@ def write(path,title,desc,body,lang='en',original=None):
     depath=path if lang=='de' else REVERSE[path]
     local='/de'+path if lang=='de' else path
     head=f'<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} | OnPath</title><meta name="description" content="{html.escape(desc,quote=True)}"><meta name="theme-color" content="#245f46"><link rel="icon" href="/assets/brand.svg" type="image/svg+xml"><link rel="stylesheet" href="{STYLESHEET_URL}"><script src="{SCRIPT_URL}" defer></script>'
+    head+=f'<link rel="stylesheet" href="{EDITORIAL_STYLESHEET_URL}">'
+    if path=='/':head+=f'<link rel="stylesheet" href="{HOME_STYLESHEET_URL}">'
     for code,p in [('en',en),('de','/de'+depath),('x-default',en)]:
         head+=f'<link rel="alternate" hreflang="{code}" href="{CFG["origin"]}{p}">'
     if not release:head+='<meta name="robots" content="noindex,nofollow">'
@@ -56,7 +60,7 @@ def write(path,title,desc,body,lang='en',original=None):
     else:
         h=f'<a class="skip" href="#inhalt">Skip to content</a><header><div class="wrap header-row">{brand(lang)}<button class="menu" aria-expanded="false" aria-controls="navigation">Menu ☰</button><nav id="navigation" aria-label="Main navigation"><a href="/#discover">The app</a><a href="/about/">The idea</a><a href="/whats-next/">What’s next</a><a href="/help/">Help</a><a href="https://plan.onpath.earth/">Plan in your browser</a><a class="button small" href="/try/">Try OnPath {icon("arrow")}</a>{languages(lang,path)}</nav></div></header>'
         f=footer_en()
-    document='<!doctype html><html lang="'+lang+'"><head>'+head+'</head><body>'+h+'<main id="inhalt">'+body+'</main>'+f+'</body></html>'
+    document='<!doctype html><html lang="'+lang+'"><head>'+head+'</head><body>'+h+'<main id="inhalt"'+(' class="home-v2"' if path=='/' else '')+'>'+body+'</main>'+f+'</body></html>'
     dest=OUT/local.strip('/')/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(document)
 def intro(title,desc,eye='OnPath'):
     return f'<section class="page-hero"><div class="wrap"><p class="eyebrow">{eye}</p><h1>{title}</h1><p class="lead">{desc}</p></div></section>'
@@ -66,7 +70,7 @@ def article(path,title,desc,sections,help_page=False):
     else:
         side='<b>On this page</b>'+''.join(f'<a href="#section-{i}">{t}</a>' for i,(t,_) in enumerate(sections))
     slug=path.strip('/').split('/')[-1] if help_page else None
-    contents=''.join(f'<section id="section-{i}"><h2'+(f' id="{help_anchor("en",slug,i)}"' if help_page else '')+f'>{t}</h2>'+(help_inline('en',text) if text.lstrip().startswith('<') else f'<p>{text}</p>')+(shots_html('en',slug,i) if help_page else '')+'</section>' for i,(t,text) in enumerate(sections))
+    contents=''.join(f'<section id="section-{i}"><h2'+(f' id="{help_anchor("en",slug,i)}"' if help_page else '')+f'>{t}</h2>'+(help_inline('en',text) if text.lstrip().startswith('<') else f'<p>{text}</p>')+(shots_html('en',slug,i) if help_page else article_pictures('en',path,i))+'</section>' for i,(t,text) in enumerate(sections))
     if help_page:
         contents='<nav class="help-contents" aria-label="In this help topic"><b>In this help topic</b><ul>'+''.join(f'<li><a href="#{help_anchor("en",slug,i)}">{t}</a></li>' for i,(t,_) in enumerate(sections))+'</ul></nav>'+contents
     write(path,title,desc,intro(title,desc,'Help &amp; first steps' if help_page else 'OnPath')+f'<section class="section"><div class="wrap article-layout"><aside class="side-nav">{side}</aside><article class="prose">{contents}<div class="article-end"><a href="/help/">All help topics →</a><a href="/try/">Try OnPath →</a></div></article></div></section>')
@@ -78,8 +82,7 @@ write('/try/','Try OnPath by personal invitation','Phase 1: test OnPath with a p
 for slug,title,desc,keys,sections in HELP_EN:article('/help/'+slug+'/',title,desc,sections,True)
 cards=''.join(f'<a class="help-card" data-keywords="{keys}" href="/help/{slug}/"><h2>{title}</h2><p>{desc}</p><span aria-hidden="true">→</span></a>' for slug,title,desc,keys,_ in HELP_EN)
 write('/help/','Help for your next outing','Short, practical guides for planning, navigating and keeping your tours.',intro('How can we help?','Start with your first route or find an answer for a question along the way.','OnPath help')+f'<section class="section"><div class="wrap"><div class="help-search"><label for="help-search">Find a help topic</label><div>{icon("search")}<input type="search" id="help-search" placeholder="For example: maps, Google or battery"></div></div><p class="fine" id="search-count" role="status">9 help topics</p><div class="help-grid">{cards}</div><p id="no-results" hidden>No topic found. Try a shorter word.</p></div></section>')
-home=de['home_hero']('en')
-home+=de['first_steps']('en')+de['more_section']('en')+de['open_section']('en')+de['home_cta']('en')
+home=de['new_home']('en')
 write('/','Your route. Simply on your way.','Plan and follow cycling and hiking routes, change the plan and keep your own files.',home)
 write('/404/','Page not found','Find your way back to OnPath.',intro('This path ends here.','Use the home page or help to find your way back.')+'<section class="section"><div class="wrap actions"><a class="button" href="/">Home</a><a class="text-link" href="/help/">Help →</a></div></section>')
 (OUT/'404.html').write_text((OUT/'404/index.html').read_text())

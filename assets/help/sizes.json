@@ -1,4 +1,20 @@
 {
+"abseits-de.webp": [
+540,
+1200
+],
+"abseits-en.webp": [
+540,
+1200
+],
+"angekommen-de.webp": [
+540,
+1200
+],
+"angekommen-en.webp": [
+540,
+1200
+],
 "ankunft-de.webp": [
 540,
 1200
@@ -8,16 +24,16 @@
 1200
 ],
 "app-koppeln-de.webp": [
-426,
-1000
+540,
+1200
 ],
 "app-koppeln-en.webp": [
-426,
-1000
+540,
+1200
 ],
 "app-routen-de.webp": [
 426,
-335
+1000
 ],
 "app-routen-en.webp": [
 426,
@@ -25,7 +41,7 @@
 ],
 "app-trennen-de.webp": [
 426,
-200
+1000
 ],
 "app-verbunden-de.webp": [
 426,
@@ -39,11 +55,23 @@
 540,
 1200
 ],
+"beenden-en.webp": [
+540,
+1200
+],
 "ebike-de.webp": [
 540,
 1200
 ],
 "ebike-en.webp": [
+540,
+1200
+],
+"erreichbar-de.webp": [
+540,
+1200
+],
+"erreichbar-en.webp": [
 540,
 1200
 ],
@@ -56,6 +84,10 @@
 1200
 ],
 "fertig-de.webp": [
+540,
+1200
+],
+"fertig-en.webp": [
 540,
 1200
 ],
@@ -79,6 +111,18 @@
 540,
 1200
 ],
+"gespeichert-en.webp": [
+540,
+1200
+],
+"gpx-plan-de.webp": [
+540,
+1200
+],
+"gpx-plan-en.webp": [
+540,
+1200
+],
 "halten-de.webp": [
 540,
 1200
@@ -87,7 +131,27 @@
 540,
 1200
 ],
+"handy-einrichten-de.webp": [
+540,
+1200
+],
+"handy-einrichten-en.webp": [
+540,
+1200
+],
 "hinweise-de.webp": [
+540,
+1200
+],
+"hinweise-en.webp": [
+540,
+1200
+],
+"hinweise-stimme-de.webp": [
+540,
+1200
+],
+"hinweise-stimme-en.webp": [
 540,
 1200
 ],
@@ -95,7 +159,15 @@
 540,
 1200
 ],
+"leer-en.webp": [
+540,
+1200
+],
 "meine-routen-de.webp": [
+540,
+1200
+],
+"meine-routen-en.webp": [
 540,
 1200
 ],
@@ -108,6 +180,18 @@
 1200
 ],
 "neue-route-de.webp": [
+540,
+1200
+],
+"neue-route-en.webp": [
+540,
+1200
+],
+"neue-route-frage-de.webp": [
+540,
+1200
+],
+"neue-route-frage-en.webp": [
 540,
 1200
 ],
@@ -124,6 +208,14 @@
 1200
 ],
 "neustart-hinweis-en.webp": [
+540,
+1200
+],
+"ohne-netz-de.webp": [
+540,
+1200
+],
+"ohne-netz-en.webp": [
 540,
 1200
 ],
@@ -147,6 +239,10 @@
 540,
 1200
 ],
+"punkt1-en.webp": [
+540,
+1200
+],
 "punkteliste-de.webp": [
 540,
 1200
@@ -163,7 +259,27 @@
 540,
 1200
 ],
+"sicherung-de.webp": [
+540,
+1200
+],
+"sicherung-en.webp": [
+540,
+1200
+],
 "suche-de.webp": [
+540,
+1200
+],
+"suche-en.webp": [
+540,
+1200
+],
+"t-band-de.webp": [
+540,
+1200
+],
+"t-band-en.webp": [
 540,
 1200
 ],
@@ -175,17 +291,29 @@
 540,
 1200
 ],
+"web-3d-de.webp": [
+1200,
+750
+],
+"web-3d-en.webp": [
+1200,
+750
+],
 "web-handy-de.webp": [
-480,
-560
+1200,
+750
 ],
 "web-handy-en.webp": [
-480,
-560
+1200,
+750
 ],
 "web-koppeln-de.webp": [
-480,
-840
+1200,
+750
+],
+"web-koppeln-en.webp": [
+1200,
+750
 ],
 "web-plan-de.webp": [
 1200,
@@ -195,19 +323,43 @@
 1200,
 750
 ],
+"web-profil-de.webp": [
+1200,
+750
+],
+"web-profil-en.webp": [
+1200,
+750
+],
 "web-teilen-de.webp": [
-480,
-740
+1200,
+750
 ],
 "web-teilen-en.webp": [
-480,
-740
+1200,
+750
+],
+"web-touren-de.webp": [
+1200,
+750
+],
+"web-touren-en.webp": [
+1200,
+750
 ],
 "ziel-de.webp": [
 540,
 1200
 ],
+"ziel-en.webp": [
+540,
+1200
+],
 "zurueck-de.webp": [
+540,
+1200
+],
+"zurueck-en.webp": [
 540,
 1200
 ]

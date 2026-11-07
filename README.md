@@ -1,6 +1,6 @@
 # onpath.earth
 
-Static English and German website for OnPath: **Your route. Simply planned. / Deine Tour. Einfach geplant.**
+Static English and German website for OnPath: **Your outing. Simply on your way. / Deine Tour. Einfach unterwegs.**
 
 This repository is independent of the Android app at `happychriss/OnPath`.
 
@@ -17,14 +17,24 @@ python3 -m http.server 8000 --directory dist
 
 English is at `/`, German at `/de/`. Every page has a corresponding language-switch destination and `hreflang` links. Font, photograph and scripts are served locally. No analytics or third-party embeds are included.
 
+## Homepage and shared design
+
+`home_de.html` and `home_en.html` contain the approved homepage. `home_page.py` loads them into the existing
+bilingual builder. `assets/home-v2.css` is scoped to this homepage; `assets/editorial.css` extends the shared
+article, help, access-page, header and footer styles. Secondary-page copy stays in `content_de.py`,
+`content_en.py` and `legal_content.py`. Route URLs, language switches and review/noindex controls stay in the builder.
+
 ## Help pictures
 
 App screens on the help pages: `help_shots.py` says which picture goes under which help section (DE and EN) with its
 caption. Swap or add pictures: put the PNGs (phone screenshots, 1080 × 2400) in a folder, run
 `python3 scripts/help_shots.py <folder> …` (writes `assets/help/*.webp` and `sizes.json`), then `python3 build.py`.
-Sources today: `onpath.private/marketing/bilder/{a019,a019-nachtrag,a019-nachtrag2,2026-11-01-donald,2026-11-01-web}`
-and the app's screenshot tests `OnPath/app/src/test/snapshots/images` (pairing screens); later folders win.
-Pictures can also sit inside a help text: `[[shots:name,name]]`.
+Current pictures: the Meran round captured on 7 November 2026 with app 0.17.3 and the current browser planner.
+The pairing confirmation pictures are German app-test snapshots; where an English picture is unavailable, the
+English page explicitly labels the German screen. Later source folders win.
+Pictures can also sit inside a help text: `[[shots:name,name]]`. `ARTICLE_SHOTS` adds the same current pictures
+to relevant hiking, cycling and outlook sections without editing their prose. All screenshots can be enlarged;
+phone images retain their complete aspect ratio.
 
 ## Review and public launch
 
