@@ -794,7 +794,7 @@ TESTER={'de':dict(
   ('Does the test cost anything?','No. Taking part in the test is free.'),
   ('When does the closed test group start?','It is the next step. When it starts, this page will explain how to join.')],
  more_h='Good to know',more=[
-  ('An early test version','OnPath is still young and I have mainly used it on my own tours in South Tyrol so far. There is no iPhone version yet. Start with a short route you know.'),
+  ('An early test version','OnPath is still young and I have mainly used it on my own tours in South Tyrol so far. There is no iPhone version yet. Start with a short route you know. For long or remote outings, use OnPath alongside an established navigation tool for now.'),
   ('What helps when testing','You do not need technical knowledge. Just say what you wanted to do, what happened and what you expected. “I did not understand this step” helps too.')])}
 def tester_page(lang='de'):
     T=TESTER[lang]
