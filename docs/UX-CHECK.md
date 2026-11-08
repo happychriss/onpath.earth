@@ -16,7 +16,7 @@ Vor jeder Änderung den gesamten betroffenen Abschnitt prüfen, danach den volls
 
 ## Aktuelle redaktionelle Entscheidung
 
-Hero-Reihenfolge: Beta / Tester gesucht → Nutzen und Offline-Vorteil → Android / kostenlos / ohne OnPath-Konto → Testeinladung anfragen → kurzer Hinweis zum Einstieg auf vertrauten Wegen. Ausführlichere Testbedingungen auf der Einladungsseite. Den persönlichen IT-Hintergrund nur dezent mit 44-2.de verknüpfen; KI-Entwicklung ist kein Verkaufsargument im OnPath-Einstieg.
+Hero-Reihenfolge: Beta / Tester gesucht → Nutzen und Offline-Vorteil → kostenlos / ohne OnPath-Konto / Android → Testeinladung anfragen. Ausführlichere Testbedingungen auf der Einladungsseite. Den persönlichen IT-Hintergrund nur dezent mit 44-2.de verknüpfen; KI-Entwicklung ist kein Verkaufsargument im OnPath-Einstieg.
 
 Diese Reihenfolge ist eine begründete Gestaltungshypothese. Sie ersetzt keine Rückmeldungen echter Zielgruppen-Nutzer. Bei Tests prüfen: Was bietet OnPath? Was bedeutet Beta? Was passiert nach dem Klick?
 
