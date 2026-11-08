@@ -52,7 +52,7 @@ HELP_EN = [('getting-started',
     'hints. Wait for the required maps to finish downloading and begin with a short, familiar route.'),
    ('Let’s go',
     'Tap the green “Let’s go” button. OnPath saves the plan in “My tours”, guides you and records your outing. On the '
-    'way the bar at the bottom is locked against pocket taps: hold “Pause” or “Plan” for about a second until the '
+    'way the bar at the bottom is locked against pocket taps: hold “Stop” or “Plan” for about a second until the '
     'button fills; the bar then stays open for 20 seconds. Set how long to hold in Settings → Navigation.')]),
  ('offline',
   'Without a connection',
@@ -135,7 +135,7 @@ HELP_EN = [('getting-started',
   'edit change detour route navigation',
   [('Switch to editing',
     'Hold “Plan” at the bottom until the button fills. You are back in the plan, with a light blue band at the top; '
-    'your recording keeps running. “Pause” stops recording and guidance; then “Continue” goes on or “End” finishes.'),
+    'your recording keeps running. “Stop” rests recording and guidance; then “Resume” goes on, “End tour” finishes and “Plan” opens the plan.'),
    ('Adjust the next part',
     'Find a café, say, and tap “Add as a stop”, remove a stop or add a new destination, and check the new route. Recalculation works offline when all the required '
     'areas are ready.'),
@@ -143,7 +143,7 @@ HELP_EN = [('getting-started',
     'Tap “Let’s go on” at the bottom to return to navigation. OnPath says once how far it is now; points already '
     'visited are skipped. If you leave the route, OnPath first shows “Off route” while it looks for a way back, then '
     'asks – also by voice – “New route” or “Keep original”. '
-    'No questions while paused.')]),
+    'No questions while the outing is stopped.')]),
  ('places',
   'Places and Google Maps',
   'Find a café, check details and plan the way there.',
@@ -227,7 +227,7 @@ HELP_EN = [('getting-started',
     'estimate starts adapting to your pace, separately uphill, on level ground and downhill. It remains an estimate. '
     'On the handlebar, the quiet view shows direction, distance and arrival; the map returns before the turn.'),
    ('Finish deliberately',
-    'Hold “Pause” and tap “End”. At the destination OnPath asks by itself: “Keep recording” or “End tour”. Then tap '
+    'Hold “Stop” and tap “End tour”. At the destination OnPath asks by itself: “Keep recording” or “End tour”. Then tap '
     '“Save tour”; it appears in “My tours” → “Done”. “Delete” moves it to the recycle bin for 30 days. Keep your outing without questions about uploading photos, '
     'sharing or ratings. Locking the phone does not end recording. If OnPath detected a bus or cable-car section, '
     'review how it should count. <a href="#rides">Review detected rides →</a>'),

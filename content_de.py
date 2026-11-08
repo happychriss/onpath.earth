@@ -455,7 +455,7 @@ HELP = [('erste-schritte',
     'Streckenhinweise; beginne mit einer kurzen, bekannten Strecke.</p>'),
    ('Los geht’s',
     '<p>Tippe auf den grünen Knopf „Los geht’s“. OnPath speichert den Plan unter „Meine Touren“, führt dich los und '
-    'zeichnet deine Tour auf.</p><p>Unterwegs ist die Leiste unten gegen Tippen in der Tasche gesperrt: Halte „Pause“ '
+    'zeichnet deine Tour auf.</p><p>Unterwegs ist die Leiste unten gegen Tippen in der Tasche gesperrt: Halte „Anhalten“ '
     'oder „Planen“ etwa eine Sekunde gedrückt, bis sich der Knopf füllt. Danach bleibt die Leiste 20 Sekunden offen. '
     'Wie lange du halten musst, stellst du unter Einstellungen → Navigation ein.</p>')]),
  ('offline',
@@ -556,11 +556,11 @@ HELP = [('erste-schritte',
  ('unterwegs-aendern',
   'Unterwegs die Route ändern',
   'Einen Abstecher einbauen und die Aufzeichnung fortsetzen.',
-  'Navigation Abstecher umplanen Planen Pause neu berechnen Vibration',
+  'Navigation Abstecher umplanen Planen Anhalten Pause neu berechnen Vibration',
   [('Bewusst zur Planung wechseln',
     '<p>Halte unten „Planen“ gedrückt, bis sich der Knopf füllt. Du bist wieder im Plan, mit einem hellblauen Band '
-    'oben. Deine Aufzeichnung läuft dabei weiter. Mit „Pause“ hältst du Aufzeichnung und Navigation an; danach geht '
-    'es mit „Weiter“ weiter oder mit „Beenden“ zum Abschluss.</p>'),
+    'oben. Deine Aufzeichnung läuft dabei weiter. Mit „Anhalten“ ruhen Aufzeichnung und Navigation; danach geht '
+    'es mit „Weiter“ weiter, mit „Tour beenden“ zum Abschluss oder mit „Planen“ in den Plan.</p>'),
    ('Den weiteren Weg anpassen',
     '<p>Suche zum Beispiel eine Einkehr und tippe auf „Als Zwischenstopp“, entferne einen nicht mehr benötigten Stopp '
     'oder ergänze ein neues Ziel. Kontrolliere anschließend die Strecke. '
@@ -572,7 +572,7 @@ HELP = [('erste-schritte',
    ('Du bist von der Route abgewichen',
     '<p>OnPath zeigt zuerst die Karte „Abseits der Route“ und sucht einen Rückweg. Dann fragt es, auch per Ansage: '
     '„Neue Route“ oder „Original behalten“. Es ändert den Weg nicht stillschweigend. Würde die neue Route einen Stopp '
-    'auslassen, fragt OnPath: über den Stopp oder ihn auslassen.</p><p>Während einer Pause stellt OnPath keine Fragen.</p>')]),
+    'auslassen, fragt OnPath: über den Stopp oder ihn auslassen.</p><p>Solange die Tour angehalten ist, stellt OnPath keine Fragen.</p>')]),
  ('orte',
   'Orte suchen & Google Maps nutzen',
   'Ein Café finden, einen Ort teilen oder Öffnungszeiten nachsehen.',
@@ -678,7 +678,7 @@ HELP = [('erste-schritte',
     'die App dein tatsächliches Tempo – getrennt für bergauf, eben und bergab. Die Ankunftszeit bleibt eine '
     'Schätzung.</p>'),
    ('Die Tour beenden und behalten',
-    '<p>Halte „Pause“ gedrückt und tippe auf „Beenden“. Am Ziel fragt OnPath von selbst: „Weiter aufzeichnen“ oder '
+    '<p>Halte „Anhalten“ gedrückt und tippe auf „Tour beenden“. Am Ziel fragt OnPath von selbst: „Weiter aufzeichnen“ oder '
     '„Tour beenden“. Dann tippst du auf „Tour speichern“; die Tour steht unter „Meine Touren“ → „Gemacht“. „Löschen“ '
     'legt sie für 30 Tage in den Papierkorb. Du kannst die Tour behalten, ohne Fotos hochzuladen, sie zu teilen oder '
     'zu bewerten. Ein bloßes Sperren des Bildschirms beendet die Aufzeichnung nicht.</p><p>Wurde eine Fahrt erkannt, etwa mit Bus oder Seilbahn, kannst du beim Abschluss '
