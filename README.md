@@ -62,7 +62,7 @@ No Cloudflare project, domain, DNS record or WordPress content is modified by th
 
 ## Content and ownership
 
-See [the five-point agent brief](docs/AGENT-BRIEF.md) and [release checklist](docs/RELEASE.md). The 44-2.de drafts remain unpublished references; the new site becomes canonical only when the owner approves launch. Private marketing research, tentative numerical prices, tester lists, credentials and private Drive content must stay outside this public repository.
+See [the five-point agent brief](docs/AGENT-BRIEF.md) and [release checklist](docs/RELEASE.md). `onpath.earth` is the canonical project website. Personal-background links use `https://44-2.de/` only; the owner plans to remove the old OnPath/OnPass pages there. Private marketing research, tentative numerical prices, tester lists, credentials and private Drive content must stay outside this public repository.
 
 See [the original website colour palette](docs/COLORS.md) for the exact HEX codes and their uses.
 
