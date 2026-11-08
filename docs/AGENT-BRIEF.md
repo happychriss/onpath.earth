@@ -1,12 +1,6 @@
 # External website agent: five rules
 
-## Dauerhafter Auftrag: OnPath-Webdesign und UX
-
-Stand: 2026-11-08, Auftrag des Inhabers. Die Website kontinuierlich gestalten und weiterentwickeln; neue öffentliche Funktionen, Screenshots und Grafiken sinnvoll einarbeiten. Maßgeblich sind die freigegebene Marketingstrategie und die dokumentierten Produktentscheidungen. Vor Änderungen den aktuellen Projektstand prüfen, statt ältere Aussagen ungeprüft fortzuschreiben.
-
-Zielgruppe sind Wanderer und Radfahrer für normale Ausflüge, besonders Menschen, die etwas technikaffin, zugleich skeptisch oder von umfangreichen Outdoor-Apps überfordert sind. OnPath soll Einfachheit, Ruhe, Souveränität und einen vollständigen Funktionsumfang für diese Touren vermitteln. Vollständigkeit durch konkrete Abläufe und passende Beispiele zeigen; der Einstieg bleibt leicht verständlich.
-
-Aktuelle UX-, Barrierefreiheits- und Webdesignstandards berücksichtigen und bei Bedarf recherchieren. Gestalterische Trends nur übernehmen, wenn sie Verständnis, Bedienbarkeit oder Vertrauen verbessern. Bestehende Markenidentität bewahren. Neue Wünsche kritisch gegen die gesamte Seite prüfen und bei Konflikten eine begründete Empfehlung geben. Die Prüfliste in [UX-CHECK.md](UX-CHECK.md) vor jeder Änderung anwenden. Deutsch und Englisch konsistent halten, Desktop und Mobilansichten prüfen und zur Abstimmung einen separaten nutzbaren Vorschau-Link liefern.
+Owner’s design workflow and internal brief: `happychriss/onpath.private` → `marketing/webdesign-grundsaetze.md`. Keep internal planning private.
 
 **Languages (owner 2026-10-29):** German is the lead language. The owner reviews **German only**; every change is made in German first and the English page is kept in step by the contributor (same structure, same facts), without a separate owner review.
 

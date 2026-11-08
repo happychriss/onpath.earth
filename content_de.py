@@ -772,7 +772,7 @@ TESTER={'de':dict(
   ('Kostet der Test etwas?','Nein. Die Teilnahme am Test ist kostenlos.'),
   ('Wann beginnt die geschlossene Testgruppe?','Sie ist der nächste Schritt. Sobald sie startet, findest du hier die Anleitung und den Zugang.')],
  more_h='Gut zu wissen',more=[
-  ('Eine frühe Testversion','OnPath ist noch jung und wurde bisher vor allem von mir auf eigenen Touren in Südtirol genutzt. Eine iPhone-Version gibt es noch nicht. Plane für den Anfang eine kurze, bekannte Strecke.'),
+  ('Eine frühe Testversion','OnPath ist noch jung und wurde bisher vor allem von mir auf eigenen Touren in Südtirol genutzt. Eine iPhone-Version gibt es noch nicht. Plane für den Anfang eine kurze, bekannte Strecke. Für lange oder abgelegene Touren nutze OnPath vorerst nur ergänzend zu einer bewährten Navigation.'),
   ('Was beim Testen hilft','Du musst dich nicht mit Technik auskennen. Sag einfach, was du machen wolltest, was passiert ist und was du erwartet hast. Auch „Diesen Schritt habe ich nicht verstanden“ hilft weiter.')]),
 'en':dict(
  eye='Current stage: phase 1 of 3',title='Try OnPath by personal invitation.',
