@@ -344,3 +344,6 @@
 .home-v2 .navigation-grid .reassurance p{font-size:var(--type-body)!important}
 .home-v2 .hero-lead{font-size:var(--type-body)}
 }
+
+/* Phone: each step's picture right under the step you tap (order set in app.js) */
+@media(max-width:800px){.home-v2 .steps-grid{display:flex;flex-direction:column;gap:0}.home-v2 .step-controls{display:contents}.home-v2 #tab-1{order:1}.home-v2 #tab-2{order:3}.home-v2 #tab-3{order:5}.home-v2 .step-controls>.text-link{order:7}.home-v2 .step-stage{order:2;margin:8px 0 24px}}

@@ -15,6 +15,7 @@ function activateHomeStep(index,focus=false){
   const step=homeSteps[index],image=document.querySelector('#step-image');
   image.src=step.image;image.alt=step.alt;document.querySelector('#stage-label').textContent=step.label;
   document.querySelector('#step-screen').setAttribute('aria-labelledby',homeTabs[index].id);
+  document.querySelector('#step-screen').style.order=String(index*2+2); // on a phone the picture sits under the chosen step
   if(focus)homeTabs[index].focus();
 }
 homeTabs.forEach((tab,i)=>{
