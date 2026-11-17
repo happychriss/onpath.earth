@@ -27,6 +27,8 @@ def versioned_asset(filename):
 STYLESHEET_URL=versioned_asset('style.css')
 SCRIPT_URL=versioned_asset('app.js')
 HOME_STYLESHEET_URL=versioned_asset('home-v2.css')
+COMPARISON_STYLESHEET_URL=versioned_asset('app-comparison.css')
+COMPARISON_SCRIPT_URL=versioned_asset('app-comparison.js')
 EDITORIAL_STYLESHEET_URL=versioned_asset('editorial.css')
 de=runpy.run_path(str(ROOT/'content_de.py'))
 icon=de['icon']
@@ -46,7 +48,8 @@ def write(path,title,desc,body,lang='en',original=None):
     local='/de'+path if lang=='de' else path
     head=f'<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} | OnPath</title><meta name="description" content="{html.escape(desc,quote=True)}"><meta name="theme-color" content="#245f46"><link rel="icon" href="/assets/brand.svg" type="image/svg+xml"><link rel="stylesheet" href="{STYLESHEET_URL}"><script src="{SCRIPT_URL}" defer></script>'
     head+=f'<link rel="stylesheet" href="{EDITORIAL_STYLESHEET_URL}">'
-    if path=='/':head+=f'<link rel="stylesheet" href="{HOME_STYLESHEET_URL}">'
+    if path=='/':
+        head+=f'<link rel="stylesheet" href="{HOME_STYLESHEET_URL}"><link rel="stylesheet" href="{COMPARISON_STYLESHEET_URL}"><script src="{COMPARISON_SCRIPT_URL}" defer></script>'
     for code,p in [('en',en),('de','/de'+depath),('x-default',en)]:
         head+=f'<link rel="alternate" hreflang="{code}" href="{CFG["origin"]}{p}">'
     if not release:head+='<meta name="robots" content="noindex,nofollow">'
