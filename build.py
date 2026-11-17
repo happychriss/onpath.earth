@@ -61,7 +61,7 @@ def write(path,title,desc,body,lang='en',original=None):
         f=re.sub(r'href="(/[^\"]*)"',lambda m:'href="/de'+m[1]+'"',f)
         body=re.sub(r'href="(/[^\"]*)"',lambda m:'href="/de'+m[1]+'"',body)
     else:
-        h=f'<a class="skip" href="#inhalt">Skip to content</a><header><div class="wrap header-row">{brand(lang)}<button class="menu" aria-expanded="false" aria-controls="navigation">Menu ☰</button><nav id="navigation" aria-label="Main navigation"><a href="/#discover">The app</a><a href="/about/">The idea</a><a href="/whats-next/">What’s next</a><a href="/help/">Help</a><a href="https://plan.onpath.earth/">Plan in your browser</a><a class="button small" href="/try/">Try OnPath {icon("arrow")}</a>{languages(lang,path)}</nav></div></header>'
+        h=f'<a class="skip" href="#inhalt">Skip to content</a><header><div class="wrap header-row">{brand(lang)}<button class="menu" aria-expanded="false" aria-controls="navigation">Menu ☰</button><nav id="navigation" aria-label="Main navigation"><a href="/#discover">The app</a><a href="/about/">The idea</a><a href="/whats-next/">What’s next</a><a href="/help/">Help</a><a href="https://plan.onpath.earth/">Plan in your browser</a><a class="button small" href="/try/">Android beta {icon("arrow")}</a>{languages(lang,path)}</nav></div></header>'
         f=footer_en()
     document='<!doctype html><html lang="'+lang+'"><head>'+head+'</head><body>'+h+'<main id="inhalt"'+(' class="home-v2"' if path=='/' else '')+'>'+body+'</main>'+f+'</body></html>'
     dest=OUT/local.strip('/')/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(document)
@@ -81,7 +81,7 @@ def article(path,title,desc,sections,help_page=False):
 for path,(title,desc,body,active) in de['PAGES'].items():write(path,title,desc,body,'de',active)
 for path,(title,desc,sections) in ARTICLES.items():
     if path!='/try/':article(path,title,desc,sections)
-write('/try/','Try OnPath by personal invitation','Phase 1: test OnPath with a personal invitation and approval from Christian.',de['tester_page']('en'))
+write('/try/','Test OnPath for Android','Phase 1: test OnPath with a personal invitation and approval from Christian.',de['tester_page']('en'))
 for slug,title,desc,keys,sections in HELP_EN:article('/help/'+slug+'/',title,desc,sections,True)
 cards=''.join(f'<a class="help-card" data-keywords="{keys}" href="/help/{slug}/"><h2>{title}</h2><p>{desc}</p><span aria-hidden="true">→</span></a>' for slug,title,desc,keys,_ in HELP_EN)
 write('/help/','Help for your next outing','Short, practical guides for planning, navigating and keeping your tours.',intro('How can we help?','Start with your first route or find an answer for a question along the way.','OnPath help')+f'<section class="section"><div class="wrap"><div class="help-search"><label for="help-search">Find a help topic</label><div>{icon("search")}<input type="search" id="help-search" placeholder="For example: maps, Google or battery"></div></div><p class="fine" id="search-count" role="status">9 help topics</p><div class="help-grid">{cards}</div><p id="no-results" hidden>No topic found. Try a shorter word.</p></div></section>')

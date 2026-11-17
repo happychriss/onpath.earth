@@ -26,7 +26,7 @@ def icon(k):return '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">'+i
 brand='<a class="brand" href="/" aria-label="OnPath Startseite"><img src="/assets/brand.svg" alt="" width="44" height="44"><span>OnPath</span></a>'
 
 def header(active=''):
- return '<a class="skip" href="#inhalt">Zum Inhalt</a><header><div class="wrap header-row">'+brand+'<button class="menu" aria-expanded="false" aria-controls="navigation">Menü <span aria-hidden="true">☰</span></button><nav id="navigation" aria-label="Hauptnavigation">'+''.join('<a '+('aria-current="page" ' if active==p else '')+'href="'+p+'">'+t+'</a>' for p,t in [('/#entdecken','Die App'),('/idee/','Die Idee'),('/ausblick/','Was kommt'),('/hilfe/','Hilfe'),('https://plan.onpath.earth/','Im Browser planen')])+'<a class="button small" href="/ausprobieren/">OnPath ausprobieren '+icon('arrow')+'</a></nav></div></header>'
+ return '<a class="skip" href="#inhalt">Zum Inhalt</a><header><div class="wrap header-row">'+brand+'<button class="menu" aria-expanded="false" aria-controls="navigation">Menü <span aria-hidden="true">☰</span></button><nav id="navigation" aria-label="Hauptnavigation">'+''.join('<a '+('aria-current="page" ' if active==p else '')+'href="'+p+'">'+t+'</a>' for p,t in [('/#entdecken','Die App'),('/idee/','Die Idee'),('/ausblick/','Was kommt'),('/hilfe/','Hilfe'),('https://plan.onpath.earth/','Im Browser planen')])+'<a class="button small" href="/ausprobieren/">Zur Android-Beta '+icon('arrow')+'</a></nav></div></header>'
 def footer():return '<footer><div class="wrap"><div class="footer-grid"><div>'+brand+'<p>Wandern und Radfahren.<br>Mit einem Plan, der zu dir passt.</p><span class="fine">Von Christian Neuhaus entwickelt. Der App-Code ist öffentlich.</span></div><div><b>OnPath</b><a href="/wandern/">Wandern</a><a href="/radfahren/">Radfahren</a><a href="/idee/">Die Idee dahinter</a><a href="/ausblick/">Was als Nächstes kommt</a></div><div><b>Gut zu wissen</b><a href="/hilfe/">Hilfe & erste Schritte</a><a href="/datenschutz/">Datenschutz</a><a href="/projekt/">Projekt & Bildnachweis</a></div><div><b>Mitmachen</b><a href="/ausprobieren/">Tester werden</a><a href="mailto:info@onpath.earth">E-Mail an OnPath</a><a href="'+GITHUB+'/issues">Fehler melden ↗</a><a href="'+GITHUB+'">Quellcode auf GitHub ↗</a></div></div><div class="footer-bottom"><span>© 2026 OnPath · Christian Neuhaus</span><span>Android · Deutsch & Englisch · In Entwicklung</span></div></div></footer><button class="backtop" aria-label="Nach oben" hidden>↑</button>'
 PAGES={}
 def page(path,title,desc,body,active=''):
@@ -750,8 +750,8 @@ article('/ausblick/','Heute & als Nächstes','OnPath wächst mit deinen Touren.'
 ('Die Aufteilung soll nachvollziehbar sein','<p>Vorgesehen ist eine offene Übersicht: Einnahmen, Gebühren, Betriebskosten, mein Anteil und die tatsächlich geleisteten Spenden. So soll sichtbar werden, wohin das Geld geht.</p><p>Preise, Anteile, Hilfsorganisation, genauer Leistungsumfang und Zahlungsweg stehen noch nicht fest. Es gibt hier noch kein bestellbares Bezahlangebot.</p>')])
 # Access currently uses personal invitations. No individual invite link is published here.
 TESTER={'de':dict(
- eye='Aktuell: Phase 1 von 3',title='OnPath persönlich ausprobieren.',
- lead='OnPath startet im kleinen Kreis. Wenn du mittesten möchtest, schreib mir. Ich stimme deinen persönlichen Testzugang mit dir ab.',
+ eye='Kostenlose Android-Beta',title='OnPath für Android testen',
+ lead='Schreib mir, ob du wanderst oder Rad fährst und welches Android-Handy du nutzt. Ich melde mich bei dir und stimme deinen persönlichen Testzugang mit dir ab.',
  phases_h='In drei Phasen zum öffentlichen Start',phases=[
   ('Persönliche Einladungen','Jetzt','Ich lade einzelne Wanderer und Radfahrer ein und schalte sie frei. Im direkten Austausch zeigt sich, was im Alltag funktioniert und wo noch etwas hakt.'),
   ('Geschlossene Testgruppe','Als Nächstes','Danach soll eine größere, geschlossene Gruppe OnPath über Google Play testen. Der Zugang bleibt auf die Testgruppe beschränkt. Die Anleitung zur Teilnahme folgt zum Start dieser Phase.'),
@@ -759,7 +759,7 @@ TESTER={'de':dict(
  before_h='Was du brauchst',before=['Ein Android-Handy ab Version 8.'],
  check='Du brauchst kein OnPath-Konto. Der persönliche Test ist kostenlos.',
  steps=[
-  ('Einladung anfragen','Schreib mir kurz, ob du zu Fuß oder mit dem Rad unterwegs bist und welches Android-Handy du nutzt.','Danach melde ich mich mit den nächsten Schritten bei dir.','invite','Einladung anfragen',''),
+  ('Einladung anfragen','Schreib mir kurz, ob du zu Fuß oder mit dem Rad unterwegs bist und welches Android-Handy du nutzt.','Danach melde ich mich mit den nächsten Schritten bei dir.','invite','Einladung per E-Mail anfragen',''),
   ('Testzugang erhalten','Ich stimme die Teilnahme mit dir ab und schalte dich frei.','Du bekommst deinen Einladungslink und die Installationshinweise direkt von mir.','','',''),
   ('OnPath ausprobieren','Öffne den Link auf deinem Android-Handy und folge den Installationshinweisen.','Beginne mit einer kurzen, bekannten Strecke und sag mir, was gut klappt oder noch unklar ist.','','','')],
  after='Schon installiert? Hier geht es weiter: <a href="/hilfe/erste-schritte/">Erste Schritte mit OnPath →</a>',
@@ -772,8 +772,8 @@ TESTER={'de':dict(
   ('Eine frühe Testversion','OnPath ist noch jung und wurde bisher vor allem von mir auf eigenen Touren in Südtirol genutzt. Eine iPhone-Version gibt es noch nicht. Plane für den Anfang eine kurze, bekannte Strecke. Für lange oder abgelegene Touren nutze OnPath vorerst nur ergänzend zu einer bewährten Navigation.'),
   ('Was beim Testen hilft','Du musst dich nicht mit Technik auskennen. Sag einfach, was du machen wolltest, was passiert ist und was du erwartet hast. Auch „Diesen Schritt habe ich nicht verstanden“ hilft weiter.')]),
 'en':dict(
- eye='Current stage: phase 1 of 3',title='Try OnPath by personal invitation.',
- lead='OnPath is starting with a small group. Write to me if you would like to take part. I will arrange your personal test access with you.',
+ eye='Free Android beta',title='Test OnPath for Android',
+ lead='Email me to say whether you hike or cycle and which Android phone you use. I’ll get back to you to arrange your test access.',
  phases_h='Three phases towards the public release',phases=[
   ('Personal invitations','Now','I invite individual hikers and cyclists and approve their access. Direct feedback shows what works on real outings and what needs improving.'),
   ('Closed test group','Next','A larger, closed group will then test OnPath through Google Play. Access will remain limited to the test group. Instructions for joining will follow when this phase starts.'),
@@ -781,7 +781,7 @@ TESTER={'de':dict(
  before_h='What you need',before=['An Android phone, version 8 or newer.'],
  check='You do not need an OnPath account. The personal test is free.',
  steps=[
-  ('Ask for an invitation','Briefly tell me whether you walk or cycle and which Android phone you use.','I will get back to you with the next steps.','invite','Ask for an invitation',''),
+  ('Ask for an invitation','Briefly tell me whether you walk or cycle and which Android phone you use.','I will get back to you with the next steps.','invite','Email for an invitation',''),
   ('Receive test access','I will arrange participation with you and approve your access.','You will receive your invitation link and installation instructions directly from me.','','',''),
   ('Try OnPath','Open the link on your Android phone and follow the installation instructions.','Start with a short route you know and tell me what works well or is still unclear.','','','')],
  after='Already installed? Continue here: <a href="/help/getting-started/">First steps with OnPath →</a>',
@@ -812,8 +812,8 @@ def tester_page(lang='de'):
     faq='<div class="tester-faq"><h2>'+T['faq_h']+'</h2>'+''.join('<details><summary>'+q+'</summary><p>'+a+'</p></details>' for q,a in T['faq'])+'</div>'
     more='<div class="points">'+''.join('<p><b>'+t+'</b>'+x+'</p>' for t,x in T['more'])+'</div>'
     hero='<section class="page-hero"><div class="wrap"><p class="eyebrow">'+T['eye']+'</p><h1>'+T['title']+'</h1><p class="lead">'+T['lead']+'</p><div class="actions">'+act('invite',T['steps'][0][4])+'</div></div></section>'
-    return hero+phases+'<section class="section"><div class="wrap tester">'+before+steps+'<p class="tester-after">'+T['after']+'</p>'+faq+'</div></section><section class="section soft"><div class="wrap"><h2>'+T['more_h']+'</h2>'+more+'</div></section>'
-page('/ausprobieren/','OnPath persönlich ausprobieren','Phase 1: OnPath mit persönlicher Einladung und Freischaltung durch Christian testen.',tester_page('de'))
+    return hero+'<section class="section"><div class="wrap tester">'+before+steps+'<p class="tester-after">'+T['after']+'</p>'+faq+'</div></section>'+phases+'<section class="section soft"><div class="wrap"><h2>'+T['more_h']+'</h2>'+more+'</div></section>'
+page('/ausprobieren/','OnPath für Android testen','Phase 1: OnPath mit persönlicher Einladung und Freischaltung durch Christian testen.',tester_page('de'))
 article('/projekt/','Projektinformationen','Offen entwickelt. Klar beschrieben.','OnPath ist ein unabhängiges Projekt von Christian Neuhaus.',[
 ('Stand dieser Seite','<p>Stand: 7. November 2026, abgeglichen mit der App-Version 0.17.3 und dem Planer auf plan.onpath.earth. Die Webseite ist noch eine Testfassung und für Suchmaschinen ausgeblendet; Impressum und Datenschutz werden vor dem öffentlichen Start rechtlich geprüft.</p><p>Aktuell läuft Phase 1 mit persönlichen Einladungen und Freischaltung durch Christian. Die geschlossene Testgruppe ist der nächste Schritt: <a href="/ausprobieren/">OnPath ausprobieren</a>.</p>'),
 ('Bildnachweis','<p>Foto auf der Startseite: Christian Neuhaus, bei Vellau (Südtirol). Porträt: Christian Neuhaus, privat. Keine KI-generierten Fotos.</p><p>Die Bildschirmbilder sind echte Aufnahmen der App (mit simulierter Fahrt) und des Planers.</p>'),
