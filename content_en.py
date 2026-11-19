@@ -35,6 +35,9 @@ ARTICLES = {
  ('Independent', 'OnPath is not affiliated with Komoot or Google. No endorsement or partnership is claimed.')]),
 
 }
+from contribution_content import CONTRIBUTE_EN
+ARTICLES['/contribute/'] = CONTRIBUTE_EN
+
 HELP_EN = [('getting-started',
   'Your first outing',
   'Install, prepare an area and plan a short route.',

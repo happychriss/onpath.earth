@@ -207,6 +207,16 @@ IMAGES['mehrtage-handy'] = (
     'A three-day hike on the Meraner Höhenweg. Day 2 is selected, with stages and overnight stops in the overview.',
 )
 
+IMAGES.update({
+    'rundtour-start': ('N03-handy-rundtour-von-hier-de.png', 'N03-handy-rundtour-von-hier-en.png', 'Auf dem Handy den Startpunkt gedrückt halten und „Rundtour von hier“ wählen.', 'On your phone, press and hold the start and choose “Round trip from here”.'),
+    'rundtour-wunsch': ('N01-web-rundtour-wunsch-de.png', 'N01-web-rundtour-wunsch-en.png', 'Wünsche im Browserplaner. Hier sind Wandern T2, 3,5 bis 4,5 Stunden und bis zu 800 Höhenmeter eingestellt.', 'Preferences in the browser planner. This example uses hiking T2, 3.5 to 4.5 hours and up to 800 metres of climbing.'),
+    'rundtour-vorschlaege': ('N04-handy-rundtour-kartenreihe-de.png', 'N04-handy-rundtour-kartenreihe-en.png', 'Fünf Rundtourvorschläge bei Alken. Die ausgewählte Karte zeigt Strecke, Dauer und Aufstieg; der Verlauf erscheint auf der Karte.', 'Five round-trip suggestions near Alken. The selected card shows distance, duration and climbing, with the route on the map.'),
+    'mehrtage-start': ('B11-web-mehrtagestour-planen-de.png', 'B11-web-mehrtagestour-planen-en.png', 'Der Mehrtagesplaner im Browser. Eine Route ist gewählt; weitere GPX-Tracks oder gespeicherte Routen lassen sich anhängen.', 'The multi-day guide in the browser. A route is selected, with options to append GPX tracks or saved routes.'),
+    'mehrtage-tage': ('B13-web-tage-festlegen-de.png', 'B13-web-tage-festlegen-en.png', 'Tage und tägliche Grenzen festlegen. Dieses Beispiel zeigt fünf Tage mit höchstens acht Stunden pro Tag.', 'Set the days and daily limits. This example shows five days with a limit of eight hours per day.'),
+    'mehrtage-uebersicht': ('B14-web-mehrtagestour-uebersicht-de.png', 'B14-web-mehrtagestour-uebersicht-en.png', 'Beispiel mit fünf Tagen am Meraner Höhenweg. Blau sind festgelegte Übernachtungen, grün das Hotel und grau das noch offene Tagesende. Das Höhenprofil zeigt die Tagesgrenzen.', 'A five-day example on the Meraner Höhenweg. Blue marks chosen overnight stops, green the hotel and grey the day end still open. The elevation profile shows the day boundaries.'),
+    'mehrtage-karte': ('M03-handy-mehrtagestour-naechte-karte-de.png', 'M03-handy-mehrtagestour-naechte-karte-en.png', 'Die Reise auf dem Handy. Übernachtungen und Hotel sind auch auf der Karte zu erkennen; Tag 2 ist zum Laden ausgewählt.', 'The journey on your phone. Overnight stops and the hotel also appear on the map; day 2 is selected to load.'),
+})
+
 SHOTS = {'de': {('erste-schritte', 2): ['leer', 'halten', 'ziel', 'fertig'],
         ('erste-schritte', 3): ['navi'],
         ('offline', 0): ['ohne-netz'],
@@ -258,6 +268,7 @@ SHOTS = {'de': {('erste-schritte', 2): ['leer', 'halten', 'ziel', 'fertig'],
 
 WIDTH, HEIGHT = 540, 1200  # phone screens are stored 540 wide (1080 × 2400 halved); other shapes keep their ratio
 WIDE = {'web-plan','web-teilen','web-handy','web-koppeln','web-3d','web-profil','web-touren'}
+WIDE.update({'rundtour-wunsch', 'mehrtage-start', 'mehrtage-tage', 'mehrtage-uebersicht'})
 WIDE_MAX = 1200
 TOP = {}  # Current screenshots are shown in full.
 SIZES_FILE = Path(__file__).resolve().parent / 'assets' / 'help' / 'sizes.json'

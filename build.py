@@ -32,7 +32,7 @@ COMPARISON_SCRIPT_URL=versioned_asset('app-comparison.js')
 EDITORIAL_STYLESHEET_URL=versioned_asset('editorial.css')
 de=runpy.run_path(str(ROOT/'content_de.py'))
 icon=de['icon']
-MAP={'/':'/','/wandern/':'/hiking/','/radfahren/':'/cycling/','/idee/':'/about/','/ausblick/':'/whats-next/','/ausprobieren/':'/try/','/datenschutz/':'/privacy/','/projekt/':'/project/','/hilfe/':'/help/','/impressum/':'/legal/','/404/':'/404/'}
+MAP={'/':'/','/wandern/':'/hiking/','/radfahren/':'/cycling/','/idee/':'/about/','/ausblick/':'/whats-next/','/ausprobieren/':'/try/','/datenschutz/':'/privacy/','/projekt/':'/project/','/hilfe/':'/help/','/impressum/':'/legal/','/404/':'/404/','/mitmachen/':'/contribute/'}
 for (de_slug,*_),(en_slug,*_) in zip(de['HELP'],HELP_EN):
     MAP['/hilfe/'+de_slug+'/']='/help/'+en_slug+'/'
 REVERSE={v:k for k,v in MAP.items()}
@@ -41,7 +41,7 @@ def brand(lang):
 def languages(lang,path):
     return f'<a class="language-switch" href="{MAP[path] if lang=="de" else "/de"+REVERSE[path]}" lang="{"en" if lang=="de" else "de"}" hreflang="{"en" if lang=="de" else "de"}" aria-label="{"Read in English" if lang=="de" else "Auf Deutsch lesen"}">{"EN" if lang=="de" else "DE"}</a>'
 def footer_en():
-    return f'<footer><div class="wrap"><div class="footer-grid"><div>{brand("en")}<p>Ride. Walk. Make it your route.</p><span class="fine">An independent project by Christian Neuhaus.</span></div><div><b>OnPath</b><a href="/cycling/">Cycling</a><a href="/hiking/">Hiking</a><a href="/about/">The idea</a><a href="/whats-next/">What comes next</a></div><div><b>Good to know</b><a href="/help/">Help &amp; first steps</a><a href="/try/">Try OnPath</a><a href="/privacy/">Privacy</a><a href="/legal/">Legal notice</a></div><div><b>The project</b><a href="/project/">Credits &amp; status</a><a href="mailto:info@onpath.earth">Email OnPath</a><a href="https://github.com/happychriss/OnPath">App source on GitHub ↗</a></div></div><div class="footer-bottom"><span>© 2026 OnPath · Christian Neuhaus</span><span>Android · In development</span></div></div></footer><button class="backtop" aria-label="Back to top" hidden>↑</button>'
+    return f'<footer><div class="wrap"><div class="footer-grid"><div>{brand("en")}<p>Ride. Walk. Make it your route.</p><span class="fine">An independent project by Christian Neuhaus.</span></div><div><b>OnPath</b><a href="/cycling/">Cycling</a><a href="/hiking/">Hiking</a><a href="/about/">The idea</a><a href="/whats-next/">What comes next</a></div><div><b>Good to know</b><a href="/help/">Help &amp; first steps</a><a href="/try/">Try OnPath</a><a href="/privacy/">Privacy</a><a href="/legal/">Legal notice</a></div><div><b>The project</b><a href="/contribute/">Help shape OnPath</a><a href="/project/">Credits &amp; status</a><a href="mailto:info@onpath.earth">Email OnPath</a><a href="https://github.com/happychriss/OnPath">App source on GitHub ↗</a></div></div><div class="footer-bottom"><span>© 2026 OnPath · Christian Neuhaus</span><span>Android · In development</span></div></div></footer><button class="backtop" aria-label="Back to top" hidden>↑</button>'
 def write(path,title,desc,body,lang='en',original=None):
     en=MAP[path] if lang=='de' else path
     depath=path if lang=='de' else REVERSE[path]
