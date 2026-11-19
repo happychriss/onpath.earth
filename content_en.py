@@ -251,6 +251,9 @@ HELP_EN = [('getting-started',
     'bin for 30 days. After reinstalling, select the existing backup folder to restore and grant access again. <a '
     'href="/help/gpx/#your-files">Find and export your files →</a>')])]
 
+from feature_help import HELP_EN as FEATURE_HELP_EN
+HELP_EN.extend(FEATURE_HELP_EN)
+
 from legal_content import EN_LEGAL, EN_PRIVACY
 ARTICLES['/legal/']=('Legal notice','Provider and contact for OnPath.',EN_LEGAL)
 ARTICLES['/privacy/']=('Privacy notice','Website and Android app processing, explained separately.',EN_PRIVACY)

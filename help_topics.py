@@ -16,6 +16,10 @@ ANCHORS = {
     'navigation': ['turns', 'arrival', 'finish', 'rides'],
     'akku-sicherung': ['hintergrund', 'akku', 'kopie', 'wiederherstellen'],
     'battery-backup': ['background', 'battery', 'backup'],
+    'rundtouren': ['idee', 'wuensche', 'vorschlaege', 'uebernehmen', 'fehlende-vorschlaege'],
+    'round-trips': ['idea', 'preferences', 'suggestions', 'use', 'missing-suggestions'],
+    'mehrtagestouren': ['reise', 'route', 'gpx-anhaengen', 'tage', 'graue-tagesenden', 'uebernachtung', 'hotel', 'handy'],
+    'multi-day-tours': ['journey', 'route', 'append-gpx', 'days', 'grey-day-ends', 'overnight', 'hotel', 'phone'],
 }
 
 DE_OVERRIDES = {

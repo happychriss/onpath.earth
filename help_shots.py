@@ -200,6 +200,13 @@ IMAGES = {'leer': ('D01-handy-leerer-plan-de.png',
                 'Gespeicherte Pläne unter „Meine Touren“ im Browser.',
                 'Saved plans under My tours in the browser.')}
 
+IMAGES['mehrtage-handy'] = (
+    'M01-handy-mehrtagestour-tagesuebersicht-de.png',
+    'M01-handy-mehrtagestour-tagesuebersicht-en.png',
+    'Eine dreitägige Wanderung am Meraner Höhenweg. Tag 2 ist ausgewählt, die Übersicht zeigt Etappen und Übernachtungen.',
+    'A three-day hike on the Meraner Höhenweg. Day 2 is selected, with stages and overnight stops in the overview.',
+)
+
 SHOTS = {'de': {('erste-schritte', 2): ['leer', 'halten', 'ziel', 'fertig'],
         ('erste-schritte', 3): ['navi'],
         ('offline', 0): ['ohne-netz'],

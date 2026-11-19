@@ -707,6 +707,9 @@ HELP = [('erste-schritte',
     'Gelöschte Touren bleiben 30 Tage im Papierkorb. Nach einer Neuinstallation kannst du den vorhandenen '
     'Sicherungsordner zur Wiederherstellung auswählen und den Zugriff erneut erlauben.</p>')])]
 
+from feature_help import HELP_DE as FEATURE_HELP_DE
+HELP.extend(FEATURE_HELP_DE)
+
 def article(path,eye,title,desc,sections,help_page=False):
  side='<aside class="side-nav"><b>'+('Hilfe & erste Schritte' if help_page else 'Auf dieser Seite')+'</b>'
  if help_page:side+=''.join('<a '+('aria-current="page" ' if path=='/hilfe/'+s+'/' else '')+'href="/hilfe/'+s+'/">'+t+'</a>' for s,t,_,_,_ in HELP)
@@ -719,7 +722,7 @@ def article(path,eye,title,desc,sections,help_page=False):
  content=ph(eye,title,desc,('<a href="/hilfe/">Hilfe</a> <span>/</span> ' if help_page else '')+title)+'<section class="section"><div class="wrap article-layout">'+side+'<article class="prose">'+prose+'<div class="article-end"><a href="/hilfe/">← Alle Hilfethemen</a><a href="/ausprobieren/">OnPath ausprobieren →</a></div></article></div></section>'
  page(path,title,desc,content,'/hilfe/' if help_page else path)
 for slug,title,desc,keys,sections in HELP:article('/hilfe/'+slug+'/','Hilfe & erste Schritte',title,desc,sections,True)
-helpbody=ph('OnPath verstehen','Wie können wir dir helfen?','Kurze Anleitungen für deine erste Tour – und für die kleinen Fragen unterwegs.','Hilfe')+'<section class="section help-section"><div class="wrap"><div class="help-search"><label for="help-search">Hilfethema suchen</label><div>'+icon('search')+'<input type="search" id="help-search" placeholder="Zum Beispiel: Karten, GPX oder Google Maps" autocomplete="off"></div></div><p id="search-count" class="fine" role="status">9 Hilfethemen</p><div class="help-grid">'
+helpbody=ph('OnPath verstehen','Wie können wir dir helfen?','Kurze Anleitungen für deine erste Tour – und für die kleinen Fragen unterwegs.','Hilfe')+'<section class="section help-section"><div class="wrap"><div class="help-search"><label for="help-search">Hilfethema suchen</label><div>'+icon('search')+'<input type="search" id="help-search" placeholder="Zum Beispiel: Karten, GPX oder Google Maps" autocomplete="off"></div></div><p id="search-count" class="fine" role="status">'+str(len(HELP))+' Hilfethemen</p><div class="help-grid">'
 for slug,title,desc,keys,_ in HELP:helpbody+='<a class="help-card" data-keywords="'+keys+'" href="/hilfe/'+slug+'/"><h2>'+title+'</h2><p>'+desc+'</p><span aria-hidden="true">→</span></a>'
 helpbody+='</div><p id="no-results" hidden>Kein passendes Thema gefunden. Versuche es mit „Karten“, „Route“ oder „GPX“.</p></div></section>'
 page('/hilfe/','Hilfe & erste Schritte','Einfach erklärte Hilfe zu OnPath: offline planen, Touren ändern, Orte suchen und GPX-Dateien nutzen.',helpbody,'/hilfe/')

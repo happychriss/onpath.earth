@@ -82,7 +82,7 @@
      </tr>
      <tr>
       <th scope="row">Tourenvorschläge</th>
-      <td class="app-onpath"><button type="button" class="comparison-mark" aria-haspopup="dialog" aria-label="OnPath · Tourenvorschläge · Fast fertig" data-title="OnPath · Tourenvorschläge" data-status="Fast fertig" data-detail="Die Tourenvorschläge sind in Arbeit und fast fertig." data-source="https://github.com/happychriss/OnPath/blob/main/docs/design/tour-suggestions.md"><span class="comparison-value progress" aria-hidden="true"><span class="comparison-glyph">◷</span> Fast fertig</span></button></td>
+      <td class="app-onpath"><button type="button" class="comparison-mark" aria-haspopup="dialog" aria-label="OnPath · Tourenvorschläge · Verfügbar" data-title="OnPath · Tourenvorschläge" data-status="Verfügbar" data-detail="OnPath berechnet Rundtouren passend zu Startpunkt, Aktivität, Dauer, Höhenmetern und gewählten Zielen." data-source="/de/hilfe/rundtouren/"><span class="comparison-value yes" aria-hidden="true"><span class="comparison-glyph">✓</span></span></button></td>
       <td class="app-komoot"><button type="button" class="comparison-mark" aria-haspopup="dialog" aria-label="Komoot · Tourenvorschläge · Verfügbar" data-title="Komoot · Tourenvorschläge" data-status="Verfügbar" data-detail="Komoot bietet fertige Tourenvorschläge, die du nach Sportart und Region entdecken kannst." data-source="https://support.komoot.com/hc/de/articles/10207999797530"><span class="comparison-value yes" aria-hidden="true"><span class="comparison-glyph">✓</span></span></button></td>
       <td class="app-outdooractive"><button type="button" class="comparison-mark" aria-haspopup="dialog" aria-label="Outdooractive · Tourenvorschläge · Verfügbar" data-title="Outdooractive · Tourenvorschläge" data-status="Verfügbar" data-detail="Outdooractive bietet fertige Touren mit Streckenbeschreibung und Angaben wie Distanz und Höhenmetern." data-source="https://www.outdooractive.com/de/touren/"><span class="comparison-value yes" aria-hidden="true"><span class="comparison-glyph">✓</span></span></button></td>
       <td class="app-bergfex"><button type="button" class="comparison-mark" aria-haspopup="dialog" aria-label="bergfex · Tourenvorschläge · Verfügbar" data-title="bergfex · Tourenvorschläge" data-status="Verfügbar" data-detail="bergfex bietet fertige Tourenvorschläge mit Angaben etwa zu Dauer, Distanz und Höhenprofil." data-source="https://play.google.com/store/apps/details?id=com.bergfex.tour"><span class="comparison-value yes" aria-hidden="true"><span class="comparison-glyph">✓</span></span></button></td>
@@ -91,7 +91,7 @@
      </tr>
      <tr>
       <th scope="row">Mehrtagestouren</th>
-      <td class="app-onpath"><button type="button" class="comparison-mark" aria-haspopup="dialog" aria-label="OnPath · Mehrtagestouren · In Planung" data-title="OnPath · Mehrtagestouren" data-status="In Planung" data-detail="Als Nächstes ist die Planung von Touren mit eigenen Tagesetappen vorgesehen."><span class="comparison-value planned" aria-hidden="true"><span class="comparison-glyph">◷</span> In Planung</span></button></td>
+      <td class="app-onpath"><button type="button" class="comparison-mark" aria-haspopup="dialog" aria-label="OnPath · Mehrtagestouren · Verfügbar" data-title="OnPath · Mehrtagestouren" data-status="Verfügbar" data-detail="Im Browser mit eigener Route oder GPX-Tracks planen, Übernachtungen und Hotels festlegen und auf dem gekoppelten Handy Tagesetappen auswählen." data-source="/de/hilfe/mehrtagestouren/"><span class="comparison-value yes" aria-hidden="true"><span class="comparison-glyph">✓</span></span></button></td>
       <td class="app-komoot"><button type="button" class="comparison-mark" aria-haspopup="dialog" aria-label="Komoot · Mehrtagestouren · In der Gratisversion nicht verfügbar" data-title="Komoot · Mehrtagestouren" data-status="In der Gratisversion nicht verfügbar" data-detail="Die Funktion zum Aufteilen einer eigenen Route in Tagesetappen ist in der kostenlosen Version nicht enthalten." data-source="https://support.komoot.com/hc/de/articles/10269672250266"><span class="comparison-value no" aria-hidden="true"><span class="comparison-glyph">×</span></span></button></td>
       <td class="app-outdooractive"><button type="button" class="comparison-mark" aria-haspopup="dialog" aria-label="Outdooractive · Mehrtagestouren · Eingeschränkt" data-title="Outdooractive · Mehrtagestouren" data-status="Eingeschränkt" data-detail="Outdooractive bietet fertige Etappentouren und einen Tourenplaner für einzelne Etappen. Eine automatische Aufteilung eigener Touren ist in der Planerhilfe nicht beschrieben." data-source="https://www.outdooractive.com/de/list"><span class="comparison-value partial" aria-hidden="true"><span class="comparison-glyph">◐</span></span></button></td>
       <td class="app-bergfex"><button type="button" class="comparison-mark" aria-haspopup="dialog" aria-label="bergfex · Mehrtagestouren · Eingeschränkt" data-title="bergfex · Mehrtagestouren" data-status="Eingeschränkt" data-detail="bergfex bietet fertige mehrtägige Touren. Ein eigener Planer für Tagesetappen ist in der Herstellerhilfe nicht beschrieben." data-source="https://www.bergfex.at/c/touren-app/"><span class="comparison-value partial" aria-hidden="true"><span class="comparison-glyph">◐</span></span></button></td>
@@ -134,6 +134,15 @@
   </dialog>
  </div>
 </section>
+ <section class="section outing-choices" aria-labelledby="outing-choices-title">
+  <div class="wrap">
+   <h2 id="outing-choices-title">Eine Runde oder mehrere Tage?</h2>
+   <div class="feature-grid">
+    <article><h3>Eine Runde, die zu dir passt.</h3><p>Wähle Startpunkt, Aktivität, Dauer und Höhenmeter. OnPath berechnet passende Rundtouren und zeigt dir, was sie auszeichnet.</p><a class="text-link" href="/hilfe/rundtouren/">So findest du deine Rundtour <span aria-hidden="true">→</span></a></article>
+    <article><h3>Deine Reise, Tag für Tag.</h3><p>Plane mit einer eigenen Route oder GPX-Dateien. Lege Übernachtungen fest und lass OnPath die offenen Tagesetappen verteilen. Auf dem Handy hast du deine Reise dabei.</p><a class="text-link" href="/hilfe/mehrtagestouren/">So planst du mehrere Tage <span aria-hidden="true">→</span></a></article>
+   </div>
+  </div>
+ </section>
  <section class="steps section" id="so-gehts">
   <div class="wrap">
    <div class="section-heading"><div><p class="eyebrow">Vom Ziel zum Plan</p><h2>Eins. Zwei. Drei.<br>Du kannst los.</h2></div><p>Eine Wanderung für zwei, drei oder vier Stunden. Eine Radtour am Wochenende. OnPath hilft dir, deinen Weg zu planen und draußen zu genießen.</p></div>
