@@ -88,7 +88,8 @@ HELP_EN = [('getting-started',
     'place near your route offers “Add as a stop” or “Make it the destination”; the other choice is under “More”. A short tap '
     'does not set a new destination. Hold an existing point to open its actions. To move it on the map, delete and add '
     'it again. In the expanded point list, drag stops into order or remove them. Undo changes, reverse the route or '
-    'make it a round trip. “New plan” starts from scratch.'),
+    'make it a round trip. “New plan” starts from scratch. When a new plan replaces the one you had, OnPath asks “Restore your old plan?” – '
+    '“Restore” brings it back, “Keep” keeps the new one.'),
    ('Check the route',
     'Pull the plan panel up to inspect the elevation profile, surfaces and path types. “Offline ✓” at the top shows '
     'that everything for the route is on your phone. If the route cannot reach a point, OnPath says what would, such as '

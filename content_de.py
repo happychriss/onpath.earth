@@ -499,7 +499,8 @@ HELP = [('erste-schritte',
     'Ziel – so ändert sich der Plan nicht versehentlich.</p><p>Halte einen bestehenden Punkt gedrückt, um seine Möglichkeiten zu öffnen. Zum Versetzen auf '
     'der Karte löschst du ihn und setzt ihn neu. In der aufgeklappten Punkteliste kannst du Stopps am Griff '
     'umsortieren und entfernen. Änderungen lassen sich rückgängig machen; außerdem kannst du die Route umkehren oder '
-    'zur Rundtour ergänzen. Mit „Neu planen“ beginnst du von vorn.</p>'),
+    'zur Rundtour ergänzen. Mit „Neu planen“ beginnst du von vorn.</p><p>Ersetzt ein neuer Plan den bisherigen, fragt '
+    'OnPath: „Deinen alten Plan wiederherstellen?“ Mit „Wiederherstellen“ ist er zurück, mit „Behalten“ bleibt der neue.</p>'),
    ('Die Strecke ansehen',
     '<p>Ziehe das Plan-Fenster nach oben, um Höhenprofil, Wegarten und Untergrund anzusehen. Oben zeigt „PLANEN · Ohne '
     'Netz ✓“, ob alles für die Strecke auf dem Handy ist. Die Hinweiszeile macht '
