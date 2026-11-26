@@ -20,7 +20,7 @@ ARTICLES = {
  ('Today: the Android app', 'Plan, navigate, edit your own routes while recording, search places and use GPX files. Prepared areas work offline. The interface supports German and English. This is still an early test version. Phase 1 currently requires a personal invitation and approval from Christian. A closed test group and the public release will follow. <a href="/try/">The three phases and your access →</a>'),
  ('New: plan on a computer', 'At <a href="https://plan.onpath.earth/">plan.onpath.earth</a> you plan your tour on a big map – free, without an account and without installing anything. The routes are the same as in the app. “3D” shows the route in the terrain and “▶ Fly along” flies it. Then point your phone camera at the QR code and the plan is on your phone.'),
  ('New: spoken directions', '<span class="tag">In the app</span> Hear turn instructions without looking at the screen: OnPath announces turns briefly and in good time – only where you could go wrong. The voice comes from your phone and needs no connection.'),
- ('New: pair browser and phone', '<span class="tag">Available</span> Scan the code on the computer screen once with the OnPath app: your saved plans are then on both devices – encrypted and without an OnPath account. You can unpair at any time. <a href="/help/planning/#pair">How to pair →</a>'),
+ ('New: connect browser and phone', '<span class="tag">Available</span> Scan the code on the computer screen once with the OnPath app: your saved plans are then on both devices – encrypted and without an OnPath account. You can disconnect at any time. <a href="/help/planning/#pair">How to connect →</a>'),
  ('New: share your location', '<span class="tag">In the app</span> On your way you send a link, and whoever opens it sees in the browser where you are – your family at home, for example. Encrypted, one way only and only while you share. <a href="/help/share-location/">How to share your location →</a>'),
  ('The core stays free', 'Planning, navigation, recording, offline route changes with downloaded maps and connecting browser and phone remain free and need no OnPath account. Your tours can be kept as normal files and used in other apps.'),
  ('Costs, development and a donation', 'Future paid extras – for example an account that backs up your tours – should help cover operating costs, compensate some development work and contribute a share to a charitable organisation. Connecting browser and phone stays free and needs no account. A transparent breakdown of income, costs, the developer’s share and donations is planned. Prices, amounts, the organisation and payment method are undecided. There is nothing to buy on this site.')]),
@@ -117,13 +117,13 @@ HELP_EN = [('getting-started',
     'to install.</li><li>Set start, destination and stops with the mouse, or open a GPX file. You see time, elevation '
     'profile and notes as in the app. “3D” shows the route in the terrain, “▶ Fly along” flies it.</li><li>Click “Share” and scan the QR code with your phone camera. The route '
     'opens in OnPath.</li><li>Let the phone download the maps for the route before you head out without '
-    'reception.</li></ol><p>Often plan on the computer? Pair browser and phone once – your saved plans are then on '
-    'both. <a href="#pair">How to pair →</a></p>'),
-   ('Pair browser and phone',
-    '<p>Pair once – then your saved plans are in the browser and on your phone, both ways.</p>'
-    '<h3>Pair</h3><ol><li>In the browser: click “Pair phone” at the top right, then “Pair phone” again in the window. A QR '
-    'code appears.</li><li>On your phone: open OnPath, tap ☰ → “Pair with browser” → “Open camera” and scan the '
-    'code.</li><li>OnPath shows six check digits. If they match the browser, tap “Pair”.</li></ol><p>Scan the code with OnPath, not with the phone’s camera '
+    'reception.</li></ol><p>Often plan on the computer? Connect browser and phone once – your saved plans are then on '
+    'both. <a href="#pair">How to connect →</a></p>'),
+   ('Connect browser and phone',
+    '<p>Connect once – then your saved plans are in the browser and on your phone, both ways.</p>'
+    '<h3>Connect</h3><ol><li>In the browser: click “Connect phone” at the top right, then “Connect phone” again in the window. A QR '
+    'code appears.</li><li>On your phone: open OnPath, tap ☰ → “Pair with browser” (in newer app versions “Connect to browser”) → “Open camera” and scan the '
+    'code.</li><li>OnPath shows six check digits. If they match the browser, tap “Pair” (newer: “Connect”).</li></ol><p>Scan the code with OnPath, not with the phone’s camera '
     'app – that opens it in the browser. If the browser still opens: Android settings → Apps → OnPath → “Open by '
     'default” → turn on “Open supported links”.</p>[[shots:web-handy,web-koppeln,app-koppeln]]'
     '<h3>Your plans on both</h3><p>At the top right you now see your phone’s name with a green dot, and “Save” '
@@ -131,8 +131,8 @@ HELP_EN = [('getting-started',
     'tours”, marked “New” or “Changed”. When the button says “✓ On the phone”, everything is there.</p><p>What you '
     'save on your phone comes to the browser’s “My tours” by itself. They sync while OnPath is open on the phone. '
     'Recorded outings stay on your phone.</p>[[shots:app-verbunden,app-routen]]'
-    '<h3>Unpair</h3><p>In the browser: click your phone at the top right, then “Unpair” at the bottom of the window. '
-    'Or in the app: Settings → Browser sync → “Unpair”. Your plans stay on both devices.</p>[[shots:app-trennen]]'
+    '<h3>Disconnect</h3><p>In the browser: click your phone at the top right, then “Disconnect” at the bottom of the window. '
+    'Or in the app: Settings → Browser sync → “Unpair” (newer: “Disconnect”). Your plans stay on both devices.</p>[[shots:app-trennen]]'
     '<p>End-to-end encrypted, no account. Keep the QR code to yourself – whoever scans it sees your saved plans.</p>')]),
  ('change-route',
   'Change the route along the way',

@@ -134,7 +134,7 @@ WAYS={'de': {'eye': 'Am Computer vorbereiten',
                   ('phone',
                    'Auf dem Handy weiter',
                    ['Den QR-Code mit der Handykamera scannen.',
-                    'Oder Browser und Handy einmal koppeln: Gespeicherte Pläne sind dann auf beiden Geräten.'])],
+                    'Oder Browser und Handy einmal verbinden: Gespeicherte Pläne sind dann auf beiden Geräten.'])],
         'note': 'Ohne Konto und Installation.',
         'open': 'Im Browser planen'},
  'en': {'eye': 'Prepare on your computer',
@@ -535,12 +535,12 @@ HELP = [('erste-schritte',
     'Höhenprofil und Hinweise siehst du wie in der App. Mit „3D“ siehst du die Strecke im Gelände, mit „▶ Abfliegen“ '
     'fliegst du sie ab.</li><li>Klicke auf „Teilen“ und scanne den QR-Code mit der '
     'Handykamera. Die Route öffnet sich in OnPath.</li><li>Lass die Karten für die Strecke auf dem Handy laden, bevor '
-    'du ohne Empfang startest.</li></ol><p>Du planst öfter am Computer? Dann kopple Browser und Handy einmal – deine '
-    'gespeicherten Pläne sind danach auf beiden Geräten. <a href="#koppeln">So koppelst du →</a></p>'),
-   ('Browser und Handy koppeln',
-    '<p>Einmal koppeln – dann sind deine gespeicherten Pläne im Browser und auf dem Handy, in beide Richtungen.</p>'
-    '<h3>Koppeln</h3><ol><li>Im Browser: Klicke oben rechts auf „Handy verbinden“ und im Fenster noch einmal auf „Handy '
-    'verbinden“. Ein QR-Code erscheint.</li><li>Auf dem Handy: Öffne OnPath, tippe auf ☰ → „Mit Browser koppeln“ → '
+    'du ohne Empfang startest.</li></ol><p>Du planst öfter am Computer? Dann verbinde Browser und Handy einmal – deine '
+    'gespeicherten Pläne sind danach auf beiden Geräten. <a href="#koppeln">So verbindest du →</a></p>'),
+   ('Browser und Handy verbinden',
+    '<p>Einmal verbinden – dann sind deine gespeicherten Pläne im Browser und auf dem Handy, in beide Richtungen.</p>'
+    '<h3>Verbinden</h3><ol><li>Im Browser: Klicke oben rechts auf „Handy verbinden“ und im Fenster noch einmal auf „Handy '
+    'verbinden“. Ein QR-Code erscheint.</li><li>Auf dem Handy: Öffne OnPath, tippe auf ☰ → „Mit Browser koppeln“ (in neueren App-Versionen „Mit Browser verbinden“) → '
     '„Kamera öffnen“ und scanne den Code.</li><li>OnPath zeigt sechs Prüfziffern. Stimmen sie mit denen im Browser '
     'überein, tippe auf „Verbinden“.</li></ol><p>Scanne den Code mit OnPath, nicht mit der Kamera-App des '
     'Handys – die öffnet ihn im Browser. Öffnet sich trotzdem der Browser: Android-Einstellungen → Apps → OnPath → '
@@ -756,7 +756,7 @@ article('/ausblick/','Heute & als Nächstes','OnPath wächst mit deinen Touren.'
 ('Heute: die Android-App','<p><span class="tag">Als Testversion verfügbar</span></p><p>Eigene Wege planen, sich führen lassen, unterwegs umplanen und Touren speichern. Geladene Gebiete funktionieren auch ohne Netz. Orte aus Google Maps und vorhandene Tourdateien lassen sich übernehmen. Die Oberfläche ist Deutsch oder Englisch.</p><p>Die Testversion ist kostenlos. Aktuell läuft Phase 1 mit persönlichen Einladungen und Freischaltung durch Christian. Danach folgen die geschlossene Testgruppe und der öffentliche Start. <a href="/ausprobieren/">Die drei Phasen und dein Zugang →</a></p>'),
 ('Neu: am Computer planen','<p><span class="tag">Im Browser verfügbar</span></p><p>Auf <a href="https://plan.onpath.earth/">plan.onpath.earth</a> planst du deine Tour auf einer großen Karte – kostenlos, ohne Konto und ohne Installation. Die Routen sind dieselben wie in der App. Mit „3D“ siehst du die Strecke im Gelände und fliegst sie mit „▶ Abfliegen“ ab. Danach hältst du die Handykamera auf den QR-Code, und der Plan ist auf dem Handy.</p>'),
 ('Neu: Sprachansagen','<p><span class="tag">In der App</span></p><p>Abbiegehinweise hören, ohne aufs Display zu schauen: OnPath sagt kurz und rechtzeitig an, wo es langgeht – nur dort, wo du dich vertun könntest. Die Stimme kommt vom Handy selbst und braucht kein Netz.</p>'),
-('Neu: Browser und Handy koppeln','<p><span class="tag">Verfügbar</span></p><p>Einmal mit der OnPath-App den Code auf dem Computerbildschirm scannen: Danach sind deine gespeicherten Pläne auf beiden Geräten – verschlüsselt und ohne OnPath-Konto. Die Verbindung lässt sich jederzeit wieder trennen. <a href="/hilfe/route-planen/#koppeln">So koppelst du →</a></p>'),
+('Neu: Browser und Handy verbinden','<p><span class="tag">Verfügbar</span></p><p>Einmal mit der OnPath-App den Code auf dem Computerbildschirm scannen: Danach sind deine gespeicherten Pläne auf beiden Geräten – verschlüsselt und ohne OnPath-Konto. Die Verbindung lässt sich jederzeit wieder trennen. <a href="/hilfe/route-planen/#koppeln">So verbindest du →</a></p>'),
 ('Neu: Standort teilen','<p><span class="tag">In der App</span></p><p>Unterwegs schickst du einen Link, und wer ihn öffnet, sieht im Browser, wo du gerade bist – zum Beispiel die Familie zu Hause. Verschlüsselt, nur in eine Richtung und nur, solange du teilst. <a href="/hilfe/standort-teilen/">So teilst du deinen Standort →</a></p>'),
 ('Der Kern bleibt frei','<p>Die wichtigsten Funktionen bleiben kostenlos nutzbar und brauchen kein OnPath-Konto: Routen auf dem Handy planen, navigieren, aufzeichnen, mit geladenen Karten offline umplanen und Browser und Handy verbinden. OnPath ist Open Source. Der App-Code ist öffentlich, und deine Touren kannst du als Dateien sichern und in anderen Apps nutzen.</p>'),
 ('Spätere Beiträge: Kosten, Arbeit und Spende','<p>Karten bereitzustellen und die App weiterzuentwickeln kostet Geld und Zeit. Spätere kostenpflichtige Zusatzangebote sollen das Projekt tragen. Ein solches Extra kann zum Beispiel ein Konto sein, das deine Touren sichert. Das Verbinden von Browser und Handy bleibt kostenlos und ohne Konto.</p><ul><li>Ein Teil soll die laufenden Kosten decken, zum Beispiel für Kartenbereitstellung und Betrieb.</li><li>Ein Teil soll meine Entwicklungsarbeit vergüten.</li><li>Ein Teil soll an eine Hilfsorganisation gespendet werden.</li></ul><p>OnPath ist nicht als gewinnorientiertes Geschäftsmodell gedacht. Es soll sich fair tragen und zugleich etwas weitergeben.</p>'),

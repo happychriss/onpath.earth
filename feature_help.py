@@ -30,7 +30,7 @@ HELP_DE = [
         'Mehrtagestour Mehrtagesplaner Etappen GPX anhängen Hotel Übernachtung graue Punkte Mond',
         [
             ('Eine Reise wächst aus deiner Route',
-             '<p>Du möchtest mit dem Rad von München nach Venedig. Die Richtung steht, die Tagesetappen dürfen sich beim Planen ergeben. Im Browserplaner machst du aus einer Route eine Mehrtagestour. Auf dem gekoppelten Handy wählst du später den jeweiligen Tag.</p>'
+             '<p>Du möchtest mit dem Rad von München nach Venedig. Die Richtung steht, die Tagesetappen dürfen sich beim Planen ergeben. Im Browserplaner machst du aus einer Route eine Mehrtagestour. Auf dem verbundenen Handy wählst du später den jeweiligen Tag.</p>'
              '<p>Das Beispiel funktioniert genauso für eine mehrtägige Wanderung. Öffne <a href="https://plan.onpath.earth/">den Browserplaner</a> und wähle <strong>„Mehrtagestour planen“</strong>.</p>'),
             ('Mit einem eigenen Plan oder einer GPX-Datei beginnen',
              '<p>Im ersten Schritt wählst du <strong>„GPX-Track laden“</strong> oder <strong>„Gespeicherte Route öffnen“</strong>. So wird eine vorhandene Strecke zur Grundlage deiner Reise.</p>'
@@ -58,7 +58,7 @@ HELP_DE = [
              '<p>Hast du zuerst das Hotel über die Ortssuche gefunden, wähle <strong>„Hotel für diese Tour“</strong> und ordne es einer Nacht zu. Die nächstgelegene Nacht ist vorausgewählt.</p>'
              '<p>Ändern sich deine Pläne, kannst du „Hotel ändern“ oder „Hotel entfernen“ wählen. Beim Entfernen des Hotels bleibt die Übernachtung als blauer Mond auf der Route bestehen. Mit „Übernachtung entfernen“ gibst du auch das Tagesende wieder frei.</p>'),
             ('Speichern und auf dem Handy einen Tag wählen',
-             '<p>Speichere die Mehrtagestour wie jeden anderen Plan. Über die <a href="/hilfe/route-planen/#koppeln">Kopplung von Browser und Handy</a> kommt sie in deine App. Öffne dort die Tour und wähle eine Tagesetappe.</p>'
+             '<p>Speichere die Mehrtagestour wie jeden anderen Plan. Über die <a href="/hilfe/route-planen/#koppeln">Verbindung von Browser und Handy</a> kommt sie in deine App. Öffne dort die Tour und wähle eine Tagesetappe.</p>'
              '<p>Beim ersten Öffnen fragt OnPath, ob du die Karten für die ganze Tour, zunächst nur einen Tag oder später laden möchtest. Die geschätzte Datenmenge steht dabei. Im Mobilfunk wartet der Download der ganzen Tour auf WLAN. Warte vor dem Start ohne Netz, bis die benötigten Daten vollständig geladen sind.</p>'
              '[[shots:mehrtage-handy,mehrtage-karte]]'
              '<p>Morgens wählst du zum Beispiel Tag 2 und tippst auf <strong>„Tag 2 fahren“</strong>. Prüfe den Tagesplan und starte anschließend mit „Los geht’s“. Der Knopf heißt auch bei einer Wanderung „Tag 2 fahren“.</p>'
@@ -97,7 +97,7 @@ HELP_EN = [
         'multi day tour stages GPX append join hotel overnight grey points moon',
         [
             ('Build a journey around your route',
-             '<p>You want to cycle from Munich to Venice. You know the direction, and the daily stages can take shape as you plan. Turn a route into a multi-day tour in the browser planner. Later, choose each day on your paired phone.</p>'
+             '<p>You want to cycle from Munich to Venice. You know the direction, and the daily stages can take shape as you plan. Turn a route into a multi-day tour in the browser planner. Later, choose each day on your connected phone.</p>'
              '<p>The example works just as well for a multi-day hike. Open <a href="https://plan.onpath.earth/">the browser planner</a> and choose <strong>“Plan a multi-day tour”</strong>.</p>'),
             ('Start with your own plan or a GPX file',
              '<p>In the first step, choose <strong>“Load GPX track”</strong> or <strong>“Open saved route”</strong>. An existing route can become the basis of your journey.</p>'
@@ -125,7 +125,7 @@ HELP_EN = [
              '<p>If you find the hotel through place search first, choose <strong>“Hotel for this tour”</strong> and assign it to a night. The nearest night is preselected.</p>'
              '<p>If your plans change, choose “Change hotel” or “Remove hotel”. Removing the hotel keeps an overnight stop on the route as a blue moon. “Remove overnight stop” also frees that day end.</p>'),
             ('Save and choose a day on your phone',
-             '<p>Save the multi-day tour like any other plan. <a href="/help/planning/#pair">Pair your browser and phone</a> to bring it into the app, then open the tour and select a day.</p>'
+             '<p>Save the multi-day tour like any other plan. <a href="/help/planning/#pair">Connect your browser and phone</a> to bring it into the app, then open the tour and select a day.</p>'
              '<p>On first opening, OnPath asks whether to download maps for the whole tour, one day or later. It shows the estimated download size. On mobile data, the whole-tour download waits for Wi-Fi. Before setting off offline, wait for the required data to finish downloading.</p>'
              '[[shots:mehrtage-handy,mehrtage-karte]]'
              '<p>In the morning, select day 2 and choose <strong>“Ride day 2”</strong>. Check the day’s plan, then start with “Let’s go”. The button also says “Ride day 2” for a hike.</p>'
