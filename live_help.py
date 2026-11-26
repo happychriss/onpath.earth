@@ -26,7 +26,7 @@ HELP_DE = [
              '<p>Wenn du die Tour beendest, endet auch das Teilen. Die anderen sehen danach noch 12 Stunden deinen ganzen Weg, dann löscht der Server alles. Für die nächste Tour gibt es einen neuen Link.</p>'
              '[[shots:teilen-beendet]]'),
             ('Wer was lesen kann',
-             '<p>Dein Handy verschlüsselt alles, bevor es abgeschickt wird. Der Schlüssel steckt nur in dem Link, den du verschickst. Unser Server sieht nur verschlossene Daten und kann weder deinen Ort noch deinen Namen lesen. Wer den Link hat, sieht deine Tour, auch wenn der Link weitergeleitet wurde. Schicke ihn deshalb nur an Menschen, denen du vertraust. <a href="/datenschutz/#abschnitt-6">Mehr im Datenschutz</a>.</p>'),
+             '<p>Dein Handy verschlüsselt alles, bevor es abgeschickt wird. Der Schlüssel steckt nur in dem Link, den du verschickst. Unser Server sieht nur verschlossene Daten und kann weder deinen Ort noch deinen Namen lesen. Wer den Link hat, sieht deine Tour, auch wenn der Link weitergeleitet wurde. Schicke ihn deshalb nur an Menschen, denen du vertraust. <a href="/datenschutz/">Mehr im Datenschutz</a>.</p>'),
         ],
     ),
 ]
@@ -57,7 +57,7 @@ HELP_EN = [
              '<p>When you finish the outing, sharing ends too. The others still see your whole way for 12 hours, then the server deletes everything. Your next outing gets a new link.</p>'
              '[[shots:teilen-beendet]]'),
             ('Who can read what',
-             '<p>Your phone encrypts everything before it is sent. The key is only in the link you send. Our server sees locked data only and cannot read your position or your name. Whoever has the link sees your outing, also if the link was forwarded, so send it only to people you trust. <a href="/privacy/#section-6">More in the privacy notes</a>.</p>'),
+             '<p>Your phone encrypts everything before it is sent. The key is only in the link you send. Our server sees locked data only and cannot read your position or your name. Whoever has the link sees your outing, also if the link was forwarded, so send it only to people you trust. <a href="/privacy/">More in the privacy notes</a>.</p>'),
         ],
     ),
 ]
