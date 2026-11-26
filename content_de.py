@@ -448,13 +448,13 @@ HELP = [('erste-schritte',
     'Einstellungen → Offline-Karten, ob die Gebiete bereit sind.</li></ol><p>Beim ersten Laden kann ein neues Gebiet '
     'einige Minuten brauchen. <a href="/hilfe/offline/#vorbereiten">Die Offline-Vorbereitung im Detail →</a></p>'),
    ('Die erste Runde planen',
-    '<p>Wähle deine Aktivität mit dem Knopf auf der Karte. Dann suche dein Ziel über „Ziel finden“ oder halte es auf der '
+    '<p>Unten auf der Karte liegt die Suchkarte. Wähle dort deine Aktivität, zum Beispiel „Wandern · T2“. Dann tippe auf „Wohin soll’s gehen?“ und suche dein Ziel, oder halte es auf der '
     'Karte gedrückt und wähle „Hierhin“. OnPath plant von deinem Standort aus. Das längere Drücken verhindert '
     'versehentliche Änderungen durch kurzes Antippen.</p><p>Möchtest du woanders starten, halte zuerst den Startpunkt '
     'gedrückt und wähle „Hier starten“. Ergänze dann Ziel und Zwischenstopps. Prüfe Länge, Höhenmeter und '
     'Streckenhinweise; beginne mit einer kurzen, bekannten Strecke.</p>'),
    ('Los geht’s',
-    '<p>Tippe auf den grünen Knopf „Los geht’s“. OnPath speichert den Plan unter „Meine Touren“, führt dich los und '
+    '<p>Tippe auf „Los geht’s“. OnPath speichert den Plan unter „Meine Touren“, führt dich los und '
     'zeichnet deine Tour auf.</p><p>Unterwegs ist die Leiste unten gegen Tippen in der Tasche gesperrt: Halte „Anhalten“ '
     'oder „Planen“ etwa eine Sekunde gedrückt, bis sich der Knopf füllt. Danach bleibt die Leiste 20 Sekunden offen. '
     'Wie lange du halten musst, stellst du unter Einstellungen → Navigation ein.</p>')]),
@@ -499,7 +499,8 @@ HELP = [('erste-schritte',
     'Ziel – so ändert sich der Plan nicht versehentlich.</p><p>Halte einen bestehenden Punkt gedrückt, um seine Möglichkeiten zu öffnen. Zum Versetzen auf '
     'der Karte löschst du ihn und setzt ihn neu. In der aufgeklappten Punkteliste kannst du Stopps am Griff '
     'umsortieren und entfernen. Änderungen lassen sich rückgängig machen; außerdem kannst du die Route umkehren oder '
-    'zur Rundtour ergänzen. Mit „Neu planen“ beginnst du von vorn.</p><p>Ersetzt ein neuer Plan den bisherigen, fragt '
+    'zur Rundtour ergänzen. Mit „Neu planen“ beginnst du von vorn.</p><p>Fügst du später Punkte ein, behält OnPath die schon berechneten '
+    'Wegstücke. Möchtest du die ganze Strecke frisch berechnen lassen, wähle im Menü ☰ „Ganz neu berechnen“; der Eintrag erscheint nur, wenn es etwas zu berechnen gibt.</p><p>Ersetzt ein neuer Plan den bisherigen, fragt '
     'OnPath: „Deinen alten Plan wiederherstellen?“ Mit „Wiederherstellen“ ist er zurück, mit „Behalten“ bleibt der neue.</p>'),
    ('Die Strecke ansehen',
     '<p>Ziehe das Plan-Fenster nach oben, um Höhenprofil, Wegarten und Untergrund anzusehen. Oben zeigt „PLANEN · Ohne '
@@ -541,7 +542,7 @@ HELP = [('erste-schritte',
    ('Browser und Handy verbinden',
     '<p>Einmal verbinden – dann sind deine gespeicherten Pläne im Browser und auf dem Handy, in beide Richtungen.</p>'
     '<h3>Verbinden</h3><ol><li>Im Browser: Klicke oben rechts auf „Handy verbinden“ und im Fenster noch einmal auf „Handy '
-    'verbinden“. Ein QR-Code erscheint.</li><li>Auf dem Handy: Öffne OnPath, tippe auf ☰ → „Mit Browser koppeln“ (in neueren App-Versionen „Mit Browser verbinden“) → '
+    'verbinden“. Ein QR-Code erscheint.</li><li>Auf dem Handy: Öffne OnPath, tippe auf ☰ → „Mit Browser verbinden“ → '
     '„Kamera öffnen“ und scanne den Code.</li><li>OnPath zeigt sechs Prüfziffern. Stimmen sie mit denen im Browser '
     'überein, tippe auf „Verbinden“.</li></ol><p>Scanne den Code mit OnPath, nicht mit der Kamera-App des '
     'Handys – die öffnet ihn im Browser. Öffnet sich trotzdem der Browser: Android-Einstellungen → Apps → OnPath → '
