@@ -217,6 +217,15 @@ IMAGES.update({
     'mehrtage-karte': ('M03-handy-mehrtagestour-naechte-karte-de.png', 'M03-handy-mehrtagestour-naechte-karte-en.png', 'Die Reise auf dem Handy. Übernachtungen und Hotel sind auch auf der Karte zu erkennen; Tag 2 ist zum Laden ausgewählt.', 'The journey on your phone. Overnight stops and the hotel also appear on the map; day 2 is selected to load.'),
 })
 
+IMAGES.update({
+    'teilen-knopf': ('O01-handy-tour-bubble-teilen-de.png', 'O01-handy-tour-bubble-teilen-en.png', 'Während der Tour: das Teilen-Zeichen rechts über dem ⚙.', 'During the outing: the share symbol on the right above the ⚙.'),
+    'teilen-link': ('O02-handy-standort-teilen-link-de.png', 'O02-handy-standort-teilen-link-en.png', 'Den Link mit einer Nachrichten-App verschicken.', 'Send the link with a messaging app.'),
+    'teilen-aktiv': ('O03-handy-teilen-aktiv-de.png', 'O03-handy-teilen-aktiv-en.png', 'Das grüne Zeichen: Dein Standort wird geteilt.', 'The green symbol: your location is being shared.'),
+    'teilen-wartet': ('O05-handy-wartet-auf-netz-de.png', 'O05-handy-wartet-auf-netz-en.png', 'Ohne Empfang wartet das Teilen auf Netz und schickt die Punkte später nach.', 'Without reception, sharing waits for the network and sends the points later.'),
+    'teilen-seite': ('O04-web-geteilter-standort-de.png', 'O04-web-geteilter-standort-en.png', 'Die Seite im Browser: Weg, letzter Standort, Strecke, Ankunft und Akkustand.', 'The page in the browser: way, last position, distance, arrival and battery level.'),
+    'teilen-beendet': ('O06-handy-teilen-beendet-de.png', 'O06-handy-teilen-beendet-en.png', 'In den Tour-Einstellungen (⚙): „Standort teilen“ und der Name auf der Seite.', 'In the tour settings (⚙): “Share location” and the name on the page.'),
+})
+
 SHOTS = {'de': {('erste-schritte', 2): ['leer', 'halten', 'ziel', 'fertig'],
         ('erste-schritte', 3): ['navi'],
         ('offline', 0): ['ohne-netz'],
@@ -316,8 +325,8 @@ def figures(lang, names):
 
 
 ARTICLE_SHOTS = {
- 'de': {('/wandern/',0): ['plan'], ('/wandern/',1): ['ort'], ('/wandern/',3): ['navi'], ('/radfahren/',0): ['ebike'], ('/radfahren/',2): ['gpx-plan'], ('/radfahren/',3): ['ruhe'], ('/ausblick/',0): ['plan'], ('/ausblick/',1): ['web-3d'], ('/ausblick/',2): ['hinweise-stimme'], ('/ausblick/',3): ['web-handy','app-verbunden']},
- 'en': {('/hiking/',0): ['plan'], ('/hiking/',1): ['ort'], ('/hiking/',3): ['navi'], ('/cycling/',0): ['ebike'], ('/cycling/',2): ['gpx-plan'], ('/cycling/',3): ['ruhe'], ('/whats-next/',0): ['plan'], ('/whats-next/',1): ['web-3d'], ('/whats-next/',2): ['hinweise-stimme'], ('/whats-next/',3): ['web-handy','app-verbunden']}
+ 'de': {('/wandern/',0): ['plan'], ('/wandern/',1): ['ort'], ('/wandern/',3): ['navi'], ('/radfahren/',0): ['ebike'], ('/radfahren/',2): ['gpx-plan'], ('/radfahren/',3): ['ruhe'], ('/ausblick/',0): ['plan'], ('/ausblick/',1): ['web-3d'], ('/ausblick/',2): ['hinweise-stimme'], ('/ausblick/',3): ['web-handy','app-verbunden'], ('/ausblick/',4): ['teilen-seite']},
+ 'en': {('/hiking/',0): ['plan'], ('/hiking/',1): ['ort'], ('/hiking/',3): ['navi'], ('/cycling/',0): ['ebike'], ('/cycling/',2): ['gpx-plan'], ('/cycling/',3): ['ruhe'], ('/whats-next/',0): ['plan'], ('/whats-next/',1): ['web-3d'], ('/whats-next/',2): ['hinweise-stimme'], ('/whats-next/',3): ['web-handy','app-verbunden'], ('/whats-next/',4): ['teilen-seite']}
 }
 def article_pictures(lang, path, index):
     return figures(lang, ARTICLE_SHOTS.get(lang, {}).get((path,index), []))

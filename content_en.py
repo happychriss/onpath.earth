@@ -15,21 +15,22 @@ ARTICLES = {
  ('It started with my own tours', 'I used Komoot happily for many years. On the way, though, the same things kept bothering me: changing the route on the phone, planning again without signal, simply carrying on after a break. Once my plan even changed in my pocket. OnPath is my attempt to make this simpler. It is about your way – no profile, feed or leaderboards.'),
  ('Robust means: no surprises', 'A new route only comes after asking. To change things, you switch to planning on purpose. Every recorded point is saved at once. So a wrong tap or a dead spot does not mess up your day. That is the aim. OnPath is still young and mainly tested by me so far; more testing will show whether it works on your phone and your paths.'),
  ('Built with AI, tested on tours', 'AI helps me write and check OnPath’s code, allowing me to develop the project on my own. On my walks and rides I try out how it works in everyday use. That shapes the next improvements: what needs to work easily on the way, and where should the app stay out of the way?'),
- ('Open and fair', 'The app’s blueprint is public (open source): anyone can see how it works and help. The maps come from the community project OpenStreetMap. Planning, navigating and recording stay free. Later paid extras are meant to cover costs, pay for my work and include a donation; how this is split should be visible. <a href="/whats-next/">More on funding</a>.')]),
+ ('Open and fair', 'The app’s blueprint is public (open source): anyone can see how it works and help. The maps come from the community project OpenStreetMap. Planning, navigating, recording and connecting browser and phone stay free and need no account. Later paid extras are meant to cover costs, pay for my work and include a donation; how this is split should be visible. <a href="/whats-next/">More on funding</a>.')]),
  '/whats-next/': ('Growing one useful step at a time.', 'What you can try today, and what is still being developed.', [
  ('Today: the Android app', 'Plan, navigate, edit your own routes while recording, search places and use GPX files. Prepared areas work offline. The interface supports German and English. This is still an early test version. Phase 1 currently requires a personal invitation and approval from Christian. A closed test group and the public release will follow. <a href="/try/">The three phases and your access →</a>'),
  ('New: plan on a computer', 'At <a href="https://plan.onpath.earth/">plan.onpath.earth</a> you plan your tour on a big map – free, without an account and without installing anything. The routes are the same as in the app. “3D” shows the route in the terrain and “▶ Fly along” flies it. Then point your phone camera at the QR code and the plan is on your phone.'),
  ('New: spoken directions', '<span class="tag">In the app</span> Hear turn instructions without looking at the screen: OnPath announces turns briefly and in good time – only where you could go wrong. The voice comes from your phone and needs no connection.'),
  ('New: pair browser and phone', '<span class="tag">Available</span> Scan the code on the computer screen once with the OnPath app: your saved plans are then on both devices – encrypted and without an OnPath account. You can unpair at any time. <a href="/help/planning/#pair">How to pair →</a>'),
- ('The core stays free', 'Planning, navigation and offline route changes with downloaded maps remain free. Your tours can be kept as normal files and used in other apps.'),
- ('Costs, development and a donation', 'Future paid extras should help cover operating costs, compensate some development work and contribute a share to a charitable organisation. A transparent breakdown of income, costs, the developer’s share and donations is planned. Prices, amounts, the organisation and payment method are undecided. There is nothing to buy on this site.')]),
+ ('New: share your location', '<span class="tag">In the app</span> On your way you send a link, and whoever opens it sees in the browser where you are – your family at home, for example. Encrypted, one way only and only while you share. <a href="/help/share-location/">How to share your location →</a>'),
+ ('The core stays free', 'Planning, navigation, recording, offline route changes with downloaded maps and connecting browser and phone remain free and need no OnPath account. Your tours can be kept as normal files and used in other apps.'),
+ ('Costs, development and a donation', 'Future paid extras – for example an account that backs up your tours – should help cover operating costs, compensate some development work and contribute a share to a charitable organisation. Connecting browser and phone stays free and needs no account. A transparent breakdown of income, costs, the developer’s share and donations is planned. Prices, amounts, the organisation and payment method are undecided. There is nothing to buy on this site.')]),
  '/try/': ('Try OnPath on familiar paths.', 'Walkers and leisure cyclists can help make OnPath more useful in everyday use.', [
  ('An early version', 'You need Android 8 or newer. OnPath has mainly been used by its developer so far. There is no iPhone version yet. Begin with a short route you know. For long or remote outings, use OnPath alongside an established navigation tool for now.'),
  ('Phase 1: personal invitations', 'Participation currently requires an individual invitation link and approval from Christian. The closed Google Play test group is the next step. Taking part in the test is free.'),
  ('Useful feedback does not need technical knowledge', 'Tell the developer what you were trying to do, what happened and what you expected. Your phone model and app version help. An unclear instruction is useful feedback too.'),
  ('For technically experienced users', 'Early APK releases and discussions are available in the app’s GitHub repository. The GitHub and future Play builds may use different signatures: back up your tours before changing between them. OnPath itself does not need an account.')]),
  '/project/': ('Open code. Clear information.', 'OnPath is an independent project by Christian Neuhaus.', [
- ('Current status', 'As of 7 November 2026, checked against app version 0.17.3 and the planner at plan.onpath.earth. The website is still a test version and hidden from search engines; the legal notice and privacy notes are reviewed before the public launch. Phase 1 currently requires a personal invitation and approval from Christian. The closed test group is the next step; see the Try page for access.'),
+ ('Current status', 'As of 26 November 2026, checked against app version 0.18.10 and the planner at plan.onpath.earth. The website is still a test version and hidden from search engines; the legal notice and privacy notes are reviewed before the public launch. Phase 1 currently requires a personal invitation and approval from Christian. The closed test group is the next step; see the Try page for access.'),
  ('Image credits', 'Home page photograph: Christian Neuhaus, near Vellau (South Tyrol). Portrait: Christian Neuhaus, private. The screen images are real captures of the app (with a simulated ride) and of the planner. The logo follows the original app artwork.'),
  ('Code and maps', 'App source: happychriss/OnPath, Apache 2.0. Map data © OpenStreetMap contributors. Routing uses BRouter. Manrope font © The Manrope Project Authors, SIL Open Font License 1.1.'),
  ('Independent', 'OnPath is not affiliated with Komoot or Google. No endorsement or partnership is claimed.')]),
@@ -95,7 +96,8 @@ HELP_EN = [('getting-started',
     'hints include steep sections, pushing, steps, demanding hiking sections, ferries, construction, fords and certain '
     'barriers for bikes. Tap a hint to see the affected places on the map. Check ferry timetables yourself; '
     'construction may mean a closure. Hints depend on available map entries and are not a complete list of current '
-    'hazards. A gap to an unreachable point is not a confirmed usable path. Check that point and choose another '
+    'hazards. If a point can only be reached by a detour, OnPath gives its length, for example “17.4 km detour needed, ② only '
+    'reachable from Hiking T2” or “② adds a 2.8 km detour – shorter with Hiking T2”. A gap to an unreachable point is not a confirmed usable path. Check that point and choose another '
     'approach if needed. Signs and conditions on the ground take priority.'),
    ('Choose the difficulty: SAC T1 to T5',
     'OnPath uses the Swiss Alpine Club’s SAC hiking scale. Choose T1 (hiking), T2 (mountain hiking), T3 (demanding '
@@ -172,9 +174,10 @@ HELP_EN = [('getting-started',
     'Someone sent you a map link or location, for example in Signal? Share the link or message with OnPath through '
     'Android’s Share function. Supported formats include Google Maps and OpenStreetMap links, geo: links and '
     'coordinates. Check the marked place, choose it as your destination or stop, and start navigation when ready. '
-    'OnPath does not read chats or follow a live location; it uses the shared point. The exact steps depend on the '
+    'OnPath does not read chats; it uses only the shared point, not someone else’s running location. The exact steps depend on the '
     'messaging app and link format, and not every format is supported. Short map links may need internet. If a '
-    'position was found from an address, check it carefully.')]),
+    'position was found from an address, check it carefully. Want to show others where you are yourself? '
+    '<a href="/help/share-location/">Share your location →</a>')]),
  ('gpx',
   'Open GPX files and keep your tours',
   'Take an existing route with you and keep your own.',
@@ -246,7 +249,8 @@ HELP_EN = [('getting-started',
     '<p>If recording stops, check location permissions, notifications and the battery setting under Settings → Apps → OnPath.</p><h3 id="samsung">Samsung: recording with the screen locked</h3><p>Menu names can vary slightly by Galaxy model and Android version.</p><ol><li><b>Allow unrestricted use.</b> Open Settings → Apps → OnPath → Battery and select “Unrestricted”.</li><li><b>Check sleeping apps.</b> Open Settings → Battery → Background usage limits. On older phones, go through Battery and device care → Battery. Remove OnPath from “Sleeping apps” and “Deep sleeping apps” if listed. Add OnPath to “Never sleeping apps” if it is available to select there.</li></ol><p>Then start a short test outing and lock the screen. Afterwards, check that your outing was still recorded.</p><p>More help: <a href="https://www.samsung.com/us/support/troubleshoot/TSG10001337/">Samsung Support</a> and <a href="https://dontkillmyapp.com/samsung">the Samsung guide at dontkillmyapp</a>.</p><h3 id="other-phones">Other phones</h3><p>For other brands, see the manufacturer guides by the Urbandroid Team at <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>: <a id="xiaomi" href="https://dontkillmyapp.com/xiaomi">Xiaomi, Redmi and POCO</a> · <a id="huawei" href="https://dontkillmyapp.com/huawei">Huawei and Honor</a> · <a id="oneplus" href="https://dontkillmyapp.com/oneplus">OnePlus</a>. You can also choose further manufacturers there.</p>'),
    ('Before a long day',
     'Charge your phone and consider a power bank. Battery use has not been measured across many devices. Screen use '
-    'and reception affect runtime.'),
+    'and reception affect runtime. When the phone lies still, for example during a long break, the motion sensor decides: '
+    'after an hour without moving, OnPath switches GPS off until you move again. The recording carries on.'),
    ('A second copy',
     'OnPath writes additional GPX files to Documents/OnPath by default; choose another folder in Settings → Backup. '
     'Copy important files to a computer or other storage. A copy on the same phone does not protect against losing it. '
@@ -256,6 +260,8 @@ HELP_EN = [('getting-started',
 
 from feature_help import HELP_EN as FEATURE_HELP_EN
 HELP_EN.extend(FEATURE_HELP_EN)
+from live_help import HELP_EN as LIVE_HELP_EN
+HELP_EN.extend(LIVE_HELP_EN)
 
 from legal_content import EN_LEGAL, EN_PRIVACY
 ARTICLES['/legal/']=('Legal notice','Provider and contact for OnPath.',EN_LEGAL)

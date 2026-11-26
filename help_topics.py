@@ -19,6 +19,8 @@ ANCHORS = {
     'rundtouren': ['idee', 'wuensche', 'vorschlaege', 'uebernehmen', 'fehlende-vorschlaege'],
     'round-trips': ['idea', 'preferences', 'suggestions', 'use', 'missing-suggestions'],
     'mehrtagestouren': ['reise', 'route', 'gpx-anhaengen', 'tage', 'graue-tagesenden', 'uebernachtung', 'hotel', 'handy'],
+    'standort-teilen': ['wofuer', 'teilen', 'unterwegs', 'was-andere-sehen', 'beenden', 'wer-liest'],
+    'share-location': ['what-for', 'share', 'during', 'what-others-see', 'stop', 'who-reads'],
     'multi-day-tours': ['journey', 'route', 'append-gpx', 'days', 'grey-day-ends', 'overnight', 'hotel', 'phone'],
 }
 

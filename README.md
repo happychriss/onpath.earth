@@ -29,7 +29,7 @@ article, help, access-page, header and footer styles. Secondary-page copy stays 
 App screens on the help pages: `help_shots.py` says which picture goes under which help section (DE and EN) with its
 caption. Swap or add pictures: put the PNGs (phone screenshots, 1080 × 2400) in a folder, run
 `python3 scripts/help_shots.py <folder> …` (writes `assets/help/*.webp` and `sizes.json`), then `python3 build.py`.
-Current pictures: the Meran round captured on 7 November 2026 with app 0.17.3 and the current browser planner.
+Current pictures: the Meran round captured on 7 November 2026 with app 0.17.3 and the browser planner, partly retaken after 0.18.0 (18 November 2026); „Standort teilen“ (O01–O06) from app 0.18.10.
 The pairing confirmation pictures are German app-test snapshots; where an English picture is unavailable, the
 English page explicitly labels the German screen. Later source folders win.
 Pictures can also sit inside a help text: `[[shots:name,name]]`. `ARTICLE_SHOTS` adds the same current pictures
