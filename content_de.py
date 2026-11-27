@@ -36,7 +36,7 @@ def ph(eyebrow,title,desc,breadcrumb=''):
 def button(url,text,outline=False):return '<a class="button'+(' outline' if outline else '')+'" href="'+url+'">'+text+icon('arrow')+'</a>'
 def notice(title,text):return '<aside class="notice"><b>'+title+'</b><p>'+text+'</p></aside>'
 def cta():return '<section class="section"><div class="wrap"><div class="cta"><p class="eyebrow">Gemeinsam besser machen</p><h2>Kommst du eine Runde mit?</h2><p>OnPath ist noch jung. Gesucht werden Menschen, die draußen unterwegs sind und sagen, was im Alltag klappt – und was noch nicht.</p><div class="actions">'+button('/ausprobieren/','Testversion kennenlernen')+'</div><span class="fine">Für Android ab Version 8 · Aktuell nur mit persönlicher Einladung</span></div></div></section>'
-DEMO={'de':dict(top='Eine Tour. Ein neuer Plan.',tag='So funktioniert’s',aria='Schematische Tour mit einem zusätzlichen Zwischenstopp',cafe='Pause am Café',start='Start',end='Ziel',ctl='Beispielablauf',b=['1. Planen','2. Ändern','3. Weiter'],t=['Du hast Start und Ziel gewählt. OnPath verbindet die Punkte über Wege.','Du möchtest zum Café? Ergänze den Ort als Stopp. OnPath passt den weiteren Weg an.','Weiter geht’s. Deine bisherige Tour bleibt aufgezeichnet, auch wenn du den Plan änderst.'],fine='Vereinfachte Darstellung, keine bedienbare App-Karte.'),'en':dict(top='One tour. A new plan.',tag='How it works',aria='Schematic tour with an added stop',cafe='Café stop',start='Start',end='Finish',ctl='Example steps',b=['1. Plan','2. Change','3. Go on'],t=['You chose a start and a destination. OnPath connects them along paths.','Fancy a café? Add it as a stop. OnPath adjusts the rest of the way.','On you go. Your recording keeps running, even though the plan changed.'],fine='Simplified illustration, not the app’s map.')}
+DEMO={'de':dict(top='Eine Tour. Ein neuer Plan.',tag='So funktioniert’s',aria='Schematische Tour mit einem zusätzlichen Stopp',cafe='Pause am Café',start='Start',end='Ziel',ctl='Beispielablauf',b=['1. Planen','2. Ändern','3. Weiter'],t=['Du hast Start und Ziel gewählt. OnPath verbindet die Punkte über Wege.','Du möchtest zum Café? Ergänze den Ort als Stopp. OnPath passt den weiteren Weg an.','Weiter geht’s. Deine bisherige Tour bleibt aufgezeichnet, auch wenn du den Plan änderst.'],fine='Vereinfachte Darstellung, keine bedienbare App-Karte.'),'en':dict(top='One tour. A new plan.',tag='How it works',aria='Schematic tour with an added stop',cafe='Café stop',start='Start',end='Finish',ctl='Example steps',b=['1. Plan','2. Change','3. Go on'],t=['You chose a start and a destination. OnPath connects them along paths.','Fancy a café? Add it as a stop. OnPath adjusts the rest of the way.','On you go. Your recording keeps running, even though the plan changed.'],fine='Simplified illustration, not the app’s map.')}
 def route_demo(lang='de'):
     D=DEMO[lang]
     buttons=''.join('<button data-demo="'+str(i)+'" data-text="'+D['t'][i]+'" aria-pressed="'+('true' if i==0 else 'false')+'">'+D['b'][i]+'</button>' for i in range(3))
@@ -533,7 +533,7 @@ HELP = [('erste-schritte',
     'unterstützen die Planung, ersetzen aber nicht die Prüfung von Strecke, Schwierigkeit und Beschilderung.</p>'),
    ('Am Computer planen und aufs Handy übertragen',
     '<ol><li>Öffne <a href="https://plan.onpath.earth/">plan.onpath.earth</a> am Computer – ohne Konto und ohne '
-    'Installation.</li><li>Setze Start, Ziel und Zwischenstopps mit der Maus oder öffne eine GPX-Datei. Zeit, '
+    'Installation.</li><li>Setze Start, Ziel und Stopps mit der Maus oder öffne eine GPX-Datei. Zeit, '
     'Höhenprofil und Hinweise siehst du wie in der App. Mit „3D“ siehst du die Strecke im Gelände, mit „▶ Abfliegen“ '
     'fliegst du sie ab.</li><li>Klicke auf „Teilen“ und scanne den QR-Code mit der '
     'Handykamera. Die Route öffnet sich in OnPath.</li><li>Lass die Karten für die Strecke auf dem Handy laden, bevor '
@@ -594,7 +594,7 @@ HELP = [('erste-schritte',
    ('Öffnungszeiten oder Bilder ansehen',
     '<p>Öffne in OnPath den gewünschten Ort und seine Details. Von dort kannst du zu Google Maps wechseln, um '
     'Öffnungszeiten, Bilder oder Bewertungen anzusehen. Kehre danach zu OnPath zurück und ergänze den Ort als '
-    'Zwischenstopp oder Ziel. Den Weg dorthin berechnet OnPath für deine gewählte Aktivität.</p>'),
+    'Stopp oder Ziel. Den Weg dorthin berechnet OnPath für deine gewählte Aktivität.</p>'),
    ('Welche Daten dabei übertragen werden',
     '<p>Hast du Internet, gehen dein Suchtext und eine auf etwa 1 km gerundete Position an den Suchdienst Photon von '
     'komoot. Bei einem geteilten Ort kann OnPath einen kurzen Google-Maps-Link bei Google auflösen und, wenn die eigene '
@@ -604,7 +604,7 @@ HELP = [('erste-schritte',
     '<p>Hat dir jemand einen Kartenlink oder Standort geschickt, etwa in Signal? Teile den Link oder die Nachricht '
     'über die Android-Teilen-Funktion mit OnPath. Unterstützt werden unter anderem Google-Maps- und '
     'OpenStreetMap-Links, geo:-Links und Koordinaten.</p><ol><li>Wähle beim Teilen OnPath.</li><li>Prüfe den '
-    'markierten Ort auf der Karte.</li><li>Wähle ihn als Ziel oder Zwischenstopp und starte die Navigation, wenn du '
+    'markierten Ort auf der Karte.</li><li>Wähle ihn als Ziel oder Stopp und starte die Navigation, wenn du '
     'losgehen möchtest.</li></ol><p>OnPath liest keine Chats. Es übernimmt nur den '
     'geteilten Punkt, nicht den laufenden Standort eines anderen; das genaue Vorgehen hängt von der Nachrichten-App und dem Linkformat ab. Kurze Google-Maps-Links '
     'können Internet benötigen. Ist nur eine Adresse bekannt, prüfe die gefundene Position besonders sorgfältig. Nicht '
@@ -739,7 +739,7 @@ helpbody+='</div><p id="no-results" hidden>Kein passendes Thema gefunden. Versuc
 page('/hilfe/','Hilfe & erste Schritte','Einfach erklärte Hilfe zu OnPath: offline planen, Touren ändern, Orte suchen und GPX-Dateien nutzen.',helpbody,'/hilfe/')
 
 article('/wandern/','Zu Fuß unterwegs','Zeit für deinen Weg.','Du musst nicht jeden Weg kennen, um eine eigene Wanderung zu planen. OnPath hilft dir, aus einem Ziel eine Strecke zu machen.',[
-('Du wählst das Ziel. OnPath verbindet die Wege.','<p>Suche zuerst dein Ziel, etwa eine Hütte oder einen Ort. Ergänze bei Bedarf einen Zwischenstopp. OnPath verbindet die Punkte über Wege. Du siehst die Entfernung, die Steigungen und die ungefähre Dauer. Wähle die Schwierigkeit passend zu deiner Erfahrung. OnPath verwendet bei der Planung keine als schwieriger eingestuften Wege als eingestellt und keine Klettersteige.</p>'+notice('Mit Augenmaß planen','Die Einstufung hängt von den Kartendaten ab. Wetter, Wegzustand und deine Erfahrung bleiben entscheidend.')),
+('Du wählst das Ziel. OnPath verbindet die Wege.','<p>Suche zuerst dein Ziel, etwa eine Hütte oder einen Ort. Ergänze bei Bedarf einen Stopp. OnPath verbindet die Punkte über Wege. Du siehst die Entfernung, die Steigungen und die ungefähre Dauer. Wähle die Schwierigkeit passend zu deiner Erfahrung. OnPath verwendet bei der Planung keine als schwieriger eingestuften Wege als eingestellt und keine Klettersteige.</p>'+notice('Mit Augenmaß planen','Die Einstufung hängt von den Kartendaten ab. Wetter, Wegzustand und deine Erfahrung bleiben entscheidend.')),
 ('Noch zur Hütte – oder früher zurück','<p>Ein guter Wandertag braucht keinen starren Plan. Baue einen Abstecher ein oder ändere das Ziel. Deine Aufzeichnung läuft weiter, während du den restlichen Weg anpasst. Mit vorbereiteten Karten geht das auch ohne Empfang.</p>'),
 ('Eine Zeitangabe, die sich anpasst','<p>Die erste Schätzung orientiert sich an deiner eingestellten Fitness. Nach etwa 15 Minuten und einem Kilometer berücksichtigt OnPath dein tatsächliches Tempo auf dieser Tour – getrennt nach bergauf, eben und bergab. Pausen werden dabei herausgerechnet.</p>'),
 ('Weniger aufs Display schauen','<p>Wo du falsch abbiegen könntest, vibriert das Handy: einmal für links, zweimal für rechts. Auf dem Sperrbildschirm findest du die nächste Abzweigung und die Ankunftszeit. Dazu kommen kurze Sprachansagen; du schaltest sie unter Einstellungen → Navigation ein oder aus.</p>'+button('/hilfe/erste-schritte/','Die erste Tour vorbereiten'))])
