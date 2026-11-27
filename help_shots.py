@@ -21,8 +21,8 @@ IMAGES = {'leer': ('D01-handy-leerer-plan-de.png',
           'Empty plan: the search card at the bottom asks “Where to?”.'),
  'halten': ('D03-handy-karte-halten-hierhin-de.png',
             'D03-handy-karte-halten-hierhin-en.png',
-            'Karte gedrückt halten: „Hier starten“, „Rundtour von hier“ oder „Hierhin“.',
-            'Hold the map: Start here, Round trip from here or Go here.'),
+            'Karte gedrückt halten: Das Menü sagt, was der Punkt wird.',
+            'Hold the map: the menu says what the point becomes.'),
  'punkt1': ('D04-handy-start-gesetzt-de.png',
             'D04-handy-start-gesetzt-en.png',
             'Der Start ist gesetzt, jetzt kommt das Ziel.',
@@ -208,7 +208,7 @@ IMAGES['mehrtage-handy'] = (
 )
 
 IMAGES.update({
-    'rundtour-start': ('N03-handy-rundtour-von-hier-de.png', 'N03-handy-rundtour-von-hier-en.png', 'Auf dem Handy den Startpunkt gedrückt halten und „Rundtour von hier“ wählen.', 'On your phone, press and hold the start and choose “Round trip from here”.'),
+    'rundtour-start': ('N03-handy-rundtour-von-hier-de.png', 'N03-handy-rundtour-von-hier-en.png', 'Auf dem Handy den Startpunkt gedrückt halten und „Rundtour ab hier“ wählen.', 'On your phone, press and hold the start and choose “Round trip from here”.'),
     'rundtour-wunsch': ('N01-web-rundtour-wunsch-de.png', 'N01-web-rundtour-wunsch-en.png', 'Wünsche im Browserplaner. Hier sind Wandern T2, 3,5 bis 4,5 Stunden und bis zu 800 Höhenmeter eingestellt.', 'Preferences in the browser planner. This example uses hiking T2, 3.5 to 4.5 hours and up to 800 metres of climbing.'),
     'rundtour-vorschlaege': ('N04-handy-rundtour-kartenreihe-de.png', 'N04-handy-rundtour-kartenreihe-en.png', 'Fünf Rundtourvorschläge bei Alken. Die ausgewählte Karte zeigt Strecke, Dauer und Aufstieg; der Verlauf erscheint auf der Karte.', 'Five round-trip suggestions near Alken. The selected card shows distance, duration and climbing, with the route on the map.'),
     'mehrtage-start': ('B11-web-mehrtagestour-planen-de.png', 'B11-web-mehrtagestour-planen-en.png', 'Der Mehrtagesplaner im Browser. Eine Route ist gewählt; weitere GPX-Tracks oder gespeicherte Routen lassen sich anhängen.', 'The multi-day guide in the browser. A route is selected, with options to append GPX tracks or saved routes.'),
