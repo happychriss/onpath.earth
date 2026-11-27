@@ -18,7 +18,7 @@ HELP_DE = [
              '<p>Ohne Netz steht unter der Navigation „Standort · wartet auf Netz“. Die Punkte gehen nicht verloren: Sobald das Handy wieder Empfang hat, schickt es sie nach.</p>'
              '[[shots:teilen-aktiv,teilen-wartet]]'),
             ('Was die anderen sehen',
-             '<p>Die Seite zeigt deinen Weg auf der Karte, ob du unterwegs bist oder pausierst, wann der letzte Standort kam, Strecke und Höhenmeter und den Akkustand deines Handys. Folgst du einem Plan, sehen sie auch den geplanten Weg, wie weit es noch ist und wann du ungefähr ankommst.</p>'
+             '<p>Die Seite zeigt deinen Weg auf der Karte, ob du unterwegs bist oder pausierst, wann der letzte Standort kam, Strecke und Höhenmeter und den Akkustand deines Handys. Folgst du einem Plan, sehen sie auch den geplanten Weg, wie weit es noch ist und wann du ungefähr ankommst. Wirst du später ankommen als geplant, sagt die Seite das auch.</p>'
              '<p>Die Seite ist kein Notruf-Dienst. Im Notfall gilt 112.</p>'
              '[[shots:teilen-seite]]'),
             ('Das Teilen beenden',
@@ -49,7 +49,7 @@ HELP_EN = [
              '<p>Without a connection, “Location · waiting for network” appears below the navigation. No points are lost: as soon as the phone has reception again, it sends them.</p>'
              '[[shots:teilen-aktiv,teilen-wartet]]'),
             ('What the others see',
-             '<p>The page shows your way on the map, whether you are moving or taking a break, when the last position arrived, distance and climbing, and your phone’s battery level. If you follow a plan, they also see the planned route, how far you still have to go and roughly when you will arrive.</p>'
+             '<p>The page shows your way on the map, whether you are moving or taking a break, when the last position arrived, distance and climbing, and your phone’s battery level. If you follow a plan, they also see the planned route, how far you still have to go and roughly when you will arrive. If you will arrive later than planned, the page says so too.</p>'
              '<p>The page is not an emergency service. In an emergency, call 112.</p>'
              '[[shots:teilen-seite]]'),
             ('Stop sharing',

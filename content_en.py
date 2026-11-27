@@ -30,7 +30,7 @@ ARTICLES = {
  ('Useful feedback does not need technical knowledge', 'Tell the developer what you were trying to do, what happened and what you expected. Your phone model and app version help. An unclear instruction is useful feedback too.'),
  ('For technically experienced users', 'Early APK releases and discussions are available in the app’s GitHub repository. The GitHub and future Play builds may use different signatures: back up your tours before changing between them. OnPath itself does not need an account.')]),
  '/project/': ('Open code. Clear information.', 'OnPath is an independent project by Christian Neuhaus.', [
- ('Current status', 'As of 26 November 2026, checked against app version 0.18.10 and the planner at plan.onpath.earth. The website is still a test version and hidden from search engines; the legal notice and privacy notes are reviewed before the public launch. Phase 1 currently requires a personal invitation and approval from Christian. The closed test group is the next step; see the Try page for access.'),
+ ('Current status', 'As of 27 November 2026, checked against app version 0.18.11 and the planner at plan.onpath.earth. The website is still a test version and hidden from search engines; the legal notice and privacy notes are reviewed before the public launch. Phase 1 currently requires a personal invitation and approval from Christian. The closed test group is the next step; see the Try page for access.'),
  ('Image credits', 'Home page photograph: Christian Neuhaus, near Vellau (South Tyrol). Portrait: Christian Neuhaus, private. The screen images are real captures of the app (with a simulated ride) and of the planner. The logo follows the original app artwork.'),
  ('Code and maps', 'App source: happychriss/OnPath, Apache 2.0. Map data © OpenStreetMap contributors. Routing uses BRouter. Manrope font © The Manrope Project Authors, SIL Open Font License 1.1.'),
  ('Independent', 'OnPath is not affiliated with Komoot or Google. No endorsement or partnership is claimed.')]),
@@ -50,12 +50,12 @@ HELP_EN = [('getting-started',
     'Wait for the download to finish and check Settings → Offline maps. A new area can take a few minutes. <a '
     'href="/help/offline/#prepare">Offline preparation in detail →</a>'),
    ('Plan a familiar route',
-    'Choose your activity with the button on the map. Then use “Find your destination” or hold your destination on the map and choose “Go here” to plan from your location. '
+    'At the bottom of the map is the search card. Choose your activity there, for example “Hike · T2”. Then tap “Where to?” and search for your destination, or hold it on the map and choose “Set as destination” to plan from your location. '
     'A short tap does not set a new destination, preventing accidental changes. To start elsewhere, hold the start '
-    'point and choose “Start here”, then add your destination and stops. Check distance, climbing, time and route '
+    'point and choose “Set as start”, then add your destination and stops. Check distance, climbing, time and route '
     'hints. Wait for the required maps to finish downloading and begin with a short, familiar route.'),
    ('Let’s go',
-    'Tap the green “Let’s go” button. OnPath saves the plan in “My tours”, guides you and records your outing. On the '
+    'Tap “Let’s go”. OnPath saves the plan in “My tours”, guides you and records your outing. On the '
     'way the bar at the bottom is locked against pocket taps: hold “Stop” or “Plan” for about a second until the '
     'button fills; the bar then stays open for 20 seconds. Set how long to hold in Settings → Navigation.')]),
  ('offline',
@@ -84,11 +84,12 @@ HELP_EN = [('getting-started',
     'surfaces and busy roads for cycling. A touring bike is planned differently from a gravel bike or MTB. Hiking also '
     'has a difficulty setting using the SAC hiking scale. <a href="#difficulty">Difficulty levels explained →</a>'),
    ('Set and change points',
-    'Press a little longer on the map and choose an action, such as “Go here” to plan from your location. Holding a '
-    'place near your route offers “Add as a stop” or “Make it the destination”; the other choice is under “More”. A short tap '
+    'Press a little longer on the map and choose an action, such as “Set as destination” to plan from your location. The menu says what the point becomes: “Set as start”, '
+    '“Set as stop” or “Set as destination”. The likeliest one is on top and highlighted; “Round trip from here” is always last. A short tap '
     'does not set a new destination. Hold an existing point to open its actions. To move it on the map, delete and add '
     'it again. In the expanded point list, drag stops into order or remove them. Undo changes, reverse the route or '
-    'make it a round trip. “New plan” starts from scratch. When a new plan replaces the one you had, OnPath asks “Restore your old plan?” – '
+    'make it a round trip. “New plan” starts from scratch. When you add points later, OnPath keeps the stretches it has already '
+    'calculated; to have the whole route calculated afresh, choose ☰ → “Recalculate from scratch” (shown only when there is something to recalculate). When a new plan replaces the one you had, OnPath asks “Restore your old plan?” – '
     '“Restore” brings it back, “Keep” keeps the new one.'),
    ('Check the route',
     'Pull the plan panel up to inspect the elevation profile, surfaces and path types. “Offline ✓” at the top shows '
@@ -123,8 +124,8 @@ HELP_EN = [('getting-started',
    ('Connect browser and phone',
     '<p>Connect once – then your saved plans are in the browser and on your phone, both ways.</p>'
     '<h3>Connect</h3><ol><li>In the browser: click “Connect phone” at the top right, then “Connect phone” again in the window. A QR '
-    'code appears.</li><li>On your phone: open OnPath, tap ☰ → “Pair with browser” (in newer app versions “Connect to browser”) → “Open camera” and scan the '
-    'code.</li><li>OnPath shows six check digits. If they match the browser, tap “Pair” (newer: “Connect”).</li></ol><p>Scan the code with OnPath, not with the phone’s camera '
+    'code appears.</li><li>On your phone: open OnPath, tap ☰ → “Connect to browser” → “Open camera” and scan the '
+    'code.</li><li>OnPath shows six check digits. If they match the browser, tap “Connect”.</li></ol><p>Scan the code with OnPath, not with the phone’s camera '
     'app – that opens it in the browser. If the browser still opens: Android settings → Apps → OnPath → “Open by '
     'default” → turn on “Open supported links”.</p>[[shots:web-handy,web-koppeln,app-koppeln]]'
     '<h3>Your plans on both</h3><p>At the top right you now see your phone’s name with a green dot, and “Save” '
@@ -133,7 +134,7 @@ HELP_EN = [('getting-started',
     'save on your phone comes to the browser’s “My tours” by itself. They sync while OnPath is open on the phone. '
     'Recorded outings stay on your phone.</p>[[shots:app-verbunden,app-routen]]'
     '<h3>Disconnect</h3><p>In the browser: click your phone at the top right, then “Disconnect” at the bottom of the window. '
-    'Or in the app: Settings → Browser sync → “Unpair” (newer: “Disconnect”). Your plans stay on both devices.</p>[[shots:app-trennen]]'
+    'Or in the app: Settings → Browser sync → “Disconnect”. Your plans stay on both devices.</p>[[shots:app-trennen]]'
     '<p>End-to-end encrypted, no account. Keep the QR code to yourself – whoever scans it sees your saved plans.</p>')]),
  ('change-route',
   'Change the route along the way',
@@ -141,9 +142,9 @@ HELP_EN = [('getting-started',
   'edit change detour route navigation',
   [('Switch to editing',
     'Hold “Plan” at the bottom until the button fills. You are back in the plan, with a light blue band at the top; '
-    'your recording keeps running. “Stop” rests recording and guidance; then “Resume” goes on, “End tour” finishes and “Plan” opens the plan.'),
+    'your recording keeps running. “Stop” rests recording and guidance; then there is only “Continue” and “End tour”.'),
    ('Adjust the next part',
-    'Find a café, say, and tap “Add as a stop”, remove a stop or add a new destination, and check the new route. Recalculation works offline when all the required '
+    'Find a café, say, and tap “Set as stop”, remove a stop or add a new destination, and check the new route. Recalculation works offline when all the required '
     'areas are ready.'),
    ('Continue from here',
     'Tap “Let’s go on” at the bottom to return to navigation. OnPath says once how far it is now; points already '
@@ -158,7 +159,8 @@ HELP_EN = [('getting-started',
     'Search a name or address. OnPath searches its own place and address database on your phone, downloaded '
     'automatically with the maps. It includes streets, house numbers, villages, huts, peaks and stations. In fully '
     'downloaded areas this works without reception. Online results are added when connected. New areas need a '
-    'connection to download; not every place or house number is recorded.'),
+    'connection to download; not every place or house number is recorded. Filters below the search help, such as “Food” or '
+    '“Lodging” for huts, bivouacs and campsites. Hotels come through the online search.'),
    ('Check details in Google Maps',
     'Open the place details in OnPath and use the Google Maps action to check opening hours, photos or reviews. Return '
     'to OnPath and add the place as a stop or destination. OnPath calculates the route for your activity.'),
@@ -234,8 +236,8 @@ HELP_EN = [('getting-started',
     'estimate starts adapting to your pace, separately uphill, on level ground and downhill. It remains an estimate. '
     'On the handlebar, the quiet view shows direction, distance and arrival; the map returns before the turn.'),
    ('Finish deliberately',
-    'Hold “Stop” and tap “End tour”. At the destination OnPath asks by itself: “Keep recording” or “End tour”. Then tap '
-    '“Save tour”; it appears in “My tours” → “Done”. “Delete” moves it to the recycle bin for 30 days. Keep your outing without questions about uploading photos, '
+    'Hold “Stop” and tap “End tour”. At the destination OnPath asks by itself: “Keep recording” or “End tour”. OnPath then asks '
+    '“End tour?”: “Save tour” puts it in “My tours” → “Done”. Hold “Delete” for a second to move it to the recycle bin for 30 days; “Cancel” keeps the outing going. Keep your outing without questions about uploading photos, '
     'sharing or ratings. Locking the phone does not end recording. If OnPath detected a bus or cable-car section, '
     'review how it should count. <a href="#rides">Review detected rides →</a>'),
    ('Review bus and cable-car sections',

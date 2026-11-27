@@ -9,7 +9,7 @@ HELP_DE = [
             ('Eine Runde für den freien Nachmittag',
              '<p>Du hast ein paar Stunden Zeit und möchtest wieder an deinem Startpunkt ankommen. OnPath berechnet Rundtouren passend zu deiner Aktivität, deiner gewünschten Dauer und den Höhenmetern. Das funktioniert auf dem Handy und im Browserplaner.</p>'),
             ('Start und Wünsche wählen',
-             '<p>Beginne mit einem leeren Plan. Halte deinen Startpunkt auf der Karte gedrückt und wähle <strong>„Rundtour von hier“</strong>. Prüfe die Aktivität und beim Wandern die Schwierigkeit.</p>'
+             '<p>Beginne mit einem leeren Plan. Halte deinen Startpunkt auf der Karte gedrückt und wähle <strong>„Rundtour ab hier“</strong>. Prüfe die Aktivität und beim Wandern die Schwierigkeit.</p>'
              '[[shots:rundtour-start]]'
              '<p>Stelle einen Bereich für die Dauer ein, zum Beispiel zwei bis drei Stunden, und wie viel Aufstieg du dir vornehmen möchtest. Als Ziel kannst du etwa Wasser, Aussicht oder eine Einkehr wählen.</p>'
              '[[shots:rundtour-wunsch]]'),
@@ -50,7 +50,7 @@ HELP_DE = [
              '<p>Die grauen Symbole zeigen mögliche Tagesenden auf dem bereits berechneten Weg. Du kannst deine Reise damit Schritt für Schritt festlegen, während OnPath die offenen Etappen neu verteilt.</p>'
              '[[shots:mehrtage-uebersicht]]'),
             ('Aus einem Vorschlag wird deine Übernachtung',
-             '<p>Ein Ort gefällt dir als Tagesziel? Klicke dort auf die Route und wähle <strong>„Übernachtung hier“</strong>. Das Symbol wird ein <strong>blauer Mond</strong>. Diese Stelle ist jetzt von dir festgelegt. Die übrigen grauen Vorschläge verteilen sich darum herum neu.</p>'
+             '<p>Ein Ort gefällt dir als Tagesziel? Klicke dort auf die Route und wähle <strong>„Als Übernachtung“</strong>. Das Symbol wird ein <strong>blauer Mond</strong>. Diese Stelle ist jetzt von dir festgelegt. Die übrigen grauen Vorschläge verteilen sich darum herum neu.</p>'
              '<p>Du kannst auch einen grauen Mond an die gewünschte Stelle ziehen. Beim Ablegen wird daraus eine blaue Übernachtung. Beim Neuverteilen der grauen Vorschläge bleiben deine blauen Übernachtungen und hinterlegten Hotels an ihren gewählten Orten.</p>'),
             ('Dein Hotel in die Route aufnehmen',
              '<p>Für die zweite Nacht hast du ein Hotel gebucht. Öffne das Übernachtungssymbol und wähle <strong>„Hotel hinterlegen“</strong>. Suche den Namen oder füge die Adresse beziehungsweise einen Google-Maps- oder Booking-Link ein. Wähle den passenden Treffer und prüfe seinen Standort. Falls der Link keinen passenden Treffer ergibt, suche mit Hotelname oder Adresse.</p>'
@@ -117,7 +117,7 @@ HELP_EN = [
              '<p>The grey symbols suggest day ends along the route already calculated. You can settle your plans a little at a time while OnPath redistributes the open stages.</p>'
              '[[shots:mehrtage-uebersicht]]'),
             ('Choose an overnight stop',
-             '<p>Found a place where you want to end the day? Click the route there and choose <strong>“Overnight stop here”</strong>. The symbol becomes a <strong>blue moon</strong>. You have chosen that location, and the remaining grey suggestions redistribute around it.</p>'
+             '<p>Found a place where you want to end the day? Click the route there and choose <strong>“Set as overnight stop”</strong>. The symbol becomes a <strong>blue moon</strong>. You have chosen that location, and the remaining grey suggestions redistribute around it.</p>'
              '<p>You can also drag a grey moon to the place you want. On release it becomes a blue overnight stop. Your blue overnight stops and hotels stay where you chose them when OnPath redistributes the grey suggestions.</p>'),
             ('Bring your hotel into the route',
              '<p>You have booked a hotel for the second night. Open the overnight symbol and choose <strong>“Add hotel”</strong>. Search by name or paste its address, a Google Maps link or a Booking link. Choose the matching result and check its location. If a link gives no suitable result, search by hotel name or address.</p>'
