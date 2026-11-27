@@ -29,10 +29,10 @@
 }
 .comparison-card {
   border: 1px solid var(--comparison-rule);
-  border-radius: 18px;
+  border-radius:var(--radius-card);
   overflow-x: auto;
   background: #fff;
-  box-shadow: 0 8px 30px #253c2f0a;
+  box-shadow:var(--shadow-float);
 }
 .comparison-card table {
   width: 100%;
@@ -67,7 +67,7 @@
   border: 0;
   padding: 6px 4px;
   background: transparent;
-  border-radius: 7px;
+  border-radius:var(--radius-control);
   cursor: pointer;
 }
 .comparison-value {
@@ -118,7 +118,7 @@
   min-height: 44px;
   padding-inline: 16px;
   border: 1px solid var(--comparison-green);
-  border-radius: 7px;
+  border-radius:var(--radius-control);
   background: #fff;
   color: var(--comparison-green);
   font-size: var(--type-action);
@@ -131,8 +131,8 @@
   .comparison-intro { margin-bottom: 18px; }
   .comparison-notes { margin-top: 11px; }
   .comparison-picker:not([hidden]) { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 0 8px 12px; font-size: var(--type-action); }
-  .comparison-picker select { min-height: 44px; max-width: 100%; padding: 5px 10px; border: 1px solid #687d6b; border-radius: 7px; background: #fff; color: var(--comparison-ink); }
-  .comparison-card { border-radius: 13px; }
+  .comparison-picker select { min-height: 44px; max-width: 100%; padding: 5px 10px; border: 1px solid #687d6b; border-radius:var(--radius-control); background: #fff; color: var(--comparison-ink); }
+  .comparison-card { border-radius:var(--radius-card); }
   .comparison-card[data-enhanced] table { min-width: 0; }
   .comparison-card[data-enhanced] thead th:first-child { width: 37%; }
   .comparison-card[data-enhanced] thead .app-onpath { width: 27%; }
@@ -157,10 +157,10 @@
   width: min(330px, calc(100% - 24px));
   padding: 12px 14px;
   border: 1px solid var(--comparison-green);
-  border-radius: 10px;
+  border-radius:var(--radius-card);
   color: var(--comparison-ink);
   background: #fff;
-  box-shadow: 0 6px 22px #253c2f29;
+  box-shadow:var(--shadow-float);
   font-size: var(--type-action);
   line-height: 1.45;
 }
