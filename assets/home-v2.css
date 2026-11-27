@@ -109,7 +109,7 @@
 .home-v2 .complete .section-heading{margin-bottom:45px}
 .home-v2 .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);column-gap:45px}
 .home-v2 .feature-grid article{border-top:1px solid #becbb8;padding:26px 0 35px}
-.home-v2 .feature-index{display:block;font-size:var(--type-label);letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:17px}
+.home-v2 .feature-index{display:block;font-size:var(--type-label);color:var(--green);margin-bottom:17px}
 .home-v2 .feature-grid h3{font-size:var(--type-body)}
 .home-v2 .feature-grid p{font-size:var(--type-body);line-height:1.75;margin-top:13px}
 .home-v2 .complete-footer{border-top:1px solid #becbb8;display:flex;justify-content:space-between;align-items:center;padding-top:30px;gap:30px}
