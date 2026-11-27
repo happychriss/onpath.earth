@@ -587,12 +587,13 @@ HELP = [('erste-schritte',
     'Internet kommen zusätzliche Online-Ergebnisse hinzu. Außerhalb der geladenen Gebiete brauchst du Internet zum '
     'Nachladen; nicht jeder Ort oder jede Hausnummer ist erfasst.</p><p>Unter der Suche helfen Filter, etwa „Essen“ oder „Übernachten“ für Hütten, Biwaks und Campingplätze. Hotels findest du über die Online-Suche.</p>'),
    ('Einen Ort aus Google Maps übernehmen',
-    '<ol><li>Öffne den gewünschten Ort in Google Maps.</li><li>Tippe auf „Teilen“ und wähle OnPath.</li><li>Prüfe den '
+    '<p>Findest du einen Ort in OnPath nicht, etwa ein Hotel oder ein Geschäft, such ihn in Google Maps und hol ihn von dort in die App.</p>'
+    '<ol><li>Tippe in der OnPath-Suche auf „Google Maps ↗“ über der Tastatur, oder öffne Google Maps direkt.</li><li>Such den Ort in Google Maps und öffne ihn.</li><li>Tippe auf „Teilen“ und wähle OnPath.</li><li>Prüfe den '
     'markierten Ort auf der Karte.</li><li>Übernimm ihn als Start, Stopp oder Ziel.</li></ol><p>Übernommen '
     'werden der Ort und sein Name – keine vollständige Google-Route, Bewertungen oder Fotos. Bei einem verkürzten Link '
     'kann eine Internetverbindung zum Auflösen nötig sein.</p>'),
    ('Öffnungszeiten oder Bilder ansehen',
-    '<p>Öffne in OnPath den gewünschten Ort und seine Details. Von dort kannst du zu Google Maps wechseln, um '
+    '<p>Öffne in OnPath den gewünschten Ort und seine Details. Mit „Google Maps ↗“ wechselst du von dort zu Google Maps, um '
     'Öffnungszeiten, Bilder oder Bewertungen anzusehen. Kehre danach zu OnPath zurück und ergänze den Ort als '
     'Stopp oder Ziel. Den Weg dorthin berechnet OnPath für deine gewählte Aktivität.</p>'),
    ('Welche Daten dabei übertragen werden',

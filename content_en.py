@@ -162,10 +162,12 @@ HELP_EN = [('getting-started',
     'connection to download; not every place or house number is recorded. Filters below the search help, such as “Food” or '
     '“Lodging” for huts, bivouacs and campsites. Hotels come through the online search.'),
    ('Check details in Google Maps',
-    'Open the place details in OnPath and use the Google Maps action to check opening hours, photos or reviews. Return '
+    'Open the place details in OnPath and tap “Google Maps ↗” to check opening hours, photos or reviews. Return '
     'to OnPath and add the place as a stop or destination. OnPath calculates the route for your activity.'),
    ('Bring a place from Google Maps',
-    'Open the place in Google Maps, choose Share and select OnPath. Check the marked location and use it as your '
+    'Can’t find a place in OnPath, such as a hotel or a shop? Find it in Google Maps and bring it into the app: tap '
+    '“Google Maps ↗” above the keyboard in OnPath’s search, or open Google Maps directly. Find the place there, open it, '
+    'choose Share and select OnPath. Check the marked location and use it as your '
     'start, stop or destination. This transfers the place, not a complete Google route. Short links may need a '
     'connection to resolve.'),
    ('Online search and privacy',
